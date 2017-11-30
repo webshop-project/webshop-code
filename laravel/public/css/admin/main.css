@@ -1,0 +1,58 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    font-family: sans-serif;
+}
+p{
+    margin: 0px;
+}
+/* NavBar */
+.navbar {
+    background-color: white;
+    padding: 20px 20px
+}
+
+.logo  {
+    width: 300px;
+    height: 100px;
+}
+
+.nav-item .nav-link {
+    font-size: 2em
+}
+
+/* Information */
+
+.row-sizer-userinfo{
+    padding: 10px 0px;
+    
+}
+
+.userinfo{
+    background-color: lightgray;
+}
+
+.item-info {
+    border: 1px solid orange;
+    border-radius: 10px;
+    background: white;
+}
+
+/* Footer */
+
+footer {
+    height: 40px;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: black;
+}
+
+footer p{
+    color: lightgray;
+    font-size: 1.5em 
+}
+
+
+
+
