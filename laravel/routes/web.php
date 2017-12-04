@@ -18,4 +18,4 @@ Route::get('/contact', 'PagesController@contact');
 Route::get('/houses', 'PagesController@houses');
 Route::get('/admin/', 'PagesController@admin');
 Route::get('/admin/add', 'PagesController@adminAdd');
-Route:resource('/products', 'productsController');
+Route::resource('/products', 'productsController');
