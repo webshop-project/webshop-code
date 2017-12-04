@@ -1,7 +1,11 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Bjorn
- * Date: 4-12-2017
- * Time: 11:49
- */
+@extends('layouts/pagesMaster')
+
+@section('title')
+    Home
+@endsection
+
+@section('content')
+
+    //Hier content plaatsen
+
+@endsection
