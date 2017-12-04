@@ -29,4 +29,14 @@ class PagesController extends Controller
     {
         return view('views/pages/houses');
     }
+
+    public function admin()
+    {
+        return view('views/admin/index');
+    }
+
+    public function adminAdd()
+    {
+        return view('views/admin/productAdd');
+    }
 }
