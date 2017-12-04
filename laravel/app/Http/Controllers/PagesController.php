@@ -8,35 +8,39 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view('views/pages/index');
+        return view('pages/index');
     }
 
     public function about()
     {
-        return view('views/pages/about');
+        return view('pages/about');
     }
 
     public function shop()
     {
-        return view('views/pages/shop');
+        return view('pages/shop');
     }
 
     public function contact()
     {
-        return view('views/pages/contact');
+        return view('pages/contact');
     }
     public function houses()
     {
-        return view('views/pages/houses');
+        return view('pages/houses');
     }
 
     public function admin()
     {
-        return view('views/admin/index');
+        return view('admin/index');
     }
 
-    public function adminAdd()
+    public function productAdd()
     {
-        return view('views/admin/productAdd');
+        return view('admin/productAdd');
+    }
+    public function orderList()
+    {
+        return view ('admin/orderList');
     }
 }
