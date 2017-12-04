@@ -25,8 +25,12 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Dashboard</a>
+                <a class="nav-link" href="">Dashboard</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Webshop</a>
+            </li>
+
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">

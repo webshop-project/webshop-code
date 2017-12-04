@@ -19,3 +19,10 @@ Route::get('/admin/index', function()
 {
     return view('admin/index');
 });
+
+Route::get('/admin/index/add', function()
+{
+    return view('admin/productAdd');
+});
+
+route::resource('/products', 'productsController');
