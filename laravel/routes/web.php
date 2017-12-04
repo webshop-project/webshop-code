@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/admin/index', function()
-{
-    return view('admin/index');
-});
+Route::get('/', 'PagesController@index');
+Route::get('/about', 'PagesController@about');
+Route::get('/shop', 'PagesController@shop');
+Route::get('/contact', 'PagesController@contact');
+Route::get('/houses', 'PagesController@houses');
