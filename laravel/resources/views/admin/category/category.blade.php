@@ -6,7 +6,7 @@
 <div class="container">
     <table class="table table-striped">
         @php
-            $categoryList = array("bla", "bla", "bla","bla", "bla","bla", "bla","bla", "bla","bla", "bla","bla", "bla","bla", "bla","bla", "bla","bla", "bla","bla", "bla" );
+            $categoryList = array("bla", "bla", "bla","bla", "bla","bla");
             $pages = 0;
             $result = count($categoryList);
         @endphp
@@ -23,9 +23,7 @@
                             <td><button class="btn btn-danger">Remove</button></td>
                         </tr>
                     @endif
-
-
-            @endfor
+        @endfor
     </table>
     <ul class="pagination">
         @for($i = 0; $i < $pages; $i++)
