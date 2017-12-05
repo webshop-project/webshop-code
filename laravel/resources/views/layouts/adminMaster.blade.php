@@ -25,7 +25,7 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="">Dashboard</a>
+                <a class="nav-link" href="/admin">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Webshop</a>
@@ -36,7 +36,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Product Add</a>
+                    <a class="dropdown-item" href="/admin/add">Product Add</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Product List</a>
                 </div>
