@@ -19,11 +19,11 @@ class CreateVouchersTable extends Migration
             $table->integer('code');
             $table->integer('codeValue');
             $table->integer('user_id');
-            $table->timestamp('startDate');
-            $table->timestamps('endDate');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->timestamps('deleted_at');
+            $table->timestamp('startDate')->nullable();
+            $table->timestamp('endDate')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

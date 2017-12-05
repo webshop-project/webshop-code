@@ -3,7 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="6af2f0ee-2aa2-4dfd-bc2b-1f3f0a71020b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php" afterPath="$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2014_10_12_000000_create_users_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100312_create_categories_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100312_create_categories_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100342_create_houses_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100342_create_houses_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100354_create_orders_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100354_create_orders_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100513_create_products_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100513_create_products_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100556_create_sizes_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100556_create_sizes_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100622_create_storages_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100622_create_storages_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_101826_create_vouchers_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_101826_create_vouchers_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103643_create_brands_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103643_create_brands_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103658_create_brand_models_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103658_create_brand_models_table.php" />
+      <change beforePath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_142105_create_vouchers_used_table.php" afterPath="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_142105_create_vouchers_used_table.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,76 +27,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="voucherAdd.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/vouchers/voucherAdd.blade.php">
+      <file leaf-file-name="2014_10_12_000000_create_users_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2014_10_12_000000_create_users_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-              <folding>
-                <marker date="1512471930549" expanded="true" signature="9:30" ph="..." />
-                <marker date="1512471930549" expanded="true" signature="41:48" ph="..." />
-                <marker date="1512471930549" expanded="true" signature="88:97" ph="..." />
-              </folding>
+            <state relative-caret-position="325">
+              <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminMaster.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php">
+      <file leaf-file-name="2017_12_05_101826_create_vouchers_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_101826_create_vouchers_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="57" column="85" lean-forward="false" selection-start-line="57" selection-start-column="85" selection-end-line="57" selection-end-column="85" />
-              <folding>
-                <marker date="1512472263038" expanded="true" signature="99:106" ph="..." />
-                <marker date="1512472263038" expanded="true" signature="2935:2969" ph="..." />
-                <marker date="1512472263038" expanded="true" signature="3730:3745" ph="..." />
-                <marker date="1512472263038" expanded="true" signature="3841:3850" ph="..." />
-              </folding>
+            <state relative-caret-position="450">
+              <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="master.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../barroc-it/laravel/resources/views/master.blade.php">
+      <file leaf-file-name="2017_12_05_142105_create_vouchers_used_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_142105_create_vouchers_used_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="43" column="90" lean-forward="false" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="90" />
-              <folding>
-                <marker date="1512383665913" expanded="true" signature="1278:1291" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="1329:1358" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="1524:1542" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="1733:1767" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="1931:1964" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="2127:2161" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="2327:2365" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="2535:2567" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="2731:2748" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="3196:3213" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="3297:3311" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="3400:3435" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="3589:3607" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="3786:3819" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="3970:3987" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="4411:4428" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="4508:4522" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="4607:4638" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="4807:4825" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="5004:5038" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="5190:5224" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="5378:5395" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="5819:5836" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="5916:5930" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="6015:6044" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="6202:6220" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="6399:6433" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="6585:6618" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="6769:6807" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="6965:6997" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="7149:7166" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="7598:7615" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="7699:7713" ph="..." />
-                <marker date="1512383665913" expanded="true" signature="7968:7977" ph="..." />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2017_12_05_103643_create_brands_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103643_create_brands_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2017_12_05_103658_create_brand_models_table.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103658_create_brand_models_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,6 +101,18 @@
         <option value="$PROJECT_DIR$/laravel/resources/views/admin/orderList.blade.php" />
         <option value="$PROJECT_DIR$/laravel/resources/views/admin/vouchers/voucherAdd.blade.php" />
         <option value="$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2014_10_12_000000_create_users_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100312_create_categories_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100342_create_houses_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100354_create_orders_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100513_create_products_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100556_create_sizes_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100622_create_storages_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_101826_create_vouchers_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_142105_create_vouchers_used_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103643_create_brands_table.php" />
+        <option value="$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103658_create_brand_models_table.php" />
       </list>
     </option>
   </component>
@@ -126,10 +124,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="571" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="960" />
-    <option name="height" value="1040" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -146,6 +144,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -168,72 +168,31 @@
               <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
               <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
               <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="factories" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
               <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vouchers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="layouts" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="webshop-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webshop-code" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="migrations" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Barroc_it_v2" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
@@ -331,40 +290,32 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8303000" />
+    <option name="totallyTimeSpent" value="8991000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17552084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32902583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973877" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17552084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -375,35 +326,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/vouchers/voucherAdd.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/product.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/VoucherController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -411,7 +337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -419,156 +344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1512472263038" expanded="true" signature="99:106" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="2935:2969" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3730:3745" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3841:3850" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/category/category.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/vouchers/voucherAdd.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-          <folding>
-            <marker date="1512471930549" expanded="true" signature="9:30" ph="..." />
-            <marker date="1512471930549" expanded="true" signature="41:48" ph="..." />
-            <marker date="1512471930549" expanded="true" signature="88:97" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/assets/css/orderlist.css" />
-    <entry file="file://$PROJECT_DIR$/laravel/public/css/admin/santi.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/public/css/admin/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-562">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/productAdd.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-364">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/orderList.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="14" column="67" lean-forward="false" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/PagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="57" column="59" lean-forward="false" selection-start-line="57" selection-start-column="59" selection-end-line="57" selection-end-column="59" />
-          <folding>
-            <marker date="1512472263038" expanded="true" signature="99:106" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="2935:2969" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3730:3745" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3841:3850" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/vouchers/voucherAdd.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <marker date="1512471930549" expanded="true" signature="9:30" ph="..." />
-            <marker date="1512471930549" expanded="true" signature="41:48" ph="..." />
-            <marker date="1512471930549" expanded="true" signature="88:97" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/product.blade.php" />
-    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/VoucherController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/PagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1512472263038" expanded="true" signature="99:106" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="2935:2969" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3730:3745" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3841:3850" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -577,11 +352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-          <folding>
-            <marker date="1512471930549" expanded="true" signature="9:30" ph="..." />
-            <marker date="1512471930549" expanded="true" signature="41:48" ph="..." />
-            <marker date="1512471930549" expanded="true" signature="88:97" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -597,7 +367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -605,7 +374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-562">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -628,7 +396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -636,63 +403,252 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
           <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../barroc-it/laravel/resources/views/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="43" column="90" lean-forward="false" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="90" />
-          <folding>
-            <marker date="1512383665913" expanded="true" signature="1278:1291" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="1329:1358" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="1524:1542" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="1733:1767" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="1931:1964" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="2127:2161" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="2327:2365" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="2535:2567" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="2731:2748" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="3196:3213" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="3297:3311" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="3400:3435" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="3589:3607" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="3786:3819" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="3970:3987" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="4411:4428" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="4508:4522" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="4607:4638" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="4807:4825" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="5004:5038" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="5190:5224" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="5378:5395" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="5819:5836" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="5916:5930" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="6015:6044" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="6202:6220" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="6399:6433" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="6585:6618" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="6769:6807" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="6965:6997" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="7149:7166" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="7598:7615" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="7699:7713" ph="..." />
-            <marker date="1512383665913" expanded="true" signature="7968:7977" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="57" column="59" lean-forward="false" selection-start-line="57" selection-start-column="59" selection-end-line="57" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/vouchers/voucherAdd.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/product.blade.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/VoucherController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/PagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/category/category.blade.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/vouchers/voucherAdd.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/assets/css/orderlist.css" />
+    <entry file="file://$PROJECT_DIR$/laravel/public/css/admin/santi.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/public/css/admin/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-562">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/productAdd.blade.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/admin/orderList.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" column="67" lean-forward="false" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/PagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../barroc-it/laravel/resources/views/master.blade.php" />
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/layouts/adminMaster.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="57" column="85" lean-forward="false" selection-start-line="57" selection-start-column="85" selection-end-line="57" selection-end-column="85" />
-          <folding>
-            <marker date="1512472263038" expanded="true" signature="99:106" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="2935:2969" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3730:3745" ph="..." />
-            <marker date="1512472263038" expanded="true" signature="3841:3850" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/brand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/brand_models.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/house.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/categorie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/size.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100342_create_houses_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="22" column="56" lean-forward="false" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100312_create_categories_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="23" column="56" lean-forward="false" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100354_create_orders_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100513_create_products_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="32" column="56" lean-forward="false" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100556_create_sizes_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="21" column="56" lean-forward="false" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_04_100622_create_storages_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="21" column="56" lean-forward="false" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_101826_create_vouchers_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_142105_create_vouchers_used_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103643_create_brands_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2017_12_05_103658_create_brand_models_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

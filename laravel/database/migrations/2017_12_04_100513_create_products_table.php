@@ -28,9 +28,9 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->integer('supply');
             $table->integer('viewAmount');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->timestamps('deleted_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

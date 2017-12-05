@@ -17,9 +17,9 @@ class CreateStoragesTable extends Migration
         Schema::create('storages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('gb');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->timestamps('deleted_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

@@ -29,9 +29,9 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('middleName');
             $table->rememberToken();
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->timestamps('deleted_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

@@ -18,10 +18,10 @@ class CreateVouchersUsedTable extends Migration
             $table->increments('id');
             $table->integer('voucher_id');
             $table->integer('user_id');
-            $table->timestamps('used_at');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->timestamps('deleted_at');
+            $table->timestamp('used_at')->nullabl();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

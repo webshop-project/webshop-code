@@ -18,9 +18,9 @@ class CreateBrandModelsTable extends Migration
             $table->increments('id');
             $table->integer('brand_id');
             $table->string('modelName');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->timestamps('deleted_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

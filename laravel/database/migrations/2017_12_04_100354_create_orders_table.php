@@ -19,11 +19,11 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->integer('product_id');
             $table->integer('amount');
-            $table->timestamps('bought_at');
+            $table->timestamp('bought_at');
             $table->decimal('price');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->timestamps('deleted_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
