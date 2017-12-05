@@ -30,13 +30,4 @@ class PagesController extends Controller
         return view('pages/houses');
     }
 
-    public function admin()
-    {
-        return view('admin/index');
-    }
-
-    public function productAdd()
-    {
-        return view('admin/productAdd');
-    }
 }

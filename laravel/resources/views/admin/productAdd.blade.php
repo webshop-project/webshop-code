@@ -13,7 +13,7 @@
                 <div class="col">
 
                     <div class="form">
-                        <form class="form-inline" action="{{action('productsController@store')}}" method="post">
+                        <form class="form-inline" action="" method="post">
                             {{csrf_field()}}
                             <div class="col">
                                 <div class="form-group form-padding">

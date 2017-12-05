@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 laravel/node_modules
 laravel/public/hot
 laravel/public/storage
@@ -10,3 +11,17 @@ laravel/Homestead.yaml
 laravel/npm-debug.log
 laravel/yarn-error.log
 laravel/.env
+=======
+laravel/node_modules
+laravel/public/hot
+laravel/public/storage
+laravel/storage/*.key
+laravel/vendor
+/.idea
+laravel/.vagrant
+laravel/Homestead.json
+laravel/Homestead.yaml
+laravel/npm-debug.log
+laravel/yarn-error.log
+laravel/.env
+>>>>>>> master
