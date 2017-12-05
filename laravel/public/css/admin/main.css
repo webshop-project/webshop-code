@@ -30,7 +30,7 @@ p{
 .nav-item .nav-link {
     font-size: 2em
 }
-/* Information */
+/* INDEX */
 
 .row-sizer-userinfo{
     padding: 10px 0px;
@@ -55,14 +55,21 @@ p{
     color: white;
     padding: 10px;
 }
-
+.img-preview{
+    border-right: 1px solid orange;
+    height: 150px;
+    width: 150px;
+}
+.desc{
+    padding-top: 20px;
+}
 .addSizer{
     padding: 50px 0;
 }
 .textSizerForm{
     padding: 20px 0;
 }
-/* products*/
+/* ADD PRODUCTS */
 
 .sizes .form-group{
     width: 30px;
@@ -70,6 +77,13 @@ p{
 
 .form-padding{
     padding-bottom: 10px;
+}
+
+.addSizer{
+    padding: 50px 0;
+}
+.textSizerForm{
+    padding: 20px 0;
 }
 /* Footer */
 
