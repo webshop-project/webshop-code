@@ -17,8 +17,9 @@ Route::get('/shop', 'PagesController@shop');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/houses', 'PagesController@houses');
 
-
+Route::get('/admin/vouchers/add', 'VoucherController@create');
 
 Route::resource('/products', 'ProductController');
 route::resource('/orders', 'OrderController');
 route::resource('/admin', 'DashboardController');
+route::resource('/categorie' , 'CategorieController');
