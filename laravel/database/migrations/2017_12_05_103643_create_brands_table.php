@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class CreateBrandTable extends Migration
 {
+    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -15,7 +16,10 @@ class CreateBrandTable extends Migration
     {
         Schema::create('brand', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('brandName');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
+            $table->timestamps('deleted_at');
         });
     }
 
