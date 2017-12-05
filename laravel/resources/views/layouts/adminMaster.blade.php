@@ -55,7 +55,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Voucher</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/voucher/create">Add Vouchers</a>
+                    <a class="dropdown-item" href="{{action('VoucherController@create')}}">Add Vouchers</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/voucher">Used Vouchers</a>
                 </div>
