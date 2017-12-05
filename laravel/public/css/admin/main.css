@@ -4,6 +4,15 @@
     font-size: 10px;
     font-family: sans-serif;
 }
+
+.flex{
+    display: flex;
+}
+
+.flex-between{
+    justify-content: space-between;
+}
+
 p{
     margin: 0px;
 }
@@ -21,8 +30,7 @@ p{
 .nav-item .nav-link {
     font-size: 2em
 }
-
-/* Information */
+/* INDEX */
 
 .row-sizer-userinfo{
     padding: 10px 0px;
@@ -30,15 +38,53 @@ p{
 }
 
 .userinfo{
-    background-color: lightgray;
+    background-color: #FFFEFD;
 }
 
 .item-info {
     border: 1px solid orange;
     border-radius: 10px;
     background: white;
+    padding: 25px;
 }
 
+
+.indexTitle {
+   text-align: center;
+    background-color: #3869D4;
+    color: white;
+    padding: 10px;
+}
+.img-preview{
+    border-right: 1px solid orange;
+    height: 150px;
+    width: 150px;
+}
+.desc{
+    padding-top: 20px;
+}
+.addSizer{
+    padding: 50px 0;
+}
+.textSizerForm{
+    padding: 20px 0;
+}
+/* ADD PRODUCTS */
+
+.sizes .form-group{
+    width: 30px;
+}
+
+.form-padding{
+    padding-bottom: 10px;
+}
+
+.addSizer{
+    padding: 50px 0;
+}
+.textSizerForm{
+    padding: 20px 0;
+}
 /* Footer */
 
 footer {

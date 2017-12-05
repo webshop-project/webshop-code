@@ -17,11 +17,8 @@ Route::get('/shop', 'PagesController@shop');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/houses', 'PagesController@houses');
 
-Route::get('/admin/', 'PagesController@admin');
-Route::get('/admin/add', 'PagesController@adminAdd');
 
-Route::get('/admin', 'PagesController@admin');
-Route::get('/admin/add', 'PagesController@productAdd');
 
-Route::resource('/products', 'productsController');
-Route::get('/admin/orderList', 'PagesController@orderList');
+Route::resource('/products', 'ProductController');
+route::resource('/orders', 'OrderController');
+route::resource('/admin', 'DashboardController');

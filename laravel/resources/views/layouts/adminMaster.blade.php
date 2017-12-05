@@ -26,7 +26,7 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="">Dashboard</a>
+                <a class="nav-link" href="/admin">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Webshop</a>
@@ -37,33 +37,33 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Product Add</a>
+                    <a class="dropdown-item" href="/products/create">Product Add</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Product List</a>
+                    <a class="dropdown-item" href="/products">Product List</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Pending Orders</a>
+                    <a class="dropdown-item" href="/orders">Pending Orders</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Processed Orders</a>
+                    <a class="dropdown-item" href="/orders">Processed Orders</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Voucher</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Add Vouchers</a>
+                    <a class="dropdown-item" href="/voucher/create">Add Vouchers</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Used Vouchers</a>
+                    <a class="dropdown-item" href="/voucher">Used Vouchers</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Users</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Adjust User</a>
+                    <a class="dropdown-item" href="/user">Adjust User</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Manage User</a>
+                    <a class="dropdown-item" href="/user">Manage User</a>
                 </div>
             </li>
 
