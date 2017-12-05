@@ -38,8 +38,10 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/products/create">Product Add</a>
+                    <a class="dropdown-item" href="/categorie/create">Categorie Add</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/products">Product List</a>
+                    <a class="dropdown-item" href="/categorie">Categorie List</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
