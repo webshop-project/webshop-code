@@ -6,6 +6,112 @@
 
 @section('content')
 
-    //Hier content plaatsen
+    <div class="container d-inline">
+        <div class="col">
+            <div class="row">
+                <div class=" col menuList">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="{{url('/shop/caps')}}">Caps</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/keycords')}}">Keycords</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/mugs')}}">Mugs</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/phonecases')}}">Phonecases</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/shirts')}}">Shirts</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/usbs')}}">USB's</a></li>
+                    </ul>
+                </div>
+                <div class="container col-xs-12 col-sx-12 col-10  d-inline">
+                    <div class="selectContainer">
+                        <select class="custom-select">
+                            <option selected disabled> Houses: </option>
+                            <option value="dragons">Database Dragons</option>
+                            <option value="ravens">Recursive Ravens</option>
+                            <option value="serpents">Script Serpents</option>
+                            <option value="vikings">Variable Vikings</option>
+                        </select>
+                    </div>
+                    <div class="wd-100"></div>
+                    <div class="row headRoom">
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6 headRoom">
+                            <a href="#">
+                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
+                                <h3>Item</h3>
+                                <span>€24,99</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
 @endsection

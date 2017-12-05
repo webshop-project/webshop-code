@@ -18,4 +18,5 @@ Route::get('/contact', 'PagesController@contact');
 Route::get('/houses', 'PagesController@houses');
 Route::get('/admin', 'PagesController@admin');
 Route::get('/admin/add', 'PagesController@productAdd');
+Route::get('/shop/{category}', 'pagesController@category');
 Route::resource('/products', 'productsController');

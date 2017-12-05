@@ -21,6 +21,11 @@ class PagesController extends Controller
         return view('pages/shop');
     }
 
+    public function category()
+    {
+        return view("/pages/shop/category");
+    }
+
     public function contact()
     {
         return view('pages/contact');
