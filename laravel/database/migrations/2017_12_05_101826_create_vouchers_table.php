@@ -16,12 +16,12 @@ class CreateVouchersTable extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('code');
+            $table->string('code');
             $table->integer('codeValue');
             $table->integer('user_id');
             $table->timestamp('startDate')->nullable();
             $table->timestamp('endDate')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
         });

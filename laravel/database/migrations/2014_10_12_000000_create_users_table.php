@@ -24,12 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('postcode');
             $table->string('streetName');
             $table->string('houseNumber');
-            $table->string('houseNumberAddOn');
+            $table->string('houseNumberAddOn')->nullable();
             $table->string('firstName');
             $table->string('lastName');
-            $table->string('middleName');
+            $table->string('middleName')->nullable();
             $table->rememberToken();
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
         });
