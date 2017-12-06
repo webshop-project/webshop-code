@@ -11,6 +11,13 @@ class HousesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $names = ['Script Serpents', 'Database Dragons', 'Recursive Ravens', 'Variable Vikings'];
+
+        foreach ($names as $name){
+            DB::table('houses')->insert([
+                'name' => $name
+            ]);
+        }
+
     }
 }
