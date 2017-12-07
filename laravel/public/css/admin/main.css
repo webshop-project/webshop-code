@@ -17,9 +17,9 @@ p{
     margin: 0px;
 }
 /* NavBar */
-.navbar {
+header .navbar {
     background-color: white;
-    padding: 20px 20px
+    padding: 20px 0!important;
 }
 
 .logo  {
@@ -48,10 +48,14 @@ p{
     padding: 25px;
 }
 
+.product-info{
+    margin: 10px 0;
+}
+
 
 .indexTitle {
    text-align: center;
-    background-color: #3869D4;
+    background-color: #004E70;
     color: white;
     padding: 10px;
 }
@@ -62,6 +66,7 @@ p{
 }
 .desc{
     padding-top: 20px;
+    height: 75px;
 }
 .addSizer{
     padding: 50px 0;
@@ -86,7 +91,19 @@ p{
     padding: 20px 0;
 }
 
-/* PRODUCTS LISt */
+/* PRODUCTS LIST */
+
+.pagination ul li {
+    margin-right: 4px;
+    padding: 5px;
+    border-radius: 10px;
+    background: green;
+}
+.pagination ul{
+    text-decoration: none;
+    color: white;
+}
+
 
 /* Footer */
 
