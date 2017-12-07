@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
+
 class ProductsTableSeeder extends Seeder
 {
     /**
@@ -29,8 +29,15 @@ class ProductsTableSeeder extends Seeder
         $housesList = ['Variable Vikings','Database Dragons','Recursive Ravens','Script Serpents'];
         $gbList = ['4','8','16','32','64'];
         $brandsList = ['Samsung']; //! Normalisatie is niet goed gegaan de verbinding tussen model en type klopt niet!
+        //$brandsList = \App\brand::all();
 
-        for( $i = 0 ; $i < count($housesList) ; $i++ )
+//        foreach($brandsList as $key => $value){
+//
+//        }
+for ( $z = 0 ; $z < 100 ; $z++)
+{
+
+        for( $i = 0 ; $i < count($housesList); $i++ )
         {
             $houseID = 1;
             $sizeID = 0;
@@ -46,10 +53,14 @@ class ProductsTableSeeder extends Seeder
                     $brandID = 1;
                     for ( $k = 0; $k < count($brandsList) ; $k++ )
                     {
+//                        $brand = \App\brand::find($k);
+
+
                         for ($l = 0; $l < count($modelsList) ; $l++)
                         {
                             DB::table('products')->insert
                             (
+
                                 [
                                     'house_id' => $i+1,
                                     'category_id' => $catCounter,
@@ -68,7 +79,7 @@ class ProductsTableSeeder extends Seeder
 
                     }
                 }
-                if($j == 4)
+                else if($j == 4)
                 {
                     for ( $a = 0 ; $a < count($sizeList) ; $a++ )
                     {
@@ -92,8 +103,32 @@ class ProductsTableSeeder extends Seeder
                         );
                     }
                 }
+                else if($j == 5)
+                {
+                    for ( $q = 0 ; $q < count($gbList) ; $q++ )
+                    {
+                        $brandID = 0;
+                        $bmodelID = 0;
+                        DB::table('products')->insert
+                        (
+                            [
+                                'house_id' => $i + 1,
+                                'category_id' => $catCounter,
+                                'size_id' => 0,
+                                'brand_id' => $brandID,
+                                'b_model_id' => $bmodelID,
+                                'storage_id' => $q+1,
+                                'name' => $housesList[$i] . " " . $catList[$j],
+                                'price' => mt_rand(10 * 10, 100 * 10) / 10,
+                                'description' => $faker->create()->sentence(12),
+                                'supply' => random_int(0, 25),
+                                'viewAmount' => rand(0, 150),
+                            ]
+                        );
+                    }
+                }
                 else {
-
+                    $brandID = 0;
                     DB::table('products')->insert
                     (
                         [
@@ -115,4 +150,6 @@ class ProductsTableSeeder extends Seeder
             }
         }
     }
+    }
+
 }
