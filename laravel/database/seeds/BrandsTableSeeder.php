@@ -11,7 +11,6 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        $carbon = new Carbon();
         $brandsList = ['Samsung','Iphone'];
         for( $i = 0 ; $i < count($brandsList) ; $i++ )
         {
@@ -19,7 +18,6 @@ class BrandsTableSeeder extends Seeder
             (
                 [
                     'brandName' => $brandsList[$i],
-                    'created_at' => $carbon,
                 ]
             );
         }
