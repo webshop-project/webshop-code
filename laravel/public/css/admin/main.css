@@ -17,9 +17,9 @@ p{
     margin: 0px;
 }
 /* NavBar */
-.navbar {
+header .navbar {
     background-color: white;
-    padding: 20px 20px
+    padding: 20px 0!important;
 }
 
 .logo  {
@@ -48,10 +48,14 @@ p{
     padding: 25px;
 }
 
+.product-info{
+    margin: 10px 0;
+}
+
 
 .indexTitle {
    text-align: center;
-    background-color: #3869D4;
+    background-color: #004E70;
     color: white;
     padding: 10px;
 }
@@ -62,6 +66,7 @@ p{
 }
 .desc{
     padding-top: 20px;
+    height: 75px;
 }
 .addSizer{
     padding: 50px 0;
@@ -86,7 +91,27 @@ p{
     padding: 20px 0;
 }
 
-/* PRODUCTS LISt */
+/* PRODUCTS LIST */
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    position: relative;
+
+}
+
+.pagination li {
+    padding: 5px 10px;
+    margin-right: 3px;
+    background: #4CAF50;
+    border-radius: 50px;
+    color: white;
+}
+
+.pagination li a {
+    color: black;
+}
 
 /* Footer */
 

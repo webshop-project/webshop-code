@@ -11,7 +11,6 @@ class BrandModelsTableSeeder extends Seeder
      */
     public function run()
     {
-        $carbon = new Carbon();
         $modelsList = ['7S','8S','Note','7S','X'];
         $j = 1;
         for( $i = 0 ; $i < count($modelsList) ; $i++ )
@@ -25,7 +24,6 @@ class BrandModelsTableSeeder extends Seeder
                 [
                     'brand_id' => $j,
                     'modelName' => $modelsList[$i],
-                    'created_at' => $carbon,
                 ]
             );
         }

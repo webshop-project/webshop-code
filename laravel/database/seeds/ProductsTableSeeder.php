@@ -11,7 +11,6 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        $carbon = new Carbon();
         $faker = new \Faker\Factory();
 
 
@@ -72,7 +71,6 @@ class ProductsTableSeeder extends Seeder
                                     'description' => $faker->create()->sentence(12),
                                     'supply' => random_int(0,25),
                                     'viewAmount' => rand(0,150),
-                                    'created_at' => $carbon,
                                 ]
                             );
                         }
@@ -99,7 +97,6 @@ class ProductsTableSeeder extends Seeder
                                 'description' => $faker->create()->sentence(12),
                                 'supply' => random_int(0, 25),
                                 'viewAmount' => rand(0, 150),
-                                'created_at' => $carbon,
                             ]
                         );
                     }
@@ -145,7 +142,6 @@ class ProductsTableSeeder extends Seeder
                             'description' => $faker->create()->sentence(12),
                             'supply' => random_int(0, 25),
                             'viewAmount' => rand(0, 150),
-                            'created_at' => $carbon,
                         ]
                     );
                 }

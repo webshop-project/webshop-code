@@ -11,7 +11,6 @@ class HousesTableSeeder extends Seeder
      */
     public function run()
     {
-        $carbon = new Carbon();
         $housesList = ['Variable Vikings','Database Dragons','Recursive Ravens','Script Serpents'];
         for( $i = 0 ; $i < count($housesList) ; $i++ )
         {
@@ -19,7 +18,6 @@ class HousesTableSeeder extends Seeder
             (
                 [
                     'name' => $housesList[$i],
-                    'created_at' => $carbon,
                 ]
             );
         }
