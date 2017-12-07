@@ -30,6 +30,11 @@ class ProductsTableSeeder extends Seeder
         $housesList = ['Variable Vikings','Database Dragons','Recursive Ravens','Script Serpents'];
         $gbList = ['4','8','16','32','64'];
         $brandsList = ['Samsung']; //! Normalisatie is niet goed gegaan de verbinding tussen model en type klopt niet!
+        //$brandsList = \App\brand::all();
+
+//        foreach($brandsList as $key => $value){
+//
+//        }
 
         for( $i = 0 ; $i < count($housesList) ; $i++ )
         {
@@ -47,10 +52,14 @@ class ProductsTableSeeder extends Seeder
                     $brandID = 1;
                     for ( $k = 0; $k < count($brandsList) ; $k++ )
                     {
+//                        $brand = \App\brand::find($k);
+
+
                         for ($l = 0; $l < count($modelsList) ; $l++)
                         {
                             DB::table('products')->insert
                             (
+
                                 [
                                     'house_id' => $i+1,
                                     'category_id' => $catCounter,
@@ -70,7 +79,7 @@ class ProductsTableSeeder extends Seeder
 
                     }
                 }
-                if($j == 4)
+                else if($j == 4)
                 {
                     for ( $a = 0 ; $a < count($sizeList) ; $a++ )
                     {
@@ -96,7 +105,7 @@ class ProductsTableSeeder extends Seeder
                     }
                 }
                 else {
-
+                    $brandID = 0;
                     DB::table('products')->insert
                     (
                         [
