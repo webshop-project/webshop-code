@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
+
 class ProductsTableSeeder extends Seeder
 {
     /**
@@ -34,8 +34,10 @@ class ProductsTableSeeder extends Seeder
 //        foreach($brandsList as $key => $value){
 //
 //        }
+for ( $z = 0 ; $z < 100 ; $z++)
+{
 
-        for( $i = 0 ; $i < count($housesList) ; $i++ )
+        for( $i = 0 ; $i < count($housesList); $i++ )
         {
             $houseID = 1;
             $sizeID = 0;
@@ -121,7 +123,6 @@ class ProductsTableSeeder extends Seeder
                                 'description' => $faker->create()->sentence(12),
                                 'supply' => random_int(0, 25),
                                 'viewAmount' => rand(0, 150),
-                                'created_at' => $carbon,
                             ]
                         );
                     }
@@ -149,4 +150,6 @@ class ProductsTableSeeder extends Seeder
             }
         }
     }
+    }
+
 }
