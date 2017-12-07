@@ -11,6 +11,21 @@ class BrandModelsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $modelsList = ['7S','8S','Note','7S','X'];
+        $j = 1;
+        for( $i = 0 ; $i < count($modelsList) ; $i++ )
+        {
+            if($i > 2)
+            {
+                $j=2;
+            }
+            DB::table('brand_models')->insert
+            (
+                [
+                    'brand_id' => $j,
+                    'modelName' => $modelsList[$i],
+                ]
+            );
+        }
     }
 }

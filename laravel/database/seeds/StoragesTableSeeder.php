@@ -11,7 +11,6 @@ class StoragesTableSeeder extends Seeder
      */
     public function run()
     {
-        $carbon = new Carbon();
         $gbList = ['4','8','16','32','64'];
         for( $i = 0 ; $i < count($gbList) ; $i++ )
         {
@@ -19,7 +18,6 @@ class StoragesTableSeeder extends Seeder
             (
                 [
                     'gb' => $gbList[$i],
-                    'created_at' => $carbon,
                 ]
             );
         }
