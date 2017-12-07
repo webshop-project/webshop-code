@@ -10,7 +10,7 @@
                 <label for="title">Titel categorie:</label>
                 <input type="text" id="title" name="title">
             </div>
-            <button class="btn btn-info">Add</button>
+            <button class="btn btn-success">Add</button>
         </form>
     </div>
 @endsection
