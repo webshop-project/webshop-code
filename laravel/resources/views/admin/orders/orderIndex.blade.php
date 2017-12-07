@@ -6,23 +6,27 @@
         <div class="container indexTitle col-12">
             <h2>ORDERS</h2>
         </div>
+        <div class="row row-sizer-userinfo">
         @foreach($orders as $order)
-            <div class="row row-sizer-userinfo">
-                <div class="col-4">
+
+                <div class="col-4 product-info">
                     <div class="item-info">
                         <div class="form-inline">
-                            <div class="col-1">
+                            <div class="h5" href="#">
                                 <p> Name: </p>{{$order->user_id}}
                                 <p> Product: </p>{{$order->product_id}}
                                 <p> amount: </p>{{$order->amount}}
                                 <p> Purchased at: </p>{{$order->bought_at}}
                                 <p> total price: </p>{{$order->price}}
+                                <div class="">
+                                    <button type="button" class="btn btn-success" href="#">View</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         @endforeach
+        </div>
 
         {{$orders->links()}}
 
