@@ -64,7 +64,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = \App\product::find($id);
+        return view('admin/products/productAdjust')
+            ->with('products', $product);
     }
 
     /**
@@ -87,6 +89,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\product::destroy($id);
+
+        return redirect('products')->with('succes', 'Product has been deleted!');
     }
 }
