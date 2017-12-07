@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\order;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = DB::table('orders')->paginate(9);
+        return view('admin/orders/orderIndex', ['orders' => $orders]);
     }
 
     /**
