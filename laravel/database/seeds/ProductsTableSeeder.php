@@ -68,6 +68,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                                     'brand_id' => $brandID,
                                     'b_model_id' => $l+1,
                                     'storage_id' => $storageID,
+                                    'discount' => 0,
                                     'name' => $housesList[$i] . " " . $catList[$j] ." ". $brandsList[$k] ." " . $modelsList[$l],
                                     'price' => mt_rand (10*10, 100*10) / 10,
                                     'description' => $faker->create()->sentence(12),
@@ -94,6 +95,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                                 'brand_id' => $brandID,
                                 'b_model_id' => $bmodelID,
                                 'storage_id' => $storageID,
+                                'discount' => 0,
                                 'name' => $housesList[$i] . " " . $catList[$j],
                                 'price' => mt_rand(10 * 10, 100 * 10) / 10,
                                 'description' => $faker->create()->sentence(12),
@@ -118,6 +120,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                                 'brand_id' => $brandID,
                                 'b_model_id' => $bmodelID,
                                 'storage_id' => $q+1,
+                                'discount' => 0,
                                 'name' => $housesList[$i] . " " . $catList[$j],
                                 'price' => mt_rand(10 * 10, 100 * 10) / 10,
                                 'description' => $faker->create()->sentence(12),
@@ -138,6 +141,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                             'brand_id' => $brandID,
                             'b_model_id' => $bmodelID,
                             'storage_id' => $storageID,
+                            'discount' => 0,
                             'name' => $housesList[$i] . " " . $catList[$j],
                             'price' => mt_rand(10 * 10, 100 * 10) / 10,
                             'description' => $faker->create()->sentence(12),
@@ -151,5 +155,4 @@ for ( $z = 0 ; $z < 100 ; $z++)
         }
     }
     }
-
 }
