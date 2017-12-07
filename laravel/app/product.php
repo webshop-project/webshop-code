@@ -30,6 +30,12 @@ class product extends Model
     {
         $this->belongsTo('App\brand');
     }
+    public function images()
+    {
+        $this->hasMany('App\images');
+    }
+
+
 
     public function brand_model()
     {

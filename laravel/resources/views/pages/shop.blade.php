@@ -22,7 +22,7 @@
                 <div class="container col-xs-12 col-sx-12 col-10  d-inline">
                     <div class="selectContainer">
                         <select class="custom-select">
-                            <option selected disabled> Houses: </option>
+                            <option selected disabled> Houses:</option>
                             <option value="dragons">Database Dragons</option>
                             <option value="ravens">Recursive Ravens</option>
                             <option value="serpents">Script Serpents</option>
@@ -31,72 +31,28 @@
                     </div>
                     <div class="wd-100"></div>
                     <div class="row headRoom">
-                        <div class="col-md-3 col-6 headRoom">
-                            @php
-                                dd($products)
-                            @endphp
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                                <select class="btn-mini" name="" id="">
+
+                        {{--@php--}}
+                        {{--dd($products);--}}
+                        {{--@endphp--}}
+                        @foreach($products as $product)
+                            <div class="col-md-3 col-6 headRoom">
+                                <a href="#">
+                                    <img src="{{$product->img}}" class="img-fluid img-responsive" alt="">
+                                    <h6>{{$product->name}}</h6>
+                                </a>
+                                <span>€{{$product->price}}</span>
+                                <select class="btn-mini" name="size">
                                     <option value="S">S</option>
                                     <option value="M">M</option>
                                     <option value="L">L</option>
                                     <option value="XL">XL</option>
                                 </select>
                                 <a href="#">Add to Cart</a>
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
+
+                            </div>
+                        @endforeach
+
                         <div class="col-md-3 col-6 headRoom">
                             <a href="#">
                                 <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
