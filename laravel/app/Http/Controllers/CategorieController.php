@@ -35,7 +35,15 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            "title" => "required|string|filled"
+        ]);
+        $title = $request->title;
+        $categorie = new \App\categorie();
+        $categorie->name = $title;
+        $categorie->save();
+
+        return redirect("/categorie");
     }
 
     /**
