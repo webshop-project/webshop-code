@@ -93,17 +93,25 @@ header .navbar {
 
 /* PRODUCTS LIST */
 
-.pagination ul li {
-    margin-right: 4px;
-    padding: 5px;
-    border-radius: 10px;
-    background: green;
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    position: relative;
+
 }
-.pagination ul{
-    text-decoration: none;
+
+.pagination li {
+    padding: 5px 10px;
+    margin-right: 3px;
+    background: #4CAF50;
+    border-radius: 50px;
     color: white;
 }
 
+.pagination li a {
+    color: black;
+}
 
 /* Footer */
 

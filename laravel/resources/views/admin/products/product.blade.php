@@ -29,18 +29,25 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button class="btn btn-succes">Edit product</button>
-                                <button class="btn btn-danger">Delete product</button>
+                                <a href="{{action('ProductController@edit', $product->id)}}"><button class="btn btn-info">Edit Product</button></a>
+                                <form action="{{action('ProductController@destroy', $product->id)}}" method="post">
+                                    {{csrf_field()}}
+                                    {{method_field('DELETE')}}
+                                    <input type="hidden" name="delete" value="{{$product->id}}">
+                                    <input class="btn btn-danger" type="submit" value="Delete Product">
+                                </form>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                             {{$products->links()}}
-                        </ul>
-                    </nav>
             </div>
+
+            @if (session('succes'))
+                <div class="alert alert-success">
+                    <h3>{{ session('succes') }}</h3>
+                </div>
+            @endif
+            {{$products->links()}}
         </div>
     </div>
 @endsection
