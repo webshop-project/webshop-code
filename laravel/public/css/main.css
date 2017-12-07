@@ -1,0 +1,38 @@
+.cart {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.cart a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.cart a:hover {
+    color: #f1f1f1;
+}
+
+.cart .closebtn {
+    float: left;
+    font-size: 40px;
+    padding-left: 5px;
+    display: block;
+}
+
+.cart-top{
+    text-align: center;
+    background: #1b6d85;
+}
+.cart-top h2{
+    padding-top: 50px;
+}

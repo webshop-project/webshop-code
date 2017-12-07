@@ -17,7 +17,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/newCSS.css">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <title>AMO Webshop | @yield('title')</title>
 </head>
 
@@ -59,7 +59,22 @@
                     </li>
                 </ul>
             </div>
+            <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
         </nav>
+        <div class="shoppingcart">
+            <div id="myShoppingCart" class="cart">
+                <div class="cart-top">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <h2>Your Cart</h2>
+                </div>
+                <div class="cart-items">
+                    <a href="#">HAHAHAHA</a>
+                    <a href="#">HEHEHEHE</a>
+                    <a href="#">HOHOHOHO</a>
+                    <a href="#">HUHUHUHU</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="container">
@@ -95,6 +110,14 @@
     </div>
 </footer>
 </div>
+<script>
+    function openNav() {
+        document.getElementById("myShoppingCart").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("myShoppingCart").style.width = "0";
+    }</script>
 </body>
 </html>
 
