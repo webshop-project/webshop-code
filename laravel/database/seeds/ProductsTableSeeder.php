@@ -104,6 +104,31 @@ class ProductsTableSeeder extends Seeder
                         );
                     }
                 }
+                else if($j == 5)
+                {
+                    for ( $q = 0 ; $q < count($gbList) ; $q++ )
+                    {
+                        $brandID = 0;
+                        $bmodelID = 0;
+                        DB::table('products')->insert
+                        (
+                            [
+                                'house_id' => $i + 1,
+                                'category_id' => $catCounter,
+                                'size_id' => 0,
+                                'brand_id' => $brandID,
+                                'b_model_id' => $bmodelID,
+                                'storage_id' => $q+1,
+                                'name' => $housesList[$i] . " " . $catList[$j],
+                                'price' => mt_rand(10 * 10, 100 * 10) / 10,
+                                'description' => $faker->create()->sentence(12),
+                                'supply' => random_int(0, 25),
+                                'viewAmount' => rand(0, 150),
+                                'created_at' => $carbon,
+                            ]
+                        );
+                    }
+                }
                 else {
                     $brandID = 0;
                     DB::table('products')->insert
