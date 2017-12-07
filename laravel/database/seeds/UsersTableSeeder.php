@@ -11,6 +11,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
+        $faker = Faker\Factory::create('nl_NL');
+        for($i = 0 ; $i < 100 ; $i++)
+        {
+            DB::table('Users')->insert(
+                [
+                    'loginToken'    => $faker->text(12),
+                    'loginName'     => $faker->firstName(),
+                    'password'      => bcrypt('geheim'),
+                    'role'          => 'student',
+                    'country'       => 'Nederland',
+                    'postcode'      => $faker->postcode,
+                    'streetName'    => $faker->streetName,
+                    'houseNumber'   => random_int(1,999),
+                    'houseNumberAddOn'=>$faker->randomLetter,
+                    'firstName'     => $faker->firstName,
+                    'lastName'      => $faker->lastName,
+                    'middleName'    => $faker->randomLetter . $faker->randomLetter . $faker->randomLetter,
+                    'remember_token'=> $faker->text(12),
+                ]
+            );
+        }
     }
 }
