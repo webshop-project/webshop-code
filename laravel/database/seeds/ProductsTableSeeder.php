@@ -54,7 +54,6 @@ class ProductsTableSeeder extends Seeder
                                 [
                                     'house_id' => $i+1,
                                     'category_id' => $catCounter,
-                                    'img_id' => 1337,
                                     'size_id' => $sizeID,
                                     'brand_id' => $brandID,
                                     'b_model_id' => $l+1,
@@ -82,7 +81,6 @@ class ProductsTableSeeder extends Seeder
                             [
                                 'house_id' => $i + 1,
                                 'category_id' => $catCounter,
-                                'img_id' => 1337,
                                 'size_id' => $a+1,
                                 'brand_id' => $brandID,
                                 'b_model_id' => $bmodelID,
@@ -104,7 +102,6 @@ class ProductsTableSeeder extends Seeder
                         [
                             'house_id' => $i + 1,
                             'category_id' => $catCounter,
-                            'img_id' => 1337,
                             'size_id' => $sizeID,
                             'brand_id' => $brandID,
                             'b_model_id' => $bmodelID,
