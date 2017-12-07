@@ -13,7 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
-Route::get('/shop', 'PagesController@shop');
+Route::get('/shop', 'ShopController@index');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/houses', 'PagesController@houses');
 Route::get('/shop/{category}', 'pagesController@category');

@@ -32,10 +32,20 @@
                     <div class="wd-100"></div>
                     <div class="row headRoom">
                         <div class="col-md-3 col-6 headRoom">
+                            @php
+                                dd($products)
+                            @endphp
                             <a href="#">
                                 <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
                                 <h3>Item</h3>
                                 <span>€24,99</span>
+                                <select class="btn-mini" name="" id="">
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                                <a href="#">Add to Cart</a>
                             </a>
                         </div>
                         <div class="col-md-3 col-6 headRoom">

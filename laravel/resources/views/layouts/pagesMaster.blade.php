@@ -29,10 +29,6 @@
             <a class="login" href="#"><span>Login</span></a>
             <a class="register" href="#"><span>Register</span></a>
         </div>
-        <div class="col-xs-1 ml-auto align-items-center d-flex">
-            <span><i class="fa fa-star fa-2x grayIcons blr" aria-hidden="true"></i></span>
-            <span><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
-        </div>
     </div>
 </div>
 <div class="container-fluid bg-secondary">
@@ -117,7 +113,8 @@
 
     function closeNav() {
         document.getElementById("myShoppingCart").style.width = "0";
-    }</script>
+    }
+</script>
 </body>
 </html>
 
