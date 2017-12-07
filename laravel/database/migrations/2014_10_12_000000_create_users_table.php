@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class CreateUsersTable extends Migration
 {
+    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -15,11 +16,22 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('loginToken');
+            $table->string('loginName');
             $table->string('password');
+            $table->string('role');
+            $table->string('country');
+            $table->string('postcode');
+            $table->string('streetName');
+            $table->string('houseNumber');
+            $table->string('houseNumberAddOn')->nullable();
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('middleName')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

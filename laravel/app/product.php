@@ -26,5 +26,14 @@ class product extends Model
     {
         $this->belongsTo('App\storage');
     }
+    public function brand()
+    {
+        $this->belongsTo('App\brand');
+    }
+
+    public function brand_model()
+    {
+        
+    }
 
 }
