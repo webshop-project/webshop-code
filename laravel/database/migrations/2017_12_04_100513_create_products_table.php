@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->integer('size_id')->nullable();
             $table->integer('brand_id')->nullable();
             $table->integer('b_model_id')->nullable();
-            $table->integer('house_id');
             $table->integer('storage_id')->nullable();
             $table->string('name');
             $table->decimal('price');
