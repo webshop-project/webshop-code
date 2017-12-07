@@ -11,7 +11,6 @@ class SizesTableSeeder extends Seeder
      */
     public function run()
     {
-        $carbon = new Carbon();
         $sizeList = ['S','M','L','XL'];
         for( $i = 0 ; $i < count($sizeList) ; $i++ )
         {
@@ -19,7 +18,6 @@ class SizesTableSeeder extends Seeder
             (
                 [
                     'size' => $sizeList[$i],
-                    'created_at' => $carbon,
                 ]
             );
         }

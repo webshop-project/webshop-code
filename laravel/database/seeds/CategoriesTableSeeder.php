@@ -11,9 +11,6 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-
-        $faker = new \Faker\Factory();
-        $carbon = new Carbon();
         $catList = ['Caps','Keycords','Mugs','Phonecases','Shirts','USB'];
         for( $i = 0 ; $i < count($catList) ; $i++ )
         {
@@ -21,7 +18,6 @@ class CategoriesTableSeeder extends Seeder
             (
                 [
                     'name' => $catList[$i],
-                    'created_at' => $carbon,
                 ]
             );
         }
