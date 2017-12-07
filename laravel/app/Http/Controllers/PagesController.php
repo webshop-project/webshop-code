@@ -25,6 +25,14 @@ class PagesController extends Controller
     {
         return view("/pages/shop/category");
     }
+    public function cart()
+    {
+        return view("/pages/shop/cart");
+    }
+    public function item()
+    {
+        return view("/pages/shop/details");
+    }
 
     public function contact()
     {

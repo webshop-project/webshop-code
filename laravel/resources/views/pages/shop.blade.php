@@ -37,29 +37,23 @@
                         {{--@endphp--}}
                         @foreach($products as $product)
                             <div class="col-md-3 col-6 headRoom">
-                                <a href="#">
-                                    <img src="{{$product->img}}" class="img-fluid img-responsive" alt="">
-                                    <h6>{{$product->name}}</h6>
-                                </a>
-                                <span>€{{$product->price}}</span>
-                                <select class="btn-mini" name="size">
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
-                                <a href="#">Add to Cart</a>
-
+                                <form method="_POST" action="{{action('PagesController@cart')}}">
+                                    <a href="#">
+                                        <img src="{{$product->img}}" class="img-fluid img-responsive"
+                                             alt="{{$product->name}}">
+                                        <h6>{{$product->name}}</h6>
+                                    </a>
+                                    <span>€{{$product->price}}</span>
+                                    <select class="btn-mini" name="size">
+                                        <option value="1">S</option>
+                                        <option value="2">M</option>
+                                        <option value="3">L</option>
+                                        <option value="4">XL</option>
+                                    </select>
+                                    <button class="btn-primary" style="cursor:pointer" type="submit" name="add-to-cart">Add To Cart</button>
+                                </form>
                             </div>
                         @endforeach
-
-                        <div class="col-md-3 col-6 headRoom">
-                            <a href="#">
-                                <img src="img/db_dragon_xs.png" class="img-fluid img-responsive" alt="">
-                                <h3>Item</h3>
-                                <span>€24,99</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
