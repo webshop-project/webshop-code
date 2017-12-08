@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\order;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -46,9 +46,12 @@ class OrderController extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
+    public function show($id)
     {
-        //
+        $order = \App\order::find($id);
+
+        return view('admin/orders/detail/orderDetail')
+            ->with('order', $order);
     }
 
     /**
@@ -73,6 +76,11 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function finish($id){
+        $order = 
+    }
+
 
     /**
      * Remove the specified resource from storage.
