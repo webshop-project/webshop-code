@@ -16,9 +16,9 @@ Route::get('/about', 'PagesController@about');
 Route::get('/shop', 'ShopController@index');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/houses', 'PagesController@houses');
-Route::get('/shop/{category}', 'pagesController@category');
-Route::get('/shop/{item}', 'pagesController@detailpage');
-Route::get('/shop/cart', 'PagesController@cart');
+Route::get('/shop/{category}', 'PagesController@category');
+Route::get('/shop/{item}', 'PagesController@item');
+
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 
