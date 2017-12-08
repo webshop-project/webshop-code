@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\product;
-use Illuminate\Http\Request;
 
-class ShopController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class ImageController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +19,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = product::all();
-        return view('pages/shop')->with('products',$products);
+        //
     }
 
     /**
@@ -42,10 +46,10 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(image $image)
     {
         //
     }
@@ -53,10 +57,10 @@ class ShopController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(image $image)
     {
         //
     }
@@ -65,10 +69,10 @@ class ShopController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, image $image)
     {
         //
     }
@@ -76,11 +80,12 @@ class ShopController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        \App\images::destroy($id);
+        return redirect('products')->with('succesD', 'SKRR has been deleted!');
     }
 }

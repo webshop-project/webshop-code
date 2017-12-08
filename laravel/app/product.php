@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class product extends Model
 {
+    use  SoftDeletes;
     public function categorie()
     {
         $this->belongsTo('App\categorie');
@@ -30,6 +32,12 @@ class product extends Model
     {
         $this->belongsTo('App\brand');
     }
+    public function images()
+    {
+        $this->hasMany('App\images');
+    }
+
+
 
     public function brand_model()
     {
