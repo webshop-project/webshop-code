@@ -27,3 +27,4 @@ route::resource('/orders', 'OrderController');
 route::resource('/admin', 'DashboardController');
 route::resource('/categorie' , 'CategorieController');
 route::resource('/img', 'ImageController');
+route::resource('/user', 'UserController');

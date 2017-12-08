@@ -62,6 +62,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                             (
 
                                 [
+                                    'discount' => 0,
                                     'house_id' => $i+1,
                                     'category_id' => $catCounter,
                                     'size_id' => $sizeID,
@@ -88,6 +89,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                         DB::table('products')->insert
                         (
                             [
+                                'discount' => 0,
                                 'house_id' => $i + 1,
                                 'category_id' => $catCounter,
                                 'size_id' => $a+1,
@@ -112,6 +114,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                         DB::table('products')->insert
                         (
                             [
+                                'discount' => 0,
                                 'house_id' => $i + 1,
                                 'category_id' => $catCounter,
                                 'size_id' => 0,
@@ -132,6 +135,7 @@ for ( $z = 0 ; $z < 100 ; $z++)
                     DB::table('products')->insert
                     (
                         [
+                            'discount' => 0,
                             'house_id' => $i + 1,
                             'category_id' => $catCounter,
                             'size_id' => $sizeID,

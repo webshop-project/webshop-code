@@ -83,9 +83,9 @@ class ImageController extends Controller
      * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(image $id)
+    public function destroy($id)
     {
-        \App\image::destroy($id);
+        \App\images::destroy($id);
         return redirect('products')->with('succesD', 'SKRR has been deleted!');
     }
 }

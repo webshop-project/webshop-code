@@ -53,7 +53,7 @@
 
                 @if($products->storage_id > 0)
                     <div class="form-group">
-                        <label for="storage"><b>Storage</b></label>
+                        <label for="storage"><b>Storage (in GigaBytes)</b></label>
                         <select class="form-control" name="storage">
                             @foreach($storages as $storage)
                                 <option class="form-control" value="{{$storage->id}}">{{$storage->gb}}</option>
@@ -61,31 +61,34 @@
                         </select>
                     </div>
                 @endif
-                <div class="form-group">
-                    <h2>Current Images</h2>
-                    <div class="row">
-                        @foreach($images as $image)
-                            <div class="col-4 product-info">
-                                <div class="item-info">
-                                    <div class="form-inline">
-                                        <div class="img-preview col-6">
-                                            <img width="100%" src="{{$image->img}}" alt="">
-                                        </div>
-                                        <div class="delete col-1">
-                                            <form action="{{action('ImageController@destroy', $image->id)}}"
-                                                  method="post">
-                                                {{csrf_field()}}
-                                                {{method_field('DELETE')}}
-                                                <input type="hidden" name="test" value="{{$image->id}}">
-                                                <input class="btn btn-danger" type="submit" value="Delete Product">
-                                            </form>
-                                        </div>
+            </form>
+
+            <div class="form-group">
+                <h2>Current Images</h2>
+                <div class="row">
+                    @foreach($images as $image)
+                        <div class="col-4 product-info">
+                            <div class="item-info">
+                                <div class="form-inline">
+                                    <div class="img-preview col-6">
+                                        <img width="100%" src="{{$image->img}}" alt="">
+                                    </div>
+                                    <div class="delete col-1">
+                                        <form action="{{action('ImageController@destroy', $image->id)}}"
+                                              method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('DELETE')}}
+                                            <input type="hidden" name="test" value="{{$image->id}}">
+                                            <input class="btn btn-danger" type="submit" value="Delete Image">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+
+                    @endforeach
                 </div>
+            </div>
             </form>
         </div>
     </div>
