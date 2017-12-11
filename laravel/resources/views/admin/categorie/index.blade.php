@@ -1,7 +1,8 @@
-@extends('admin/index')
+@extends('layouts/adminMaster')
 @section('title')
-    Category
+    Categorie
 @endsection
+
 @section('content')
 <div class="container">
 
