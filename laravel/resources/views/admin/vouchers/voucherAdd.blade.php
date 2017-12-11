@@ -17,8 +17,9 @@
             <div class="form-group" id="usersOption" style="display: none;">
                 <label for="userId" class="col-form-label col-form-label-lg">Selecteer een gebruiker</label>
                 <select name="userId" id="userId" class="form-control form-control-lg ">
+
                     @foreach($users as $user)
-                        <option value="{{$user->id}}">{{$user->id}} {{$user->firstName}} {{$user->lastName}} {{"( $user->email )"}}</option>
+                        <option value="{{$user->id}}" class="form-control form-control-lg">{{$user->id}} {{$user->firstName}} {{$user->lastName}} {{"( $user->studentNummer )"}} {{$user->email}}</option>
                     @endforeach
                 </select>
             </div>
@@ -56,6 +57,29 @@
                     document.getElementById('usersOption').style.display = 'block';
                 }
             }
+
+            searchBox = document.querySelector("#searchBox");
+            countries = document.querySelector("#userId");
+            var when = "keyup"; //You can change this to keydown, keypress or change
+
+            searchBox.addEventListener("keyup", function (e) {
+                var text = e.target.value;
+                var options = countries.options;
+                for (var i = 0; i < options.length; i++) {
+                    var option = options[i];
+                    var optionText = option.text;
+                    var lowerOptionText = optionText.toLowerCase();
+                    var lowerText = text.toLowerCase();
+                    var regex = new RegExp("^" + text, "i");
+                    var match = optionText.match(regex);
+                    var contains = lowerOptionText.indexOf(lowerText) != -1;
+                    if (match || contains) {
+                        option.selected = true;
+                        return;
+                    }
+                    searchBox.selectedIndex = 0;
+                }
+            });
         </script>
     </div>
 @endsection
