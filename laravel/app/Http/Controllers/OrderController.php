@@ -15,8 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = DB::table('orders')->paginate(6);
-        return view('admin/orders/orderIndex', ['orders' => $orders]);
+        $orders = DB::table('orders')->paginate(9);
+        return view('admin/orders/orderIndex')
+            ->with('orders' , $orders);
     }
 
     /**
@@ -76,11 +77,6 @@ class OrderController extends Controller
     {
         //
     }
-
-    public function finish($id){
-        $order = 
-    }
-
 
     /**
      * Remove the specified resource from storage.

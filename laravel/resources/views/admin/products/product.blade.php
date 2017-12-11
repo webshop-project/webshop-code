@@ -17,25 +17,7 @@
                         <div class="item-info">
                             <div class="form-inline">
                                 <div class="img-preview col-9">
-                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner" role="listbox">
-                                            @foreach($images as $image)
-                                                <div style="width: 100%" class="carousel-item">
-                                                    <img class="d-block img-fluid" src="{{$image->img}}" alt="First slide">
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                           data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                           data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>
+                                    <img width="90%" src="{{$product->img}}" alt="past niet">
                                 </div>
                                 <div class="col-1">
                                     <p><b>price:</b></p>

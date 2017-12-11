@@ -1,4 +1,8 @@
-@extends('admin/index')
+@extends('layouts/adminMaster')
+@section('title')
+    orders detail
+@endsection
+
 
 @section('content')
     <div class="container">

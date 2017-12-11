@@ -28,7 +28,7 @@ class DashboardController extends Controller
                 ['supply', '<=', 3]
             ])
             ->orderBy('supply', 'asc')
-            ->paginate(3);
+            ->paginate(3,['*'],'pag');
 
         $images = DB::table('images')
             ->select(DB::raw('*'))
