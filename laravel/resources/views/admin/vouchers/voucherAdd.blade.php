@@ -5,7 +5,12 @@
 
 @section('content')
     <div class="container">
-        <form action="" class="form col-6 offset-3">
+        <div class="options col-md-6 offset-md-3 text-center">
+            <button class="btn btn-default btn-lg">Globale Voucher</button>
+            <button class="btn btn-default btn-lg">Persoonelijke Voucher</button>
+        </div>
+
+        <form action="" class="form col-6 offset-3" id="global">
             <div class="form-group">
                 <label for="code" class="col-form-label col-form-label-lg">Voucher code:</label>
                 <input type="text" id="code" class="form-control-lg form-control">
@@ -20,6 +25,15 @@
                 <select name="userOption" id="userId" class="form-control form-control-lg ">
                     <option value="NULL">Globaal</option>
                     <option value="1">Gebruiker</option>
+                </select>
+                <button type="reset" onclick="users()" class="btn btn-lg">Button</button>
+            </div>
+            <div class="form-group" id="usersOption" style="display: none;">
+                <label for="userId" class="col-form-label col-form-label-lg">Voucher type</label>
+                <select name="userOption" id="userId" class="form-control form-control-lg ">
+                    @foreach($users as $user)
+                        <option value="{{$user->id}}">{{$user->id}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
@@ -36,5 +50,15 @@
                 <button class="btn btn-primary btn-lg col-4 offset-8">Voucher toevoegen</button>
             </div>
         </form>
+        <script>
+            function users() {
+                if(document.getElementById('usersOption').style.display === 'block'){
+                    document.getElementById('usersOption').style.display = 'none';
+                }
+                else {
+                    document.getElementById('usersOption').style.display = 'block';
+                }
+            }
+        </script>
     </div>
 @endsection

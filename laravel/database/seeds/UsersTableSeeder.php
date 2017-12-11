@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
         {
             DB::table('Users')->insert(
                 [
+                    'amountOfLogin' => random_int(0,200),
                     'loginToken'    => $faker->text(12),
                     'loginName'     => $faker->firstName(),
                     'password'      => bcrypt('geheim'),

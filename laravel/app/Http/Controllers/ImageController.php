@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\voucher;
-use Illuminate\Http\Request;
 
-class VoucherController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class ImageController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +29,7 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-
-        return view('admin/vouchers/voucherAdd')->with('users', $users);
+        //
     }
 
     /**
@@ -44,10 +46,10 @@ class VoucherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\voucher  $voucher
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(voucher $voucher)
+    public function show(image $image)
     {
         //
     }
@@ -55,10 +57,10 @@ class VoucherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\voucher  $voucher
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(voucher $voucher)
+    public function edit(image $image)
     {
         //
     }
@@ -67,10 +69,10 @@ class VoucherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\voucher  $voucher
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, voucher $voucher)
+    public function update(Request $request, image $image)
     {
         //
     }
@@ -78,11 +80,12 @@ class VoucherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\voucher  $voucher
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(voucher $voucher)
+    public function destroy($id)
     {
-        //
+        \App\images::destroy($id);
+        return redirect('products')->with('succesD', 'SKRR has been deleted!');
     }
 }
