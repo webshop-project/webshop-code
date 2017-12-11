@@ -5,11 +5,8 @@
 
 @section('content')
     <div class="container">
-        <form action="{{action('VoucherController@store')}}" class="form col-6 offset-3" id="global">
-            <div class="form-group">
-                <label for="code" class="col-form-label col-form-label-lg">Voucher code:</label>
-                <input type="text" id="code" class="form-control-lg form-control">
-            </div>
+        <form action="" class="form col-6 offset-3" id="global">
+
             <div class="form-group">
                 <label for="userOption" class="col-form-label col-form-label-lg">Voucher type</label>
                 <select name="userOption" id="userOption" class="form-control form-control-lg " onclick="users()">
@@ -21,9 +18,14 @@
                 <label for="userId" class="col-form-label col-form-label-lg">Selecteer een gebruiker</label>
                 <select name="userId" id="userId" class="form-control form-control-lg ">
                     @foreach($users as $user)
-                        <option value="{{$user->id}}">{{$user->firstName}}</option>
+                        <option value="{{$user->id}}">{{$user->id}} {{$user->firstName}} {{$user->lastName}} {{"( $user->email )"}}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-form-label col-form-label-lg">Voucher code:</label>
+                <input type="text" id="code" class="form-control-lg form-control">
+                <small id="codeHelp" class="form-text text-muted col-form-label-lg">Hier kunt u uw individuele code invoeren anders wordt code random gegenereerd.</small>
             </div>
             <div class="form-group">
                 <label for="codeValue" class="col-form-label col-form-label-lg">Voucher waarde:</label>
