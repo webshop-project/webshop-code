@@ -1,7 +1,8 @@
-@extends('admin/index')
+@extends('layouts/adminMaster')
 @section('title')
-    Create
+    Categorie Add
 @endsection
+
 @section('content')
     <div class="container">
         <form action="../categorie" method="post">
