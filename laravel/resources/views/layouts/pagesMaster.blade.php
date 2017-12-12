@@ -64,10 +64,18 @@
                     <h2>Your Cart</h2>
                 </div>
                 <div class="cart-items">
-                    <a href="#">HAHAHAHA</a>
-                    <a href="#">HEHEHEHE</a>
-                    <a href="#">HOHOHOHO</a>
-                    <a href="#">HUHUHUHU</a>
+                    @if(Session::has('cart'))
+                        @foreach(Session::get('cart') as $item)
+                            <a href="/shop/{{$product->name}}">
+                                <img src="{{$product->img}}" class="img-fluid img-responsive"
+                                     alt="{{$product->name}}">
+                                <h6>{{$product->name}}</h6>
+                            </a>
+                            <span>€{{$product->price}}</span>
+                            <span>{{$product->size}}</span>
+                            <a href="" class="closebtn">&times;</a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

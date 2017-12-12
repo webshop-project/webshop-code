@@ -37,7 +37,7 @@
                         {{--@endphp--}}
                         @foreach($products as $product)
                             <div class="col-md-3 col-6 headRoom">
-                                <form method="_POST" action="">
+                                <form method="_POST" action="{{action('ShopController@add')}}">
                                     <a href="/shop/{{$product->name}}">
                                         <img src="{{$product->img}}" class="img-fluid img-responsive"
                                              alt="{{$product->name}}">

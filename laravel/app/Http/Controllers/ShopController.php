@@ -18,6 +18,12 @@ class ShopController extends Controller
         return view('pages/shop')->with('products',$products);
     }
 
+
+    public function add(Request $request, $id)
+    {
+        return redirect('/shop');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
