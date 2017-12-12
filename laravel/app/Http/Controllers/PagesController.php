@@ -21,6 +21,19 @@ class PagesController extends Controller
         return view('pages/shop');
     }
 
+    public function category()
+    {
+        return view("/pages/shop/category");
+    }
+    public function cart()
+    {
+        return view("/pages/shop/cart");
+    }
+    public function item()
+    {
+        return view("/pages/shop/details");
+    }
+
     public function contact()
     {
         return view('pages/contact');
@@ -28,21 +41,6 @@ class PagesController extends Controller
     public function houses()
     {
         return view('pages/houses');
-    }
-
-
-    public function admin()
-    {
-        return view('admin/index');
-    }
-
-    public function productAdd()
-    {
-        return view('admin/productAdd');
-    }
-    public function orderList()
-    {
-        return view ('admin/orderList');
     }
 
 

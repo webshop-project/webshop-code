@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserController extends Controller
 {
@@ -13,7 +16,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = DB::table('users')
+            ->select(DB::raw('*'))
+            ->where('deleted_at', '=', null)
+            ->paginate(9);
+
+        return view('admin/userPeople/user')
+            ->with('users' , $users);
     }
 
     /**

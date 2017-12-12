@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +21,22 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = DB::table('products')->paginate(6);
-        return view('admin/products/product' , ['products' => $products]);
+        $products = DB::table('products')
+            ->select(DB::raw('*'))
+            ->where('deleted_at', '=', null)
+            ->paginate(6);
+
+        $images = DB::table('images')
+            ->select(DB::raw('*'))
+            ->where([
+                ['deleted_at', '=', null],
+                    ])
+            ->get();
+
+
+        return view('admin/products/product')
+            ->with('products' , $products)
+            ->with('images', $images);
     }
 
     /**
@@ -65,8 +80,28 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = \App\product::find($id);
+        $catergories = \App\categorie::All();
+        $houses = \App\house::All();
+        $brands = \App\brand::all();
+        $models = \App\brand_model::All();
+        $storages = \App\storage::All();
+
+        $images = DB::table('images')
+            ->select(DB::raw('*'))
+            ->where([
+                 ['product_id', '=', $id],
+                 ['deleted_at', '=', null]
+            ])
+            ->get();
+
         return view('admin/products/productAdjust')
-            ->with('products', $product);
+            ->with('products', $product)
+            ->with('categories', $catergories)
+            ->with('images', $images)
+            ->with('houses', $houses)
+            ->with('brands', $brands)
+            ->with('models', $models)
+            ->with('storages', $storages);
     }
 
     /**

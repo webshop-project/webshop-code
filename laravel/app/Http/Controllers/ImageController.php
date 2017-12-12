@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 
-class OrderController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class ImageController extends Controller
 {
+    use SoftDeletes;
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = DB::table('orders')->paginate(9);
-        return view('admin/orders/orderIndex')
-            ->with('orders' , $orders);
+        //
     }
 
     /**
@@ -44,24 +46,21 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\order  $order
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(image $image)
     {
-        $order = \App\order::find($id);
-
-        return view('admin/orders/detail/orderDetail')
-            ->with('order', $order);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\order  $order
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(order $order)
+    public function edit(image $image)
     {
         //
     }
@@ -70,10 +69,10 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\order  $order
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order $order)
+    public function update(Request $request, image $image)
     {
         //
     }
@@ -81,11 +80,12 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\order  $order
+     * @param  \App\image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order $order)
+    public function destroy($id)
     {
-        //
+        \App\images::destroy($id);
+        return redirect('products')->with('succesD', 'SKRR has been deleted!');
     }
 }

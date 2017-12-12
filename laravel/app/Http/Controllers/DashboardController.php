@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class DashboardController extends Controller
 {
@@ -13,7 +15,41 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin/index');
+        $products = DB::table('products')
+            ->select(DB::raw('*'))
+            ->where('deleted_at', '=', null)
+            ->orderBy('viewAmount', 'desc')
+            ->paginate(3);
+
+        $productsLow = DB::table('products')
+            ->select(DB::raw('*'))
+            ->where([
+                ['deleted_at', '=', null],
+                ['supply', '<=', 3]
+            ])
+            ->orderBy('supply', 'asc')
+            ->paginate(3,['*'],'pag');
+
+        $images = DB::table('images')
+            ->select(DB::raw('*'))
+            ->where([
+                ['deleted_at', '=', null],
+            ])
+            ->get();
+
+        $productsCount = DB::table('products')->count();
+        $userCount = DB::table('users')->count();
+        $orderCount = DB::table('orders')->count();
+        $voucherCount = DB::table('vouchers_used')->count();
+
+        return view('admin/index')
+            ->with('products', $products)
+            ->with('images', $images)
+            ->with('productsLow', $productsLow)
+            ->with('productsCount', $productsCount)
+            ->with('usersCount' ,  $userCount)
+            ->with('ordersCount',$orderCount)
+            ->with('vouchersCount' , $voucherCount);
     }
 
     /**
@@ -29,7 +65,7 @@ class DashboardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,7 +76,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +87,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +98,8 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,7 +110,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
