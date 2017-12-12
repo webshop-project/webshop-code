@@ -3,7 +3,8 @@
 
 @endsection
 @section('content')
-    <form action="/categorie/{{$categorie->id}}">
+
+    <form action="">
         {{csrf_field()}}
         {{method_field('PUT')}}
 
