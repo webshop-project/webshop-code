@@ -8,6 +8,6 @@ class house extends Model
 {
     public function products()
     {
-     $this->hasMany('App\products');
+        return $this->hasMany('App\products');
     }
 }

@@ -15,7 +15,7 @@ class images extends Model
 
     public function products()
     {
-        $this->hasMany('App\product');
+        return $this->hasMany('App\product');
     }
 
 }

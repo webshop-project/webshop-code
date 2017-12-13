@@ -31,13 +31,9 @@
                     </div>
                     <div class="wd-100"></div>
                     <div class="row headRoom">
-
-                        {{--@php--}}
-                        {{--dd($products);--}}
-                        {{--@endphp--}}
                         @foreach($products as $product)
                             <div class="col-md-3 col-6 headRoom">
-                                <form method="_POST" action="{{action('PagesController@cart')}}">
+                                <form method="POST" action="{{action('PagesController@cart')}}">
                                     <a href="#">
                                         <img src="{{$product->img}}" class="img-fluid img-responsive"
                                              alt="{{$product->name}}">
@@ -72,6 +68,6 @@
             </div>
         </div>
     </div>
-    </div>
+
 
 @endsection
