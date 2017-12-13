@@ -33,8 +33,8 @@
                     <div class="row headRoom">
                         @foreach($products as $product)
                             <div class="col-md-3 col-6 headRoom">
-                                <form method="POST" action="{{action('PagesController@cart')}}">
-                                    <a href="#">
+                                <form method="_POST" action="{{action('ShopController@add')}}">
+                                    <a href="/shop/{{$product->name}}">
                                         <img src="{{$product->img}}" class="img-fluid img-responsive"
                                              alt="{{$product->name}}">
                                         <h6>{{$product->name}}</h6>

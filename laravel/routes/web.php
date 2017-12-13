@@ -21,6 +21,7 @@ Route::get('/shop/{item}', 'pagesController@detailpage');
 Route::get('/shop/cart', 'PagesController@cart');
 Route::get('/order/finish/{id}', 'OrderController@finish');
 
+
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 
 Route::resource('/products', 'ProductController');
