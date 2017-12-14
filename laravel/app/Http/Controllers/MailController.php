@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use function foo\func;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
@@ -34,7 +36,11 @@ class MailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mail::send('email.voucher', ['user' => 'user'], function ($message){
+            $message->to('tomaszt@hotmail.nl', 'Tomasz Tabis')->subject('Sending email laravel');
+            $message->from('amoradius@hotmial.nl', 'Radius Test');
+        });
+        return back();
     }
 
     /**
