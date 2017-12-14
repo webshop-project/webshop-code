@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\voucher;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        return view('admin/vouchers/voucherAdd');
+        $users = User::all();
+
+        return view('admin/vouchers/voucherAdd')->with('users', $users);
     }
 
     /**

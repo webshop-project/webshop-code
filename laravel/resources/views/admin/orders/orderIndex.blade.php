@@ -1,4 +1,7 @@
 @extends('layouts/adminMaster')
+@section('title')
+    Orders
+@endsection
 
 @section('content')
 <div class="constainer-fluid userinfo">

@@ -1,5 +1,6 @@
 @extends('layouts/adminMaster')
 
+
 @section('content')
     <div class="container">
 
