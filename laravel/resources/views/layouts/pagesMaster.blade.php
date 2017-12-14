@@ -31,6 +31,37 @@
                     <a class="login" href="#"><span>Login</span></a>
                     <a class="register" href="#"><span>Register</span></a>
                 </div>
+                <div class="cart-items">
+                    @foreach (Cart::content() as $item)
+                        <tr>
+                            <td class="table-image"><a href="{{ url('shop', [$item->model->slug]) }}"><img src="{{ asset('img/' . $item->model->image) }}" alt="product" class="img-responsive cart-image"></a></td>
+                            <td><a href="{{ url('shop', [$item->model->slug]) }}">{{ $item->name }}</a></td>
+                            <td>
+                                <select class="quantity" data-id="{{ $item->rowId }}">
+                                    <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
+                                    <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
+                                    <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
+                                    <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
+                                    <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
+                                </select>
+                            </td>
+                            <td>${{ $item->subtotal }}</td>
+                            <td class=""></td>
+                            <td>
+                                <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                    {!! csrf_field() !!}
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                </form>
+
+                                <form action="{{ url('switchToWishlist', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                    {!! csrf_field() !!}
+                                    <input type="submit" class="btn btn-success btn-sm" value="To Wishlist">
+                                </form>
+                            </td>
+                        </tr>
+
+                    @endforeach 
                 <div class="col-xs-1 ml-auto align-items-center d-flex">
                     <span><i class="fa fa-star fa-2x grayIcons blr" aria-hidden="true"></i></span>
                     <span><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>

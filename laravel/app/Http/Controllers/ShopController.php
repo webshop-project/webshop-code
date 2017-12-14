@@ -18,12 +18,6 @@ class ShopController extends Controller
         return view('pages/shop')->with('products',$products);
     }
 
-
-    public function add(Request $request, $id)
-    {
-        return redirect('/shop');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,17 +35,6 @@ class ShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
