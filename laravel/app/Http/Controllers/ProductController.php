@@ -26,7 +26,7 @@ class ProductController extends Controller
             ->where('deleted_at', '=', null)
             ->paginate(6);
 
-        $images = DB::table('images')
+        $images = DB::table('image')
             ->select(DB::raw('*'))
             ->where([
                 ['deleted_at', '=', null],
@@ -36,7 +36,7 @@ class ProductController extends Controller
 
         return view('admin/products/product')
             ->with('products' , $products)
-            ->with('images', $images);
+            ->with('image', $images);
     }
 
     /**
@@ -86,7 +86,7 @@ class ProductController extends Controller
         $models = \App\brand_model::All();
         $storages = \App\storage::All();
 
-        $images = DB::table('images')
+        $images = DB::table('image')
             ->select(DB::raw('*'))
             ->where([
                  ['product_id', '=', $id],
@@ -97,7 +97,7 @@ class ProductController extends Controller
         return view('admin/products/productAdjust')
             ->with('products', $product)
             ->with('categories', $catergories)
-            ->with('images', $images)
+            ->with('image', $images)
             ->with('houses', $houses)
             ->with('brands', $brands)
             ->with('models', $models)

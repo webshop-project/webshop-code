@@ -32,9 +32,9 @@ class product extends Model
     {
         return $this->belongsTo('App\brand');
     }
-    public function images()
+    public function image()
     {
-        return $this->hasMany('App\images');
+        return $this->hasMany('App\image');
     }
 
     public function brand_model()
