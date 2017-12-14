@@ -57,7 +57,7 @@
         <div class="row justify-content-around p-4 four-houses-container">
             <div class="four-houses">
                 <div class="four-houses-logo dragon">
-                    <a href="">
+                    <a href="{{action('HouseController@show', 0)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/db_dragon_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -66,7 +66,7 @@
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo raven">
-                    <a href="">
+                    <a href="{{action('HouseController@show', 1)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/rave_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -75,7 +75,7 @@
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo serpent">
-                    <a href="">
+                    <a href="{{action('HouseController@show', 2)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/script_serpents_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -84,7 +84,7 @@
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo viking">
-                    <a href="">
+                    <a href="{{action('HouseController@show', 3)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/viking_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -102,7 +102,7 @@
                     </a>
                 </div>
                 <div class="col">
-                    <a href="#">
+                    <a href="/shop">
                         <h5 class="d-inline pull-right seeMore col-xs-12">See More</h5>
                     </a>
                 </div>

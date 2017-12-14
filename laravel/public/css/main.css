@@ -406,3 +406,40 @@ footer i{
 .cart-top h2{
     padding-top: 50px;
 }
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5){
+    html,
+    body{
+        width: 100%;
+        overflow-x: hidden;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+@media screen and (max-width: 1200px){
+    .reverse .house-info{
+        margin-right: 100px;
+    }
+}
+@media screen and (max-width: 991px){
+    .reverse .house-info{
+        margin-right: 200px;
+    }
+    .rotate .house-info{
+        margin-left: 370px;
+    }
+    .rotate .house-info p{
+        width: 200px;
+    }
+}
+@media screen and (max-width: 800px){
+    .about .house-info h3{
+        font-size: 1.5em;
+    }
+    .about .house-info{
+        height: 180px;
+    }
+}
