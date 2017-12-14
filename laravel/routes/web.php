@@ -19,6 +19,7 @@ Route::get('/shop/{category}', 'pagesController@category');
 Route::get('/shop/{item}', 'pagesController@detailpage');
 Route::get('/shop/cart', 'PagesController@cart');
 Route::get('/order/finish/{id}', 'OrderController@finish');
+Route::post('/vouchers/add', 'MailController@store');
 
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
