@@ -7,6 +7,17 @@
 @section('content')
 
     <div class="container d-inline">
+        @if (session()->has('success_message'))
+            <div class="alert alert-success">
+                {{ session()->get('success_message') }}
+            </div>
+        @endif
+
+        @if (session()->has('error_message'))
+            <div class="alert alert-danger">
+                {{ session()->get('error_message') }}
+            </div>
+        @endif
         <div class="col">
             <div class="row">
                 <div class=" col menuList">
@@ -31,10 +42,13 @@
                     </div>
                     <div class="wd-100"></div>
                     <div class="row headRoom">
+                        {{--@php--}}
+                        {{--dd($products);--}}
+                        {{--@endphp--}}
                         @foreach($products as $product)
                             <div class="col-md-3 col-6 headRoom"></div>
                             <a href="/shop/{{$product->name}}">
-                                <img src="{{$product->img}}" class="img-fluid img-responsive"
+                                <img src="" class="img-fluid img-responsive"
                                      alt="{{$product->name}}">
                                 <h6>{{$product->name}}</h6>
                             </a>

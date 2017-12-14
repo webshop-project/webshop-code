@@ -36,6 +36,9 @@
                     <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
                     <div id="myShoppingCart" class="cart">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <div>
+                            <a href="{{url('/shop/cart')}}">To Cart</a>
+                        </div>
                         <div class="cart-items">
                             @foreach (Cart::content() as $item)
                                 <tr>

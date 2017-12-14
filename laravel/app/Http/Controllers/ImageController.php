@@ -85,7 +85,7 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        \App\images::destroy($id);
+        \App\image::destroy($id);
         return redirect('products')->with('succesD', 'SKRR has been deleted!');
     }
 }

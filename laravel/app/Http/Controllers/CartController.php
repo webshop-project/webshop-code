@@ -18,7 +18,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('/shop');
+        return view('pages/shop/cart');
     }
 
     /**
@@ -88,32 +88,5 @@ class CartController extends Controller
     {
         Cart::destroy();
         return redirect('/shop')->withSuccessMessage('Your cart has been cleared!');
-    }
-
-    /**
-     * Switch item from shopping cart to wishlist.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function switchToWishlist($id)
-    {
-        $item = Cart::get($id);
-
-        Cart::remove($id);
-
-        $duplicates = Cart::instance('wishlist')->search(function ($cartItem, $rowId) use ($id) {
-            return $cartItem->id === $id;
-        });
-
-        if (!$duplicates->isEmpty()) {
-            return redirect('/shop')->withSuccessMessage('Item is already in your Wishlist!');
-        }
-
-        Cart::instance('wishlist')->add($item->id, $item->name, 1, $item->price)
-            ->associate('App\Product');
-
-        return redirect('/shop')->withSuccessMessage('Item has been moved to your Wishlist!');
-
     }
 }
