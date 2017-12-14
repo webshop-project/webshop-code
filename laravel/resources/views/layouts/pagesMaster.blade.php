@@ -64,18 +64,36 @@
                     <h2>Your Cart</h2>
                 </div>
                 <div class="cart-items">
-                    @if(Session::has('cart'))
-                        @foreach(Session::get('cart') as $item)
-                            <a href="/shop/{{$product->name}}">
-                                <img src="{{$product->img}}" class="img-fluid img-responsive"
-                                     alt="{{$product->name}}">
-                                <h6>{{$product->name}}</h6>
-                            </a>
-                            <span>€{{$product->price}}</span>
-                            <span>{{$product->size}}</span>
-                            <a href="" class="closebtn">&times;</a>
-                        @endforeach
-                    @endif
+                    @foreach (Cart::content() as $item)
+                        <tr>
+                            <td class="table-image"><a href="{{ url('shop', [$item->model->slug]) }}"><img src="{{ asset('img/' . $item->model->image) }}" alt="product" class="img-responsive cart-image"></a></td>
+                            <td><a href="{{ url('shop', [$item->model->slug]) }}">{{ $item->name }}</a></td>
+                            <td>
+                                <select class="quantity" data-id="{{ $item->rowId }}">
+                                    <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
+                                    <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
+                                    <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
+                                    <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
+                                    <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
+                                </select>
+                            </td>
+                            <td>${{ $item->subtotal }}</td>
+                            <td class=""></td>
+                            <td>
+                                <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                    {!! csrf_field() !!}
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                </form>
+
+                                <form action="{{ url('switchToWishlist', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                    {!! csrf_field() !!}
+                                    <input type="submit" class="btn btn-success btn-sm" value="To Wishlist">
+                                </form>
+                            </td>
+                        </tr>
+
+                    @endforeach
                 </div>
             </div>
         </div>
