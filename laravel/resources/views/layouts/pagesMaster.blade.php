@@ -61,7 +61,7 @@
                             </td>
                         </tr>
 
-                    @endforeach
+                    @endforeach 
                 <div class="col-xs-1 ml-auto align-items-center d-flex">
                     <span><i class="fa fa-star fa-2x grayIcons blr" aria-hidden="true"></i></span>
                     <span><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
