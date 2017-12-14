@@ -6,6 +6,6 @@
 
 @section('content')
 
-    //Hier content plaatsen
+    
 
 @endsection
