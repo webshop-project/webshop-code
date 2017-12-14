@@ -14,10 +14,11 @@
 </head>
 <body>
     <img src="{{ $message->embed(public_path() . '/img/voucher_top.png') }}"alt="">
-        <h1 style="text-align: center;">4-Houses</h1>
+        <h1 style="text-align: center;">{{$user}}</h1>
         <h2 style="text-align: center;">Here is your voucher code:</h2>
-        <h3 style="text-align: center;">1j32jh3j3n2</h3>
-        <p style="text-align: center;">It's valid until 14-12-2017 23:59</p>
+        <h3 style="text-align: center;">{{$code}}</h3>
+        <h4 style="text-align: center;">This code is {{$value}} euro worth</h4>
+        <p style="text-align: center;">This voucher is valid sice {{$startDate}} until {{$endDate}}</p>
     <img src="{{ $message->embed(public_path() . '/img/voucher_botom.png') }}" alt="">
 </body>
 </html>
