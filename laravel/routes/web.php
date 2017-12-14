@@ -16,6 +16,8 @@ Route::get('/about', 'PagesController@about');
 Route::get('/shop', 'ShopController@index');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/shop/{category}', 'pagesController@category');
+Route::resource('/shop/cart', 'CartController');
+Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'pagesController@detailpage');
 Route::get('/shop/cart', 'PagesController@cart');
 Route::get('/order/finish/{id}', 'OrderController@finish');

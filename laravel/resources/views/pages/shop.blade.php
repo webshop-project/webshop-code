@@ -45,7 +45,7 @@
                                 <option value="3">L</option>
                                 <option value="4">XL</option>
                             </select>
-                            <form action="{{ url('/shop') }}" method="POST">
+                            <form action="{{ url('/shop/cart') }}" method="POST">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                 <input type="hidden" name="name" value="{{ $product->name }}">

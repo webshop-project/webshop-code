@@ -18,7 +18,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart');
+        return view('/shop');
     }
 
     /**
@@ -34,11 +34,11 @@ class CartController extends Controller
         });
 
         if (!$duplicates->isEmpty()) {
-            return redirect('cart')->withSuccessMessage('Item is already in your cart!');
+            return redirect('/shop')->withSuccessMessage('Item is already in your cart!');
         }
 
         Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
-        return redirect('cart')->withSuccessMessage('Item was added to your cart!');
+        return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
     }
 
     /**
@@ -76,7 +76,7 @@ class CartController extends Controller
     public function destroy($id)
     {
         Cart::remove($id);
-        return redirect('cart')->withSuccessMessage('Item has been removed!');
+        return redirect('/shop')->withSuccessMessage('Item has been removed!');
     }
 
     /**
@@ -87,7 +87,7 @@ class CartController extends Controller
     public function emptyCart()
     {
         Cart::destroy();
-        return redirect('cart')->withSuccessMessage('Your cart has been cleared!');
+        return redirect('/shop')->withSuccessMessage('Your cart has been cleared!');
     }
 
     /**
@@ -107,13 +107,13 @@ class CartController extends Controller
         });
 
         if (!$duplicates->isEmpty()) {
-            return redirect('cart')->withSuccessMessage('Item is already in your Wishlist!');
+            return redirect('/shop')->withSuccessMessage('Item is already in your Wishlist!');
         }
 
         Cart::instance('wishlist')->add($item->id, $item->name, 1, $item->price)
             ->associate('App\Product');
 
-        return redirect('cart')->withSuccessMessage('Item has been moved to your Wishlist!');
+        return redirect('/shop')->withSuccessMessage('Item has been moved to your Wishlist!');
 
     }
 }
