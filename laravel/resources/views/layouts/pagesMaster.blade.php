@@ -73,16 +73,16 @@
                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto ">
                             <li class="nav-item">
-                                <a class="nav-link navLinkPadding" href="#">Home</a>
+                                <a class="nav-link navLinkPadding" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link navLinkPadding" href="#">Shop</a>
+                                <a class="nav-link navLinkPadding" href="/shop">Shop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link navLinkPadding" href="#">About</a>
+                                <a class="nav-link navLinkPadding" href="/about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link navLinkPadding" href="#">Contact</a>
+                                <a class="nav-link navLinkPadding" href="/contact">Contact</a>
                             </li>
                         </ul>
                     </div>
