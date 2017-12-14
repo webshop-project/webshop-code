@@ -8,11 +8,11 @@ class order extends Model
 {
     public function products()
     {
-        $this->hasMany('App\products');
+        return $this->hasMany('App\products');
     }
 
     public function user()
     {
-        $this->belongsTo('App\user');
+        return $this->belongsTo('App\user');
     }
 }
