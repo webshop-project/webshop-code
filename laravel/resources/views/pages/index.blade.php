@@ -1,11 +1,12 @@
 @extends('layouts/pagesMaster')
 
 @section('title')
-    Home
+Home
 @endsection
 
 @section('content')
 
+{{dd($products[3]->images)}}    
 <div class="container-fluid">
         <div class="row">
 
@@ -57,7 +58,7 @@
         <div class="row justify-content-around p-4 four-houses-container">
             <div class="four-houses">
                 <div class="four-houses-logo dragon">
-                    <a href="{{action('HouseController@show', 0)}}">
+                    <a href="{{action('HouseController@show', 1)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/db_dragon_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -66,7 +67,7 @@
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo raven">
-                    <a href="{{action('HouseController@show', 1)}}">
+                    <a href="{{action('HouseController@show', 2)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/rave_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -75,7 +76,7 @@
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo serpent">
-                    <a href="{{action('HouseController@show', 2)}}">
+                    <a href="{{action('HouseController@show', 3)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/script_serpents_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -84,7 +85,7 @@
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo viking">
-                    <a href="{{action('HouseController@show', 3)}}">
+                    <a href="{{action('HouseController@show', 4)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/viking_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -108,6 +109,22 @@
                 </div>
             </div>
             <div class="row headRoom">
+                @for($i = 1; $i < 3; $i++)
+                <div class="col">
+                        <a href="#">
+                            <img class="img-responsive img-fluid bg-secondary" src="{{$products[$i]->img}}" alt="">
+                            <span class="text-dark">{{$products[$i]->name}}</span>
+                            <span class="text-dark pull-right">{{$products[$i]->price}}</span>
+                        </a>
+                    </div>
+
+
+                @endfor
+
+
+
+
+
                 <div class="col">
                     <a href="#">
                         <img class="img-responsive img-fluid bg-secondary" src="img/front_big_dragon.png" alt="">
