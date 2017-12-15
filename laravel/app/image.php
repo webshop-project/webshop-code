@@ -10,12 +10,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class images extends Model
+class image extends Model
 {
-
     public function products()
     {
-        $this->hasMany('App\product');
+        return $this->hasMany('App\product');
     }
-
 }

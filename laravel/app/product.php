@@ -10,34 +10,36 @@ class product extends Model
     use  SoftDeletes;
     public function categorie()
     {
-        $this->belongsTo('App\categorie');
+        return $this->belongsTo('App\categorie');
     }
     public function house()
     {
-        $this->belongsTo('App\house');
+        return $this->belongsTo('App\house');
     }
     public function order()
     {
-        $this->belongsTo('App\order');
+        return $this->belongsTo('App\order');
     }
     public function size()
     {
-        $this->belongsTo('App\size');
+        return $this->belongsTo('App\size');
     }
     public function storage()
     {
-        $this->belongsTo('App\storage');
+        return $this->belongsTo('App\storage');
     }
     public function brand()
     {
-        $this->belongsTo('App\brand');
+        return $this->belongsTo('App\brand');
     }
-    public function images()
+    public function image()
     {
-        $this->hasMany('App\images');
+<<<<<<< Updated upstream
+        return $this->hasMany('App\image');
+=======
+        return $this->belongsTo('App\images');
+>>>>>>> Stashed changes
     }
-
-
 
     public function brand_model()
     {

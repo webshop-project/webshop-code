@@ -30,7 +30,7 @@ class DashboardController extends Controller
             ->orderBy('supply', 'asc')
             ->paginate(3,['*'],'pag');
 
-        $images = DB::table('images')
+        $images = DB::table('image')
             ->select(DB::raw('*'))
             ->where([
                 ['deleted_at', '=', null],
@@ -44,7 +44,7 @@ class DashboardController extends Controller
 
         return view('admin/index')
             ->with('products', $products)
-            ->with('images', $images)
+            ->with('image', $images)
             ->with('productsLow', $productsLow)
             ->with('productsCount', $productsCount)
             ->with('usersCount' ,  $userCount)

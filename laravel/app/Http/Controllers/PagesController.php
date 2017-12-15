@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\images;
+use \App\product;
+use illuminate\Support\Facades\DB;
 class PagesController extends Controller
 {
     public function index()
     {
-        return view('pages/index');
+        $products = product::with('images')->get();
+
+        return view('pages/index', ['products' => $products]);
+        
     }
 
     public function about()
@@ -24,10 +29,6 @@ class PagesController extends Controller
     public function category()
     {
         return view("/pages/shop/category");
-    }
-    public function cart()
-    {
-        return view("/pages/shop/cart");
     }
     public function item()
     {
