@@ -1,9 +1,7 @@
 @extends('layouts/pagesMaster')
-@section('title')
-    Cart
-@endsection
 
 @section('content')
+
     <div class="container">
         <p><a href="{{ url('shop') }}">Home</a> / Cart</p>
         <h1>Your Cart</h1>
@@ -43,8 +41,8 @@
                     <td class="table-image"></td>
                     <td style="padding: 40px;"></td>@foreach (Cart::content() as $item)
                     <tr>
-                        <td class="table-image"><a href="{{ url('shop/'. $item->name) }}"><img src="" alt="product" class="img-responsive cart-image"></a></td>
-                        <td><a href="{{ url('shop'.$item->name) }}">{{ $item->name }}</a></td>
+                        <td class="table-image"><a href="{{ url('shop') }}"><img src="{{ asset('img/' . $item->image) }}" alt="product" class="img-responsive cart-image"></a></td>
+                        <td><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                         <td>
                             <select class="quantity" data-id="{{ $item->rowId }}">
                                 <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
@@ -54,10 +52,10 @@
                                 <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
                             </select>
                         </td>
-                        <td>€{{ $item->subtotal }}</td>
+                        <td>${{ $item->subtotal }}</td>
                         <td class=""></td>
                         <td>
-                            <form action="{{ url('cart', $item->rowId) }}" method="POST" class="side-by-side">
+                            <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="submit" class="btn btn-danger btn-sm" value="Remove">
@@ -70,7 +68,7 @@
                     <td class="table-image"></td>
                     <td></td>
                     <td class="small-caps table-bg" style="text-align: right">Subtotal</td>
-                    <td>€{{ Cart::instance('default')->subtotal() }}</td>
+                    <td>${{ Cart::instance('default')->subtotal() }}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -78,14 +76,12 @@
                     <td class="table-image"></td>
                     <td></td>
                     <td class="small-caps table-bg" style="text-align: right">Tax</td>
-                    <td>€{{ Cart::instance('default')->tax() }}</td>
+                    <td>${{ Cart::instance('default')->tax() }}</td>
                     <td></td>
                     <td></td>
                 </tr>
-                <td class="table-image"></td>
-                <td></td>
                 <td class="small-caps table-bg" style="text-align: right">Your Total</td>
-                <td class="table-bg">€{{ Cart::total() }}</td>
+                <td class="table-bg">${{ Cart::total() }}</td>
                 <td class="column-spacer"></td>
                 <td></td>
                 </tr>
@@ -116,6 +112,7 @@
     </div> <!-- end container -->
 
 @endsection
+
 @section('cartupdate')
     <script>
         (function(){
@@ -127,7 +124,7 @@
             });
 
             $('.quantity').on('change', function() {
-                let id = $(this).attr('data-id');
+                var id = $(this).attr('data-id')
                 $.ajax({
                     type: "PATCH",
                     url: '{{ url("/cart") }}' + '/' + id,

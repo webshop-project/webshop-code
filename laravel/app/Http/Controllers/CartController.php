@@ -76,7 +76,7 @@ class CartController extends Controller
     public function destroy($id)
     {
         Cart::remove($id);
-        return redirect('/shop')->withSuccessMessage('Item has been removed!');
+        return redirect('/shop/cart')->withSuccessMessage('Item has been removed!');
     }
 
     /**
