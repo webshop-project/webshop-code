@@ -34,7 +34,7 @@ class product extends Model
     }
     public function image()
     {
-        return $this->hasMany('App\image');
+    return $this->hasMany('App\image');
     }
 
     public function brand_model()
