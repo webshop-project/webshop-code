@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategorieController extends Controller
 {
@@ -14,7 +15,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        return view('admin/categorie/index');
+        $categories = DB::table('categories')->paginate(12);
+        return view('admin/categorie/index', ['categories' => $categories]);
     }
 
     /**
@@ -63,9 +65,10 @@ class CategorieController extends Controller
      * @param  \App\categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(categorie $categorie)
+    public function edit($id)
     {
-        //
+        $categorie = \App\categorie::find($id);
+        return view("/categorie/categorieEdit")->with("categorie", $categorie);
     }
 
     /**

@@ -1,30 +1,33 @@
 @extends('layouts/adminMaster')
 @section('title')
-    Categorie
+    Category
 @endsection
-
 @section('content')
 <div class="container">
+    <div class="row row-sizer-userinfo">
 
-    <table class="table table-striped">
-        <tr>
-            <th>Title</th>
-        </tr>
-        @php($categories = \App\categorie::all())
-        @foreach($categories as $categorie )
-                        <tr>
-                            <td>{{$categorie->name}}</td>
-                            <td><button class="btn btn-dark">Edit</button></td>
-                            <td><button class="btn btn-danger">Remove</button></td>
-                        </tr>
-        @endforeach
-    </table>
-    <ul class="pagination">
-        {{--@for($i = 0; $i < $pages; $i++)--}}
-            {{--<li class="page-item"><a class="page-link" href="?page=$page">{{$pages}}</a></li>--}}
-        {{--@endfor--}}
+            @foreach($categories as $categorie )
+                <div class="col-4 product-info">
+                    <div class="item-info">
+                        <div class="form-inline">
+                            <div class="col-1">
+                                <p><b>Title:</b></p>
+                                <p>{{$categorie->name}}</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="categorie/{{$categorie->id}}/edit"><button class="btn btn-succes">Edit categorie</button></a>
+                            <button class="btn btn-danger">Delete categorie</button>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+    </div>
+    <a class="btn btn-success" href="categorie/create"><b>Voeg categorie toe</b></a>
+
+    <ul class="pagination ">
+        {{$categories->links()}}
     </ul>
-<a href="categorie/create">Voeg categorie toe</a>
 </div>
 
 
