@@ -8,8 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-
+// Tim was here
 class ProductController extends Controller
 {
     use SoftDeletes;
