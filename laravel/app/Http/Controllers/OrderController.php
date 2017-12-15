@@ -15,9 +15,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = DB::table('orders')->paginate(9);
+        $orders = \App\Order::paginate(6);
+
+        $users = \App\User::all();
+
         return view('admin/orders/orderIndex')
-            ->with('orders' , $orders);
+            ->with('orders', $orders)
+            ->with('users', $users);
     }
 
     /**
@@ -49,10 +53,12 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = \App\order::find($id);
+        $orders = \App\order::find($id);
+        $users = \App\User::all();
 
         return view('admin/orders/detail/orderDetail')
-            ->with('order', $order);
+            ->with('orders', $orders)
+            ->with('users', $users);
     }
 
     /**
@@ -77,6 +83,11 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function finish($id){
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
