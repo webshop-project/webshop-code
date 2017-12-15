@@ -1,8 +1,7 @@
-@extends('layouts/adminMaster')
+@extends('admin/index')
 @section('title')
-    Categorie Add
+    Create
 @endsection
-
 @section('content')
     <div class="container">
         <form action="../categorie" method="post">
@@ -11,7 +10,7 @@
                 <label for="title">Titel categorie:</label>
                 <input type="text" id="title" name="title">
             </div>
-            <button class="btn btn-info">Add</button>
+            <button class="btn btn-success">Add</button>
         </form>
     </div>
 @endsection

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\house;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-
 class ProductController extends Controller
 {
     use SoftDeletes;
+
     /**
      * Display a listing of the resource.
      *
@@ -30,13 +30,13 @@ class ProductController extends Controller
             ->select(DB::raw('*'))
             ->where([
                 ['deleted_at', '=', null],
-                    ])
+            ])
             ->get();
 
 
         return view('admin/products/product')
-            ->with('products' , $products)
-            ->with('image', $images);
+            ->with('products', $products)
+            ->with('images', $images);
     }
 
     /**
@@ -46,24 +46,116 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin/products/productAdd');
+        $houses = \App\house::All();
+        $catergories = \App\categorie::All();
+        $storages = \App\storage::All();
+        return view('admin/products/productAdd')
+            ->with('houses', $houses)
+            ->with('categories', $catergories);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50|unique:products,name',
+            'category' => 'required|max:50',
+            'price' => 'required|integer',
+            'house' => 'required|integer',
+            'stock' => 'required|integer',
+            'description' => 'required',
+            'image' => 'required'
+        ]);
+
+        dd($request->all());
+        $product = new \App\product();
+
+        $product->name = $request->name;
+        $product->category_id = $request->category;
+        $product->price = $request->price;
+        $product->house_id = $request->house;
+
+        $product->supply = $request->stock;
+        $product->description = $request->description;
+
+        $path = $request->file('image')->storePublicly('public');
+        // File and new size
+        $filename = storage_path("app/$path");
+
+        // Content type
+        header('Content-Type: image/jpeg');
+
+        // Get new sizes
+        list($width, $height) = getimagesize($filename);
+        $newwidth = 377;
+        $newheight = 337;
+
+        // Load
+        $thumb = imagecreatetruecolor($newwidth, $newheight);
+        $source = imagecreatefromjpeg($filename);
+
+        // Resize
+        imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+        // Output
+        imagejpeg($thumb , storage_path("app/$path"));
+
+        $product->img = 'storage/'.$request->file('image')->hashName();
+
+
+        $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
+    if ($request->category == 5)
+        if($request->sizeS == 'on'){
+            $size = new \App\size();
+
+            $size->clothing_id = $productV[0]->id;
+            $size->size = 'S';
+
+            $size->save();
+        }
+        if($request->sizeM == 'on'){
+            $size = new \App\Size();
+
+            $size->clothing_id = $productV[0]->id;
+            $size->size = 'M';
+
+            $size->save();
+        }
+        if($request->sizeL == 'on'){
+            $size = new \App\Size();
+
+            $size->clothing_id = $productV[0]->id;
+            $size->size = 'L';
+
+            $size->save();
+        }
+        if($request->sizeXL == 'on'){
+            $size = new \App\Size();
+
+            $size->clothing_id = $productV[0]->id;
+            $size->size = 'XL';
+
+            $size->save();
+        }
+      elseif($request->category == 6){
+
+
+
+      }
+
+        $product->save();
+        return redirect()->action('DashboardController@index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -74,7 +166,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -89,8 +181,8 @@ class ProductController extends Controller
         $images = DB::table('image')
             ->select(DB::raw('*'))
             ->where([
-                 ['product_id', '=', $id],
-                 ['deleted_at', '=', null]
+                ['product_id', '=', $id],
+                ['deleted_at', '=', null]
             ])
             ->get();
 
@@ -107,8 +199,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -119,7 +211,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
