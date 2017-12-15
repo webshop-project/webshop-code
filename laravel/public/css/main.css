@@ -148,7 +148,9 @@ body{
     color: #CFA950;
     border-bottom: 1px solid #CFA950;
 }
-
+.product div img{
+    height: 300px;
+}
 .headRoom{
     margin-top: 15px;
 }

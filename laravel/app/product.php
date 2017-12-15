@@ -34,11 +34,7 @@ class product extends Model
     }
     public function image()
     {
-<<<<<<< Updated upstream
         return $this->hasMany('App\image');
-=======
-        return $this->belongsTo('App\images');
->>>>>>> Stashed changes
     }
 
     public function brand_model()

@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\images;
-use \App\product;
 use illuminate\Support\Facades\DB;
 class PagesController extends Controller
 {
     public function index()
     {
-        $products = product::with('images')->get();
+        $products = \App\product::all();
 
         return view('pages/index', ['products' => $products]);
         

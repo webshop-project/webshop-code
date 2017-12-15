@@ -5,8 +5,7 @@ Home
 @endsection
 
 @section('content')
-
-{{dd($products[3]->images)}}    
+    
 <div class="container-fluid">
         <div class="row">
 
@@ -109,43 +108,17 @@ Home
                 </div>
             </div>
             <div class="row headRoom">
-                @for($i = 1; $i < 3; $i++)
-                <div class="col">
+                @for($i = 0; $i < 3; $i++)
+                    <div class="col-4 product">
                         <a href="#">
-                            <img class="img-responsive img-fluid bg-secondary" src="{{$products[$i]->img}}" alt="">
+                            <div class="col-12">
+                                <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->image[0]->img}}" alt="">
+                            </div>
                             <span class="text-dark">{{$products[$i]->name}}</span>
                             <span class="text-dark pull-right">{{$products[$i]->price}}</span>
                         </a>
                     </div>
-
-
                 @endfor
-
-
-
-
-
-                <div class="col">
-                    <a href="#">
-                        <img class="img-responsive img-fluid bg-secondary" src="img/front_big_dragon.png" alt="">
-                        <span class="text-dark">Dragon T-shirt</span>
-                        <span class="text-dark pull-right">€24,99</span>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <img class="img-responsive img-fluid bg-secondary" src="img/front_big_raven.png" alt="">
-                        <span class="text-dark">Raven T-shirt</span>
-                        <span class="text-dark pull-right">€24,99</span>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <img class="img-responsive img-fluid bg-secondary" src="img/front_big_serpent.png" alt="">
-                        <span class="text-dark">Serpent T-shirt</span>
-                        <span class="text-dark pull-right pb-5">€24,99</span>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
