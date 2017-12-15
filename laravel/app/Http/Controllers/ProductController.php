@@ -51,7 +51,8 @@ class ProductController extends Controller
         $storages = \App\storage::All();
         return view('admin/products/productAdd')
             ->with('houses', $houses)
-            ->with('categories', $catergories);
+            ->with('categories', $catergories)
+            ->with('storages', $storages);
     }
 
     /**
@@ -72,7 +73,6 @@ class ProductController extends Controller
             'image' => 'required'
         ]);
 
-        dd($request->all());
         $product = new \App\product();
 
         $product->name = $request->name;
@@ -108,45 +108,45 @@ class ProductController extends Controller
         $product->img = 'storage/'.$request->file('image')->hashName();
 
 
-        $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
-    if ($request->category == 5)
-        if($request->sizeS == 'on'){
-            $size = new \App\size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'S';
-
-            $size->save();
-        }
-        if($request->sizeM == 'on'){
-            $size = new \App\Size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'M';
-
-            $size->save();
-        }
-        if($request->sizeL == 'on'){
-            $size = new \App\Size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'L';
-
-            $size->save();
-        }
-        if($request->sizeXL == 'on'){
-            $size = new \App\Size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'XL';
-
-            $size->save();
-        }
-      elseif($request->category == 6){
-
-
-
-      }
+//        $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
+////    if ($request->category == 5)
+////        if($request->sizeS == 'on'){
+////            $size = new \App\size();
+////
+////            $size->clothing_id = $productV[0]->id;
+////            $size->size = 'S';
+////
+////            $size->save();
+////        }
+////        if($request->sizeM == 'on'){
+////            $size = new \App\Size();
+////
+////            $size->clothing_id = $productV[0]->id;
+////            $size->size = 'M';
+////
+////            $size->save();
+////        }
+////        if($request->sizeL == 'on'){
+////            $size = new \App\Size();
+////
+////            $size->clothing_id = $productV[0]->id;
+////            $size->size = 'L';
+////
+////            $size->save();
+////        }
+////        if($request->sizeXL == 'on'){
+////            $size = new \App\Size();
+////
+////            $size->clothing_id = $productV[0]->id;
+////            $size->size = 'XL';
+////
+////            $size->save();
+////        }
+////      elseif($request->category == 6){
+////
+////
+////
+////      }
 
         $product->save();
         return redirect()->action('DashboardController@index');

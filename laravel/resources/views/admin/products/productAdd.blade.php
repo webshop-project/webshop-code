@@ -67,7 +67,7 @@
                                     <label for="gb">Storage</label>
                                     <select class="form-control col" name="house" id="sizeGB">
                                         @foreach($storages as $storage)
-                                            <option value="{{$house->id}}">{{$house->name}}</option>
+                                            <option class="form-control" value="{{$storage->id}}">{{$storage->gb}}</option>
                                         @endforeach
                                     </select>
                                 </div>
