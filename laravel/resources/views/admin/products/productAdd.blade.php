@@ -82,7 +82,7 @@
                     <div class="w-100"></div>
                     <div class="form-group  -between upload">
                         <label for="image">Upload Foto</label>
-                        <input class="form-control" type="file" name="image" id="image" required>
+                        <input class="form-control" type="file" name="image" id="image" required multiple>
                     </div>
                     <input class="btn btn-default" type="submit" value="Save" class="save">
                     </form>
