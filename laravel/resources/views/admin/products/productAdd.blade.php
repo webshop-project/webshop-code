@@ -13,7 +13,7 @@
                 <div class="col">
 
                     <div class="form">
-                        <form class="form-inline" action="{{action('ProductController@store')}}" method="post" enctype="multipart/form-data">
+                        <form class="form-inline" action="" method="post">
                             {{csrf_field()}}
                             <div class="col">
                                 <div class="form-group form-padding">
@@ -23,9 +23,9 @@
                                 <div class="form-group form-padding">
                                     <label for="category" class="col-2">Categorie</label>
                                     <select class="form-control col" name="category" id="category">
-                                        @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
+                                        <option value="1">1</option>
+                                        {{--@foreach($categories as $category)--}} {{--
+                                    <option value="{{$category->name}}">{{$category->name}}</option>--}} {{--@endforeach--}}
                                     </select>
                                 </div>
                                 <div class="form-group form-padding">
@@ -33,11 +33,12 @@
                                     <input class="form-control col" type="text" name="price" id="price" required>
                                 </div>
                                 <div class="form-group form-padding">
-                                    <label for="house" class="col-2">House</label>
-                                    <select class="form-control col" name="house" id="house">
-                                        @foreach($houses as $house)
-                                            <option value="{{$house->id}}">{{$house->name}}</option>
-                                        @endforeach
+                                    <label for="color" class="col-2">House:</label>
+                                    <select class="form-control col" name="color" id="color">
+                                        <option>1</option>
+                                        {{--
+                                        <option value="" selected hidden>Kleur</option>--}} {{--@for($i = 0; $i
+                                    < count($colors); $i++)--}} {{--<option value="{{$colors[$i]}}">{{$colors[$i]}}</option>--}} {{--@endfor--}}
                                     </select>
                                 </div>
                                 <div class="form-group form-padding">
@@ -65,31 +66,26 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="gb">Storage</label>
-                                    <select class="form-control col" name="house" id="sizeGB">
-                                        @foreach($storages as $storage)
-                                            <option value="{{$house->id}}">{{$house->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="number" class="form-control" id="sizeGB" name="sizeGB">
                                 </div>
                             </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="form-group textSizerForm">
+                                <label for="description">Beschrijving</label>
+                                <textarea class="form-control" name="description" id="description" cols="45" rows="5" required></textarea>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="form-group  -between upload">
+                                <label for="image">Upload Foto</label>
+                                <input class="form-control" type="file" name="image" id="image" required>
+                            </div>
+                            <input class="btn btn-default" type="submit" value="Save" class="save">
+                        </form>
                     </div>
-                    <div class="w-100"></div>
-                    <div class="form-group textSizerForm">
-                        <label for="description">Beschrijving</label>
-                        <textarea class="form-control" name="description" id="description" cols="45" rows="5"
-                                  required></textarea>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="form-group  -between upload">
-                        <label for="image">Upload Foto</label>
-                        <input class="form-control" type="file" name="image" id="image" required>
-                    </div>
-                    <input class="btn btn-default" type="submit" value="Save" class="save">
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 @endsection

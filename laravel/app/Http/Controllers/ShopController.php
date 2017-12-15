@@ -15,7 +15,8 @@ class ShopController extends Controller
     public function index()
     {
         $products = product::all();
-        return view('pages/shop')->with('products',$products);
+        return view('pages/shop')
+            ->with('products',$products);
     }
 
     /**
@@ -35,17 +36,6 @@ class ShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
