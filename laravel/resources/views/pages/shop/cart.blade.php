@@ -54,10 +54,10 @@
                                 <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
                             </select>
                         </td>
-                        <td>${{ $item->subtotal }}</td>
+                        <td>€{{ $item->subtotal }}</td>
                         <td class=""></td>
                         <td>
-                            <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                            <form action="{{ url('cart', $item->rowId) }}" method="POST" class="side-by-side">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="submit" class="btn btn-danger btn-sm" value="Remove">
@@ -70,7 +70,7 @@
                     <td class="table-image"></td>
                     <td></td>
                     <td class="small-caps table-bg" style="text-align: right">Subtotal</td>
-                    <td>${{ Cart::instance('default')->subtotal() }}</td>
+                    <td>€{{ Cart::instance('default')->subtotal() }}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -78,14 +78,14 @@
                     <td class="table-image"></td>
                     <td></td>
                     <td class="small-caps table-bg" style="text-align: right">Tax</td>
-                    <td>${{ Cart::instance('default')->tax() }}</td>
+                    <td>€{{ Cart::instance('default')->tax() }}</td>
                     <td></td>
                     <td></td>
                 </tr>
                 <td class="table-image"></td>
                 <td></td>
                 <td class="small-caps table-bg" style="text-align: right">Your Total</td>
-                <td class="table-bg">${{ Cart::total() }}</td>
+                <td class="table-bg">€{{ Cart::total() }}</td>
                 <td class="column-spacer"></td>
                 <td></td>
                 </tr>
@@ -127,7 +127,7 @@
             });
 
             $('.quantity').on('change', function() {
-                var id = $(this).attr('data-id')
+                let id = $(this).attr('data-id');
                 $.ajax({
                     type: "PATCH",
                     url: '{{ url("/cart") }}' + '/' + id,
