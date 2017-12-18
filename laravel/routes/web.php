@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/sandbox', 'SandboxController@index'); // <--- SandBox!
+
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/shop', 'ShopController@index');
