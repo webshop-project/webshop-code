@@ -64,8 +64,8 @@
                                     <input class="form-control" type="checkbox" id="sizeXL" name="sizeXL">
                                 </div>
                                 <div class="form-group">
-                                    <label for="gb">Storage</label>
-                                    <select class="form-control col" name="house" id="sizeGB">
+                                    <label for="sizeGB">Storage</label>
+                                    <select class="form-control" name="sizeGB" id="sizeGB">
                                         @foreach($storages as $storage)
                                             <option class="form-control" value="{{$storage->id}}">{{$storage->gb}}</option>
                                         @endforeach
@@ -82,7 +82,7 @@
                     <div class="w-100"></div>
                     <div class="form-group  -between upload">
                         <label for="image">Upload Foto</label>
-                        <input class="form-control" type="file" name="image" id="image" required multiple>
+                        <input class="form-control" type="file" name="image[]" id="image" multiple required>
                     </div>
                     <input class="btn btn-default" type="submit" value="Save" class="save">
                     </form>
