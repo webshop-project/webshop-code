@@ -86,45 +86,6 @@ class ProductController extends Controller
         $product->supply = $request->stock;
         $product->description = $request->description;
 
-//        $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
-//        if ($request->category == 5)
-//            if ($request->sizeS == 'on') {
-//                $size = new \App\size();
-//
-//                $size->clothing_id = $productV[0]->id;
-//                $size->size = 'S';
-//
-//                $size->save();
-//            }
-//        if ($request->sizeM == 'on') {
-//            $size = new \App\Size();
-//
-//            $size->clothing_id = $productV[0]->id;
-//            $size->size = 'M';
-//
-//            $size->save();
-//        }
-//        if ($request->sizeL == 'on') {
-//            $size = new \App\Size();
-//
-//            $size->clothing_id = $productV[0]->id;
-//            $size->size = 'L';
-//
-//            $size->save();
-//        }
-//        if ($request->sizeXL == 'on') {
-//            $size = new \App\Size();
-//
-//            $size->clothing_id = $productV[0]->id;
-//            $size->size = 'XL';
-//
-//            $size->save();
-//        } elseif ($request->category == 6) {
-//
-//            $product->storage_id = $request->sizeGB;
-//        }
-
-
         $first = true;
         foreach ($request->image as $image)
             if ($first) {
@@ -151,13 +112,57 @@ class ProductController extends Controller
                 imagejpeg($thumb, storage_path("app/$path"));
 
                 $product->img = '/storage/' . $image->hashName();
-                $product->save();
+
+                if ($request->category == 6) {
+
+                    $product->storage_id = $request->sizeGB;
+                    $product->save();
+                } else {
+                    $product->save();
+                }
+
+
+                $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
+                if ($request->category == 5) {
+                    if ($request->sizeS == 'on') {
+                        $size = new \App\size();
+
+                        $size->clothing_id = $productV[0]->id;
+                        $size->size = 'S';
+
+                        $size->save();
+                    }
+                    if ($request->sizeM == 'on') {
+                        $size = new \App\Size();
+
+                        $size->clothing_id = $productV[0]->id;
+                        $size->size = 'M';
+
+                        $size->save();
+                    }
+                    if ($request->sizeL == 'on') {
+                        $size = new \App\Size();
+
+                        $size->clothing_id = $productV[0]->id;
+                        $size->size = 'L';
+
+                        $size->save();
+                    }
+                    if ($request->sizeXL == 'on') {
+                        $size = new \App\Size();
+
+                        $size->clothing_id = $productV[0]->id;
+                        $size->size = 'XL';
+
+                        $size->save();
+                    }
+                }
                 $first = false;
             } else {
                 $productV = \App\product::select('id')->where('name', '=', $request->name)->get();
                 $imageId = 0;
-                foreach ($productV as $productV2){
-                   $imageId = $productV2->id;
+                foreach ($productV as $productV2) {
+                    $imageId = $productV2->id;
                 }
                 $path = $image->storePublicly('public');
                 // File and new size
