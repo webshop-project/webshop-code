@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('amount');
             $table->timestamp('bought_at');
             $table->decimal('price');
+            $table->boolean('order_processed');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

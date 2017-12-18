@@ -17,11 +17,14 @@ class OrderController extends Controller
     {
         $orders = \App\Order::paginate(6);
 
+
         $users = \App\User::all();
 
         return view('admin/orders/orderIndex')
             ->with('orders', $orders)
             ->with('users', $users);
+
+
     }
 
     /**
