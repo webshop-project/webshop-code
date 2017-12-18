@@ -26,7 +26,7 @@ class ProductController extends Controller
             ->where('deleted_at', '=', null)
             ->paginate(6);
 
-        $images = DB::table('image')
+        $images = DB::table('images')
             ->select(DB::raw('*'))
             ->where([
                 ['deleted_at', '=', null],
@@ -51,7 +51,8 @@ class ProductController extends Controller
         $storages = \App\storage::All();
         return view('admin/products/productAdd')
             ->with('houses', $houses)
-            ->with('categories', $catergories);
+            ->with('categories', $catergories)
+            ->with('storages', $storages);
     }
 
     /**
@@ -62,17 +63,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'name' => 'required|max:50|unique:products,name',
             'category' => 'required|max:50',
             'price' => 'required|integer',
             'house' => 'required|integer',
             'stock' => 'required|integer',
+            'storage' => 'integer',
             'description' => 'required',
             'image' => 'required'
         ]);
 
-        dd($request->all());
         $product = new \App\product();
 
         $product->name = $request->name;
@@ -83,72 +86,110 @@ class ProductController extends Controller
         $product->supply = $request->stock;
         $product->description = $request->description;
 
-        $path = $request->file('image')->storePublicly('public');
-        // File and new size
-        $filename = storage_path("app/$path");
-
-        // Content type
-        header('Content-Type: image/jpeg');
-
-        // Get new sizes
-        list($width, $height) = getimagesize($filename);
-        $newwidth = 377;
-        $newheight = 337;
-
-        // Load
-        $thumb = imagecreatetruecolor($newwidth, $newheight);
-        $source = imagecreatefromjpeg($filename);
-
-        // Resize
-        imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
-        // Output
-        imagejpeg($thumb , storage_path("app/$path"));
-
-        $product->img = 'storage/'.$request->file('image')->hashName();
-
-
-        $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
-    if ($request->category == 5)
-        if($request->sizeS == 'on'){
-            $size = new \App\size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'S';
-
-            $size->save();
-        }
-        if($request->sizeM == 'on'){
-            $size = new \App\Size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'M';
-
-            $size->save();
-        }
-        if($request->sizeL == 'on'){
-            $size = new \App\Size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'L';
-
-            $size->save();
-        }
-        if($request->sizeXL == 'on'){
-            $size = new \App\Size();
-
-            $size->clothing_id = $productV[0]->id;
-            $size->size = 'XL';
-
-            $size->save();
-        }
-      elseif($request->category == 6){
+//        $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
+//        if ($request->category == 5)
+//            if ($request->sizeS == 'on') {
+//                $size = new \App\size();
+//
+//                $size->clothing_id = $productV[0]->id;
+//                $size->size = 'S';
+//
+//                $size->save();
+//            }
+//        if ($request->sizeM == 'on') {
+//            $size = new \App\Size();
+//
+//            $size->clothing_id = $productV[0]->id;
+//            $size->size = 'M';
+//
+//            $size->save();
+//        }
+//        if ($request->sizeL == 'on') {
+//            $size = new \App\Size();
+//
+//            $size->clothing_id = $productV[0]->id;
+//            $size->size = 'L';
+//
+//            $size->save();
+//        }
+//        if ($request->sizeXL == 'on') {
+//            $size = new \App\Size();
+//
+//            $size->clothing_id = $productV[0]->id;
+//            $size->size = 'XL';
+//
+//            $size->save();
+//        } elseif ($request->category == 6) {
+//
+//            $product->storage_id = $request->sizeGB;
+//        }
 
 
+        $first = true;
+        foreach ($request->image as $image)
+            if ($first) {
+                $path = $image->storePublicly('public');
+                // File and new size
+                $filename = storage_path("app/$path");
 
-      }
+                // Content type
+                header('Content-Type: image/jpeg');
 
-        $product->save();
+                // Get new sizes
+                list($width, $height) = getimagesize($filename);
+                $newwidth = 377;
+                $newheight = 337;
+
+                // Load
+                $thumb = imagecreatetruecolor($newwidth, $newheight);
+                $source = imagecreatefromjpeg($filename);
+
+                // Resize
+                imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                // Output
+                imagejpeg($thumb, storage_path("app/$path"));
+
+                $product->img = '/storage/' . $image->hashName();
+                $product->save();
+                $first = false;
+            } else {
+                $productV = \App\product::select('id')->where('name', '=', $request->name)->get();
+                $imageId = 0;
+                foreach ($productV as $productV2){
+                   $imageId = $productV2->id;
+                }
+                $path = $image->storePublicly('public');
+                // File and new size
+                $filename = storage_path("app/$path");
+
+                // Content type
+                header('Content-Type: image/jpeg');
+
+                // Get new sizes
+                list($width, $height) = getimagesize($filename);
+                $newwidth = 377;
+                $newheight = 337;
+
+                // Load
+                $thumb = imagecreatetruecolor($newwidth, $newheight);
+                $source = imagecreatefromjpeg($filename);
+
+                // Resize
+                imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                // Output
+                imagejpeg($thumb, storage_path("app/$path"));
+
+                $imageAdd = new \App\image();
+
+                $imageAdd->product_id = $imageId;
+                $imageAdd->img = '/storage/' . $image->hashName();
+
+                $imageAdd->save();
+
+            }
+
         return redirect()->action('DashboardController@index');
     }
 
@@ -178,7 +219,7 @@ class ProductController extends Controller
         $models = \App\brand_model::All();
         $storages = \App\storage::All();
 
-        $images = DB::table('image')
+        $images = DB::table('images')
             ->select(DB::raw('*'))
             ->where([
                 ['product_id', '=', $id],
@@ -189,7 +230,7 @@ class ProductController extends Controller
         return view('admin/products/productAdjust')
             ->with('products', $product)
             ->with('categories', $catergories)
-            ->with('image', $images)
+            ->with('images', $images)
             ->with('houses', $houses)
             ->with('brands', $brands)
             ->with('models', $models)
