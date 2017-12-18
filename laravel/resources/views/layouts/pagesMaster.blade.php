@@ -38,33 +38,101 @@
                     <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true">({{ Cart::instance('default')->count(false) }})</i></span>
                     <div id="myShoppingCart" class="cart">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <div>
-                            <a href="{{url('/shop/cart')}}">To Cart</a>
-                        </div>
+                        {{--<div>--}}
+                            {{--<a href="{{url('/shop/cart')}}">To Cart</a>--}}
+                        {{--</div>--}}
                         <div class="cart-items">
-                            @foreach (Cart::content() as $item)
-                                <tr>
-                                    <td><a href="">{{ $item->name }}</a></td>
-                                    <td>
-                                        <select class="quantity" data-id="{{ $item->rowId }}">
-                                            <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
-                                            <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
-                                            <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
-                                            <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
-                                            <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
-                                        </select>
-                                    </td>
-                                    <td class=""></td>
-                                    <td>
-                                        <form action="{{ url('/shop/cart', [$item->rowId]) }}" method="POST" class="side-by-side">
-                                            {!! csrf_field() !!}
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="submit" class="btn btn-danger btn-sm" value="Remove">
-                                        </form>
-                                    </td>
-                                </tr>
+                            @if (sizeof(Cart::content()) > 0)
 
-                            @endforeach
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="table-image"></th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Size</th>
+                                        <th>Price</th>
+                                        <th class="column-spacer"></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr class="border-bottom">
+                                        <td class="table-image"></td>
+                                        <td style="padding: 40px;"></td>@foreach (Cart::content() as $item)
+                                        <tr>
+                                            <td class="table-image"><a href="{{ url('shop') }}"><img src="{{ asset('img/' . $item->image) }}" alt="product" class="img-responsive cart-image"></a></td>
+                                            <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
+                                            <td>
+                                                <select class="quantity" data-id="{{ $item->rowId }}">
+                                                    <option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>
+                                                    <option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>
+                                                    <option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>
+                                                    <option value="{{ $item->qty == 4 ? 'selected' : '' }}">4</option>
+                                                    <option value="{{ $item->qty == 5 ? 'selected' : '' }}">5</option>
+                                                </select>
+                                            </td>
+                                            <td>{{$item->size}}</td>
+                                            <td>€{{ $item->subtotal }}</td>
+                                            <td class=""></td>
+                                            <td>
+                                                <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                                    {!! csrf_field() !!}
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                                </form>
+                                            </td>
+                                        </tr>
+
+                                    @endforeach
+                                    <tr>
+                                        <td class="table-image"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="small-caps table-bg" style="text-align: right">Subtotal</td>
+                                        <td>€{{ Cart::instance('default')->subtotal() }}</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-image"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="small-caps table-bg" style="text-align: right">Tax</td>
+                                        <td>€{{ Cart::instance('default')->tax() }}</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="small-caps table-bg" style="text-align: right">Your Total</td>
+                                    <td class="table-bg">€{{ Cart::total() }}</td>
+                                    <td class="column-spacer"></td>
+                                    <td></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
+                                <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+
+                                <div style="float:right">
+                                    <form action="{{ url('/emptyCart') }}" method="POST">
+                                        {!! csrf_field() !!}
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="submit" class="btn btn-danger btn-lg" value="Empty Cart">
+                                    </form>
+                                </div>
+
+                            @else
+
+                                <h3>You have no items in your shopping cart</h3>
+                                <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a>
+
+                            @endif
                         </div>
                 </div>
             </div>
@@ -101,7 +169,6 @@
 </header>
 
     @yield('content')
-
 </div>
 
 <footer>
@@ -135,9 +202,8 @@
 @yield('cartupdate')
 <script>
     function openNav() {
-        document.getElementById("myShoppingCart").style.width = "250px";
+        document.getElementById("myShoppingCart").style.width = "550px";
     }
-
     function closeNav() {
         document.getElementById("myShoppingCart").style.width = "0";
     }

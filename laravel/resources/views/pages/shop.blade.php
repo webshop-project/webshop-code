@@ -42,9 +42,6 @@
                     </div>
                     <div class="wd-100"></div>
                     <div class="row headRoom">
-                        {{--@php--}}
-                        {{--dd($products);--}}
-                        {{--@endphp--}}
                         @foreach($products as $product)
                             <div class="col-md-3 col-6 headRoom"></div>
                             <a href="/shop/{{$product->name}}">
@@ -63,6 +60,7 @@
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                 <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="size" value="{{$product->size}}">
                                 <input type="hidden" name="price" value="{{ $product->price }}">
                                 <input type="submit" class="btn btn-primary" value="Add to Cart">
                             </form>

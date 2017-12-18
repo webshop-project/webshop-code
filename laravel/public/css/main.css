@@ -370,6 +370,9 @@ footer i{
     color: #666;
     font-size: 2.5em!important;
 }
+.cart .item-name{
+    font-size: 1em;
+}
 .cart {
     height: 100%;
     width: 0;
