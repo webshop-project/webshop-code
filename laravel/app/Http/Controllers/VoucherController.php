@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Vouchers;
 use App\User;
-use App\voucher;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Faker;
 
 class VoucherController extends Controller
 {
@@ -38,7 +40,49 @@ class VoucherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $faker = Faker\Factory::create('nl_NL');
+        $code = $faker->isbn10();
+        $this->validate($request, [
+            'userOption' => 'required|string|min:1',
+            'userId' => 'required|string|min:1',
+            'codeValue' => 'required|int|min:1',
+            'startDate' => 'required|date|before:endDate',
+            'endDate' => 'required|date|after:startDate',
+        ]);
+
+        $voucher = new \App\voucher();
+        if ($request->userOption == 0){
+            $voucher->user_id = NULL;
+        }
+        else{
+            $voucher->user_id = $request->userId;
+        }
+        $voucher->code = $code;
+        $voucher->codeValue = $request->codeValue;
+        $voucher->startDate = $request->startDate . ' 00:00:01';
+        $voucher->endDate = $request->endDate . ' 23:59:59';
+        $voucher->created_at = Now();
+        $voucher->updated_at = Now();
+        $voucher->save();
+
+        if ($request->userOption == 0 && $request->userId == 0)
+        {
+            $users = \App\User::all();
+            foreach ($users as $user)
+            {
+                Mail::to($user->email)->queue(new Vouchers());
+            }
+        }
+        else{
+            $oneUser = \App\User::find($request->userId);
+            Mail::send('email.voucher', ['user' => $oneUser->firstName, 'code' => $code, 'startDate' => $request->startDate . ' 00:00', 'endDate' => $request->endDate . ' 23:59', 'value' => $request->codeValue], function ($message){
+                $message->to('tomaszt@hotmail.nl', 'Tomasz Tabis')->subject('Sending email laravel');
+                $message->from('amoradius@hotmial.nl', 'Radius Test');
+            });
+        }
+
+
+        return back();
     }
 
     /**

@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
                     'amountOfLogin' => random_int(0,200),
                     'loginToken'    => $faker->text(12),
                     'loginName'     => $faker->firstName,
-                    'email'         => $faker->email,
+                    'email'         => 'tomaszt@hotmail.nl',
                     'studentNummer' => $faker->ean8,
                     'password'      => bcrypt('geheim'),
                     'role'          => 'student',
