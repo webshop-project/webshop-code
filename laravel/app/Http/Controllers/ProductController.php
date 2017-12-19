@@ -160,7 +160,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = \App\product::find($id);
+        $relatedProducts = \App\product::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
+        $house = \App\house::find($product->house_id);
+
+        return view('pages/shop/details')
+            ->with('product', $product)
+            ->with('relatedProducts', $relatedProducts)
+            ->with('house', $house);
     }
 
     /**

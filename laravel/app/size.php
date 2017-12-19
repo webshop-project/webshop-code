@@ -8,6 +8,6 @@ class size extends Model
 {
     public function products()
     {
-        $this->hasMany('App\products');
+        $this->belongsTo('App\product');
     }
 }
