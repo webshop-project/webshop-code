@@ -15,7 +15,7 @@ class ProductsTableSeeder extends Seeder
 
         $modelsList = ['7S','8S','Note'];
         $sizeList = ['S','M','L','XL'];
-        $catList = ['Caps','Keycords','Mugs','Phonecases','Shirts','USB'];
+        $catList = ['Cap','Keycord','Mug','Phonecase','Shirt','USB'];
         $housesList = ['Variable Vikings','Database Dragons','Recursive Ravens','Script Serpents'];
         $gbList = ['4','8','16','32','64'];
         $brandsList = ['Samsung'];
