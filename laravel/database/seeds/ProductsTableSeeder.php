@@ -11,7 +11,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = new \Faker\Factory();
+        $faker = Faker\Factory::create('nl_NL');
 
         $modelsList = ['7S','8S','Note'];
         $sizeList = ['S','M','L','XL'];
@@ -62,9 +62,10 @@ for ( $z = 0 ; $z < 10 ; $z++)
                                     'discount' => 0,
                                     'name' => $housesList[$i] . " " . $catList[$j] ." ". $brandsList[$k] ." " . $modelsList[$l],
                                     'price' => mt_rand (10*10, 100*10) / 10,
-                                    'description' => $faker->create()->sentence(12),
+                                    'description' => $faker->sentence(12),
                                     'supply' => random_int(0,25),
                                     'viewAmount' => rand(0,150),
+                                    'img' => $faker->imageUrl($width = 500, $height = 650),
                                 ]
                             );
                         }
@@ -90,9 +91,10 @@ for ( $z = 0 ; $z < 10 ; $z++)
                                 'discount' => 0,
                                 'name' => $housesList[$i] . " " . $catList[$j],
                                 'price' => mt_rand(10 * 10, 100 * 10) / 10,
-                                'description' => $faker->create()->sentence(12),
+                                'description' => $faker->sentence(12),
                                 'supply' => random_int(0, 25),
                                 'viewAmount' => rand(0, 150),
+                                'img' => $faker->imageUrl($width = 500, $height = 650),
                             ]
                         );
                     }
@@ -116,9 +118,10 @@ for ( $z = 0 ; $z < 10 ; $z++)
                                 'discount' => 0,
                                 'name' => $housesList[$i] . " " . $catList[$j],
                                 'price' => mt_rand(10 * 10, 100 * 10) / 10,
-                                'description' => $faker->create()->sentence(12),
+                                'description' => $faker->sentence(12),
                                 'supply' => random_int(0, 25),
                                 'viewAmount' => rand(0, 150),
+                                'img' => $faker->imageUrl($width = 500, $height = 650),
                             ]
                         );
                     }
@@ -138,9 +141,10 @@ for ( $z = 0 ; $z < 10 ; $z++)
                             'discount' => 0,
                             'name' => $housesList[$i] . " " . $catList[$j],
                             'price' => mt_rand(10 * 10, 100 * 10) / 10,
-                            'description' => $faker->create()->sentence(12),
+                            'description' => $faker->sentence(12),
                             'supply' => random_int(0, 25),
                             'viewAmount' => rand(0, 150),
+                            'img' => $faker->imageUrl($width = 500, $height = 650),
                         ]
                     );
                 }
