@@ -23,7 +23,7 @@ class BrandModelsTableSeeder extends Seeder
             (
                 [
                     'brand_id' => $j,
-                    'modelName' => $modelsList[$i],
+                    'name' => $modelsList[$i],
                 ]
             );
         }
