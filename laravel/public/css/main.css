@@ -425,7 +425,7 @@ footer i{
     font-size: 1rem;
 
 }
-.itemsimg {
+.items img {
     width: 100%;
     height: 100%;
     background: #f7f7f7;
@@ -498,6 +498,10 @@ footer i{
     background: url('../img/script_serpents_under_small_crop.png') no-repeat center;
     -webkit-background-size: cover;
     background-size: cover;
+}
+.details img{
+    max-width: 100%;
+    max-height: 450px;
 }
 
 

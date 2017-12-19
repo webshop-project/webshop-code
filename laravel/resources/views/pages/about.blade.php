@@ -23,7 +23,7 @@
                     <div class="house-info col-9 row flex-column align-items-start">
                         <h3 class="p-2">Database Dragons</h3>
                         <p class="p-2">Leave no table unjoined...</p>
-                        <a class="p-1" href="">More</a>
+                        <a class="p-1" href="{{action('HouseController@show', 2)}}">More</a>
                     </div>
                 </div>
                 <div class="dragon-house-bottom house-bottom"></div>
@@ -36,7 +36,7 @@
                     <div class="house-info row flex-column align-items-end col-6">
                         <h3 class="p-2">Recursive Ravens</h3>
                         <p class="p-2">Our loops are your destiny...</p>
-                        <a class="p-1" href="">More</a>
+                        <a class="p-1" href="{{action('HouseController@show', 3)}}">More</a>
                     </div>
                     <div class="house-logo raven">
                         <img src="img/rave_small.png" alt="">
@@ -55,7 +55,7 @@
                     <div class="house-info col-9 row flex-column align-items-start">
                         <h3 class="p-2">Script Serpents</h3>
                         <p class="p-2">Array_split() the world in fragments...</p>
-                        <a class="p-1" href="">More</a>
+                        <a class="p-1" href="{{action('HouseController@show', 4)}}">More</a>
                     </div>
                 </div>
                 <div class="serpent-house-bottom house-bottom"></div>
@@ -68,7 +68,7 @@
                     <div class="house-info row flex-column align-items-end col-6">
                         <h3 class="p-2">Variable Vikings</h3>
                         <p class="p-2">We outran our fate, comming for yours...</p>
-                        <a class="p-1" href="">More</a>
+                        <a class="p-1" href="{{action('HouseController@show', 1)}}">More</a>
                     </div>
                     <div class="house-logo viking">
                         <img src="img/viking_small.png" alt="">
