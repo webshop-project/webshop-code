@@ -13,6 +13,6 @@
     </style>
 </head>
 <body>
-<h3>Mail Test</h3>
+<h3>{{$firstname}}</h3>
 </body>
 </html>

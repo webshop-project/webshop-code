@@ -68,9 +68,10 @@ class VoucherController extends Controller
         if ($request->userOption == 0 && $request->userId == 0)
         {
             $users = \App\User::all();
+            $data = 'tomasz';
             foreach ($users as $user)
             {
-                Mail::to($user->email)->queue(new Vouchers());
+                Mail::to($user->email)->queue(new Vouchers($user->firstName) );
             }
         }
         else{

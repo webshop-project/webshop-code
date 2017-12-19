@@ -11,14 +11,15 @@ class Vouchers extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $firstname;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->firstname = $name;
     }
 
     /**
