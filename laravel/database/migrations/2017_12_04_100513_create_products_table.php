@@ -20,9 +20,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('img')->nullable();
-            $table->integer('viewAmount');
-            $table->decimal('price');
-            $table->integer('supply');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

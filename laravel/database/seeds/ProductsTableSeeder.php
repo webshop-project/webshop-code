@@ -21,9 +21,6 @@ class ProductsTableSeeder extends Seeder
                 'name' => $catList[$i],
                 'description' => $faker->sentence(2),
                 'img' => $faker->imageUrl($width = 500, $height = 650),
-                'viewAmount' => random_int(5, 120),
-                'price' => mt_rand(10 * 10, 100 * 10) / 10,
-                'supply' => random_int(0,25),
             ]);
         }
     }

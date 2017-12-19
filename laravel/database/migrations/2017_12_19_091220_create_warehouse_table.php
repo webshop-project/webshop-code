@@ -19,6 +19,9 @@ class CreateWarehouseTable extends Migration
             $table->integer('category_id');
             $table->integer('size_id')->nullable();
             $table->integer('model_id')->nullable();
+            $table->integer('supply');
+            $table->decimal('price');
+            $table->integer('viewAmount');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

@@ -31,6 +31,9 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'house_id'      => $i + 1,
                                 'category_id'   => $j + 1,
                                 'model_id'      => $l + 1,
+                                'supply'        => random_int(0,25),
+                                'price'         => random_int(5,25),
+                                'viewAmount'    => random_int(5, 120),
                             ]
                         );
                     }
@@ -46,6 +49,9 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'house_id'      => $i + 1,
                                 'category_id'   => $j + 1,
                                 'size_id'       => $k + 1,
+                                'supply'        => random_int(0,25),
+                                'price'         => random_int(5,25),
+                                'viewAmount'    => random_int(5, 120),
                             ]
                         );
                     }
@@ -58,6 +64,9 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'house_id'      => $i + 1,
                                 'category_id'   => $j + 1,
                                 'size_id'       => $q,
+                                'supply'        => random_int(0,25),
+                                'price'         => random_int(5,25),
+                                'viewAmount'    => random_int(5, 120),
                             ]
                         );
                     }
@@ -65,8 +74,11 @@ class WarehouseModelsTableSeeder extends Seeder
                     DB::table('warehouse')->insert
                     (
                         [
-                            'house_id' => $i + 1,
-                            'category_id' => $j + 1,
+                            'house_id'      => $i + 1,
+                            'category_id'   => $j + 1,
+                            'supply'        => random_int(0,25),
+                            'price'         => random_int(5,25),
+                            'viewAmount'    => random_int(5, 120),
                         ]
                     );
                 }
