@@ -11,20 +11,65 @@ class WarehouseModelsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create('nl_NL');
-
+        $modelsList = ['7S','8S','Note','7S','X'];
         $catList = ['Cap', 'Keycord', 'Mug', 'Phonecase', 'Shirt', 'USB'];
-        $faker = Faker\Factory::create('nl_NL');
+        $housesList = ['Variable Vikings', 'Database Dragons', 'Recursive Ravens', 'Script Serpents'];
+        $sizeList = ['s', 'm', 'l', 'xl', '8', '16', '32', '64'];
 
-        for ($z = 0; $z < 10; $z++) {
+        for ($i = 0; $i < count($housesList); $i++)
+        {
+            for ($j = 0; $j < count($catList); $j++)
+            {
+                if($j == 3)
+                {
+                    for($l = 0; $l < count($modelsList); $l++)
+                    {
+                        DB::table('warehouse')->insert
+                        (
+                            [
+                                //phonecase
+                                'house_id'      => $i + 1,
+                                'category_id'   => $j + 1,
+                                'model_id'      => $l + 1,
+                            ]
+                        );
+                    }
+                }
+                else if ($j == 4)
+                {
+                    for ($k = 0; $k < (count($sizeList) - 4) ; $k++) {
 
-            for ($i = 0; $i <= 70; $i++) {
-                DB::table('warehouse')->insert([
-                    'name' => $catList[$i],
-                    'description' => $faker->sentence(2),
-                    'img' => $faker->imageUrl($width = 500, $height = 650),
-                    'viewamount' => random_int(5, 120),
-                ]);
+                        DB::table('warehouse')->insert
+                        (
+                            [
+                                //usb
+                                'house_id'      => $i + 1,
+                                'category_id'   => $j + 1,
+                                'size_id'       => $k + 1,
+                            ]
+                        );
+                    }
+                } else if ($j == 5) {
+                    for ($q = 4; $q <= count($sizeList); $q++) {
+                        DB::table('warehouse')->insert
+                        (
+                            [
+                                //tshirts
+                                'house_id'      => $i + 1,
+                                'category_id'   => $j + 1,
+                                'size_id'       => $q,
+                            ]
+                        );
+                    }
+                } else {
+                    DB::table('warehouse')->insert
+                    (
+                        [
+                            'house_id' => $i + 1,
+                            'category_id' => $j + 1,
+                        ]
+                    );
+                }
             }
         }
     }

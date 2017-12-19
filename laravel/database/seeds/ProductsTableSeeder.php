@@ -11,21 +11,20 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create('nl_NL');
-
         $catList = ['Cap', 'Keycord', 'Mug', 'Phonecase', 'Shirt', 'USB'];
 
-        for ($z = 0; $z < 10; $z++) {
+        for ($i = 0; $i < 6; $i++)
+        {
             $faker = Faker\Factory::create('nl_NL');
 
-            for ($i = 0; $i < 6; $i++) {
-                DB::table('products')->insert([
-                    'name' => $catList[$i],
-                    'description' => $faker->sentence(2),
-                    'img' => $faker->imageUrl($width = 500, $height = 650),
-                    'viewamount' => random_int(5, 120),
-                ]);
-            }
+            DB::table('products')->insert([
+                'name' => $catList[$i],
+                'description' => $faker->sentence(2),
+                'img' => $faker->imageUrl($width = 500, $height = 650),
+                'viewAmount' => random_int(5, 120),
+                'price' => mt_rand(10 * 10, 100 * 10) / 10,
+                'supply' => random_int(0,25),
+            ]);
         }
     }
 }
