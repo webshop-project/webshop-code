@@ -7,7 +7,6 @@
 @section('content')
     <div class="container-fluid userinfo">
         <div class="container">
-
             <div class="container indexTitle col-12">
                 <h2>GLOBAL INFORMATION</h2>
             </div>
@@ -49,6 +48,10 @@
                         <span>{{$vouchersCount}}</span>
                     </div>
                 </div>
+            </div>
+            <div class="alert alert-danger" role="alert">
+                <p>There are 0 products low on stock!</p>
+                <a class="btn btn-warning" href="#">Click me!</a>
             </div>
 
             <div class="container indexTitle col-12">

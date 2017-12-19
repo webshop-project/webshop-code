@@ -16,11 +16,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email');
+            $table->string('studentNummer');
             $table->integer('amountOflogin');
             $table->string('loginToken');
             $table->string('loginName');
-            $table->string('email');
-            $table->string('studentNummer');
             $table->string('password');
             $table->string('role');
             $table->string('country');
@@ -29,8 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('houseNumber');
             $table->string('houseNumberAddOn')->nullable();
             $table->string('firstName');
-            $table->string('lastName');
             $table->string('middleName')->nullable();
+            $table->string('lastName');
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();

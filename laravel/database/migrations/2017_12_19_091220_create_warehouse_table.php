@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Eloquent\SoftDeletes;
-class CreateStoragesTable extends Migration
+
+class CreateWarehouseTable extends Migration
 {
-    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -14,9 +13,12 @@ class CreateStoragesTable extends Migration
      */
     public function up()
     {
-        Schema::create('storages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('gb');
+        Schema::create('warehouse', function (Blueprint $table) {
+            $table->increments('product_id');
+            $table->integer('house_id');
+            $table->integer('category_id');
+            $table->integer('size_id')->nullable();
+            $table->integer('model_id')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -30,6 +32,6 @@ class CreateStoragesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('storages');
+        Schema::dropIfExists('warehouse');
     }
 }
