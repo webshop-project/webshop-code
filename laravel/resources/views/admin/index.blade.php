@@ -51,7 +51,7 @@
             </div>
             <div class="alert alert-danger" role="alert">
                 <p>There are 0 products low on stock!</p>
-                <a type="button" class="btn button-warning" href="#">Click me!</a>
+                <a class="btn btn-warning" href="#">Click me!</a>
             </div>
 
             <div class="container indexTitle col-12">

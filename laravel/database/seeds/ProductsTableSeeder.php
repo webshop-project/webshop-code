@@ -14,7 +14,6 @@ class ProductsTableSeeder extends Seeder
         $faker = Faker\Factory::create('nl_NL');
 
         $modelsList = ['7S','8S','Note'];
-        $sizeList = ['S','M','L','XL'];
         $catList = ['Cap','Keycord','Mug','Phonecase','Shirt','USB'];
         $housesList = ['Variable Vikings','Database Dragons','Recursive Ravens','Script Serpents'];
         $gbList = ['4','8','16','32','64'];
@@ -30,7 +29,6 @@ for ( $z = 0 ; $z < 10 ; $z++)
         for( $i = 0 ; $i < count($housesList); $i++ )
         {
             $houseID = 1;
-            $sizeID = 0;
             $bmodelID = 0;
             $storageID = 0;
             $catCounter = 1;
@@ -52,18 +50,14 @@ for ( $z = 0 ; $z < 10 ; $z++)
                             (
 
                                 [
-                                    'discount' => 0,
                                     'house_id' => $i+1,
                                     'category_id' => $catCounter,
-                                    'size_id' => $sizeID,
                                     'brand_id' => $brandID,
                                     'b_model_id' => $l+1,
-                                    'storage_id' => $storageID,
                                     'discount' => 0,
                                     'name' => $housesList[$i] . " " . $catList[$j] ." ". $brandsList[$k] ." " . $modelsList[$l],
                                     'price' => mt_rand (10*10, 100*10) / 10,
                                     'description' => $faker->sentence(12),
-                                    'supply' => random_int(0,25),
                                     'viewAmount' => rand(0,150),
                                     'img' => $faker->imageUrl($width = 500, $height = 650),
                                 ]
@@ -74,33 +68,6 @@ for ( $z = 0 ; $z < 10 ; $z++)
                 }
                 else if($j == 4)
                 {
-                    for ( $a = 0 ; $a < count($sizeList) ; $a++ )
-                    {
-                        $brandID = 0;
-
-                        DB::table('products')->insert
-                        (
-                            [
-                                'discount' => 0,
-                                'house_id' => $i + 1,
-                                'category_id' => $catCounter,
-                                'size_id' => $a+1,
-                                'brand_id' => $brandID,
-                                'b_model_id' => $bmodelID,
-                                'storage_id' => $storageID,
-                                'discount' => 0,
-                                'name' => $housesList[$i] . " " . $catList[$j],
-                                'price' => mt_rand(10 * 10, 100 * 10) / 10,
-                                'description' => $faker->sentence(12),
-                                'supply' => random_int(0, 25),
-                                'viewAmount' => rand(0, 150),
-                                'img' => $faker->imageUrl($width = 500, $height = 650),
-                            ]
-                        );
-                    }
-                }
-                else if($j == 5)
-                {
                     for ( $q = 0 ; $q < count($gbList) ; $q++ )
                     {
                         $brandID = 0;
@@ -108,10 +75,8 @@ for ( $z = 0 ; $z < 10 ; $z++)
                         DB::table('products')->insert
                         (
                             [
-                                'discount' => 0,
                                 'house_id' => $i + 1,
                                 'category_id' => $catCounter,
-                                'size_id' => 0,
                                 'brand_id' => $brandID,
                                 'b_model_id' => $bmodelID,
                                 'storage_id' => $q+1,
@@ -119,7 +84,6 @@ for ( $z = 0 ; $z < 10 ; $z++)
                                 'name' => $housesList[$i] . " " . $catList[$j],
                                 'price' => mt_rand(10 * 10, 100 * 10) / 10,
                                 'description' => $faker->sentence(12),
-                                'supply' => random_int(0, 25),
                                 'viewAmount' => rand(0, 150),
                                 'img' => $faker->imageUrl($width = 500, $height = 650),
                             ]
@@ -131,10 +95,8 @@ for ( $z = 0 ; $z < 10 ; $z++)
                     DB::table('products')->insert
                     (
                         [
-                            'discount' => 0,
                             'house_id' => $i + 1,
                             'category_id' => $catCounter,
-                            'size_id' => $sizeID,
                             'brand_id' => $brandID,
                             'b_model_id' => $bmodelID,
                             'storage_id' => $storageID,
@@ -142,7 +104,6 @@ for ( $z = 0 ; $z < 10 ; $z++)
                             'name' => $housesList[$i] . " " . $catList[$j],
                             'price' => mt_rand(10 * 10, 100 * 10) / 10,
                             'description' => $faker->sentence(12),
-                            'supply' => random_int(0, 25),
                             'viewAmount' => rand(0, 150),
                             'img' => $faker->imageUrl($width = 500, $height = 650),
                         ]
