@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
+{{Breadcrumbs::render('house', $house)}}
 <div class="container">
     <div class="single-house row">
         <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="single-house-logo">
-
 
                 <div class="single-house-top @if($house->id == 1) vikings-top @elseif($house->id == 2) dragons-top @elseif($house->id == 3) ravens-top @elseif($house->id == 4) serpents-top @endif"></div>
                 <img src="@if($house->id == 1) ../img/viking_small.png @elseif($house->id == 2) ../img/db_dragon_small.png @elseif($house->id == 3) ../img/rave_small.png @elseif($house->id == 4) ../img/script_serpents_small.png @endif" class="single-house-img img-responsive img-fluid" alt="">
@@ -19,7 +19,7 @@
         </div>
 
 
-        <div class="col-lg-6 col-md-12 col-sm-12 quote">
+        <div class="col-lg-6 col-md-12 col-sm-12 quote p-2">
             <h2>{{$house->name}}</h2>
             <h3></h3>
             <p></p>

@@ -12,6 +12,7 @@
             <h1 class="m-5 p-2">The Four Houses</h1>
         </div>
     </div>
+    {{Breadcrumbs::render('about')}}
     <div class="houses p-5">
         <div class="house rotate">
             <div class="container">

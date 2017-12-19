@@ -13,13 +13,8 @@
             {{--</h1>--}}
         {{--</div>--}}
     {{--</div>--}}
+{{Breadcrumbs::render('product', $product)}}
     <div class="container details p-5">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="../website_youri/home.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">House Dragon</a></li>
-            <li class="breadcrumb-item"><a href="#">Show</a></li>
-            <li class="breadcrumb-item active">Shop</li>
-        </ol>
         <div class="row p-5">
             <div class="col-6 row justify-content-center">
                 <img class="img-responsive" src="../{{$product->image[0]->img}}" alt="Product image">
