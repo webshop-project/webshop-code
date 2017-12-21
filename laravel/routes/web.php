@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
-Route::get('/about', 'PagesController@about');
-Route::get('/shop', 'ShopController@index');
-Route::get('/contact', 'PagesController@contact');
-Route::get('/houses', 'PagesController@houses');
-Route::get('/shop/{category}', 'pagesController@category');
-Route::get('/shop/{item}', 'pagesController@detailpage');
-Route::get('/shop/cart', 'PagesController@cart');
+Route::get('/', 'PagesController@index')->name('home');
+Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/shop', 'ShopController@index')->name('shop');
+Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::resource('/shop/cart', 'CartController');
+Route::delete('emptyCart', 'CartController@emptyCart');
+Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
+Route::post('/vouchers/add', 'MailController@store');
+
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 
@@ -29,3 +30,4 @@ route::resource('/admin', 'DashboardController');
 route::resource('/categorie' , 'CategorieController');
 route::resource('/img', 'ImageController');
 route::resource('/user', 'UserController');
+route::resource('/house', 'HouseController');

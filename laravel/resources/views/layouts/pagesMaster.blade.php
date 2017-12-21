@@ -22,78 +22,101 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-11 d-flex align-self-center">
-            <i class="fa fa-search fa-2x grayIcons" aria-hidden="true"></i>
-            <a class="login" href="#"><span>Login</span></a>
-            <a class="register" href="#"><span>Register</span></a>
-        </div>
-    </div>
-</div>
-<div class="container-fluid bg-secondary">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand row col" href="#"><img class="img-responsive col-10" src="img/amologin2.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link navLinkPadding" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navLinkPadding" href="#">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navLinkPadding" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navLinkPadding" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
-        </nav>
-        <div class="shoppingcart">
-            <div id="myShoppingCart" class="cart">
-                <div class="cart-top">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <h2>Your Cart</h2>
+<header>
+    <div class="bg-header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-11 d-flex align-self-center">
+                    <i class="fa fa-search fa-2x grayIcons" aria-hidden="true"></i>
+                    <a class="login" href="#"><span>Login</span></a>
+                    <a class="register" href="#"><span>Register</span></a>
                 </div>
-                <div class="cart-items">
-                    <a href="#">HAHAHAHA</a>
-                    <a href="#">HEHEHEHE</a>
-                    <a href="#">HOHOHOHO</a>
-                    <a href="#">HUHUHUHU</a>
+                <div class="col-xs-1 ml-auto align-items-center d-flex">
+                    <span><i class="fa fa-star fa-2x grayIcons blr" aria-hidden="true"></i></span>
+                    <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
+                    <div id="myShoppingCart" class="cart">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <div>
+                            <a href="{{url('/shop/cart')}}">To Cart</a>
+                        </div>
+                        <div class="cart-items">
+                            @foreach (Cart::content() as $item)
+                                <tr>
+                                    <td><a href="">{{ $item->name }}</a></td>
+                                    <td>
+                                        <select class="quantity" data-id="{{ $item->rowId }}">
+                                            <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
+                                            <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
+                                            <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
+                                            <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
+                                            <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
+                                        </select>
+                                    </td>
+                                    <td class=""></td>
+                                    <td>
+                                        <form action="{{ url('/shop/cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                            {!! csrf_field() !!}
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            @endforeach
+                        </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
+    <div class="bg-header-bottom">
+        <div class="container-fluid bg-secondary">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand row col" href="#"><img class="img-responsive col-10" src="../img/amologin2.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto ">
+                            <li class="nav-item">
+                                <a class="nav-link navLinkPadding" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link navLinkPadding" href="/shop">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link navLinkPadding" href="/about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link navLinkPadding" href="/contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
 
     @yield('content')
 
 </div>
 
 <footer>
-    <div class="container-fluid bg-secondary p-5">
+    <div class="container-fluid bg-secondary">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="p-5">
+                <div class="p-4">
                     <a href="#">
                         <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div class="p-5">
+                <div class="p-4">
                     <a href="#">
                         <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div class="p-5">
+                <div class="p-4">
                     <a href="#">
                         <i class="fa fa-linkedin fa-3x" aria-hidden="true"></i>
                     </a>
@@ -105,7 +128,9 @@
         </div>
     </div>
 </footer>
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+@yield('cartupdate')
 <script>
     function openNav() {
         document.getElementById("myShoppingCart").style.width = "250px";

@@ -18,7 +18,7 @@ class CreateVouchersTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->integer('codeValue');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->timestamp('startDate')->nullable();
             $table->timestamp('endDate')->nullable();
             $table->timestamp('created_at')->useCurrent();

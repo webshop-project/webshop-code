@@ -14,7 +14,7 @@ class HouseController extends Controller
      */
     public function index()
     {
-        //
+        echo "index";
     }
 
     /**
@@ -44,9 +44,14 @@ class HouseController extends Controller
      * @param  \App\house  $house
      * @return \Illuminate\Http\Response
      */
-    public function show(house $house)
+    public function show($id)
     {
-        //
+        $house = \App\house::find($id);
+        $products = \App\product::select('*')->where('house_id', '=', $id)->get();
+
+        return view('pages/houses')
+            ->with('house', $house)
+            ->with('products', $products);
     }
 
     /**
@@ -55,7 +60,7 @@ class HouseController extends Controller
      * @param  \App\house  $house
      * @return \Illuminate\Http\Response
      */
-    public function edit(house $house)
+    public function edit($id)
     {
         //
     }
@@ -67,7 +72,7 @@ class HouseController extends Controller
      * @param  \App\house  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, house $house)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,7 +83,7 @@ class HouseController extends Controller
      * @param  \App\house  $house
      * @return \Illuminate\Http\Response
      */
-    public function destroy(house $house)
+    public function destroy($id)
     {
         //
     }

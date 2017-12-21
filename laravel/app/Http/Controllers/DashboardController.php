@@ -44,7 +44,7 @@ class DashboardController extends Controller
 
         return view('admin/index')
             ->with('products', $products)
-            ->with('images', $images)
+            ->with('image', $images)
             ->with('productsLow', $productsLow)
             ->with('productsCount', $productsCount)
             ->with('usersCount' ,  $userCount)

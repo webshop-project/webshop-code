@@ -7,6 +7,17 @@
 @section('content')
 
     <div class="container d-inline">
+        @if (session()->has('success_message'))
+            <div class="alert alert-success">
+                {{ session()->get('success_message') }}
+            </div>
+        @endif
+
+        @if (session()->has('error_message'))
+            <div class="alert alert-danger">
+                {{ session()->get('error_message') }}
+            </div>
+        @endif
         <div class="col">
             <div class="row">
                 <div class=" col menuList">
@@ -31,47 +42,50 @@
                     </div>
                     <div class="wd-100"></div>
                     <div class="row headRoom">
-
                         {{--@php--}}
                         {{--dd($products);--}}
                         {{--@endphp--}}
                         @foreach($products as $product)
-                            <div class="col-md-3 col-6 headRoom">
-                                <form method="_POST" action="{{action('PagesController@cart')}}">
-                                    <a href="#">
-                                        <img src="{{$product->img}}" class="img-fluid img-responsive"
-                                             alt="{{$product->name}}">
-                                        <h6>{{$product->name}}</h6>
-                                    </a>
-                                    <span>€{{$product->price}}</span>
-                                    <select class="btn-mini" name="size">
-                                        <option value="1">S</option>
-                                        <option value="2">M</option>
-                                        <option value="3">L</option>
-                                        <option value="4">XL</option>
-                                    </select>
-                                    <button class="btn-primary" style="cursor:pointer" type="submit" name="add-to-cart">Add To Cart</button>
-                                </form>
-                            </div>
-                        @endforeach
+                            <div class="col-md-3 col-6 headRoom"></div>
+                            <a href="/shop/{{$product->name}}">
+                                <img src="" class="img-fluid img-responsive"
+                                     alt="{{$product->name}}">
+                                <h6>{{$product->name}}</h6>
+                            </a>
+                            <span>€{{$product->price}}</span>
+                            <select class="btn-mini" name="size">
+                                <option value="1">S</option>
+                                <option value="2">M</option>
+                                <option value="3">L</option>
+                                <option value="4">XL</option>
+                            </select>
+                            <form action="{{ url('/shop/cart') }}" method="POST">
+                                {!! csrf_field() !!}
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                <input type="submit" class="btn btn-primary" value="Add to Cart">
+                            </form>
                     </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
     </div>
+
 
 @endsection

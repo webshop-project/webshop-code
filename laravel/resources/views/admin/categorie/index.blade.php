@@ -1,8 +1,7 @@
 @extends('layouts/adminMaster')
 @section('title')
-    Categorie
+    Category
 @endsection
-
 @section('content')
 <div class="container">
     <div class="row row-sizer-userinfo">
