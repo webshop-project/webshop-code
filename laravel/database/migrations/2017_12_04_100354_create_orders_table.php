@@ -16,11 +16,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('warehouse_id');
             $table->integer('user_id');
-            $table->integer('product_id');
             $table->integer('amount');
             $table->timestamp('bought_at');
             $table->decimal('price');
+            $table->integer('discount');
+            $table->boolean('shipped')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

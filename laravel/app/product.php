@@ -22,7 +22,7 @@ class product extends Model
     }
     public function size()
     {
-        return $this->belongsTo('App\size');
+        return $this->hasMany('App\size');
     }
     public function storage()
     {

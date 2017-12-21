@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $catList = ['Caps','Keycords','Mugs','Phonecases','Shirts','USB'];
+        $catList = ['Cap','Keycord','Mug','Phonecase','Shirt','USB'];
         for( $i = 0 ; $i < count($catList) ; $i++ )
         {
             DB::table('categories')->insert
