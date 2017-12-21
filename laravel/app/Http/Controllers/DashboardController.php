@@ -44,10 +44,9 @@ class DashboardController extends Controller
 //        $userCount = DB::table('users')->count();
 //        $orderCount = DB::table('orders')->count();
 //        $voucherCount = DB::table('vouchers_used')->count();
-
-        $lowOnStock = App/Warehouse::where('');
-
-        return view('admin/index');
+        $warehouse = new Warehouse();
+        $lowOnStock = $warehouse::where('supply','<',4)->count();
+        return view('admin/index')->with('lowOnStock',$lowOnStock);
 //            ->with('products', $products)
 //            ->with('image', $images)
 //            ->with('productsLow', $productsLow)
