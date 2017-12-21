@@ -9,7 +9,12 @@
         <div class="row">
             <div class="list-group">
                 @foreach($lowOnStock as $lowStock)
-                    <div class="list-item">{{$lowStock->product_id}}</div>
+                    <div class="list-item">
+                        Name: {{$lowStock->house->name}}
+                              {{$lowStock->category->name}}
+                        Supply: {{$lowStock->supply}}
+                        <a class="btn btn-warning" href="{{action('WarehouseController@show',$lowStock->id)}}">Show</a>
+                    </div>
                 @endforeach
             </div>
         </div>
