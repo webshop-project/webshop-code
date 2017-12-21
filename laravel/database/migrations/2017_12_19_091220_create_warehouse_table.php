@@ -23,6 +23,7 @@ class CreateWarehouseTable extends Migration
             $table->decimal('price');
             $table->integer('viewAmount');
             $table->string('img')->nullable();
+            $table->text('description');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
