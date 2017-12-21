@@ -206,8 +206,8 @@ class WarehouseController extends Controller
      */
     public function show($id)
     {
-        $product = \App\product::find($id);
-        $relatedProducts = \App\product::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
+        $product = \App\Warehouse::find($id);
+        $relatedProducts = \App\Warehouse::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
         $house = \App\house::find($product->house_id);
 
         return view('pages/shop/details')
