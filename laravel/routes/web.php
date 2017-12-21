@@ -23,6 +23,7 @@ Route::post('/vouchers/add', 'VoucherController@store');
 
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
+Route::get('/admin/vouchers/view', 'VoucherController@index');
 
 Route::resource('/products', 'ProductController');
 route::resource('/orders', 'OrderController');
