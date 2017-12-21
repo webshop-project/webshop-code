@@ -11,30 +11,15 @@ class Vouchers extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $firstName;
-    public $lastName;
-    public $code;
-    public $value;
-    public $startDate;
-    public $endDate;
-    public $topImage;
-    public $bottomImage;
-
+    public $firstname;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($userFirstName, $userLastName, $voucherCode, $voucherValue, $voucherStartDate, $voucherEndDate, $voucherTop, $voucherBottom)
+    public function __construct($name)
     {
-        $this->firstName = $userFirstName;
-        $this->lastName = $userLastName;
-        $this->code = $voucherCode;
-        $this->value = $voucherValue;
-        $this->startDate = $voucherStartDate;
-        $this->endDate = $voucherEndDate;
-        $this->topImage = $voucherTop;
-        $this->bottomImage = $voucherBottom;
+        $this->firstname = $name;
     }
 
     /**

@@ -17,7 +17,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        return view('email/voucher');
+        //
     }
 
     /**
@@ -68,19 +68,20 @@ class VoucherController extends Controller
         if ($request->userOption == 0 && $request->userId == 0)
         {
             $users = \App\User::all();
+            $data = 'tomasz';
             foreach ($users as $user)
             {
-                Mail::to($user->email)->queue(new Vouchers($user->firstName, $user->lastName, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
-
-                }  );
+                Mail::to($user->email)->queue(new Vouchers($user->firstName) );
             }
         }
         else{
             $oneUser = \App\User::find($request->userId);
-            Mail::to($oneUser->email)->queue(new Vouchers($oneUser->firstName, $oneUser->lastName, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
-
-            }  );
+            Mail::send('email.voucher', ['user' => $oneUser->firstName, 'code' => $code, 'startDate' => $request->startDate . ' 00:00', 'endDate' => $request->endDate . ' 23:59', 'value' => $request->codeValue], function ($message){
+                $message->to('tomaszt@hotmail.nl', 'Tomasz Tabis')->subject('Sending email laravel');
+                $message->from('amoradius@hotmial.nl', 'Radius Test');
+            });
         }
+
 
         return back();
     }

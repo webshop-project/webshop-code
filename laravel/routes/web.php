@@ -28,7 +28,6 @@ Route::get('/admin/lowStockList','DashboardController@lowStockList');
 >>>>>>> master
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
-Route::get('/admin/vouchers/view', 'VoucherController@index');
 
 Route::resource('/warehouse', 'WarehouseController');
 route::resource('/orders', 'OrderController');
