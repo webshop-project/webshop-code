@@ -53,7 +53,7 @@
                 <div class="alert alert-danger" role="alert">
                     <p class="d-inline">There are  <span class="badge badge-warning badge-pill">{{$lowOnStock}}</span>
                         products low on stock!</p>
-                    <a class="btn btn-warning d-inline" href="#">Click me!</a>
+                    <a class="btn btn-warning d-inline" href="{{action('DashboardController@lowStockList') }}">Click me!</a>
                 </div>
             </div>
 

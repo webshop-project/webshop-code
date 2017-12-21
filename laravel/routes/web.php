@@ -20,11 +20,11 @@ Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
 Route::post('/vouchers/add', 'MailController@store');
-
+Route::get('/admin/lowStockList','DashboardController@lowStockList');
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 
-Route::resource('/products', 'ProductController');
+Route::resource('/warehouse', 'WarehouseController');
 route::resource('/orders', 'OrderController');
 route::resource('/admin', 'DashboardController');
 route::resource('/categorie' , 'CategorieController');

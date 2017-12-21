@@ -273,4 +273,5 @@ class WarehouseController extends Controller
 
         return redirect('products')->with('succes', 'Product has been deleted!');
     }
+
 }
