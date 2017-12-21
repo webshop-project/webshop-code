@@ -38,16 +38,15 @@
                     <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true">({{ Cart::instance('default')->count(false) }})</i></span>
                     <div id="myShoppingCart" class="cart">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        {{--<div>--}}
-                            {{--<a href="{{url('/shop/cart')}}">To Cart</a>--}}
-                        {{--</div>--}}
+                        <div class="cart-title">
+                            <h2>Your Cart</h2>
+                        </div>
                         <div class="cart-items">
                             @if (sizeof(Cart::content()) > 0)
 
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th class="table-image"></th>
                                         <th>Product</th>
                                         <th>Quantity</th>
                                         <th>Size</th>
@@ -59,10 +58,8 @@
 
                                     <tbody>
                                     <tr class="border-bottom">
-                                        <td class="table-image"></td>
-                                        <td style="padding: 40px;"></td>@foreach (Cart::content() as $item)
+                                        @foreach (Cart::content() as $item)
                                         <tr>
-                                            <td class="table-image"><a href="{{ url('shop') }}"><img src="{{ asset('img/' . $item->image) }}" alt="product" class="img-responsive cart-image"></a></td>
                                             <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                                             <td>
                                                 <select class="quantity" data-id="{{ $item->rowId }}">
@@ -86,25 +83,6 @@
                                         </tr>
 
                                     @endforeach
-                                    <tr>
-                                        <td class="table-image"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="small-caps table-bg" style="text-align: right">Subtotal</td>
-                                        <td>€{{ Cart::instance('default')->subtotal() }}</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-image"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="small-caps table-bg" style="text-align: right">Tax</td>
-                                        <td>€{{ Cart::instance('default')->tax() }}</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td class="small-caps table-bg" style="text-align: right">Your Total</td>
@@ -114,9 +92,8 @@
                                     </tr>
 
                                     </tbody>
-                                </table>
+                                </table>&nbsp;
 
-                                <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
                                 <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
                                 <div style="float:right">
@@ -128,10 +105,7 @@
                                 </div>
 
                             @else
-
                                 <h3>You have no items in your shopping cart</h3>
-                                <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a>
-
                             @endif
                         </div>
                 </div>
