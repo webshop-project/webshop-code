@@ -15,6 +15,7 @@ class WarehouseModelsTableSeeder extends Seeder
         $catList = ['Cap', 'Keycord', 'Mug', 'Phonecase', 'Shirt', 'USB'];
         $housesList = ['Variable Vikings', 'Database Dragons', 'Recursive Ravens', 'Script Serpents'];
         $sizeList = ['s', 'm', 'l', 'xl', '8', '16', '32', '64'];
+        $faker = Faker\Factory::create('nl_NL');
 
         for ($i = 0; $i < count($housesList); $i++)
         {
@@ -34,6 +35,8 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'supply'        => random_int(0,25),
                                 'price'         => random_int(5,25),
                                 'viewAmount'    => random_int(5, 120),
+                                'img'           => $faker->imageUrl($width = 500, $height = 650),
+
                             ]
                         );
                     }
@@ -52,6 +55,7 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'supply'        => random_int(0,25),
                                 'price'         => random_int(5,25),
                                 'viewAmount'    => random_int(5, 120),
+                                'img'           => $faker->imageUrl($width = 500, $height = 650),
                             ]
                         );
                     }
@@ -67,6 +71,7 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'supply'        => random_int(0,25),
                                 'price'         => random_int(5,25),
                                 'viewAmount'    => random_int(5, 120),
+                                'img'           => $faker->imageUrl($width = 500, $height = 650),
                             ]
                         );
                     }
@@ -79,6 +84,7 @@ class WarehouseModelsTableSeeder extends Seeder
                             'supply'        => random_int(0,25),
                             'price'         => random_int(5,25),
                             'viewAmount'    => random_int(5, 120),
+                            'img'           => $faker->imageUrl($width = 500, $height = 650),
                         ]
                     );
                 }

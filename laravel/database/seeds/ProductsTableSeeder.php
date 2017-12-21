@@ -20,7 +20,6 @@ class ProductsTableSeeder extends Seeder
             DB::table('products')->insert([
                 'name' => $catList[$i],
                 'description' => $faker->sentence(2),
-                'img' => $faker->imageUrl($width = 500, $height = 650),
             ]);
         }
     }
