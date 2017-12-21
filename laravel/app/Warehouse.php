@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class product extends Model
+class Warehouse extends Model
 {
-    use  SoftDeletes;
-    public function categorie()
+    protected $table = 'Warehouse';
+    protected $primaryKey = 'product_id';
+
+    public function category()
     {
         return $this->belongsTo('App\categorie');
     }
@@ -22,7 +23,7 @@ class product extends Model
     }
     public function size()
     {
-        return $this->belongsTo('App\size');
+        return $this->hasMany('App\size');
     }
     public function storage()
     {
@@ -30,16 +31,18 @@ class product extends Model
     }
     public function brand()
     {
-        return $this->belongsTo('App\brand');
+        return $this->hasMany('App\brand');
     }
     public function image()
     {
-    return $this->hasMany('App\image');
+        return $this->hasMany('App\image');
     }
-
+    public function product()
+    {
+        return $this->belongsTo('App\product');
+    }
     public function brand_model()
     {
-        
-    }
 
+    }
 }

@@ -8,6 +8,10 @@ class size extends Model
 {
     public function products()
     {
-        $this->hasMany('App\products');
+        $this->belongsToMany('App\Warehouse');
+    }
+    public function category()
+    {
+        $this->belongsTo('App\categorie');
     }
 }

@@ -57,7 +57,7 @@ Home
         <div class="row justify-content-around p-4 four-houses-container">
             <div class="four-houses">
                 <div class="four-houses-logo dragon">
-                    <a href="{{action('HouseController@show', 1)}}">
+                    <a href="{{action('HouseController@show', 2)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/db_dragon_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -66,7 +66,7 @@ Home
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo raven">
-                    <a href="{{action('HouseController@show', 2)}}">
+                    <a href="{{action('HouseController@show', 3)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/rave_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -75,7 +75,7 @@ Home
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo serpent">
-                    <a href="{{action('HouseController@show', 3)}}">
+                    <a href="{{action('HouseController@show', 4)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/script_serpents_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -84,7 +84,7 @@ Home
             </div>
             <div class="four-houses">
                 <div class="four-houses-logo viking">
-                    <a href="{{action('HouseController@show', 4)}}">
+                    <a href="{{action('HouseController@show', 1)}}">
                         <div class="four-houses-top"></div>
                             <img src="img/viking_xs.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
@@ -110,12 +110,14 @@ Home
             <div class="row headRoom">
                 @for($i = 0; $i < 3; $i++)
                     <div class="col-4 product">
-                        <a href="#">
+                        <a href="{{action('ProductController@show', $products[$i]->id)}}">
                             <div class="col-12">
-                                <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->image[0]->img}}" alt="">
+                                <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->img}}" alt="">
                             </div>
-                            <span class="text-dark">{{$products[$i]->name}}</span>
-                            <span class="text-dark pull-right">{{$products[$i]->price}}</span>
+                            <div class="row justify-content-between p-2">
+                                <span class="col-9 text-dark">{{$products[$i]->category->name}} - {{$products[$i]->house->name}}</span>
+                                <span class="text-dark">{{$products[$i]->price}}</span>
+                            </div>
                         </a>
                     </div>
                 @endfor

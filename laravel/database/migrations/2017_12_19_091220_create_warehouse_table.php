@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Eloquent\SoftDeletes;
-class CreateProductsTable extends Migration
+
+class CreateWarehouseTable extends Migration
 {
-    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -14,21 +13,17 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-
-        Schema::create('products', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('warehouse', function (Blueprint $table) {
+            $table->increments('product_id');
             $table->integer('house_id');
             $table->integer('category_id');
             $table->integer('size_id')->nullable();
-            $table->integer('brand_id')->nullable();
-            $table->integer('b_model_id')->nullable();
-            $table->integer('storage_id')->nullable();
-            $table->integer('discount')->nullable();
-            $table->string('name');
-            $table->decimal('price');
-            $table->text('description');
+            $table->integer('model_id')->nullable();
             $table->integer('supply');
+            $table->decimal('price');
             $table->integer('viewAmount');
+            $table->string('img')->nullable();
+            $table->text('description');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -42,6 +37,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('warehouse');
     }
 }
