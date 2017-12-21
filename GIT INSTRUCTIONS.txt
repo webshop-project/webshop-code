@@ -1,0 +1,20 @@
+Thomas:
+
+* git branch name-of-your-feature
+* git checkout name-of-your-feature
+* git push name-of-your-feature (in GitKraken, to origin/name-of-your-feature)
+* git checkout master
+* git pull master (alles accepteren)
+* merge your name-of-feature into master
+
+All of you:
+When you start working on a feature:
+* make a nice branch for it
+* checkout that branch
+* go work on that branch
+* make regular commits and pushes
+* When done:
+* make final commit and push
+* move to master branch
+* merge your branch into master
+* repeat

@@ -17,7 +17,7 @@ class BrandsTableSeeder extends Seeder
             DB::table('brands')->insert
             (
                 [
-                    'brandName' => $brandsList[$i],
+                    'name' => $brandsList[$i],
                 ]
             );
         }
