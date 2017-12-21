@@ -36,7 +36,7 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'price'         => random_int(5,25),
                                 'viewAmount'    => random_int(5, 120),
                                 'img'           => $faker->imageUrl($width = 500, $height = 650),
-                                'description' => $faker->sentence(2),
+                                'description'   => $faker->sentence(2),
                             ]
                         );
                     }
@@ -73,7 +73,7 @@ class WarehouseModelsTableSeeder extends Seeder
                                 'price'         => random_int(5,25),
                                 'viewAmount'    => random_int(5, 120),
                                 'img'           => $faker->imageUrl($width = 500, $height = 650),
-                                'description' => $faker->sentence(2),
+                                'description'   => $faker->sentence(2),
                             ]
                         );
                     }
@@ -87,7 +87,7 @@ class WarehouseModelsTableSeeder extends Seeder
                             'price'         => random_int(5,25),
                             'viewAmount'    => random_int(5, 120),
                             'img'           => $faker->imageUrl($width = 500, $height = 650),
-                            'description' => $faker->sentence(2),
+                            'description'   => $faker->sentence(2),
                         ]
                     );
                 }
