@@ -3,11 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CreateImagesTable extends Migration
+class CreateProductTable extends Migration
 {
-    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -15,10 +13,14 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('product', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('house_id');
+            $table->integer('category_id');
+            $table->integer('model_id')->nullable();
+            $table->text('description')->nullable();
             $table->string('img');
-            $table->integer('product_id');
+            $table->integer('viewAmount');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -32,6 +34,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image');
+        Schema::dropIfExists('product');
     }
 }
