@@ -1,24 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        img{
-            width: 100%;
-        }
-    </style>
+    <title>Voucher Code</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.css">
 </head>
 <body>
-    <img src="{{ $message->embed(public_path() . '/img/voucher_top.png') }}"alt="">
-        <h1 style="text-align: center;">{{$user}}</h1>
-        <h2 style="text-align: center;">Here is your voucher code:</h2>
-        <h3 style="text-align: center;">{{$code}}</h3>
-        <h4 style="text-align: center;">This code is {{$value}} euro worth</h4>
-        <p style="text-align: center;">This voucher is valid sice {{$startDate}} until {{$endDate}}</p>
-    <img src="{{ $message->embed(public_path() . '/img/voucher_botom.png') }}" alt="">
+{{--firstName--}}
+{{--lastName--}}
+{{--code--}}
+{{--value--}}
+{{--startDate--}}
+{{--endDate--}}
+<div class="center" style="text-align: center">
+
+    <img src="{{ $message->embed($topImage)}}" alt="Voucher top image">
+    <div class="head">
+        <h2 class="">Geachte {{$firstName}} {{$lastName}}</h2>
+        <p class="">Hierbij ontvangt u uw voucher code.</p>
+    </div>
+    <div class="content">
+        <p><strong>{{$code}}</strong></p>
+        <small class="form-text text-muted ">Bovenstaande code is {{$value}} euro waard.</small>
+        <p class="text-muted">Deze code kun u gebruiken vanaf: <strong>{{$startDate}}</strong> tot <strong>{{$endDate}}</strong></p>
+    </div>
+        <div class="foot">
+            <p>Met vriendelijke groet, FourHouses-shop</p>
+        </div>
+    <img src="{{ $message->embed($bottomImage) }}" alt="Voucher bottom image">
+
+</div>
 </body>
 </html>
