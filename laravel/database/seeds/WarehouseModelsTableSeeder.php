@@ -23,7 +23,6 @@ class WarehouseModelsTableSeeder extends Seeder
 
             if($i+1 == 9 || $i+1 == 10 || $i+1 == 20 || $i+1 == 21 || $i+1 == 31 || $i+1 == 32 || $i+1 == 42 || $i+1 == 43)
             {
-                $product_id++;
                 for ($j = 0; $j < count($shirtSizeList); $j++)
                 {
                     //shirts
@@ -37,10 +36,10 @@ class WarehouseModelsTableSeeder extends Seeder
                         ]
                     );
                 }
+                $product_id++;
             }
             elseif ($i+1 == 11 || $i+1 == 22 || $i+1 == 33 || $i+1 == 44)
             {
-                $product_id++;
                 for ($j = 0; $j < count($usbsizeList); $j++)
                 {
                     //usb
@@ -54,10 +53,10 @@ class WarehouseModelsTableSeeder extends Seeder
                         ]
                     );
                 }
+                $product_id++;
             }
             else
             {
-                $product_id++;
                 DB::table('warehouse')->insert
                 (
                     [
@@ -66,6 +65,7 @@ class WarehouseModelsTableSeeder extends Seeder
                         'supply'        => random_int(0,10),
                     ]
                 );
+                $product_id++;
             }
         }
     }
