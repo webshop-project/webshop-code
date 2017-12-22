@@ -10,7 +10,7 @@
                 <p class="col-xs-6 col-xs-offset-3 bg-danger" style="text-align: center">{{$error}}</p>
             @endforeach
         @endif
-        <form action="{{action('MailController@store')}}" method="post" class="form col-6 offset-3" id="global">
+        <form action="{{action('VoucherController@store')}}" method="post" class="form col-6 offset-3" id="global">
             {{csrf_field()}}
             <div class="form-group">
                 <label for="userOption" class="col-form-label col-form-label-lg">Voucher type</label>
