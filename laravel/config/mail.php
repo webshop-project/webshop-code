@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.ziggo.nl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'amoshop@radius-college.nl'),
-        'name' => env('MAIL_FROM_NAME', 'Amo-Webshop'),
+        'address' => env('MAIL_FROM_ADDRESS', 'amo-websjop@radiuscollege.nl'),
+        'name' => env('MAIL_FROM_NAME', 'Amo Webshop'),
     ],
 
     /*

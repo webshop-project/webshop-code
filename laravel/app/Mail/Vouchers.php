@@ -11,14 +11,30 @@ class Vouchers extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $firstName;
+    public $lastName;
+    public $code;
+    public $value;
+    public $startDate;
+    public $endDate;
+    public $topImage;
+    public $bottomImage;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($userFirstName, $userLastName, $voucherCode, $voucherValue, $voucherStartDate, $voucherEndDate, $voucherTop, $voucherBottom)
     {
-        //
+        $this->firstName = $userFirstName;
+        $this->lastName = $userLastName;
+        $this->code = $voucherCode;
+        $this->value = $voucherValue;
+        $this->startDate = $voucherStartDate;
+        $this->endDate = $voucherEndDate;
+        $this->topImage = $voucherTop;
+        $this->bottomImage = $voucherBottom;
     }
 
     /**
@@ -28,6 +44,6 @@ class Vouchers extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('email.voucher');
     }
 }
