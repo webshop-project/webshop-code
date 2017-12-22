@@ -11,7 +11,7 @@ class WarehouseModelsTableSeeder extends Seeder
      */
     public function run()
     {
-        $modelsList = ['7S','8S','Note','7S','X'];
+        $modelsList = ['normal','polo','7S','8S','Note','7S','X'];
         $catList = ['Cap', 'Keycord', 'Mug', 'Phonecase', 'Shirt', 'USB'];
         $housesList = ['Variable Vikings', 'Database Dragons', 'Recursive Ravens', 'Script Serpents'];
         $sizeList = ['s', 'm', 'l', 'xl', '8', '16', '32', '64'];
