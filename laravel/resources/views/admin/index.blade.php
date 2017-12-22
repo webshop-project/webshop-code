@@ -18,7 +18,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-shopping-bag justified-content-center" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        {{--<span>{{$productsCount}}</span>--}}
+                        <span>{{$productsCount}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -27,7 +27,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        {{--<span>{{$usersCount}}</span>--}}
+                        <span>{{$usersCount}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -36,7 +36,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-barcode" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        {{--<span>{{$ordersCount}}</span>--}}
+                        <span>{{$ordersCount}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -45,7 +45,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        {{--<span>{{$vouchersCount}}</span>--}}
+                        <span>{{$vouchersCount}}</span>
                     </div>
                 </div>
             </div>
@@ -66,81 +66,77 @@
                 <h2>MOST POPULAR CLOTHING</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                {{--@foreach($products as $product)--}}
+                @foreach($products as $product)
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
                                 <div class="img-preview col-9">
-                                    {{--<img width="90%" src="{{$product->img}}" alt="">--}}
+                                    <img width="90%" src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
                                     <p><b>price:</b></p>
-                                    {{--<p>{{$product->price}}</p>--}}
+                                    <p>{{$product->price}}</p>
                                     <p><b>stock:</b></p>
-                                    {{--<p>{{$product->supply}}</p>--}}
-                                    <p><b>name</b></p>
-                                    {{--<p>{{$product->name}}</p>--}}
+                                    <p>{{$product->supply}}</p>
                                 </div>
-                                {{--<div class="desc">{{$product->description}}--}}
+                                <div class="desc">{{$product->description}}
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="col-3"></div>
-                                {{--<a href="{{action('ProductController@edit', $product->id)}}">--}}
+                                <a href="{{action('WarehouseController@edit', $product->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
-                                {{--</a>--}}
-                                {{--<form action="{{action('ProductController@destroy', $product->id)}}" method="post">--}}
+                                </a>
+                                <form action="{{action('WarehouseController@destroy', $product->product_id)}}" method="post">
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    {{--<input type="hidden" name="delete" value="{{$product->id}}">--}}
+                                    <input type="hidden" name="delete" value="{{$product->product_id}}">
                                     <input class="btn btn-danger" type="submit" value="Delete Product">
-                                {{--</form>--}}
+                                </form>
                             </div>
                         </div>
                     </div>
-                {{--@endforeach--}}
+                @endforeach
             </div>
-{{--            {{$products->links()}}--}}
+            {{$products->links()}}
 
             <div class="container indexTitle col-12">
                 <h2>LOW ON STOCK</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                {{--@foreach($productsLow as $productLow)--}}
+                @foreach($productsLow as $productLow)
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
                                 <div class="img-preview col-9">
-                                    {{--<img width="90%" src="{{$product->img}}" alt="">--}}
+                                    <img width="90%" src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
                                     <p><b>price:</b></p>
-                                    {{--<p>{{$productLow->price}}</p>--}}
+                                    <p>{{$productLow->price}}</p>
                                     <p><b>stock:</b></p>
-                                    {{--<p>{{$productLow->supply}}</p>--}}
-                                    <p><b>name</b></p>
-                                    {{--<p>{{$productLow->name}}</p>--}}
+                                    <p>{{$productLow->supply}}</p>
                                 </div>
-                                {{--<div class="desc">{{$productLow->description}}--}}
+                                <div class="desc">{{$productLow->description}}
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="col-3"></div>
-                                {{--<a href="{{action('ProductController@edit', $productLow->id)}}">--}}
+                                <a href="{{action('WarehouseController@edit', $productLow->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
-                                {{--</a>--}}
-                                {{--<form action="{{action('ProductController@destroy', $productLow->id)}}" method="post">--}}
+                                </a>
+                                <form action="{{action('WarehouseController@destroy', $productLow->product_id)}}" method="post">
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    {{--<input type="hidden" name="delete" value="{{$productLow->id}}">--}}
+                                    <input type="hidden" name="delete" value="{{$productLow->product_id}}">
                                     <input class="btn btn-danger" type="submit" value="Delete Product">
-                                {{--</form>--}}
+                                </form>
                             </div>
                         </div>
                     </div>
-                {{--@endforeach--}}
+                @endforeach
             </div>
-{{--            {{$productsLow->links()}}--}}
+            {{$productsLow->links()}}
 
             <div class="container indexTitle col-12">
                 <h2>MOST LOGINS FROM HOUSES</h2>
