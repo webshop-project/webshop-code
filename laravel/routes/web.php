@@ -20,7 +20,7 @@ Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
 Route::post('/vouchers/add', 'MailController@store');
-
+Route::post('/invoice/create','InvoicesController@create');
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 
@@ -31,3 +31,4 @@ route::resource('/categorie' , 'CategorieController');
 route::resource('/img', 'ImageController');
 route::resource('/user', 'UserController');
 route::resource('/house', 'HouseController');
+
