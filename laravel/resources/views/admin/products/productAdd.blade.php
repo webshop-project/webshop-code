@@ -13,7 +13,7 @@
                 <div class="col">
 
                     <div class="form">
-                        <form class="form-inline" action="{{action('ProductController@store')}}" method="post" enctype="multipart/form-data">
+                        <form class="form-inline" action="{{action('WarehouseController@store')}}" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="col">
                                 <div class="form-group form-padding">
@@ -63,14 +63,14 @@
                                     <label for="sizeXL">XL</label>
                                     <input class="form-control" type="checkbox" id="sizeXL" name="sizeXL">
                                 </div>
-                                <div class="form-group">
-                                    <label for="sizeGB">Storage</label>
-                                    <select class="form-control" name="sizeGB" id="sizeGB">
-                                        @foreach($storages as $storage)
-                                            <option class="form-control" value="{{$storage->id}}">{{$storage->gb}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<label for="sizeGB">Storage</label>--}}
+                                    {{--<select class="form-control" name="sizeGB" id="sizeGB">--}}
+                                        {{--@foreach($storages as $storage)--}}
+                                            {{--<option class="form-control" value="{{$storage->id}}">{{$storage->gb}}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
                             </div>
                     </div>
                     <div class="w-100"></div>

@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="container">
             <h2>Editing => {{$products->name}}</h2>
-            <form action="{{action('ProductController@update', $products->id)}}" method="POST">
+            <form action="{{action('WarehouseController@update', $products->product_id)}}" method="POST">
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <div class="form-group">
