@@ -24,21 +24,19 @@
                                     <p>{{$product->price}}</p>
                                     <p><b>stock:</b></p>
                                     <p>{{$product->supply}}</p>
-                                    <p><b>name</b></p>
-                                    <p>{{$product->name}}</p>
                                 </div>
                                 <div class="desc">{{$product->description}}
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="col-3"></div>
-                                <a href="{{action('ProductController@edit', $product->id)}}">
+                                <a href="{{action('WarehouseController@edit', $product->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
                                 </a>
-                                <form action="{{action('ProductController@destroy', $product->id)}}" method="post">
+                                <form action="{{action('WarehouseController@destroy', $product->product_id)}}" method="post">
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    <input type="hidden" name="delete" value="{{$product->id}}">
+                                    <input type="hidden" name="delete" value="{{$product->product_id}}">
                                     <input class="btn btn-danger" type="submit" value="Delete Product">
                                 </form>
                             </div>

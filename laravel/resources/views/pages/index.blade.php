@@ -112,10 +112,10 @@ Home
                     <div class="col-4 product">
                         <a href="{{action('ProductController@show', $products[$i]->id)}}">
                             <div class="col-12">
-                                <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->image[0]->img}}" alt="">
+                                <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->img}}" alt="">
                             </div>
                             <div class="row justify-content-between p-2">
-                                <span class="col-9 text-dark">{{$products[$i]->name}}</span>
+                                <span class="col-9 text-dark">{{$products[$i]->category->name}} - {{$products[$i]->house->name}}</span>
                                 <span class="text-dark">{{$products[$i]->price}}</span>
                             </div>
                         </a>

@@ -21,7 +21,7 @@ class WarehouseController extends Controller
     public function index()
     {
 
-        $products = DB::table('products')
+        $products = DB::table('warehouse')
             ->select(DB::raw('*'))
             ->where('deleted_at', '=', null)
             ->paginate(6);
@@ -48,11 +48,11 @@ class WarehouseController extends Controller
     {
         $houses = \App\house::All();
         $catergories = \App\categorie::All();
-        $storages = \App\storage::All();
+        $sizes = \App\size::All();
         return view('admin/products/productAdd')
             ->with('houses', $houses)
             ->with('categories', $catergories)
-            ->with('storages', $storages);
+            ->with('sizes', $sizes);
     }
 
     /**
@@ -206,8 +206,8 @@ class WarehouseController extends Controller
      */
     public function show($id)
     {
-        $product = \App\product::find($id);
-        $relatedProducts = \App\product::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
+        $product = \App\Warehouse::find($id);
+        $relatedProducts = \App\Warehouse::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
         $house = \App\house::find($product->house_id);
 
         return view('pages/shop/details')
@@ -224,12 +224,11 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\product::find($id);
+        $product = \App\Warehouse::find($id);
         $catergories = \App\categorie::All();
         $houses = \App\house::All();
         $brands = \App\brand::all();
         $models = \App\brand_model::All();
-        $storages = \App\storage::All();
 
         $images = DB::table('images')
             ->select(DB::raw('*'))
@@ -245,8 +244,7 @@ class WarehouseController extends Controller
             ->with('images', $images)
             ->with('houses', $houses)
             ->with('brands', $brands)
-            ->with('models', $models)
-            ->with('storages', $storages);
+            ->with('models', $models);
     }
 
     /**
@@ -269,8 +267,9 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        \App\product::destroy($id);
+        \App\Warehouse::destroy($id);
 
         return redirect('products')->with('succes', 'Product has been deleted!');
     }
+
 }

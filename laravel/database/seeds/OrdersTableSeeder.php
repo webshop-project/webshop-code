@@ -16,6 +16,7 @@ class OrdersTableSeeder extends Seeder
             $faker = Faker\Factory::create('nl_NL');
 
             DB::table('orders')->insert([
+                'oderNumber'    => $i,
                 'warehouse_id'  => random_int(1,68),
                 'user_id'       => random_int(1,100),
                 'amount'        => random_int(1,5),

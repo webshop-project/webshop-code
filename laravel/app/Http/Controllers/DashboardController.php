@@ -17,43 +17,44 @@ class DashboardController extends Controller
     public function index()
     {
 
-//
-//        $products = DB::table('products')
-//            ->select(DB::raw('*'))
-//            ->where('deleted_at', '=', null)
-//            ->orderBy('viewAmount', 'desc')
-//            ->paginate(3);
 
-//        $productsLow = DB::table('products')
-//            ->select(DB::raw('*'))
-//            ->where([
-//                ['deleted_at', '=', null],
-//                ['supply', '<=', 3]
-//            ])
-//            ->orderBy('supply', 'asc')
-//            ->paginate(3,['*'],'pag');
-//
-//        $images = DB::table('images')
-//            ->select(DB::raw('*'))
-//            ->where([
-//                ['deleted_at', '=', null],
-//            ])
-//            ->get();
-//
-//        $productsCount = DB::table('products')->count();
-//        $userCount = DB::table('users')->count();
-//        $orderCount = DB::table('orders')->count();
-//        $voucherCount = DB::table('vouchers_used')->count();
+        $products = DB::table('warehouse')
+            ->select(DB::raw('*'))
+            ->where('deleted_at', '=', null)
+            ->orderBy('viewAmount', 'desc')
+            ->paginate(3);
+
+        $productsLow = DB::table('warehouse')
+            ->select(DB::raw('*'))
+            ->where([
+                ['deleted_at', '=', null],
+                ['supply', '<=', 3]
+            ])
+            ->orderBy('supply', 'asc')
+            ->paginate(3,['*'],'pag');
+
+        $images = DB::table('images')
+            ->select(DB::raw('*'))
+            ->where([
+                ['deleted_at', '=', null],
+            ])
+            ->get();
+
+        $productsCount = DB::table('warehouse')->count();
+        $userCount = DB::table('users')->count();
+        $orderCount = DB::table('orders')->count();
+        $voucherCount = DB::table('vouchers_used')->count();
         $warehouse = new Warehouse();
         $lowOnStock = $warehouse::where('supply','<',4)->count();
-        return view('admin/index')->with('lowOnStock',$lowOnStock);
-//            ->with('products', $products)
-//            ->with('image', $images)
-//            ->with('productsLow', $productsLow)
-//            ->with('productsCount', $productsCount)
-//            ->with('usersCount' ,  $userCount)
-//            ->with('ordersCount',$orderCount)
-//            ->with('vouchersCount' , $voucherCount);
+        return view('admin/index')
+            ->with('lowOnStock',$lowOnStock)
+            ->with('products', $products)
+            ->with('image', $images)
+            ->with('productsLow', $productsLow)
+            ->with('productsCount', $productsCount)
+            ->with('usersCount' ,  $userCount)
+            ->with('ordersCount',$orderCount)
+            ->with('vouchersCount' , $voucherCount);
     }
 
     /**
@@ -120,5 +121,12 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function lowStockList()
+    {
+        $warehouse = new Warehouse();
+        $lowOnStock = $warehouse::where('supply','<',4)->get();
+        return view('admin/products/lowStockList')->with('lowOnStock',$lowOnStock);
     }
 }
