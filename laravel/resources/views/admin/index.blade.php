@@ -49,11 +49,16 @@
                     </div>
                 </div>
             </div>
-            <div class="d-inline">
-                <div class="alert alert-danger" role="alert">
-                    <p class="d-inline">There are  <span class="badge badge-warning badge-pill">{{$lowOnStock}}</span>
-                        products low on stock!</p>
-                    <a class="btn btn-warning d-inline" href="{{action('DashboardController@lowStockList') }}">Click me!</a>
+            <div class="d-inline row" id="alertBar">
+                <div class="alert alert-danger d-flex justify-content-between  align-items-center" role="alert">
+                    <div class="warningLabel ">
+                        <p class="d-inline">There are  <span class="badge badge-warning badge-pill">{{$lowOnStock}}</span>
+                            products low on stock!</p>
+                    </div>
+                    <div class="warningButtons">
+                        <a class="btn btn-warning d-inline" href="{{action('DashboardController@lowStockList') }}">More Info!</a>
+                        <button id="hide" class="btn btn-warning fa fa-times"></button>
+                    </div>
                 </div>
             </div>
 
@@ -182,4 +187,14 @@
             </div>
         {{--</div>--}}
     {{--</div>--}}
+    <script>
+
+        const btnHide  = document.getElementById('hide');
+        const alertBar = document.getElementById('alertBar');
+        btnHide.addEventListener('click', () => {
+          alertBar.style.display = 'none';
+          alertBar.innerHTML = alertBar;
+        });
+
+    </script>
 @endsection

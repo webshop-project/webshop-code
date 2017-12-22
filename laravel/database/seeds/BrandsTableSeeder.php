@@ -11,7 +11,7 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        $brandsList = ['Samsung','Iphone'];
+        $brandsList = ['shirt','Samsung','Iphone'];
         for( $i = 0 ; $i < count($brandsList) ; $i++ )
         {
             DB::table('brands')->insert
