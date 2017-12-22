@@ -24,7 +24,7 @@ Route::post('/vouchers/add', 'MailController@store');
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 
-Route::resource('/products', 'ProductController');
+Route::resource('/products', 'WarehouseController');
 route::resource('/orders', 'OrderController');
 route::resource('/admin', 'DashboardController');
 route::resource('/categorie' , 'CategorieController');
