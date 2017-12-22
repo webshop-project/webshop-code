@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProductController extends Controller
+class WarehouseController extends Controller
 {
     use SoftDeletes;
 
@@ -206,8 +206,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = \App\product::find($id);
-        $relatedProducts = \App\product::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
+        $product = \App\Warehouse::find($id);
+        $relatedProducts = \App\Warehouse::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
         $house = \App\house::find($product->house_id);
 
         return view('pages/shop/details')
@@ -273,4 +273,5 @@ class ProductController extends Controller
 
         return redirect('products')->with('succes', 'Product has been deleted!');
     }
+
 }
