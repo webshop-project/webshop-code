@@ -19,8 +19,7 @@
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <p class="h5"> Order id: {{$order->id}} </p>
-                            <p class="h5"> Name: {{$order->user->firstName}} </p>
-                            <p class="h5"> Sir name: {{$order->user->lastName}}</p>
+                            <p class="h5"> Name: {{$order->User->loginName}} </p>
                             <p class="h5"> Amount: {{$order->amount}} </p>
                             <p class="h5"> Purchased at: {{$order->bought_at}} </p>
                             <p class="h5"> Total price: {{$order->price}} </p>
@@ -37,8 +36,7 @@
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <p class="h5"> Order id: {{$orderP->id}} </p>
-                            <p class="h5"> Name: {{$orderP->user->firstName}} </p>
-                            <p class="h5"> Sir name: {{$orderP->user->lastName}}</p>
+                            <p class="h5"> Username: {{$orderP->user->loginName}} </p>
                             <p class="h5"> Amount: {{$orderP->amount}} </p>
                             <p class="h5"> Purchased at: {{$orderP->bought_at}} </p>
                             <p class="h5"> Total price: {{$orderP->price}} </p>
@@ -71,6 +69,12 @@
             document.getElementById('title').innerHTML = 'NOT PROCESSED ORDERS';
         }else{
             document.getElementById('title').innerHTML = 'PROCESSED ORDERS';
+        }
+
+        if (typeof(Storage) !== "undefined"){
+
+        }else {
+            document.write('its not working')
         }
     }
 

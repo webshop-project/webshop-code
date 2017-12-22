@@ -15,8 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = \App\Order::where('order_processed', false)->paginate(6);
-        $ordersP = \App\Order::where('order_processed', true)->paginate(6);
+        $orders = \App\Order::where('shipped', false)->paginate(6);
+        $ordersP = \App\Order::where('shipped', true)->paginate(6);
         $users = \App\User::all();
 
         return view('admin/orders/orderIndex')
