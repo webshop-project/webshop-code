@@ -17,7 +17,7 @@ class CreateBrandModelsTable extends Migration
         Schema::create('brand_models', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('brand_id')->nullable();
-            $table->integer('category_id');
+            $table->integer('category_id')->nullable();
             $table->string('name');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
