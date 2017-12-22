@@ -18,7 +18,6 @@ Route::get('/contact', 'PagesController@contact');
 Route::resource('/shop/cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'pagesController@detailpage');
-Route::get('/order/finish/{id}', 'OrderController@finish');
 Route::post('/vouchers/add', 'MailController@store');
 
 

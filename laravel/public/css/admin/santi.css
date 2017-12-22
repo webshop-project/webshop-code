@@ -1,5 +1,12 @@
 .active-tr:hover{
     color: red;
     cursor: pointer;
-    
+}
+
+.not-processed{
+    display: block;
+}
+
+.processed{
+    display: none;
 }

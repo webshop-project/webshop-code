@@ -15,16 +15,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = \App\Order::paginate(6);
-
-
+        $orders = \App\Order::where('order_processed', false)->paginate(6);
+        $ordersP = \App\Order::where('order_processed', true)->paginate(6);
         $users = \App\User::all();
 
         return view('admin/orders/orderIndex')
             ->with('orders', $orders)
-            ->with('users', $users);
-
-
+            ->with('users', $users)
+            ->with('ordersP', $ordersP);
     }
 
     /**
@@ -82,9 +80,13 @@ class OrderController extends Controller
      * @param  \App\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order $order)
+    public function update($id)
     {
-        //
+        $orders = \App\Order::find($id);
+        $orders->order_processed = 1;
+        $orders->save();
+
+        return back();
     }
 
     public function finish($id){
