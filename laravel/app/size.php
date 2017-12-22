@@ -8,7 +8,7 @@ class size extends Model
 {
     public function products()
     {
-        $this->belongsToMany('App\Warehouse');
+        $this->hasMany('App\Warehouse');
     }
     public function category()
     {

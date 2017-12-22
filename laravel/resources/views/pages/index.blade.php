@@ -110,7 +110,7 @@ Home
             <div class="row headRoom">
                 @for($i = 0; $i < 3; $i++)
                     <div class="col-4 product">
-                        <a href="{{action('ProductController@show', $products[$i]->id)}}">
+                        <a href="{{action('WarehouseController@show', $products[$i]->product_id)}}">
                             <div class="col-12">
                                 <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->img}}" alt="">
                             </div>

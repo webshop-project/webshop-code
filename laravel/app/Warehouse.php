@@ -23,7 +23,7 @@ class Warehouse extends Model
     }
     public function size()
     {
-        return $this->hasMany('App\size');
+        return $this->hasOne('App\size');
     }
     public function storage()
     {
@@ -36,10 +36,6 @@ class Warehouse extends Model
     public function image()
     {
         return $this->hasMany('App\image');
-    }
-    public function product()
-    {
-        return $this->belongsTo('App\product');
     }
     public function brand_model()
     {

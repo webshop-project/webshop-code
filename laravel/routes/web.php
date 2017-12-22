@@ -22,7 +22,9 @@ Route::get('/order/finish/{id}', 'OrderController@finish');
 
 Route::get('/admin/lowStockList','DashboardController@lowStockList');
 
-Route::resource('/warehouse', 'WarehouseController');
+Route::get('/admin/vouchers/add', 'VoucherController@create');
+
+Route::resource('/products', 'WarehouseController');
 route::resource('/orders', 'OrderController');
 route::resource('/admin', 'DashboardController');
 route::resource('/categorie' , 'CategorieController');

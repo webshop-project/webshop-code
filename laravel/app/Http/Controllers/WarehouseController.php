@@ -206,14 +206,22 @@ class WarehouseController extends Controller
      */
     public function show($id)
     {
-        $product = \App\Warehouse::find($id);
-        $relatedProducts = \App\Warehouse::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
-        $house = \App\house::find($product->house_id);
+        $productFind = \App\Warehouse::find($id);
+        $product = \App\Warehouse::select('*')->where('house_id', '=', $productFind->house_id)->where('category_id', '=', $productFind->category_id)->get();
+        $relatedProducts = \App\Warehouse::select('*')->where('house_id', '=', $productFind->house_id)->where('category_id', '!=', $productFind->category_id)->get();
+
+        $sizes = [];
+
+        for($i = 0; $i < count($product); $i++)
+        {
+            $size = \App\size::select('*')->where('id', '=', $product[$i]->size_id)->get();
+            array_push($sizes, $size[0]->size);
+        }
 
         return view('pages/shop/details')
             ->with('product', $product)
             ->with('relatedProducts', $relatedProducts)
-            ->with('house', $house);
+            ->with('sizes', $sizes);
     }
 
     /**
