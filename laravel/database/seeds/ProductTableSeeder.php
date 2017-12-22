@@ -13,8 +13,9 @@ class ProductTableSeeder extends Seeder
     {
         $housesList = ['Variable Vikings', 'Database Dragons', 'Recursive Ravens', 'Script Serpents'];
         $catList = ['Cap', 'Keycord', 'Mug', 'Phonecase', 'Shirt', 'USB'];
-        $modelsList = ['normal','polo','7S','8S','Note','7S','X'];
-
+        $modelsListSamsung = ['7S','8S','Note'];
+        $modelsListIphone = ['7S','X'];
+        $modelsListShirt = ['normal','polo'];
         $faker = Faker\Factory::create('nl_NL');
         for ( $i = 0; $i < count($housesList); $i++)
         {
@@ -22,20 +23,72 @@ class ProductTableSeeder extends Seeder
             {
                 if( $j == 3)
                 {
-                    for($l = 0; $l < 3; $l++)
+                    for($l = 0 + count($modelsListShirt);
+                        $l < count($modelsListSamsung) + count($modelsListIphone) + count($modelsListShirt);
+                        $l++)
                     {
+                        if($l > count($modelsListSamsung) )
+                        {
+                            //SamsungModels
+                            DB::table('product')->insert
+                            (
+                                [
+                                    'house_id'      => $i + 1,
+                                    'category_id'   => $j + 1,
+                                    'model_id'      => $l + 1,
+                                    'description'   => $faker->sentence(6),
+                                    'img'           => '/img/cap_serpent_front.png',
+                                    'viewAmount'    => random_int(0,25),
+                                ]
+                            );
+                        }
+                        else
+                        {
+                            //IphoneModels
+                            DB::table('product')->insert
+                            (
+                                [
+                                    'house_id'      => $i + 1,
+                                    'category_id'   => $j + 1,
+                                    'model_id'      => $l + 1,
+                                    'description'   => $faker->sentence(6),
+                                    'img'           => '/img/cap_serpent_front.png',
+                                    'viewAmount'    => random_int(0,25),
+                                ]
+                            );
+                        }
+                    }
+                }
+                elseif ($j == 4)
+                {
+                    for($l = 0; $l < count($modelsListShirt); $l++)
+                    {
+                        //Shirt
                         DB::table('product')->insert
                         (
                             [
-                                'house_id'      => $i,
-                                'category_id'   => $j,
-                                'model_id'      => $l,
+                                'house_id'      => $i + 1,
+                                'category_id'   => $j + 1,
+                                'model_id'      => $l + 1,
                                 'description'   => $faker->sentence(6),
-                                'img'           =>
+                                'img'           => '/img/cap_serpent_front.png',
+                                'viewAmount'    => random_int(0,25),
                             ]
                         );
-
                     }
+                }
+                else
+                {
+                    DB::table('product')->insert
+                    (
+                        [
+                            'house_id'      => $i + 1,
+                            'category_id'   => $j + 1,
+                            'description'   => $faker->sentence(6),
+                            'img'           => '/img/cap_serpent_front.png',
+                            'viewAmount'    => random_int(0,25),
+                        ]
+                    );
                 }
             }
         }

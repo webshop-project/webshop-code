@@ -16,10 +16,9 @@ class ImagesTableSeeder extends Seeder
         for ($i = 0; $i <= 70; $i++)
         {
             DB::table('images')->insert([
-                'img' => $faker->imageUrl($width = 500, $height = 650),
+                'img' => '/img/cap_serpent_front.png',
                 'product_id' => $i+1,
             ]);
-
         }
     }
 }
