@@ -500,6 +500,9 @@ footer i{
     text-decoration: none;
     opacity: 0;
 }
+.btn{
+    margin-top: -30px;
+}
 
 a.buy {
     top: 20%;

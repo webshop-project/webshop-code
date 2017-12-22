@@ -41,18 +41,16 @@
                         </select>
                     </div>
                     <div class="row">
-                        {{--{{dd($products)}}--}}
                         @foreach($products as $product)
                             <div class="block span3">
                                 <div class="product">
                                         <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
                                     <div class="buttons">
-                                        <a class="preview btn btn-large btn-info" href="/shop/"><i class="glyphicon glyphicon-eye-open"></i> View item</a>
+                                        <a class="preview btn btn-large btn-info" href="#"><i class="glyphicon glyphicon-eye-open"></i> View item</a>
                                     </div>
                                 </div>
-
                                 <div class="info">
-                                    <h4>{{$product->house->name}} {{$product->category->name}}</h4>
+                                    <h4>{{$product->house->name}}<br> {{$product->category->name}}</h4>
                                     <span class="price">€{{$product->price}}</span>
                                     <form action="{{ url('/shop/cart') }}" method="POST">
                                         {!! csrf_field() !!}

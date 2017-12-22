@@ -14,6 +14,6 @@ class image extends Model
 {
     public function products()
     {
-        return $this->belongsTo('App\Warehouse');
+        return $this->belongsToMany('App\Warehouse');
     }
 }
