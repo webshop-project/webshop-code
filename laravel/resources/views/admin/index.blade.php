@@ -104,7 +104,7 @@
                 <h2>LOW ON STOCK</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                @foreach($productsLow as $productLow)
+                @foreach($productsLow->sortByDesc('supply') as $productLow)
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
@@ -136,7 +136,7 @@
                     </div>
                 @endforeach
             </div>
-            {{$productsLow->links()}}
+            {{$productsLow->appends(['sort' => 'supply'])->links()}}
 
             <div class="container indexTitle col-12">
                 <h2>MOST LOGINS FROM HOUSES</h2>

@@ -30,7 +30,7 @@ class ProductTableSeeder extends Seeder
                         if($l > count($modelsListSamsung) )
                         {
                             //SamsungModels
-                            DB::table('product')->insert
+                            DB::table('products')->insert
                             (
                                 [
                                     'house_id'      => $i + 1,
@@ -45,7 +45,7 @@ class ProductTableSeeder extends Seeder
                         else
                         {
                             //IphoneModels
-                            DB::table('product')->insert
+                            DB::table('products')->insert
                             (
                                 [
                                     'house_id'      => $i + 1,
@@ -64,7 +64,7 @@ class ProductTableSeeder extends Seeder
                     for($l = 0; $l < count($modelsListShirt); $l++)
                     {
                         //Shirt
-                        DB::table('product')->insert
+                        DB::table('products')->insert
                         (
                             [
                                 'house_id'      => $i + 1,
@@ -79,7 +79,7 @@ class ProductTableSeeder extends Seeder
                 }
                 else
                 {
-                    DB::table('product')->insert
+                    DB::table('products')->insert
                     (
                         [
                             'house_id'      => $i + 1,
