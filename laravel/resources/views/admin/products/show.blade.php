@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="10">
 @extends('layouts/adminMaster')
 @section('title')
     Home

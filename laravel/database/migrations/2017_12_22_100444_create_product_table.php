@@ -17,7 +17,7 @@ class CreateProductTable extends Migration
             $table->increments('id');
             $table->integer('house_id');
             $table->integer('category_id');
-            $table->integer('model_id')->nullable();
+            $table->integer('brand_model_id')->nullable();
             $table->text('description')->nullable();
             $table->string('img');
             $table->integer('viewAmount');
