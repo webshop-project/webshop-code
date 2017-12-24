@@ -18,7 +18,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-shopping-bag justified-content-center" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$productsCount}}</span>
+                        <span>{{\App\Warehouse::all()->count()}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -27,7 +27,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$usersCount}}</span>
+                        <span>{{\App\User::all()->count()}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -36,7 +36,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-barcode" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$ordersCount}}</span>
+                        <span>{{\App\order::all()->count()}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -45,14 +45,14 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$vouchersCount}}</span>
+                        <span>{{\App\voucher::all()->count()}}</span>
                     </div>
                 </div>
             </div>
             <div class="d-inline row" id="alertBar">
                 <div class="alert alert-danger d-flex justify-content-between  align-items-center" role="alert">
                     <div class="warningLabel ">
-                        <p class="d-inline">There are  <span class="badge badge-warning badge-pill">{{$lowOnStock}}</span>
+                        <p class="d-inline">There are  <span class="badge badge-warning badge-pill">{{\App\Warehouse::all()->where('supply','<','4')->count()}}</span>
                             products low on stock!</p>
                     </div>
                     <div class="warningButtons">
