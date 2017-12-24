@@ -208,6 +208,29 @@ body{
     padding: 3.5px 10px;
     border:none;
 }
+/*DETAIL PRODUCT*/
+.detail-img{
+    position: relative;
+}
+.detail-img .img-back{
+    display: none;
+}
+.detail-img .detail-img-choice{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(30, 30, 30, 0.7);
+    padding: 10px 0;
+    width: 100%;
+    display: none;
+}
+.detail-img:hover .detail-img-choice{
+    display: block;
+}
+.detail-img .detail-img-choice img{
+    width:80px;
+    height:50px;
+}
 /*ABOUT*/
 .about .banner{
     width: 100%;

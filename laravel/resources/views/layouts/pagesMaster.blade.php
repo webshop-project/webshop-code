@@ -100,7 +100,6 @@
 
     @yield('content')
 
-</div>
 
 <footer>
     <div class="container-fluid bg-secondary">

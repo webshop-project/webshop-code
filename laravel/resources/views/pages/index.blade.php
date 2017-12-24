@@ -97,12 +97,10 @@ Home
         <div class="container">
             <div class="row p-3">
                 <div class="col col-xs-12">
-                    <a href="#">
-                        <h2 class="d-inline newProducts">New Products</h2>
-                    </a>
+                    <h2 class="d-inline newProducts">Nieuwe Producten</h2>
                 </div>
                 <div class="col">
-                    <a href="/shop">
+                    <a href="{{action('ShopController@index')}}">
                         <h5 class="d-inline pull-right seeMore col-xs-12">See More</h5>
                     </a>
                 </div>
@@ -110,7 +108,7 @@ Home
             <div class="row headRoom">
                 @for($i = 0; $i < 3; $i++)
                     <div class="col-4 product">
-                        <a href="{{action('WarehouseController@show', $products[$i]->product_id)}}">
+                        <a href="{{action('WarehouseController@show', $products[$i]->id)}}">
                             <div class="col-12">
                                 <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->img}}" alt="">
                             </div>

@@ -16,29 +16,34 @@
 {{Breadcrumbs::render('product', $product)}}
     <div class="container details p-5">
         <div class="row p-5">
-            <div class="col-6 row justify-content-center">
-                <img class="img-responsive" src="{{$product[0]->img}}" alt="Product image">
+            <div class="col-6 row justify-content-center detail-img">
+                <img class="img-responsive img-front" src="{{$product->img}}" alt="Product image">
+                <img class="img-responsive img-back" src="{{$product->image[0]->img}}" alt="Product image">
+                <div class="detail-img-choice img-responsive">
+                    <img id="img-front-choice" src="{{$product->img}}" alt="Product image">
+                    <img id="img-back-choice" src="{{$product->image[0]->img}}" alt="Product img">
+                </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 p-5">
                 <table class="table">
                     <tbody>
                     <tr class="row ">
                         <td class="col-5">Name:</td>
-                        <td class="col-7">{{$product[0]->category->name}} - {{$product[0]->house->name}}</td>
+                        <td class="col-7">{{$product->category->name}} - {{$product->house->name}}</td>
                     </tr>
-                    @if($product[0]->category->id == 5 || $product[0]->category->id == 6)
+                    @if($product->category->id == 5 || $product->category->id == 6)
                         <tr class="row justify-content-between">
                             <td class="col-5">Size:</td>
                             <td class="col-7 ">
-                                @foreach($sizes as $size)
-                                    <span class="col-4">{{$size}}</span>
+                                @foreach($product->warehouse as $warehouse)
+                                    <span class="col-4">{{$warehouse->size->size}}</span>
                                 @endforeach
                             </td>
                         </tr>
                     @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>
-                        <td class="col-7">{{$product[0]->price}}</td>
+                        <td class="col-7">{{$product->price}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -59,7 +64,17 @@
         <hr>
         <div class="p-5">
             <h2>Beschrijving</h2>
-            <p>{{$product[0]->description}}</p>
+            <p>{{$product->description}}</p>
+        </div>
+        <div class="row p-3">
+            <div class="col col-xs-12">
+                <h2 class="d-inline newProducts">Gerelateerde Producten</h2>
+            </div>
+            <div class="col">
+                <a href="{{action('ShopController@index')}}">
+                    <h5 class="d-inline pull-right seeMore">See More</h5>
+                </a>
+            </div>
         </div>
         <div class="row headRoom">
             @for($i = 0; $i < 3; $i++)

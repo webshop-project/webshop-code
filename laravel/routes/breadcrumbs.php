@@ -20,7 +20,7 @@ Breadcrumbs::register('shop', function ($breadcrumbs) {
 // Home > Shop > [Product]
 Breadcrumbs::register('product', function ($breadcrumbs, $product) {
     $breadcrumbs->parent('shop');
-    $breadcrumbs->push($product[0]->category->name, route('products.show', $product[0]->category->name));
+    $breadcrumbs->push($product->category->name, route('products.show', $product->category->name));
 });
 
 // Home > About
