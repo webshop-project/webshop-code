@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-
-    protected $table = 'product';
     public function warehouse()
     {
         return $this->hasMany('App\Warehouse');
