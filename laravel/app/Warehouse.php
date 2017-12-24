@@ -37,7 +37,7 @@ class Warehouse extends Model
     {
         return $this->hasMany('App\image');
     }
-    public function product()
+    public function products()
     {
         return $this->belongsTo('App\product');
     }
