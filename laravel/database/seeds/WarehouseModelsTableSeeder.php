@@ -67,6 +67,7 @@ class WarehouseModelsTableSeeder extends Seeder
                 );
                 $product_id++;
             }
+            $product_id++;
         }
     }
 }

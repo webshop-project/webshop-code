@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class size extends Model
 {
-    public function products()
+    public function warehouse()
     {
         $this->belongsToMany('App\Warehouse');
     }

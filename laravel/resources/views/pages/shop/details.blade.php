@@ -16,24 +16,31 @@
 {{Breadcrumbs::render('product', $product)}}
     <div class="container details p-5">
         <div class="row p-5">
-            <div class="col-6 row justify-content-center">
-                <img class="img-responsive" src="../{{$product->image[0]->img}}" alt="Product image">
+            <div class="col-6 row justify-content-center detail-img">
+                <img class="img-responsive img-front" src="{{$product->img}}" alt="Product image">
+                <img class="img-responsive img-back" src="{{$product->image[0]->img}}" alt="Product image">
+                <div class="detail-img-choice img-responsive">
+                    <img id="img-front-choice" src="{{$product->img}}" alt="Product image">
+                    <img id="img-back-choice" src="{{$product->image[0]->img}}" alt="Product img">
+                </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 p-5">
                 <table class="table">
                     <tbody>
                     <tr class="row ">
-                        <td class="col-5">House:</td>
-                        <td class="col-7">{{$house->name}}</td>
+                        <td class="col-5">Name:</td>
+                        <td class="col-7">{{$product->category->name}} - {{$product->house->name}}</td>
                     </tr>
-                    <tr class="row justify-content-between">
-                        <td class="col-5">Size:</td>
-                        <td class="col-7 ">
-                        @foreach($product->size as $size)
-                            <span class="col-4">{{$size->size}}</span>
-                        @endforeach
-                        </td>
-                    </tr>
+                    @if($product->category->id == 5 || $product->category->id == 6)
+                        <tr class="row justify-content-between">
+                            <td class="col-5">Size:</td>
+                            <td class="col-7 ">
+                                @foreach($product->warehouse as $warehouse)
+                                    <span class="col-4">{{$warehouse->size->size}}</span>
+                                @endforeach
+                            </td>
+                        </tr>
+                    @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>
                         <td class="col-7">{{$product->price}}</td>
@@ -59,16 +66,26 @@
             <h2>Beschrijving</h2>
             <p>{{$product->description}}</p>
         </div>
+        <div class="row p-3">
+            <div class="col col-xs-12">
+                <h2 class="d-inline newProducts">Gerelateerde Producten</h2>
+            </div>
+            <div class="col">
+                <a href="{{action('ShopController@index')}}">
+                    <h5 class="d-inline pull-right seeMore">See More</h5>
+                </a>
+            </div>
+        </div>
         <div class="row headRoom">
             @for($i = 0; $i < 3; $i++)
 
                 <div class="product col-sm-12 col-md-4 col-4 p-4">
-                    <a href="{{action('ProductController@show', $relatedProducts[$i]->id)}}">
+                    <a href="{{action('WarehouseController@show', $relatedProducts[$i]->product_id)}}">
                         <div class="row align-items-center">
-                            <img class="img-responsive img-fluid mx-auto d-block" src="../{{$relatedProducts[$i]->image[0]->img}} " alt="">
+                            <img class="img-responsive img-fluid mx-auto d-block" src="{{$relatedProducts[$i]->img}} " alt="">
                         </div>
                         <div class="row justify-content-between p-2">
-                            <span class="col-10 text-dark">{{$relatedProducts[$i]->name}}</span>
+                            <span class="col-10 text-dark">{{$relatedProducts[$i]->category->name}} - {{$relatedProducts[$i]->house->name}}</span>
                             <span class="text-dark">{{$relatedProducts[$i]->price}}</span>
                         </div>
                     </a>

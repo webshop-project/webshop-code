@@ -16,7 +16,7 @@ class ImagesTableSeeder extends Seeder
         for ($i = 0; $i <= 70; $i++)
         {
             DB::table('images')->insert([
-                'img' => '/img/cap_serpent_front.png',
+                'img' => '/img/cap_serpent_back.png',
                 'product_id' => $i+1,
             ]);
         }
