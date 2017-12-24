@@ -211,6 +211,8 @@ class WarehouseController extends Controller
         $product = \App\Product::find($id);
         $relatedProducts = \App\Product::select('*')->where('house_id', '=', $product->house_id)->where('category_id', '!=', $product->category_id)->get();
 
+        dd($product->brandModel->brand);
+
         return view('pages/shop/details')
             ->with('product', $product)
             ->with('relatedProducts', $relatedProducts);

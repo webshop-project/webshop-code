@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
+    protected $table = 'product';
     public function warehouse()
     {
         return $this->hasMany('App\Warehouse');
@@ -15,13 +16,9 @@ class Product extends Model
     {
         return $this->hasMany('App\image');
     }
-    public function brand()
-    {
-        return $this->hasMany('App\brand');
-    }
     public function brandModel()
     {
-        return $this->hasMany('App\brand_models');
+        return $this->belongsTo('App\ProductModel');
     }
     public function house()
     {
