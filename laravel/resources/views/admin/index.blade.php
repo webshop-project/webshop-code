@@ -3,7 +3,6 @@
     Home
 @endsection
 
-
 @section('content')
     <div class="container-fluid userinfo">
         <div class="container">
@@ -70,8 +69,8 @@
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
-                                <div class="img-preview col-9">
-                                    <img width="90%" src="{{$product->img}}" alt="">
+                                <div class="col-9">
+                                    <img width="90%" class="img-preview" src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
                                     <p><b>viewed:</b></p>
@@ -80,12 +79,14 @@
                                 <div class="desc">{{$product->description}}
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-3"></div>
+                            <div class="row justify-content-center">
                                 <a href="{{action('WarehouseController@edit', $product->id)}}">
-                                    <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
+                                    <button class="btn btn-info mr-1">Edit Product</button>
                                 </a>
-                                <form action="{{action('WarehouseController@destroy', $product->id)}}" method="post">
+                                <a href="{{action('DashboardController@show', $product->id)}}">
+                                    <button class="btn btn-info mr-1">Show Product</button>
+                                </a>
+                                <form action="{{action('WarehouseController@destroy', $product->id)}}"  class="form-inline" method="post">
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
                                     <input type="hidden" name="delete" value="{{$product->id}}">
@@ -121,6 +122,9 @@
                                 <div class="col-3"></div>
                                 <a href="{{action('WarehouseController@edit', $productLow->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
+                                </a>
+                                <a href="{{action('DashboardController@show', $productLow->product_id)}}">
+                                    <button class="btn btn-info" style="margin-right: 5px">Show Product</button>
                                 </a>
                                 <form action="{{action('WarehouseController@destroy', $productLow->product_id)}}" method="post">
                                     {{csrf_field()}}
