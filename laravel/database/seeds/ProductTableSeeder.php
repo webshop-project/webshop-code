@@ -33,12 +33,12 @@ class ProductTableSeeder extends Seeder
                             DB::table('products')->insert
                             (
                                 [
-                                    'house_id'      => $i + 1,
-                                    'category_id'   => $j + 1,
-                                    'model_id'      => $l + 1,
-                                    'description'   => $faker->sentence(6),
-                                    'img'           => '/img/cap_serpent_front.png',
-                                    'viewAmount'    => random_int(0,25),
+                                    'house_id'          => $i + 1,
+                                    'category_id'       => $j + 1,
+                                    'brand_model_id'    => $l + 1,
+                                    'description'       => $faker->sentence(6),
+                                    'img'               => '/img/cap_serpent_front.png',
+                                    'viewAmount'        => random_int(0,25),
                                 ]
                             );
                         }
@@ -48,12 +48,12 @@ class ProductTableSeeder extends Seeder
                             DB::table('products')->insert
                             (
                                 [
-                                    'house_id'      => $i + 1,
-                                    'category_id'   => $j + 1,
-                                    'model_id'      => $l + 1,
-                                    'description'   => $faker->sentence(6),
-                                    'img'           => '/img/cap_serpent_front.png',
-                                    'viewAmount'    => random_int(0,25),
+                                    'house_id'          => $i + 1,
+                                    'category_id'       => $j + 1,
+                                    'brand_model_id'    => $l + 1,
+                                    'description'       => $faker->sentence(6),
+                                    'img'               => '/img/cap_serpent_front.png',
+                                    'viewAmount'        => random_int(0,25),
                                 ]
                             );
                         }
@@ -67,12 +67,12 @@ class ProductTableSeeder extends Seeder
                         DB::table('products')->insert
                         (
                             [
-                                'house_id'      => $i + 1,
-                                'category_id'   => $j + 1,
-                                'model_id'      => $l + 1,
-                                'description'   => $faker->sentence(6),
-                                'img'           => '/img/cap_serpent_front.png',
-                                'viewAmount'    => random_int(0,25),
+                                'house_id'            => $i + 1,
+                                'category_id'         => $j + 1,
+                                'brand_model_id'      => $l + 1,
+                                'description'         => $faker->sentence(6),
+                                'img'                 => '/img/cap_serpent_front.png',
+                                'viewAmount'          => random_int(0,25),
                             ]
                         );
                     }
