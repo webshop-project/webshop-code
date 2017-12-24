@@ -36,6 +36,7 @@ class WarehouseModelsTableSeeder extends Seeder
                         ]
                     );
                 }
+                $product_id++;
             }
             elseif ($i+1 == 11 || $i+1 == 22 || $i+1 == 33 || $i+1 == 44)
             {
@@ -52,6 +53,7 @@ class WarehouseModelsTableSeeder extends Seeder
                         ]
                     );
                 }
+                $product_id++;
             }
             else
             {
@@ -63,6 +65,7 @@ class WarehouseModelsTableSeeder extends Seeder
                         'supply'        => random_int(0,10),
                     ]
                 );
+                $product_id++;
             }
             $product_id++;
         }

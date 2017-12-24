@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\User;
 use App\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,40 +18,23 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $products = new Product();
+        $products = $products->orderByDesc('viewAmount')->paginate(3);
 
+        $warehouse = new Warehouse();
+        $productsLow = $warehouse->where('supply','<',4)->orderByDesc('supply')->paginate(3);
+        $lowOnStock = $warehouse->where('supply','<',4)->count();
+        $productsCount = $warehouse->count();
 
-        $products = DB::table('warehouse')
-            ->select(DB::raw('*'))
-            ->where('deleted_at', '=', null)
-            ->orderBy('viewAmount', 'desc')
-            ->paginate(3);
+        $user = new User();
+        $userCount = $user->count();
 
-        $productsLow = DB::table('warehouse')
-            ->select(DB::raw('*'))
-            ->where([
-                ['deleted_at', '=', null],
-                ['supply', '<=', 3]
-            ])
-            ->orderBy('supply', 'asc')
-            ->paginate(3,['*'],'pag');
-
-        $images = DB::table('images')
-            ->select(DB::raw('*'))
-            ->where([
-                ['deleted_at', '=', null],
-            ])
-            ->get();
-
-        $productsCount = DB::table('warehouse')->count();
-        $userCount = DB::table('users')->count();
         $orderCount = DB::table('orders')->count();
         $voucherCount = DB::table('vouchers_used')->count();
-        $warehouse = new Warehouse();
-        $lowOnStock = $warehouse::where('supply','<',4)->count();
+
         return view('admin/index')
             ->with('lowOnStock',$lowOnStock)
             ->with('products', $products)
-            ->with('image', $images)
             ->with('productsLow', $productsLow)
             ->with('productsCount', $productsCount)
             ->with('usersCount' ,  $userCount)
