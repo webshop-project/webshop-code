@@ -63,10 +63,10 @@
             </div>
 
             <div class="container indexTitle col-12">
-                <h2>MOST POPULAR CLOTHING</h2>
+                <h2>MOST POPULAR PRODUCTS</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                @foreach($warehouseProducts->sortByDesc('viewAmount') as $product)
+                @foreach($warehouseProducts->sortByDesc('viewAmount') as $product )
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
@@ -74,12 +74,10 @@
                                     <img width="90%" src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
-                                    <p><b>price:</b></p>
-                                    <p>{{$product->warehouse}}</p>
-                                    <p><b>stock:</b></p>
-                                    <p>{{$product->supply}}</p>
+                                    <p><b>viewed:</b></p>
+                                    <p>{{$product->viewAmount}}</p>
                                 </div>
-                                <div class="desc">{{$product->warehouse->price}}
+                                <div class="desc">{{$product->description}}
                                 </div>
                             </div>
                             <div class="row text-center">
@@ -87,10 +85,10 @@
                                 <a href="{{action('WarehouseController@edit', $product->id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
                                 </a>
-                                <form action="{{action('WarehouseController@destroy', $product->product_id)}}" method="post">
+                                <form action="{{action('WarehouseController@destroy', $product->id)}}" method="post">
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    <input type="hidden" name="delete" value="{{$product->product_id}}">
+                                    <input type="hidden" name="delete" value="{{$product->id}}">
                                     <input class="btn btn-danger" type="submit" value="Delete Product">
                                 </form>
                             </div>
@@ -103,7 +101,7 @@
                 <h2>LOW ON STOCK</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                @foreach($productsLow->sortByDesc('supply') as $productLow)
+                @foreach($productsLow->sortBy('supply') as $productLow)
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">

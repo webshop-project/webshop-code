@@ -19,17 +19,10 @@ class DashboardController extends Controller
     public function index()
     {
         $products = new Product();
-//        $products = $products->orderByDesc('viewAmount')->paginate(3);
+        $warehouseProducts = $products->orderByDesc('viewAmount')->paginate(3);
 
         $warehouse = new Warehouse();
-        //test
-//        $warehouseProducts = $warehouse->with(['product' => function ($query) {
-//            $query->orderBy('viewAmount', 'desc');
-//        }])->paginate(3);
-        $warehouseProducts = $products->orderByDesc('viewAmount')->paginate(3);
-//        $warehouseProducts = $warehouse::with('product')->paginate(3);//orderby viewAmount
-        //endtest
-        $productsLow = $warehouse->where('supply','<',4)->orderByDesc('supply')->paginate(3);
+        $productsLow = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(3);
         $lowOnStock = $warehouse->where('supply','<',4)->count();
         $productsCount = $warehouse->count();
 
