@@ -12,6 +12,6 @@ class size extends Model
     }
     public function category()
     {
-        $this->belongsTo('App\categorie');
+        $this->belongsTo('App\category');
     }
 }

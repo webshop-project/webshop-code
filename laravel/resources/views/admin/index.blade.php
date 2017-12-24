@@ -2,8 +2,7 @@
 @section('title')
     Home
 @endsection
-
-
+##
 @section('content')
     <div class="container-fluid userinfo">
         <div class="container">

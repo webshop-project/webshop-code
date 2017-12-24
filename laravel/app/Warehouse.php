@@ -25,4 +25,8 @@ class Warehouse extends Model
     {
         return $this->belongsTo('App\Product');
     }
+    public function category()
+    {
+        return $this->belongsTo('App\category');
+    }
 }

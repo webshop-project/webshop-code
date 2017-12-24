@@ -102,8 +102,7 @@ class DashboardController extends Controller
     public function lowStockList()
     {
         $warehouse = new Warehouse();
-        $lowOnStock = $warehouse::where('supply','<',4)
-            ->paginate(6);
+        $lowOnStock = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(6);
         return view('admin/products/lowStockList')->with('lowOnStock',$lowOnStock);
     }
 }
