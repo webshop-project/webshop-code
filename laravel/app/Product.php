@@ -19,6 +19,10 @@ class Product extends Model
     {
         return $this->hasMany('App\brand');
     }
+    public function brandModel()
+    {
+        return $this->hasMany('App\brand_models');
+    }
     public function house()
     {
         return $this->belongsTo('App\house');

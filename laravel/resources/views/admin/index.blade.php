@@ -2,7 +2,7 @@
 @section('title')
     Home
 @endsection
-##
+
 @section('content')
     <div class="container-fluid userinfo">
         <div class="container">
@@ -69,7 +69,7 @@
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
-                                <div class="img-preview col-9">
+                                <div class="col-9">
                                     <img width="90%" class="img-preview" src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
