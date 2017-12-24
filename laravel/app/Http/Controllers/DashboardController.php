@@ -61,8 +61,8 @@ class DashboardController extends Controller
     public function show($id)
     {
         $showProduct = Warehouse::where('product_id','=',$id)->get();
-        $lastMonth = order::where([['bought_at', '>', Carbon::now()->subMonth()],['warehouse_id','=',$id]])->sum('amount');
-        return view('admin/products/show')->with('showProduct',$showProduct)->with('lastMonth',$lastMonth);
+        $thisMonth = order::where([['bought_at', '>', Carbon::now()->subMonth()],['warehouse_id','=',$id]])->sum('amount');
+        return view('admin/products/show')->with('showProduct',$showProduct)->with('thisMonth',$thisMonth);
     }
 
     /**

@@ -71,7 +71,7 @@
                         <div class="item-info">
                             <div class="form-inline">
                                 <div class="img-preview col-9">
-                                    <img width="90%"  class="img-responsive" src="{{$product->img}}" alt="">
+                                    <img width="90%" class="img-preview" src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
                                     <p><b>viewed:</b></p>
