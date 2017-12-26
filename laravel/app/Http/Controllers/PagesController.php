@@ -9,9 +9,7 @@ class PagesController extends Controller
     public function index()
     {
         $products = \App\Product::all();
-
         return view('pages/index', ['products' => $products]);
-        
     }
 
     public function about()

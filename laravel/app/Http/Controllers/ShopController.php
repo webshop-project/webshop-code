@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ShopController extends Controller
 {
@@ -14,7 +15,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = product::all();
+        $products = new product();
+        $products = $products->paginate(12);
         return view('pages/shop')
             ->with('products',$products);
     }
