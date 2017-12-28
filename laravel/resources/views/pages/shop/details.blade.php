@@ -16,15 +16,17 @@
 {{Breadcrumbs::render('product', $product)}}
     <div class="container details p-5">
         <div class="row p-5">
-            <div class="col-6 row justify-content-center detail-img">
-                <img class="img-responsive img-front" src="{{$product->img}}" alt="Product image">
-                <img class="img-responsive img-back" src="{{$product->image[0]->img}}" alt="Product image">
-                <div class="detail-img-choice img-responsive">
-                    <img id="img-front-choice" src="{{$product->img}}" alt="Product image">
-                    <img id="img-back-choice" src="{{$product->image[0]->img}}" alt="Product img">
+            <div class="detail-img-choice img-responsive col-lg-1 col-md-3 col-sm-4 p-2">
+                <img id="img-front-choice" src="{{$product->img}}" alt="Product image">
+                <img id="img-back-choice" src="{{$product->image[0]->img}}" alt="Product img">
+            </div>
+            <div class="row justify-content-center detail-img col-lg-5 col-md-8 col-sm-6">
+                <div class="p-5">
+                    <img class="img-responsive img-front" src="{{$product->img}}" alt="Product image">
+                    <img class="img-responsive img-back" src="{{$product->image[0]->img}}" alt="Product image">
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 p-5">
+            <div class="col-lg-6 col-md-12 col-sm-12 p-3">
                 <table class="table">
                     <tbody>
                     <tr class="row ">
@@ -40,6 +42,17 @@
                                 @endforeach
                             </td>
                         </tr>
+                    @elseif($product->category->id == 4)
+                        <tr>
+                            <td class="col-5">Model:</td>
+                        </tr>
+                        @foreach($models as $model)
+                            <tr class="row justify-content-between">
+                                <td class="col-12">
+                                    <span class="">{{$model->brandModel->brand->name}} - {{$model->brandModel->name}}</span>
+                                </td>
+                            </tr>
+                        @endforeach
                     @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>

@@ -59,7 +59,7 @@ Home
                 <div class="four-houses-logo dragon">
                     <a href="{{action('HouseController@show', 2)}}">
                         <div class="four-houses-top"></div>
-                            <img src="img/db_dragon_xs.png" class="img-responsive img-fluid center" alt="">
+                            <img src="img/db_dragon_small.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
                     </a>
                 </div>
@@ -68,7 +68,7 @@ Home
                 <div class="four-houses-logo raven">
                     <a href="{{action('HouseController@show', 3)}}">
                         <div class="four-houses-top"></div>
-                            <img src="img/rave_xs.png" class="img-responsive img-fluid center" alt="">
+                            <img src="img/rave_small.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
                     </a>
                 </div>
@@ -77,7 +77,7 @@ Home
                 <div class="four-houses-logo serpent">
                     <a href="{{action('HouseController@show', 4)}}">
                         <div class="four-houses-top"></div>
-                            <img src="img/script_serpents_xs.png" class="img-responsive img-fluid center" alt="">
+                            <img src="img/script_serpents_small.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
                     </a>
                 </div>
@@ -86,7 +86,7 @@ Home
                 <div class="four-houses-logo viking">
                     <a href="{{action('HouseController@show', 1)}}">
                         <div class="four-houses-top"></div>
-                            <img src="img/viking_xs.png" class="img-responsive img-fluid center" alt="">
+                            <img src="img/viking_small.png" class="img-responsive img-fluid center" alt="">
                         <div class="four-houses-bottom"></div>
                     </a>
                 </div>

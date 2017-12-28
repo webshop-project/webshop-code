@@ -6,6 +6,7 @@
 
 @section('content')
 {{Breadcrumbs::render('house', $house)}}
+
 <div class="container">
     <div class="single-house row">
         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -40,7 +41,6 @@
             </div>
             <div class="row headRoom justify-content-around">
                 @for($i = 0; $i < 3; $i++)
-
                     <div class="product col-sm-12 col-md-4 col-4">
                         <a href="{{action('WarehouseController@show', $products[$i]->id)}}">
                             <div class="">
