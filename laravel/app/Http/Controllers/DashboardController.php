@@ -29,6 +29,7 @@ class DashboardController extends Controller
             ->with('warehouseProducts', $warehouseProducts)
             ->with('products',$products)
             ->with('productsLow', $productsLow);
+
     }
 
     /**
