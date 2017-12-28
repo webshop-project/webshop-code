@@ -12,7 +12,9 @@
             @if($loop->first)
                 <h1>{{$productDetail->product->house->name}}
                     {{$productDetail->product->category->name}}
+                    @if(!empty($productDetail->brandmodel->name))
                     {{$productDetail->product->brandmodel->name}}
+                    @endif
                     <span> {{$productDetail->product->description}}</span>
                 </h1>
             @endif()

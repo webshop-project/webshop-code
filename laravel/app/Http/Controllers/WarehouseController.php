@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\house;
-use App\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WarehouseController extends Controller
@@ -21,24 +17,9 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        $warehouse = new Warehouse();
-
-        $products = DB::table('warehouse')
-            ->select(DB::raw('*'))
-            ->where('deleted_at', '=', null)
-            ->paginate(6);
-
-        $images = DB::table('images')
-            ->select(DB::raw('*'))
-            ->where([
-                ['deleted_at', '=', null],
-            ])
-            ->get();
-
-
+        $products = \App\Warehouse::paginate(6);
         return view('admin/products/product')
-            ->with('products', $products)
-            ->with('images', $images);
+            ->with('products', $products);
     }
 
     /**
@@ -65,8 +46,6 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $request->validate([
             'name' => 'required|max:50|unique:products,name',
             'category' => 'required|max:50',
@@ -226,11 +205,12 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\Warehouse::find($id);
+
+        $product = \App\Warehouse::where('product_id','=',$id)->get();
         $catergories = \App\categorie::All();
         $houses = \App\house::All();
-        $brands = \App\brand::all();
-        $models = \App\brand_model::All();
+        $brands = \App\brand::All();
+        $models = \App\ProductModel::All();
 
         $images = DB::table('images')
             ->select(DB::raw('*'))
@@ -270,7 +250,6 @@ class WarehouseController extends Controller
     public function destroy($id)
     {
         \App\Warehouse::destroy($id);
-
         return redirect('products')->with('succes', 'Product has been deleted!');
     }
 
