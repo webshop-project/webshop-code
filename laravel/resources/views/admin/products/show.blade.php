@@ -12,7 +12,8 @@
             @if($loop->first)
                 <h1>{{$productDetail->product->house->name}}
                     {{$productDetail->product->category->name}}
-                    <span>{{$productDetail->product->description}}</span>
+                    {{$productDetail->product->brandmodel->name}}
+                    <span> {{$productDetail->product->description}}</span>
                 </h1>
             @endif()
         @endforeach

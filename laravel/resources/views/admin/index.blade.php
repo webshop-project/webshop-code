@@ -69,8 +69,8 @@
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
-                                <div class="col-9">
-                                    <img width="90%" class="img-preview" src="{{$product->img}}" alt="">
+                                <div class="col-9 img-preview">
+                                    <img width="90%"  src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
                                     <p><b>viewed:</b></p>
