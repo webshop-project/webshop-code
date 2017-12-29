@@ -2,18 +2,17 @@
 @section('title')
     Home
 @endsection
-
-
 @section('content')
     <div class="container-fluid">
         <div class="container">
-            <h2>Editing => {{$products->name}}</h2>
-            <form action="{{action('ProductController@update', $products->id)}}" method="POST">
+            @foreach($products as $product)
+            <h2>Editing {{$product->name}}</h2>
+            <form action="{{action('WarehouseController@update', $product->product_id)}}" method="POST">
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <div class="form-group">
                     <label for="name"><b>Name</b></label>
-                    <input class="form-control" type="text" name="first" value="{{$products->name}}">
+                    <input class="form-control" type="text" name="first" value="{{$product->name}}">
                 </div>
                 <div class="form-group">
                     <label for="category"><b>Category</b></label>
@@ -32,7 +31,7 @@
                     </select>
                 </div>
 
-                @if($products->brand_id > 0)
+                @if(!empty($products->brand_id))
                     <div class="form-group">
                         <label for="brand_id"><b>Brand</b></label>
                         <select class="form-control" name="brand">
@@ -51,7 +50,7 @@
                     </div>
                 @endif
 
-                @if($products->storage_id > 0)
+                @if(!empty($products->storage_id))
                     <div class="form-group">
                         <label for="storage"><b>Storage (in GigaBytes)</b></label>
                         <select class="form-control" name="storage">
@@ -85,11 +84,11 @@
                                 </div>
                             </div>
                         </div>
-
                     @endforeach
                 </div>
             </div>
             </form>
         </div>
     </div>
+    @endforeach
 @endsection

@@ -128,5 +128,13 @@ footer p{
 }
 
 
+/* show admin */
 
+.salesHeadBlock{
+    margin: 10px 0px;
+    border: solid darkgrey 1px;
+    border-radius: 15px;
+    padding: 25px 45px;
+    text-align: right;
+}
 

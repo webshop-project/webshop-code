@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\house;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProductController extends Controller
+class WarehouseController extends Controller
 {
     use SoftDeletes;
 
@@ -20,23 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-
-        $products = DB::table('products')
-            ->select(DB::raw('*'))
-            ->where('deleted_at', '=', null)
-            ->paginate(6);
-
-        $images = DB::table('images')
-            ->select(DB::raw('*'))
-            ->where([
-                ['deleted_at', '=', null],
-            ])
-            ->get();
-
-
+        $products = \App\Warehouse::paginate(6);
         return view('admin/products/product')
-            ->with('products', $products)
-            ->with('images', $images);
+            ->with('products', $products);
     }
 
     /**
@@ -48,11 +31,11 @@ class ProductController extends Controller
     {
         $houses = \App\house::All();
         $catergories = \App\categorie::All();
-        $storages = \App\storage::All();
+        $sizes = \App\size::All();
         return view('admin/products/productAdd')
             ->with('houses', $houses)
             ->with('categories', $catergories)
-            ->with('storages', $storages);
+            ->with('sizes', $sizes);
     }
 
     /**
@@ -63,8 +46,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $request->validate([
             'name' => 'required|max:50|unique:products,name',
             'category' => 'required|max:50',
@@ -206,14 +187,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = \App\product::find($id);
-        $relatedProducts = \App\product::select('*')->where('house_id', '=', $product->house_id)->where('id', '!=', $product->id)->get();
-        $house = \App\house::find($product->house_id);
+        $product = \App\Product::find($id);
+        $relatedProducts = \App\Product::select('*')->where('house_id', '=', $product->house_id)->where('category_id', '!=', $product->category_id)->get();
+        $models = \App\Product::where('category_id', '=', $product->category_id)->where('house_id', '=', $product->house_id)->get();
 
         return view('pages/shop/details')
             ->with('product', $product)
             ->with('relatedProducts', $relatedProducts)
-            ->with('house', $house);
+            ->with('models', $models);
     }
 
     /**
@@ -224,12 +205,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\product::find($id);
+
+        $product = \App\Warehouse::where('product_id','=',$id)->get();
         $catergories = \App\categorie::All();
         $houses = \App\house::All();
-        $brands = \App\brand::all();
-        $models = \App\brand_model::All();
-        $storages = \App\storage::All();
+        $brands = \App\brand::All();
+        $models = \App\ProductModel::All();
 
         $images = DB::table('images')
             ->select(DB::raw('*'))
@@ -245,8 +226,7 @@ class ProductController extends Controller
             ->with('images', $images)
             ->with('houses', $houses)
             ->with('brands', $brands)
-            ->with('models', $models)
-            ->with('storages', $storages);
+            ->with('models', $models);
     }
 
     /**
@@ -269,8 +249,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        \App\product::destroy($id);
-
+        \App\Warehouse::destroy($id);
         return redirect('products')->with('succes', 'Product has been deleted!');
     }
+
 }

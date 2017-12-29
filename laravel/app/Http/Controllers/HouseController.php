@@ -47,7 +47,7 @@ class HouseController extends Controller
     public function show($id)
     {
         $house = \App\house::find($id);
-        $products = \App\product::select('*')->where('house_id', '=', $id)->get();
+        $products = \App\Product::select('*')->where('house_id', '=', $id)->get();
 
         return view('pages/houses')
             ->with('house', $house)

@@ -44,25 +44,20 @@
                         @foreach($products as $product)
                             <div class="block span3">
                                 <div class="product">
-                                    @if(sizeof($product->image)>1)
-                                        <img src="{{$product->image[0]->img}}" alt="{{$product->name}}">
-                                    @elseif(sizeof($product->image) ==1)
-                                        <img src="{{$product->image[0]->img}}" alt="{{$product->name}}">
-                                    @endif
+                                        <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
                                     <div class="buttons">
-                                        <a class="preview btn btn-large btn-info" href="/shop/{{$product->name}}"><i class="glyphicon glyphicon-eye-open"></i> View item</a>
+                                        <a class="preview btn btn-large btn-info" href="#"><i class="glyphicon glyphicon-eye-open"></i> View item</a>
                                     </div>
                                 </div>
-
                                 <div class="info">
-                                    <h4>{{$product->name}}</h4>
+                                    <h4>{{$product->house->name}}<br> {{$product->category->name}}</h4>
                                     <span class="price">€{{$product->price}}</span>
                                     <form action="{{ url('/shop/cart') }}" method="POST">
                                         {!! csrf_field() !!}
-                                        <input type="hidden" name="id" value="{{ $product->id }}">
-                                        <input type="hidden" name="name" value="{{ $product->name }}">
-                                        <input type="hidden" name="size" value="{{$product->size_id}}">
-                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <input type="hidden" name="id" value="{{$product->id}}">
+                                        <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
+                                        <input type="hidden" name="size" value="">
+                                        <input type="hidden" name="price" value="">
                                         <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
                                     </form>
                                 </div>

@@ -19,15 +19,21 @@ Route::resource('/shop/cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
-Route::post('/vouchers/add', 'MailController@store');
 
+Route::get('/admin/lowStockList','DashboardController@lowStockList');
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 
-Route::resource('/products', 'ProductController');
+Route::resource('/products', 'WarehouseController');
 route::resource('/orders', 'OrderController');
 route::resource('/admin', 'DashboardController');
 route::resource('/categorie' , 'CategorieController');
 route::resource('/img', 'ImageController');
 route::resource('/user', 'UserController');
 route::resource('/house', 'HouseController');
+
+
+
+
+Route::get('/admin/vouchers/add', 'VoucherController@create');
+Route::post('/admin/vouchers/add', 'VoucherController@store');

@@ -8,6 +8,11 @@ class categorie extends Model
 {
     public function products()
     {
-        return $this->$this->hasMany('App\product');
+        return $this->belongsToMany('App\Product');
+    }
+
+    public function size()
+    {
+        return $this->belongsToMany('App\size');
     }
 }

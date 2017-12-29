@@ -12,33 +12,30 @@
             </div>
             <div class="row row-sizer-userinfo">
                 @foreach($products as $product)
-
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
-                                <div class="img-preview col-9">
-                                    <img width="90%" src="{{$product->img}}" alt="past niet">
+                                <div class="img-preview">
+                                    <img class="img-fluid" src="{{$product->product->img}}" alt="img">
                                 </div>
                                 <div class="col-1">
                                     <p><b>price:</b></p>
                                     <p>{{$product->price}}</p>
                                     <p><b>stock:</b></p>
                                     <p>{{$product->supply}}</p>
-                                    <p><b>name</b></p>
-                                    <p>{{$product->name}}</p>
                                 </div>
                                 <div class="desc">{{$product->description}}
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="col-3"></div>
-                                <a href="{{action('ProductController@edit', $product->id)}}">
+                                <a href="{{action('WarehouseController@edit', $product->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
                                 </a>
-                                <form action="{{action('ProductController@destroy', $product->id)}}" method="post">
+                                <form action="{{action('WarehouseController@destroy', $product->product_id)}}" method="post">
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    <input type="hidden" name="delete" value="{{$product->id}}">
+                                    <input type="hidden" name="delete" value="{{$product->product_id}}">
                                     <input class="btn btn-danger" type="submit" value="Delete Product">
                                 </form>
                             </div>
@@ -55,7 +52,6 @@
                 <div class="alert alert-success">
                     <h3>{{ session('succesD') }}</h3>
                 </div>
-
             @endif
             {{$products->links()}}
         </div>

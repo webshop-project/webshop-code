@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-xs-1 ml-auto align-items-center d-flex">
                     <span><i class="fa fa-star fa-2x grayIcons blr" aria-hidden="true"></i></span>
-                    <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true">({{ Cart::instance('default')->count(false) }})</i></span>
+                    <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
                     <div id="myShoppingCart" class="cart">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <div class="cart-title">
@@ -116,7 +116,7 @@
         <div class="container-fluid bg-secondary">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand row col" href="#"><img class="img-responsive col-10" src="../img/amologin2.png" alt=""></a>
+                    <a class="navbar-brand row col" href="/"><img class="img-responsive col-10" src="{{asset('img/amologin2.png')}}" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -143,7 +143,7 @@
 </header>
 
     @yield('content')
-</div>
+
 
 <footer>
     <div class="container-fluid bg-secondary">
@@ -208,6 +208,7 @@
         document.getElementById("myShoppingCart").style.width = "0";
     }
 </script>
+<script src="{{asset('js/showImage.js')}}"></script>
 </body>
 </html>
 

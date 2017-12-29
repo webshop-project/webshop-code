@@ -21,6 +21,7 @@ a:hover{
 body{
   background: #F7F7F7;
 }
+
 .shop-banner{
     border-bottom: 1px solid #E7E7E7;
 }
@@ -207,6 +208,19 @@ body{
     background: rgba(200, 200, 200, 0.8);
     padding: 3.5px 10px;
     border:none;
+}
+/*DETAIL PRODUCT*/
+.detail-img .img-back{
+    display: none;
+}
+.detail-img-choice{
+    max-height: 330px;
+}
+.detail-img-choice img{
+    padding: 0 0 20px 0;
+}
+.detail-img{
+    border-left: 1px solid #E7E7E7;
 }
 /*ABOUT*/
 .about .banner{
@@ -498,6 +512,9 @@ footer i{
     color: #fff;
     text-decoration: none;
     opacity: 0;
+}
+.btn{
+    margin-top: -30px;
 }
 
 a.buy {
