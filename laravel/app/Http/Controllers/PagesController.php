@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $products = \App\Warehouse::all();
+        $products = \App\Product::all();
 
         return view('pages/index', ['products' => $products]);
         

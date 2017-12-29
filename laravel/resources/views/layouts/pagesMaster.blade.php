@@ -143,7 +143,7 @@
 </header>
 
     @yield('content')
-</div>
+
 
 <footer>
     <div class="container-fluid bg-secondary">
@@ -208,6 +208,7 @@
         document.getElementById("myShoppingCart").style.width = "0";
     }
 </script>
+<script src="{{asset('js/showImage.js')}}"></script>
 </body>
 </html>
 

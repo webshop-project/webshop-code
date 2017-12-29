@@ -9,40 +9,24 @@ class Warehouse extends Model
     protected $table = 'Warehouse';
     protected $primaryKey = 'product_id';
 
-    public function category()
-    {
-        return $this->belongsTo('App\categorie');
-    }
-    public function house()
-    {
-        return $this->belongsTo('App\house');
-    }
     public function order()
     {
         return $this->belongsTo('App\order');
     }
     public function size()
     {
-        return $this->hasMany('App\size');
+        return $this->belongsTo('App\size');
     }
     public function storage()
     {
         return $this->belongsTo('App\storage');
     }
-    public function brand()
-    {
-        return $this->hasMany('App\brand');
-    }
-    public function image()
-    {
-        return $this->hasMany('App\image');
-    }
     public function product()
     {
-        return $this->belongsTo('App\product');
+        return $this->belongsTo('App\Product');
     }
-    public function brand_model()
+    public function category()
     {
-
+        return $this->belongsTo('App\category');
     }
 }

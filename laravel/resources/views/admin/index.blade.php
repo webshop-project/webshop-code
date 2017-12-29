@@ -3,7 +3,6 @@
     Home
 @endsection
 
-
 @section('content')
     <div class="container-fluid userinfo">
         <div class="container">
@@ -18,7 +17,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-shopping-bag justified-content-center" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$productsCount}}</span>
+                        <span>{{\App\Warehouse::all()->count()}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -27,7 +26,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$usersCount}}</span>
+                        <span>{{\App\User::all()->count()}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -36,7 +35,7 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-barcode" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$ordersCount}}</span>
+                        <span>{{\App\order::all()->count()}}</span>
                     </div>
                 </div>
                 <div class="item col-lg-2 col-md-3">
@@ -45,14 +44,14 @@
                         <div class="mw-100"></div>
                         <i class="fa fa-paper-plane" aria-hidden="true"></i>
                         <div class="mw-100"></div>
-                        <span>{{$vouchersCount}}</span>
+                        <span>{{\App\voucher::all()->count()}}</span>
                     </div>
                 </div>
             </div>
             <div class="d-inline row" id="alertBar">
                 <div class="alert alert-danger d-flex justify-content-between  align-items-center" role="alert">
                     <div class="warningLabel ">
-                        <p class="d-inline">There are  <span class="badge badge-warning badge-pill">{{$lowOnStock}}</span>
+                        <p class="d-inline">There are  <span class="badge badge-warning badge-pill">{{\App\Warehouse::all()->where('supply','<','4')->count()}}</span>
                             products low on stock!</p>
                     </div>
                     <div class="warningButtons">
@@ -63,34 +62,34 @@
             </div>
 
             <div class="container indexTitle col-12">
-                <h2>MOST POPULAR CLOTHING</h2>
+                <h2>MOST POPULAR PRODUCTS</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                @foreach($products as $product)
+                @foreach($warehouseProducts->sortByDesc('viewAmount') as $product )
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
-                                <div class="img-preview col-9">
-                                    <img width="90%" src="{{$product->img}}" alt="">
+                                <div class="col-9 img-preview">
+                                    <img width="90%"  src="{{$product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
-                                    <p><b>price:</b></p>
-                                    <p>{{$product->price}}</p>
-                                    <p><b>stock:</b></p>
-                                    <p>{{$product->supply}}</p>
+                                    <p><b>viewed:</b></p>
+                                    <p>{{$product->viewAmount}}</p>
                                 </div>
                                 <div class="desc">{{$product->description}}
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-3"></div>
-                                <a href="{{action('WarehouseController@edit', $product->product_id)}}">
-                                    <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
+                            <div class="row justify-content-center">
+                                <a href="{{action('WarehouseController@edit', $product->id)}}">
+                                    <button class="btn btn-info mr-1">Edit Product</button>
                                 </a>
-                                <form action="{{action('WarehouseController@destroy', $product->product_id)}}" method="post">
+                                <a href="{{action('DashboardController@show', $product->id)}}">
+                                    <button class="btn btn-info mr-1">Show Product</button>
+                                </a>
+                                <form action="{{action('WarehouseController@destroy', $product->id)}}"  class="form-inline" method="post">
                                     {{csrf_field()}}
                                     {{method_field('DELETE')}}
-                                    <input type="hidden" name="delete" value="{{$product->product_id}}">
+                                    <input type="hidden" name="delete" value="{{$product->id}}">
                                     <input class="btn btn-danger" type="submit" value="Delete Product">
                                 </form>
                             </div>
@@ -98,18 +97,17 @@
                     </div>
                 @endforeach
             </div>
-            {{$products->links()}}
-
+            {{$warehouseProducts->links()}}
             <div class="container indexTitle col-12">
                 <h2>LOW ON STOCK</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                @foreach($productsLow as $productLow)
+                @foreach($productsLow->sortBy('supply') as $productLow)
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
                                 <div class="img-preview col-9">
-                                    <img width="90%" src="{{$product->img}}" alt="">
+                                    <img width="90%" src="{{$productLow->product->img}}" alt="">
                                 </div>
                                 <div class="col-1">
                                     <p><b>price:</b></p>
@@ -117,13 +115,16 @@
                                     <p><b>stock:</b></p>
                                     <p>{{$productLow->supply}}</p>
                                 </div>
-                                <div class="desc">{{$productLow->description}}
+                                <div class="desc">{{$productLow->product->description}}
                                 </div>
                             </div>
                             <div class="row text-center">
                                 <div class="col-3"></div>
                                 <a href="{{action('WarehouseController@edit', $productLow->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
+                                </a>
+                                <a href="{{action('DashboardController@show', $productLow->product_id)}}">
+                                    <button class="btn btn-info" style="margin-right: 5px">Show Product</button>
                                 </a>
                                 <form action="{{action('WarehouseController@destroy', $productLow->product_id)}}" method="post">
                                     {{csrf_field()}}
@@ -136,7 +137,7 @@
                     </div>
                 @endforeach
             </div>
-            {{$productsLow->links()}}
+            {{$productsLow->appends(['sort' => 'supply'])->links()}}
 
             <div class="container indexTitle col-12">
                 <h2>MOST LOGINS FROM HOUSES</h2>
@@ -181,14 +182,14 @@
                     </div>
                 </div>
             </div>
-        {{--</div>--}}
-    {{--</div>--}}
+        </div>
+    </div>
     <script>
 
         const btnHide  = document.getElementById('hide');
         const alertBar = document.getElementById('alertBar');
         btnHide.addEventListener('click', () => {
-          alertBar.style.display = 'none';
+          alertBar.style.display = "none";
           alertBar.innerHTML = alertBar;
         });
 

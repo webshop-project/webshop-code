@@ -6,6 +6,7 @@
 
 @section('content')
 {{Breadcrumbs::render('house', $house)}}
+
 <div class="container">
     <div class="single-house row">
         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -22,7 +23,7 @@
         <div class="col-lg-6 col-md-12 col-sm-12 quote p-2">
             <h2>{{$house->name}}</h2>
             <h3></h3>
-            <p></p>
+            <p>{{$house->description}}</p>
         </div>
     </div>
 </div> 
@@ -30,27 +31,24 @@
         <div class="container">
             <div class="row p-3">
                 <div class="col col-xs-12">
-                    <a href="#">
-                        <h2 class="d-inline newProducts">New Products</h2>
-                    </a>
+                    <h2 class="d-inline newProducts">Nieuwe Producten</h2>
                 </div>
                 <div class="col">
-                    <a href="#">
+                    <a href="{{action('ShopController@index')}}">
                         <h5 class="d-inline pull-right seeMore">See More</h5>
                     </a>
                 </div>
             </div>
             <div class="row headRoom justify-content-around">
                 @for($i = 0; $i < 3; $i++)
-
                     <div class="product col-sm-12 col-md-4 col-4">
-                        <a href="{{action('ProductController@show', $products[$i]->id)}}">
+                        <a href="{{action('WarehouseController@show', $products[$i]->id)}}">
                             <div class="">
-                                <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="../{{$products[$i]->image[0]->img}} " alt="">
+                                <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->image[0]->img}} " alt="">
                             </div>
                             <div class="row justify-content-between p-2">
-                                <span class="col-9 text-dark">{{$products[$i]->name}}</span>
-                                <span class="text-dark">{{$products[$i]->price}}</span>
+                                <span class="col-9 text-dark">{{$products[$i]->category->name}} - {{$products[$i]->house->name}}</span>
+                                <span class="text-dark">{{$products[$i]->warehouse[0]->price}}</span>
                             </div>
                         </a>
                     </div>
