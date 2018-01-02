@@ -4,8 +4,8 @@
 
 const imgFrontChoice = document.getElementById('img-front-choice');
 const imgBackChoice = document.getElementById('img-back-choice');
-const imgFront = document.getElementsByName('img-front');
-const imgBack = document.getElementsByClassName('img-back');
+const imgFront = document.getElementById('img-front');
+const imgBack = document.getElementById('img-back');
 
 imgFrontChoice.addEventListener('click', () => {
     imgFront.style.display = 'block';
