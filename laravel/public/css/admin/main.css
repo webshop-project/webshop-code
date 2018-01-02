@@ -70,6 +70,7 @@ header .navbar {
 }
 .addSizer{
     padding: 50px 0;
+    min-height: 600px;
 }
 .textSizerForm{
     padding: 20px 0;
@@ -79,7 +80,7 @@ header .navbar {
 
 .sizes .small-group{
     text-align: center;
-    width: 30px;
+    width: 50px;
 }
 
 .form-padding{

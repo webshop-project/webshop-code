@@ -32,65 +32,125 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col sizes">
+                                <div class="col sizes d-none" id="shirtSizes">
                                     <h5>Maten</h5>
                                     <div class="form-group small-group flex flex-between">
                                         <label for="sizeS">S</label>
                                         <input class="form-control" type="checkbox" id="sizeS" name="sizeS">
                                     </div>
-                                    <div class="form-group form-padding">
-                                        <label for="price" class="col-2">Prijs</label>
-                                        <input class="form-control col" type="text" name="price" id="price" required>
-                                    </div>
-                                    <div class="form-group form-padding">
-                                        <label for="stock" class="col-2">Voorraad</label>
-                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                    <div id="groupS" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="priceS">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stockS">
+                                        </div>
                                     </div>
                                     <div class="form-group small-group flex flex-between">
                                         <label for="sizeM">M</label>
                                         <input class="form-control" type="checkbox" id="sizeM" name="sizeM">
                                     </div>
-                                    <div class="form-group form-padding">
-                                        <label for="price" class="col-2">Prijs</label>
-                                        <input class="form-control col" type="text" name="price" id="price" required>
-                                    </div>
-                                    <div class="form-group form-padding">
-                                        <label for="stock" class="col-2">Voorraad</label>
-                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                    <div id="groupM" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="priceM">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stockM" id="stockM">
+                                        </div>
                                     </div>
                                     <div class="form-group small-group flex flex-between">
                                         <label for="sizeL">L</label>
                                         <input class="form-control" type="checkbox" id="sizeL" name="sizeL">
                                     </div>
-                                    <div class="form-group form-padding">
-                                        <label for="price" class="col-2">Prijs</label>
-                                        <input class="form-control col" type="text" name="price" id="price" required>
-                                    </div>
-                                    <div class="form-group form-padding">
-                                        <label for="stock" class="col-2">Voorraad</label>
-                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                    <div id="groupL" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="priceL">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stockL" id="stockL">
+                                        </div>
                                     </div>
                                     <div class="form-group small-group flex flex-between">
                                         <label for="sizeXL">XL</label>
                                         <input class="form-control" type="checkbox" id="sizeXL" name="sizeXL">
                                     </div>
-                                    <div class="form-group form-padding">
-                                        <label for="price" class="col-2">Prijs</label>
-                                        <input class="form-control col" type="text" name="price" id="price" required>
+                                    <div id="groupXL" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="priceXL">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stockXL" id="stockXL">
+                                        </div>
                                     </div>
-                                    <div class="form-group form-padding">
-                                        <label for="stock" class="col-2">Voorraad</label>
-                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                </div>
+                                <div class="col sizes d-none" id="usbSizes">
+                                    <h5>USB groote</h5>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="size8">8GB</label>
+                                        <input class="form-control" type="checkbox" id="size8" name="size8">
                                     </div>
-                            </div>
-                                {{--<div class="form-group">--}}
-                                    {{--<label for="sizeGB">Storage</label>--}}
-                                    {{--<select class="form-control" name="sizeGB" id="sizeGB">--}}
-                                        {{--@foreach($storages as $storage)--}}
-                                            {{--<option class="form-control" value="{{$storage->id}}">{{$storage->gb}}</option>--}}
-                                        {{--@endforeach--}}
-                                    {{--</select>--}}
-                                {{--</div>--}}
+                                    <div id="group8" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="price8">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stock8">
+                                        </div>
+                                    </div>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="size16">16GB</label>
+                                        <input class="form-control" type="checkbox" id="size16" name="size16">
+                                    </div>
+                                    <div id="group16" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="price16">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stock16" id="stock16">
+                                        </div>
+                                    </div>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="size32">32GB</label>
+                                        <input class="form-control" type="checkbox" id="size32" name="size32">
+                                    </div>
+                                    <div id="group32" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="priceL32">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stock32" id="stock32">
+                                        </div>
+                                    </div>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="size64">64GB</label>
+                                        <input class="form-control" type="checkbox" id="size64" name="size64">
+                                    </div>
+                                    <div id="group64" class="d-none">
+                                        <div class="form-group form-padding">
+                                            <label for="price" class="col-2">Prijs</label>
+                                            <input class="form-control col" type="number" step="any" name="price64">
+                                        </div>
+                                        <div class="form-group form-padding">
+                                            <label for="stock" class="col-2">Voorraad</label>
+                                            <input class="form-control col" type="number" name="stock64" id="stock64">
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                     </div>
                     <div class="w-100"></div>
