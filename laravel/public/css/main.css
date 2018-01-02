@@ -210,7 +210,7 @@ body{
     border:none;
 }
 /*DETAIL PRODUCT*/
-.detail-img .img-back{
+.detail-img #img-back{
     display: none;
 }
 .detail-img-choice{

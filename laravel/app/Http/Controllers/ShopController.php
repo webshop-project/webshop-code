@@ -14,8 +14,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Warehouse::all()->unique('house_id');
-//        $products = Warehouse::all();
+        $products = \App\Product::all();
         return view('pages/shop')
             ->with('products',$products);
     }
