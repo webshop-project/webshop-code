@@ -32,10 +32,13 @@ class WarehouseController extends Controller
         $houses = \App\house::All();
         $catergories = \App\categorie::All();
         $sizes = \App\size::All();
+        $storages = \App\size::where('category_id', '=' , 6);
+
         return view('admin/products/productAdd')
             ->with('houses', $houses)
             ->with('categories', $catergories)
-            ->with('sizes', $sizes);
+            ->with('sizes', $sizes)
+            ->with('storages', $storages);
     }
 
     /**
@@ -47,11 +50,17 @@ class WarehouseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category' => 'required|max:50',
-            'price' => 'required|integer',
+            'category' => 'required',
             'house' => 'required|integer',
-            'stock' => 'required|integer',
-            'storage' => 'integer',
+            'priceS' => 'nullable|numeric|between:0,00.999999999,99',
+            'priceM' => 'nullable|numeric|between:0,00.999999999,99',
+            'priceL' => 'nullable|numeric|between:0,00.999999999,99',
+            'priceXL' => 'nullable|numeric|between:0,00.999999999,99',
+            'stockS' => 'integer|nullable',
+            'stockM' => 'integer|nullable',
+            'stockL' => 'integer|nullable',
+            'stockXL' => 'integer|nullable',
+            'storage' => 'integer|nullable',
             'description' => 'required',
             'image' => 'required'
         ]);
@@ -129,8 +138,8 @@ class WarehouseController extends Controller
                     $warehouse = new \App\Warehouse();
                     $warehouse->product_id = $product->id;
                     $warehouse->size_id = 1;
-                    $warehouse->supply = $request->stock;
-                    $warehouse->price = $request->price;
+                    $warehouse->supply = $request->stockS;
+                    $warehouse->price = $request->priceS;
                     $warehouse->save();
                 }
 
@@ -138,24 +147,24 @@ class WarehouseController extends Controller
                     $warehouse = new \App\Warehouse();
                     $warehouse->product_id = $product->id;
                     $warehouse->size_id = 2;
-                    $warehouse->supply = $request->stock;
-                    $warehouse->price = $request->price;
+                    $warehouse->supply = $request->stockM;
+                    $warehouse->price = $request->priceM;
                     $warehouse->save();
                 }
                 if ($request->sizeL == 'on') {
                     $warehouse = new \App\Warehouse();
                     $warehouse->product_id = $product->id;
                     $warehouse->size_id = 3;
-                    $warehouse->supply = $request->stock;
-                    $warehouse->price = $request->price;
+                    $warehouse->supply = $request->stockL;
+                    $warehouse->price = $request->priceL;
                     $warehouse->save();
                 }
                 if ($request->sizeXL == 'on') {
                     $warehouse = new \App\Warehouse();
                     $warehouse->product_id = $product->id;
                     $warehouse->size_id = 4;
-                    $warehouse->supply = $request->stock;
-                    $warehouse->price = $request->price;
+                    $warehouse->supply = $request->stockXL;
+                    $warehouse->price = $request->priceXL;
                     $warehouse->save();
                 }
 
