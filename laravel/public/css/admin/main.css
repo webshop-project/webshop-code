@@ -76,7 +76,9 @@ header .navbar {
 }
 /* ADD PRODUCTS */
 
-.sizes .form-group{
+
+.sizes .small-group{
+    text-align: center;
     width: 30px;
 }
 

@@ -17,20 +17,12 @@
                             {{csrf_field()}}
                             <div class="col">
                                 <div class="form-group form-padding">
-                                    <label for="name" class="col-2">Naam</label>
-                                    <input class="form-control col" type="text" id="name" name="name" required>
-                                </div>
-                                <div class="form-group form-padding">
                                     <label for="category" class="col-2">Categorie</label>
                                     <select class="form-control col" name="category" id="category">
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="form-group form-padding">
-                                    <label for="price" class="col-2">Prijs</label>
-                                    <input class="form-control col" type="text" name="price" id="price" required>
                                 </div>
                                 <div class="form-group form-padding">
                                     <label for="house" class="col-2">House</label>
@@ -40,29 +32,57 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group form-padding">
-                                    <label for="stock" class="col-2">Voorraad</label>
-                                    <input class="form-control col" type="text" name="stock" id="stock" required>
-                                </div>
+                                <div class="col sizes">
+                                    <h5>Maten</h5>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="sizeS">S</label>
+                                        <input class="form-control" type="checkbox" id="sizeS" name="sizeS">
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="price" class="col-2">Prijs</label>
+                                        <input class="form-control col" type="text" name="price" id="price" required>
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="stock" class="col-2">Voorraad</label>
+                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                    </div>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="sizeM">M</label>
+                                        <input class="form-control" type="checkbox" id="sizeM" name="sizeM">
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="price" class="col-2">Prijs</label>
+                                        <input class="form-control col" type="text" name="price" id="price" required>
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="stock" class="col-2">Voorraad</label>
+                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                    </div>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="sizeL">L</label>
+                                        <input class="form-control" type="checkbox" id="sizeL" name="sizeL">
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="price" class="col-2">Prijs</label>
+                                        <input class="form-control col" type="text" name="price" id="price" required>
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="stock" class="col-2">Voorraad</label>
+                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                    </div>
+                                    <div class="form-group small-group flex flex-between">
+                                        <label for="sizeXL">XL</label>
+                                        <input class="form-control" type="checkbox" id="sizeXL" name="sizeXL">
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="price" class="col-2">Prijs</label>
+                                        <input class="form-control col" type="text" name="price" id="price" required>
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="stock" class="col-2">Voorraad</label>
+                                        <input class="form-control col" type="text" name="stock" id="stock" required>
+                                    </div>
                             </div>
-                            <div class="col sizes">
-                                <h5>Maten</h5>
-                                <div class="form-group flex flex-between">
-                                    <label for="sizeS">S</label>
-                                    <input class="form-control" type="checkbox" id="sizeS" name="sizeS">
-                                </div>
-                                <div class="form-group flex flex-between">
-                                    <label for="sizeM">M</label>
-                                    <input class="form-control" type="checkbox" id="sizeM" name="sizeM">
-                                </div>
-                                <div class="form-group flex flex-between">
-                                    <label for="sizeL">L</label>
-                                    <input class="form-control" type="checkbox" id="sizeL" name="sizeL">
-                                </div>
-                                <div class="form-group flex flex-between">
-                                    <label for="sizeXL">XL</label>
-                                    <input class="form-control" type="checkbox" id="sizeXL" name="sizeXL">
-                                </div>
                                 {{--<div class="form-group">--}}
                                     {{--<label for="sizeGB">Storage</label>--}}
                                     {{--<select class="form-control" name="sizeGB" id="sizeGB">--}}
