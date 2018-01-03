@@ -14,7 +14,7 @@
             <h5 class="h3">Order id: {{$orders->id}}</h5>
             <h5 class="h3">Name: {{$orders->user->firstName}} {{$orders->user->lastName}}</h5>
             <hr class="my-4">
-            <h5 class="h4">Product name: {{}}</h5>
+            <h5 class="h4">Product name: </h5>
             <h5 class="h4">Amount: {{$orders->amount}}</h5>
             <h5 class="h4">Total price: {{$orders->price}}</h5>
             <h5 class="h4">Date: {{$orders->bought_at}}</h5>

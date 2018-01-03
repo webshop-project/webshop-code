@@ -31,8 +31,9 @@
             </div>
             {{$orders->links()}}
         </div>
-        <div class="processed" id="processed" style="display: none">
+        <div class="processed" id="processed">
             <div class="row row-sizer-userinfo">
+
                 @foreach($ordersP as $orderP)
                     <div class="col-4 product-info">
                         <div class="item-info">

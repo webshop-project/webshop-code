@@ -6,13 +6,6 @@
 
 @section('content')
 
-{{--<div class="jumbotron bg-danger">--}}
-        {{--<div class="container">--}}
-            {{--<h1 class="text-white">--}}
-                {{--Banner--}}
-            {{--</h1>--}}
-        {{--</div>--}}
-    {{--</div>--}}
     <div class="container details p-5">
     {{Breadcrumbs::render('product', $product)}}
         <div class="row p-5">
@@ -56,7 +49,11 @@
                     @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>
-                        <td class="col-7">{{$product->price}}</td>
+                        @foreach($product->warehouse as $price)
+                            @if($loop->first)
+                                <td class="col-7">{{number_format($price->price, 2, ',', ' ')}}</td>
+                            @endif
+                        @endforeach
                     </tr>
                     </tbody>
                 </table>
@@ -91,7 +88,6 @@
         </div>
         <div class="row headRoom">
             @for($i = 0; $i < 3; $i++)
-
                 <div class="product col-sm-12 col-md-4 col-4 p-4">
                     <a href="{{action('WarehouseController@show', $relatedProducts[$i]->product_id)}}">
                         <div class="row align-items-center">
@@ -103,9 +99,7 @@
                         </div>
                     </a>
                 </div>
-
             @endfor
         </div>
-
     </div>
 @endsection
