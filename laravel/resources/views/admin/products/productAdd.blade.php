@@ -32,6 +32,16 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div id="groupStandard">
+                                    <div class="form-group form-padding">
+                                        <label for="price" class="col-2">Prijs</label>
+                                        <input class="form-control col" type="number" step="any" name="priceSt">
+                                    </div>
+                                    <div class="form-group form-padding">
+                                        <label for="stock" class="col-2">Voorraad</label>
+                                        <input class="form-control col" type="number" name="stockSt">
+                                    </div>
+                                </div>
                                 <div class="col sizes d-none" id="shirtSizes">
                                     <h5>Maten</h5>
                                     <div class="form-group small-group flex flex-between">
@@ -128,7 +138,7 @@
                                     <div id="group32" class="d-none">
                                         <div class="form-group form-padding">
                                             <label for="price" class="col-2">Prijs</label>
-                                            <input class="form-control col" type="number" step="any" name="priceL32">
+                                            <input class="form-control col" type="number" step="any" name="price32">
                                         </div>
                                         <div class="form-group form-padding">
                                             <label for="stock" class="col-2">Voorraad</label>

@@ -32,7 +32,7 @@ class WarehouseController extends Controller
         $houses = \App\house::All();
         $catergories = \App\categorie::All();
         $sizes = \App\size::All();
-        $storages = \App\size::where('category_id', '=' , 6);
+        $storages = \App\size::where('category_id', '=', 6);
 
         return view('admin/products/productAdd')
             ->with('houses', $houses)
@@ -52,15 +52,24 @@ class WarehouseController extends Controller
         $request->validate([
             'category' => 'required',
             'house' => 'required|integer',
-            'priceS' => 'nullable|numeric|between:0,00.999999999,99',
-            'priceM' => 'nullable|numeric|between:0,00.999999999,99',
-            'priceL' => 'nullable|numeric|between:0,00.999999999,99',
-            'priceXL' => 'nullable|numeric|between:0,00.999999999,99',
+            'priceS' => 'nullable|numeric|between:0.00,999999999.99',
+            'priceM' => 'nullable|numeric|between:0.00,999999999.99',
+            'priceL' => 'nullable|numeric|between:0.00,999999999.99',
+            'priceXL' => 'nullable|numeric|between:0.00,999999999.99',
             'stockS' => 'integer|nullable',
             'stockM' => 'integer|nullable',
             'stockL' => 'integer|nullable',
             'stockXL' => 'integer|nullable',
-            'storage' => 'integer|nullable',
+            'price8' => 'nullable|numeric|between:0.00,999999999.99',
+            'price16' => 'nullable|numeric|between:0.00,999999999.99',
+            'price32' => 'nullable|numeric|between:0.00,999999999.99',
+            'price64' => 'nullable|numeric|between:0.00,999999999.99',
+            'stock8' => 'integer|nullable',
+            'stock16' => 'integer|nullable',
+            'stock32' => 'integer|nullable',
+            'stock64' => 'integer|nullable',
+            'priceSt' => 'nullable|numeric|between:0.00,999999999.99',
+            'stockSt' => 'integer|nullable',
             'description' => 'required',
             'image' => 'required'
         ]);
@@ -134,40 +143,217 @@ class WarehouseController extends Controller
                     $imageAdd->save();
                 }
 
-                if ($request->sizeS == 'on') {
-                    $warehouse = new \App\Warehouse();
-                    $warehouse->product_id = $product->id;
-                    $warehouse->size_id = 1;
-                    $warehouse->supply = $request->stockS;
-                    $warehouse->price = $request->priceS;
-                    $warehouse->save();
+            if ($request->sizeS == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 1;
+                $warehouse->supply = $request->stockS;
+                $warehouse->price = $request->priceS;
+                $warehouse->save();
+            }
+
+            if ($request->sizeM == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 2;
+                $warehouse->supply = $request->stockM;
+                $warehouse->price = $request->priceM;
+                $warehouse->save();
+            }
+            if ($request->sizeL == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 3;
+                $warehouse->supply = $request->stockL;
+                $warehouse->price = $request->priceL;
+                $warehouse->save();
+            }
+            if ($request->sizeXL == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 4;
+                $warehouse->supply = $request->stockXL;
+                $warehouse->price = $request->priceXL;
+                $warehouse->save();
+            }
+
+        }
+        elseif($request->category == 6) {
+
+            $product = new \App\product();
+            $product->category_id = $request->category;
+            $product->house_id = $request->house;
+            $product->description = $request->description;
+
+            $first = true;
+            foreach ($request->image as $image)
+                if ($first) {
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $product->img = '/storage/' . $image->hashName();
+
+                    $product->save();
+                    $first = false;
+
+                } else {
+                    $productV = $product->id;
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $imageAdd = new \App\image();
+
+                    $imageAdd->product_id = $productV;
+                    $imageAdd->img = '/storage/' . $image->hashName();
+
+                    $imageAdd->save();
                 }
 
-                if ($request->sizeM == 'on') {
-                    $warehouse = new \App\Warehouse();
-                    $warehouse->product_id = $product->id;
-                    $warehouse->size_id = 2;
-                    $warehouse->supply = $request->stockM;
-                    $warehouse->price = $request->priceM;
-                    $warehouse->save();
-                }
-                if ($request->sizeL == 'on') {
-                    $warehouse = new \App\Warehouse();
-                    $warehouse->product_id = $product->id;
-                    $warehouse->size_id = 3;
-                    $warehouse->supply = $request->stockL;
-                    $warehouse->price = $request->priceL;
-                    $warehouse->save();
-                }
-                if ($request->sizeXL == 'on') {
-                    $warehouse = new \App\Warehouse();
-                    $warehouse->product_id = $product->id;
-                    $warehouse->size_id = 4;
-                    $warehouse->supply = $request->stockXL;
-                    $warehouse->price = $request->priceXL;
-                    $warehouse->save();
-                }
+            if ($request->size8 == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 5;
+                $warehouse->supply = $request->stock8;
+                $warehouse->price = $request->price8;
+                $warehouse->save();
+            }
 
+            if ($request->size16 == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 6;
+                $warehouse->supply = $request->stock16;
+                $warehouse->price = $request->price16;
+                $warehouse->save();
+            }
+            if ($request->size32 == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 7;
+                $warehouse->supply = $request->stock32;
+                $warehouse->price = $request->price32;
+                $warehouse->save();
+            }
+            if ($request->size64== 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 8;
+                $warehouse->supply = $request->stock64;
+                $warehouse->price = $request->price64;
+                $warehouse->save();
+            }
+
+        }
+        else{
+            $product = new \App\product();
+            $product->category_id = $request->category;
+            $product->house_id = $request->house;
+            $product->description = $request->description;
+
+            $first = true;
+            foreach ($request->image as $image)
+                if ($first) {
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $product->img = '/storage/' . $image->hashName();
+
+                    $product->save();
+                    $first = false;
+
+                } else {
+                    $productV = $product->id;
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $imageAdd = new \App\image();
+
+                    $imageAdd->product_id = $productV;
+                    $imageAdd->img = '/storage/' . $image->hashName();
+
+                    $imageAdd->save();
+                }
+            $warehouse = new \App\Warehouse();
+            $warehouse->product_id = $product->id;
+            $warehouse->supply = $request->stockSt;
+            $warehouse->price = $request->priceSt;
+            $warehouse->save();
         }
 
         return redirect()->action('DashboardController@index');

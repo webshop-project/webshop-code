@@ -118,8 +118,7 @@
                                 <div class="desc">{{$productLow->product->description}}
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-3"></div>
+                            <div class="row justify-content-center">
                                 <a href="{{action('WarehouseController@edit', $productLow->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
                                 </a>
