@@ -22,23 +22,17 @@
             <div class="row">
                 <div class=" col menuList">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="{{url('/shop/caps')}}">Caps</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/keycords')}}">Keycords</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/mugs')}}">Mugs</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/phonecases')}}">Phonecases</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/shirts')}}">Shirts</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/usbs')}}">USB's</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/cat',1)}}">Caps</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/cat',2)}}">Keycords</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/cat',3)}}">Mugs</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/cat',4)}}">Phonecases</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/cat',5)}}">Shirts</a></li>
+                        <li class="list-group-item"><a href="{{url('/shop/cat',6)}}">USB's</a></li>
                     </ul>
                 </div>
                 <div class="container col-xs-12 col-sx-12 col-10  d-inline">
                     <div class="selectContainer">
-                        <select class="custom-select">
-                            <option selected disabled> Houses:</option>
-                            <option value="dragons">Database Dragons</option>
-                            <option value="ravens">Recursive Ravens</option>
-                            <option value="serpents">Script Serpents</option>
-                            <option value="vikings">Variable Vikings</option>
-                        </select>
+                        <form action="">
                             <select name="houseVal" title="houses" onchange="this.form.submit()" id="houses" class="custom-select">
                                 <option selected disabled> Houses:</option>
                                 <option value="1">Variable Vikings</option>
@@ -46,10 +40,10 @@
                                 <option value="3">Recursive Ravens</option>
                                 <option value="4">Script Serpents</option>
                             </select>
+                        </form>
                     </div>
                     <div class="row">
                         @foreach($products as $product)
-                            <div class="block span3">
                             <div class="block span3 {{$product->house->id}}">
                                 <div class="product">
                                         <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
@@ -58,7 +52,6 @@
                                     </div>
                                 </div>
                                 <div class="info">
-                                    <h4>{{$product->house->name}}<br> {{$product->category->name}}</h4>
                                     <h4>{{$product->house->name}}<br> {{$product->category->name}}
                                     @if(!empty($product->brandModel->name))
                                         {{$product->brandModel->name}}
@@ -66,7 +59,6 @@
                                     </h4>
                                     @foreach($product->warehouse as $price)
                                         @if($loop->first)
-                                            <span class="price">€{{$price->price}}</span>
                                             <span class="price">€{{number_format($price->price,2,',',' ')}}</span>
                                         @endif
                                     @endforeach
@@ -81,20 +73,6 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
-
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul>
-                            </nav>
-                        </div>
                     </div>
                     {{$products->links()}}
                 </div>
