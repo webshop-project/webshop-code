@@ -29,7 +29,7 @@ class WarehouseModelsTableSeeder extends Seeder
                         [
                             'product_id'    => $product_id,
                             'size_id'       => $j + 1,
-                            'price'         => random_int(15,25),
+                            'price'         => mt_rand (15*10, 25*10) / 10,
                             'supply'        => random_int(0,10),
                         ]
                     );
@@ -45,7 +45,7 @@ class WarehouseModelsTableSeeder extends Seeder
                         [
                             'product_id'    => $product_id,
                             'size_id'       => count($shirtSizeList) + 1 + $j,
-                            'price'         => random_int(15,25),
+                            'price'         => mt_rand (15*10, 25*10) / 10,
                             'supply'        => random_int(0,10),
                         ]
                     );
@@ -57,7 +57,7 @@ class WarehouseModelsTableSeeder extends Seeder
                 (
                     [
                         'product_id'    => $product_id,
-                        'price'         => random_int(15,25),
+                        'price'         => mt_rand (15*10, 25*10) / 10,
                         'supply'        => random_int(0,10),
                     ]
                 );

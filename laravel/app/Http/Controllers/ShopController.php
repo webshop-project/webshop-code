@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Warehouse;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
