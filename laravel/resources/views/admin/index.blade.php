@@ -184,14 +184,14 @@
             </div>
         </div>
     </div>
-    <script>
+<script>
 
-        const btnHide  = document.getElementById('hide');
-        const alertBar = document.getElementById('alertBar');
-        btnHide.addEventListener('click', () => {
-          alertBar.style.display = "none";
-          alertBar.innerHTML = alertBar;
-        });
-
-    </script>
+    const btnHide  = document.getElementById('hide');
+    const alertBar = document.getElementById('alertBar');
+    btnHide.addEventListener('click', () => {
+        alertBar.classList.add('d-none')
+        alertBar.classList.remove('d-inline')
+        alertBar.classList.remove('row')
+    });
+</script>
 @endsection
