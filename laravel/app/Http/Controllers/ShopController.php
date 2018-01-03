@@ -14,6 +14,7 @@ class ShopController extends Controller
     public function index()
     {
         $products = \App\Product::all();
+        $products = \App\Product::paginate(10);
         return view('pages/shop')->with('products',$products);
     }
 
@@ -70,5 +71,10 @@ class ShopController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function category($cat)
+    {
+        $products = \App\Product::where('category_id','=',$cat)->paginate(10);
+        return view('pages/shop')->with('products',$products);
     }
 }

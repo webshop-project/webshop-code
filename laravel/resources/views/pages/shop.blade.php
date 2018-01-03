@@ -39,10 +39,18 @@
                             <option value="serpents">Script Serpents</option>
                             <option value="vikings">Variable Vikings</option>
                         </select>
+                            <select name="houseVal" title="houses" onchange="this.form.submit()" id="houses" class="custom-select">
+                                <option selected disabled> Houses:</option>
+                                <option value="1">Variable Vikings</option>
+                                <option value="2">Database Dragons</option>
+                                <option value="3">Recursive Ravens</option>
+                                <option value="4">Script Serpents</option>
+                            </select>
                     </div>
                     <div class="row">
                         @foreach($products as $product)
                             <div class="block span3">
+                            <div class="block span3 {{$product->house->id}}">
                                 <div class="product">
                                         <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
                                     <div class="buttons">
@@ -51,9 +59,15 @@
                                 </div>
                                 <div class="info">
                                     <h4>{{$product->house->name}}<br> {{$product->category->name}}</h4>
+                                    <h4>{{$product->house->name}}<br> {{$product->category->name}}
+                                    @if(!empty($product->brandModel->name))
+                                        {{$product->brandModel->name}}
+                                    @endif
+                                    </h4>
                                     @foreach($product->warehouse as $price)
                                         @if($loop->first)
                                             <span class="price">€{{$price->price}}</span>
+                                            <span class="price">€{{number_format($price->price,2,',',' ')}}</span>
                                         @endif
                                     @endforeach
                                     <form action="{{ url('/shop/cart') }}" method="POST">
@@ -82,6 +96,7 @@
                             </nav>
                         </div>
                     </div>
+                    {{$products->links()}}
                 </div>
             </div>
         </div>
