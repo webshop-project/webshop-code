@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\order;
 use App\Product;
-use App\User;
 use App\Warehouse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -101,8 +99,7 @@ class DashboardController extends Controller
 
     public function lowStockList()
     {
-        $warehouse = new Warehouse();
-        $lowOnStock = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(6);
-        return view('admin/products/lowStockList')->with('lowOnStock',$lowOnStock);
+        $lowOnStock = \App\Warehouse::where('supply','<',4)->orderBy('supply')->paginate(6);
+        return view('admin/products/lowStockList', ['lowOnStock' => $lowOnStock]);
     }
 }
