@@ -56,10 +56,10 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'amoshop@radius-college.nl'),
-        'name' => env('MAIL_FROM_NAME', 'Amo-Webshop'),
-    ],
 
+        'address' => env('MAIL_FROM_ADDRESS', 'amo-webshop@radiuscollege.nl'),
+        'name' => env('MAIL_FROM_NAME', 'Amo Webshop'),
+    ],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

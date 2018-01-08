@@ -3,37 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
+use App\Mail\InvoiceSend;
 use Illuminate\Http\Request;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+
 
 class InvoiceController extends Controller
 {
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-
-    }
-    public function build()
-    {
-        return $this->from('example@example.com')
-            ->markdown('emails.orders.shipped');
-    }
-    /**
-     * Display the specified resource.
+     * Send the specified resource.
      *
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function send(Invoice $invoice)
+    public function ship(Request $request)
     {
-
+        $invoice = Invoice::find($orderNumber);
+        Mail::to()->send(new InvoiceSend($invoice));
     }
 
     /**
