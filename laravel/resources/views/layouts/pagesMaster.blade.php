@@ -28,12 +28,15 @@
     <div class="bg-header-top">
         <div class="container">
             <div class="row">
-                <div class="col-xs-11 d-flex align-self-center">
-                    <i class="fa fa-search fa-2x grayIcons" aria-hidden="true"></i>
-                    <a class="login" href="#"><span>Login</span></a>
-                    <a class="register" href="#"><span>Register</span></a>
+                <div class="col">
+                    <div class="d-inline-flex align-self-center">
+                        <i class="fa fa-search fa-2x grayIcons" aria-hidden="true"></i>
+                        <a class="login" href="#"><span>Login</span></a>
+                        <a class="register" href="#"><span>Register</span></a>
+                    </div>
                 </div>
-                <div class="col-xs-1 ml-auto align-items-center d-flex">
+
+                <div class="align-items-center d-flex">
                     <span><i class="fa fa-star fa-2x grayIcons blr" aria-hidden="true"></i></span>
                     <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
                     <div id="myShoppingCart" class="cart">
@@ -116,7 +119,9 @@
         <div class="container-fluid bg-secondary">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand row col" href="/"><img class="img-responsive col-10" src="{{asset('img/amologin2.png')}}" alt=""></a>
+                    <a class="col-sm-12 col-xs-12 col-md-5" href="/">
+                        <img class="img-fluid" src="{{asset('img/amologin2.png')}}" alt="">
+                    </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

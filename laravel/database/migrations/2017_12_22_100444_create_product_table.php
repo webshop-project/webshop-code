@@ -20,7 +20,7 @@ class CreateProductTable extends Migration
             $table->integer('brand_model_id')->nullable();
             $table->text('description')->nullable();
             $table->string('img');
-            $table->integer('viewAmount');
+            $table->integer('viewAmount')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

@@ -46,14 +46,18 @@
                                 <div class="product">
                                         <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
                                     <div class="buttons">
-                                        <a class="preview btn btn-large btn-info" href="#"><i class="glyphicon glyphicon-eye-open"></i> View item</a>
+                                        <a class="preview btn btn-large btn-info" href="{{action('WarehouseController@show',$product->id)}}"><i class="glyphicon glyphicon-eye-open"></i> View item</a>
                                     </div>
                                 </div>
                                 <div class="info">
                                     <h4>{{$product->house->name}}<br> {{$product->category->name}}</h4>
-                                    <span class="price">€{{$product->price}}</span>
+                                    @foreach($product->warehouse as $price)
+                                        @if($loop->first)
+                                            <span class="price">€{{$price->price}}</span>
+                                        @endif
+                                    @endforeach
                                     <form action="{{ url('/shop/cart') }}" method="POST">
-                                        {!! csrf_field() !!}
+                                        {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$product->id}}">
                                         <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
                                         <input type="hidden" name="size" value="">

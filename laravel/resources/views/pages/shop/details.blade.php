@@ -6,30 +6,23 @@
 
 @section('content')
 
-{{--<div class="jumbotron bg-danger">--}}
-        {{--<div class="container">--}}
-            {{--<h1 class="text-white">--}}
-                {{--Banner--}}
-            {{--</h1>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{Breadcrumbs::render('product', $product)}}
     <div class="container details p-5">
+    {{Breadcrumbs::render('product', $product)}}
         <div class="row p-5">
-            <div class="detail-img-choice img-responsive col-lg-1 col-md-3 col-sm-4 p-2">
-                <img id="img-front-choice" src="{{$product->img}}" alt="Product image">
-                <img id="img-back-choice" src="{{$product->image[0]->img}}" alt="Product img">
+            <div class="detail-img-choice img-fluid col-lg-1 col-md-3 col-sm-4 d-none d-sm-block d-md-block d-lg-block d-xl-block p-2">
+                <img id="img-front-choice" class="img-fluid" src="{{$product->img}}" alt="Product image">
+                <img id="img-back-choice"  class="img-fluid" src="{{$product->image[0]->img}}" alt="Product img">
             </div>
             <div class="row justify-content-center detail-img col-lg-5 col-md-8 col-sm-6">
                 <div class="p-5">
-                    <img class="img-responsive img-front" src="{{$product->img}}" alt="Product image">
-                    <img class="img-responsive img-back" src="{{$product->image[0]->img}}" alt="Product image">
+                    <img id="img-front" class="img-fluid" src="{{$product->img}}" alt="Product image">
+                    <img id="img-back" class="img-fluid" src="{{$product->image[0]->img}}" alt="Product image">
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 p-3">
                 <table class="table">
                     <tbody>
-                    <tr class="row ">
+                    <tr class="row">
                         <td class="col-5">Name:</td>
                         <td class="col-7">{{$product->category->name}} - {{$product->house->name}}</td>
                     </tr>
@@ -56,7 +49,11 @@
                     @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>
-                        <td class="col-7">{{$product->price}}</td>
+                        @foreach($product->warehouse as $price)
+                            @if($loop->first)
+                                <td class="col-7">{{number_format($price->price, 2, ',', ' ')}}</td>
+                            @endif
+                        @endforeach
                     </tr>
                     </tbody>
                 </table>
@@ -91,7 +88,6 @@
         </div>
         <div class="row headRoom">
             @for($i = 0; $i < 3; $i++)
-
                 <div class="product col-sm-12 col-md-4 col-4 p-4">
                     <a href="{{action('WarehouseController@show', $relatedProducts[$i]->product_id)}}">
                         <div class="row align-items-center">
@@ -103,9 +99,7 @@
                         </div>
                     </a>
                 </div>
-
             @endfor
         </div>
-
     </div>
 @endsection

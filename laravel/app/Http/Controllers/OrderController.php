@@ -15,8 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = \App\Order::where('order_processed', false)->paginate(6);
-        $ordersP = \App\Order::where('order_processed', true)->paginate(6);
+        $orders = \App\Order::where('shipped', 0)->paginate(6);
+        $ordersP = \App\Order::where('shipped', 1)->paginate(6);
         $users = \App\User::all();
 
         return view('admin/orders/orderIndex')
@@ -83,7 +83,7 @@ class OrderController extends Controller
     public function update($id)
     {
         $orders = \App\Order::find($id);
-        $orders->order_processed = 1;
+        $orders->shipped = 1;
         $orders->save();
 
         return back();

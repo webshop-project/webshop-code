@@ -118,8 +118,7 @@
                                 <div class="desc">{{$productLow->product->description}}
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-3"></div>
+                            <div class="row justify-content-center">
                                 <a href="{{action('WarehouseController@edit', $productLow->product_id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Edit Product</button>
                                 </a>
@@ -184,14 +183,14 @@
             </div>
         </div>
     </div>
-    <script>
+<script>
 
-        const btnHide  = document.getElementById('hide');
-        const alertBar = document.getElementById('alertBar');
-        btnHide.addEventListener('click', () => {
-          alertBar.style.display = "none";
-          alertBar.innerHTML = alertBar;
-        });
-
-    </script>
+    const btnHide  = document.getElementById('hide');
+    const alertBar = document.getElementById('alertBar');
+    btnHide.addEventListener('click', () => {
+        alertBar.classList.add('d-none')
+        alertBar.classList.remove('d-inline')
+        alertBar.classList.remove('row')
+    });
+</script>
 @endsection
