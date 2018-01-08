@@ -120,12 +120,12 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="col-sm-12 col-xs-12 col-md-5" href="/">
-                        <img class="img-fluid" src="{{asset('img/amologin2.png')}}" alt="">
+                        <img class="img-fluid img-sizer-front col-8" src="{{asset('img/amologin2.png')}}" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse navbar-right " id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto ">
                             <li class="nav-item">
                                 <a class="nav-link navLinkPadding" href="/">Home</a>
