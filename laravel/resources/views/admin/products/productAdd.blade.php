@@ -32,6 +32,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <h4>De prijs is in Euro's</h4>
                                 <div id="groupStandard">
                                     <div class="form-group form-padding">
                                         <label for="price" class="col-2">Prijs</label>
@@ -170,6 +171,7 @@
                                   required></textarea>
                     </div>
                     <div class="w-100"></div>
+                    <h4>Geuploade afbeeldingen zouden idealiter 1500px bij 1500px moeten zijn geschoten in een vierkantformaat</h4>
                     <div class="form-group  -between upload">
                         <label for="image">Upload Foto</label>
                         <input class="form-control" type="file" name="image[]" id="image" multiple required>
