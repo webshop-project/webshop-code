@@ -459,6 +459,7 @@ footer i{
 }
 
 .product {
+    padding: 5px;
     display: block;
     position: relative;
 }

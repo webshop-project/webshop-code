@@ -77,7 +77,7 @@
                                             <td>€{{ $item->subtotal }}</td>
                                             <td class=""></td>
                                             <td>
-                                                <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                                <form action="{{ url('shop', [$item->rowId]) }}" method="POST" class="side-by-side">
                                                     {!! csrf_field() !!}
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="submit" class="btn btn-danger btn-sm" value="Remove">
