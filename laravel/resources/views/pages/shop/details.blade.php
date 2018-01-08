@@ -93,7 +93,7 @@
             @for($i = 0; $i < 3; $i++)
 
                 <div class="product col-sm-12 col-md-4 col-4 p-4">
-                    <a href="{{action('WarehouseController@show', $relatedProducts[$i]->product_id)}}">
+                    <a href="{{action('WarehouseController@show', $relatedProducts[$i]->id)}}">
                         <div class="row align-items-center">
                             <img class="img-responsive img-fluid mx-auto d-block" src="{{$relatedProducts[$i]->img}} " alt="">
                         </div>
