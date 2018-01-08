@@ -1,0 +1,49 @@
+.bg-header-top{
+    background: #54B974;
+}
+.bg-header-bottom .bg-secondary{
+    background: #36784B!important;
+}
+.bg-header-top i, .bg-header-top a{
+    color: #36784B!important;
+}
+.bg-header-bottom a{
+    color: #54B974!important;
+}
+.new-products, .shop, .contact{
+    position: relative;
+}
+.new-products a, .new-products h2, .new-products h5{
+    border: none!important;
+}
+.page-under, .page-upper{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: -1;
+    bottom: 0;
+    padding: 0!important;
+    background: none!important;
+}
+.shop-banner{
+    border: none;
+}
+.page-upper{
+    top: 0;
+}
+.contact address, .contact h2{
+    margin: 0;
+    color: #FFF;
+}
+.new-products .text-dark{
+    color: #FFF!important;
+}
+footer .bg-secondary{
+    background: #167B3E!important;
+}
+footer i, footer p{
+    color: #54B974;
+}
+footer .container{
+    border-top: 1px solid #54B974;
+}
