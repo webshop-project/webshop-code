@@ -21,7 +21,7 @@
                                     <p><b>Stock:</b></p>
                                     <p><b>{{$lowStock->supply}}</b></p>
                                     <div class="list-item">
-                                        <a class="btn btn-warning" href="{{action('WarehouseController@show',$lowStock->id)}}">Show</a>
+                                        <a class="btn btn-warning" href="{{action('DashboardController@show',$lowStock->product->id)}}">Show</a>
                                     </div>
                                 </div>
                             </div>

@@ -12,12 +12,11 @@
             </div>
             <div class="row row-sizer-userinfo">
                 @foreach($products as $product)
-
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
-                                <div class="img-preview col-9">
-                                    <img width="90%" src="{{$product->img}}" alt="past niet">
+                                <div class="img-preview">
+                                    <img class="img-fluid" src="{{$product->product->img}}" alt="img">
                                 </div>
                                 <div class="col-1">
                                     <p><b>price:</b></p>
@@ -53,7 +52,6 @@
                 <div class="alert alert-success">
                     <h3>{{ session('succesD') }}</h3>
                 </div>
-
             @endif
             {{$products->links()}}
         </div>

@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\house;
-use App\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WarehouseController extends Controller
@@ -21,24 +17,9 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        $warehouse = new Warehouse();
-
-        $products = DB::table('warehouse')
-            ->select(DB::raw('*'))
-            ->where('deleted_at', '=', null)
-            ->paginate(6);
-
-        $images = DB::table('images')
-            ->select(DB::raw('*'))
-            ->where([
-                ['deleted_at', '=', null],
-            ])
-            ->get();
-
-
+        $products = \App\Warehouse::paginate(6);
         return view('admin/products/product')
-            ->with('products', $products)
-            ->with('images', $images);
+            ->with('products', $products);
     }
 
     /**
@@ -51,10 +32,13 @@ class WarehouseController extends Controller
         $houses = \App\house::All();
         $catergories = \App\categorie::All();
         $sizes = \App\size::All();
+        $storages = \App\size::where('category_id', '=', 6);
+
         return view('admin/products/productAdd')
             ->with('houses', $houses)
             ->with('categories', $catergories)
-            ->with('sizes', $sizes);
+            ->with('sizes', $sizes)
+            ->with('storages', $storages);
     }
 
     /**
@@ -65,137 +49,312 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $request->validate([
-            'name' => 'required|max:50|unique:products,name',
-            'category' => 'required|max:50',
-            'price' => 'required|integer',
+            'category' => 'required',
             'house' => 'required|integer',
-            'stock' => 'required|integer',
-            'storage' => 'integer',
+            'priceS' => 'nullable|numeric|between:0.00,999999999.99',
+            'priceM' => 'nullable|numeric|between:0.00,999999999.99',
+            'priceL' => 'nullable|numeric|between:0.00,999999999.99',
+            'priceXL' => 'nullable|numeric|between:0.00,999999999.99',
+            'stockS' => 'integer|nullable',
+            'stockM' => 'integer|nullable',
+            'stockL' => 'integer|nullable',
+            'stockXL' => 'integer|nullable',
+            'price8' => 'nullable|numeric|between:0.00,999999999.99',
+            'price16' => 'nullable|numeric|between:0.00,999999999.99',
+            'price32' => 'nullable|numeric|between:0.00,999999999.99',
+            'price64' => 'nullable|numeric|between:0.00,999999999.99',
+            'stock8' => 'integer|nullable',
+            'stock16' => 'integer|nullable',
+            'stock32' => 'integer|nullable',
+            'stock64' => 'integer|nullable',
+            'priceSt' => 'nullable|numeric|between:0.00,999999999.99',
+            'stockSt' => 'integer|nullable',
             'description' => 'required',
             'image' => 'required'
         ]);
 
-        $product = new \App\product();
+        if ($request->category == 5) {
 
-        $product->name = $request->name;
-        $product->category_id = $request->category;
-        $product->price = $request->price;
-        $product->house_id = $request->house;
+            $product = new \App\product();
+            $product->category_id = $request->category;
+            $product->house_id = $request->house;
+            $product->description = $request->description;
 
-        $product->supply = $request->stock;
-        $product->description = $request->description;
+            $first = true;
+            foreach ($request->image as $image)
+                if ($first) {
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
 
-        $first = true;
-        foreach ($request->image as $image)
-            if ($first) {
-                $path = $image->storePublicly('public');
-                // File and new size
-                $filename = storage_path("app/$path");
+                    // Content type
+                    header('Content-Type: image/jpeg');
 
-                // Content type
-                header('Content-Type: image/jpeg');
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
 
-                // Get new sizes
-                list($width, $height) = getimagesize($filename);
-                $newwidth = 377;
-                $newheight = 337;
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
 
-                // Load
-                $thumb = imagecreatetruecolor($newwidth, $newheight);
-                $source = imagecreatefromjpeg($filename);
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
-                // Resize
-                imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
 
-                // Output
-                imagejpeg($thumb, storage_path("app/$path"));
+                    $product->img = '/storage/' . $image->hashName();
 
-                $product->img = '/storage/' . $image->hashName();
-
-                if ($request->category == 6) {
-
-                    $product->storage_id = $request->sizeGB;
                     $product->save();
+                    $first = false;
+
                 } else {
-                    $product->save();
+                    $productV = $product->id;
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $imageAdd = new \App\image();
+
+                    $imageAdd->product_id = $productV;
+                    $imageAdd->img = '/storage/' . $image->hashName();
+
+                    $imageAdd->save();
                 }
 
-
-                $productV = \App\product::select('*')->where('name', '=', $request->name)->get();
-                if ($request->category == 5) {
-                    if ($request->sizeS == 'on') {
-                        $size = new \App\size();
-
-                        $size->clothing_id = $productV[0]->id;
-                        $size->size = 'S';
-
-                        $size->save();
-                    }
-                    if ($request->sizeM == 'on') {
-                        $size = new \App\Size();
-
-                        $size->clothing_id = $productV[0]->id;
-                        $size->size = 'M';
-
-                        $size->save();
-                    }
-                    if ($request->sizeL == 'on') {
-                        $size = new \App\Size();
-
-                        $size->clothing_id = $productV[0]->id;
-                        $size->size = 'L';
-
-                        $size->save();
-                    }
-                    if ($request->sizeXL == 'on') {
-                        $size = new \App\Size();
-
-                        $size->clothing_id = $productV[0]->id;
-                        $size->size = 'XL';
-
-                        $size->save();
-                    }
-                }
-                $first = false;
-            } else {
-                $productV = \App\product::select('id')->where('name', '=', $request->name)->get();
-                $imageId = 0;
-                foreach ($productV as $productV2) {
-                    $imageId = $productV2->id;
-                }
-                $path = $image->storePublicly('public');
-                // File and new size
-                $filename = storage_path("app/$path");
-
-                // Content type
-                header('Content-Type: image/jpeg');
-
-                // Get new sizes
-                list($width, $height) = getimagesize($filename);
-                $newwidth = 377;
-                $newheight = 337;
-
-                // Load
-                $thumb = imagecreatetruecolor($newwidth, $newheight);
-                $source = imagecreatefromjpeg($filename);
-
-                // Resize
-                imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
-                // Output
-                imagejpeg($thumb, storage_path("app/$path"));
-
-                $imageAdd = new \App\image();
-
-                $imageAdd->product_id = $imageId;
-                $imageAdd->img = '/storage/' . $image->hashName();
-
-                $imageAdd->save();
-
+            if ($request->sizeS == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 1;
+                $warehouse->supply = $request->stockS;
+                $warehouse->price = $request->priceS;
+                $warehouse->save();
             }
+
+            if ($request->sizeM == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 2;
+                $warehouse->supply = $request->stockM;
+                $warehouse->price = $request->priceM;
+                $warehouse->save();
+            }
+            if ($request->sizeL == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 3;
+                $warehouse->supply = $request->stockL;
+                $warehouse->price = $request->priceL;
+                $warehouse->save();
+            }
+            if ($request->sizeXL == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 4;
+                $warehouse->supply = $request->stockXL;
+                $warehouse->price = $request->priceXL;
+                $warehouse->save();
+            }
+
+        }
+        elseif($request->category == 6) {
+
+            $product = new \App\product();
+            $product->category_id = $request->category;
+            $product->house_id = $request->house;
+            $product->description = $request->description;
+
+            $first = true;
+            foreach ($request->image as $image)
+                if ($first) {
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $product->img = '/storage/' . $image->hashName();
+
+                    $product->save();
+                    $first = false;
+
+                } else {
+                    $productV = $product->id;
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $imageAdd = new \App\image();
+
+                    $imageAdd->product_id = $productV;
+                    $imageAdd->img = '/storage/' . $image->hashName();
+
+                    $imageAdd->save();
+                }
+
+            if ($request->size8 == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 5;
+                $warehouse->supply = $request->stock8;
+                $warehouse->price = $request->price8;
+                $warehouse->save();
+            }
+
+            if ($request->size16 == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 6;
+                $warehouse->supply = $request->stock16;
+                $warehouse->price = $request->price16;
+                $warehouse->save();
+            }
+            if ($request->size32 == 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 7;
+                $warehouse->supply = $request->stock32;
+                $warehouse->price = $request->price32;
+                $warehouse->save();
+            }
+            if ($request->size64== 'on') {
+                $warehouse = new \App\Warehouse();
+                $warehouse->product_id = $product->id;
+                $warehouse->size_id = 8;
+                $warehouse->supply = $request->stock64;
+                $warehouse->price = $request->price64;
+                $warehouse->save();
+            }
+
+        }
+        else{
+            $product = new \App\product();
+            $product->category_id = $request->category;
+            $product->house_id = $request->house;
+            $product->description = $request->description;
+
+            $first = true;
+            foreach ($request->image as $image)
+                if ($first) {
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $product->img = '/storage/' . $image->hashName();
+
+                    $product->save();
+                    $first = false;
+
+                } else {
+                    $productV = $product->id;
+                    $path = $image->storePublicly('public');
+                    // File and new size
+                    $filename = storage_path("app/$path");
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($filename);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    // Output
+                    imagejpeg($thumb, storage_path("app/$path"));
+
+                    $imageAdd = new \App\image();
+
+                    $imageAdd->product_id = $productV;
+                    $imageAdd->img = '/storage/' . $image->hashName();
+
+                    $imageAdd->save();
+                }
+            $warehouse = new \App\Warehouse();
+            $warehouse->product_id = $product->id;
+            $warehouse->supply = $request->stockSt;
+            $warehouse->price = $request->priceSt;
+            $warehouse->save();
+        }
 
         return redirect()->action('DashboardController@index');
     }
@@ -226,11 +385,12 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\Warehouse::find($id);
+
+        $product = \App\Warehouse::where('product_id', '=', $id)->get();
         $catergories = \App\categorie::All();
         $houses = \App\house::All();
-        $brands = \App\brand::all();
-        $models = \App\brand_model::All();
+        $brands = \App\brand::All();
+        $models = \App\ProductModel::All();
 
         $images = DB::table('images')
             ->select(DB::raw('*'))
@@ -270,7 +430,6 @@ class WarehouseController extends Controller
     public function destroy($id)
     {
         \App\Warehouse::destroy($id);
-
         return redirect('products')->with('succes', 'Product has been deleted!');
     }
 

@@ -20,7 +20,7 @@ class DashboardController extends Controller
     public function index()
     {
         $products = new Product();
-        $warehouseProducts = $products->orderByDesc('viewAmount')->paginate(3);
+        $warehouseProducts = $products->orderByDesc('viewAmount')->paginate(3,['*'], 'popularProducts');
 
         $warehouse = new Warehouse();
         $productsLow = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(3);

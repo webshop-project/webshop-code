@@ -7,12 +7,14 @@
 
 @section('content')
     <div class="container">
-        <h2>Sales Info</h2>
         @foreach($showProduct as $productDetail)
             @if($loop->first)
+                <img src="{{$productDetail->product->img}}" class="img-fluid col-3" alt="product img">
                 <h1>{{$productDetail->product->house->name}}
                     {{$productDetail->product->category->name}}
+                    @if(!empty($productDetail->brandmodel->name))
                     {{$productDetail->product->brandmodel->name}}
+                    @endif
                     <span> {{$productDetail->product->description}}</span>
                 </h1>
             @endif()
@@ -62,7 +64,7 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3>€ {{$thisMonth * $productDetail->price}}</h3>
+                            <h3>€ {{number_format($thisMonth * $productDetail->price, 2, ',', ' ')}}</h3>
                             <p>This Month Profit</p>
                         </div>
                     </div>
@@ -73,7 +75,8 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3>€ {{\App\order::where('warehouse_id','=',$productDetail->product_id)->sum('amount')*$productDetail->price}}</h3>
+                            <h3>€ {{number_format(\App\order::where('warehouse_id','=',$productDetail->product_id)->sum('amount')
+                            *$productDetail->price, 2, ',', ' ')}}</h3>
                             <p>Total Profit</p>
                         </div>
                     </div>
