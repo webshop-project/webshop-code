@@ -17,8 +17,8 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
             $table->string('img');
+            $table->integer('product_id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

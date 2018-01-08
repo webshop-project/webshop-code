@@ -20,7 +20,8 @@
 <!-- Start navigatie-->
 <header class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-        <a class="navbar-brand" href="#"><img class="logo" src="/img/amologin.png" alt=""></a>
+        <a class="navbar-brand" href="{{action('DashboardController@index')}}"><img class="logo" src="/img/amologin.png"
+                                                                                    alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -109,6 +110,160 @@
             return false;
         });
     });
+
+    const valueOption = document.getElementById('category');
+    const shirtSizes = document.getElementById('shirtSizes');
+    const usbSizes = document.getElementById('usbSizes');
+    const standard = document.getElementById('groupStandard');
+
+
+    valueOption.addEventListener('change', () => {
+
+        if (valueOption.value == 5) {
+            const groupS = document.getElementById('groupS');
+            const sizeS = document.getElementById('sizeS');
+
+            standard.classList.add('d-none');
+            standard.classList.remove('d-block');
+            shirtSizes.classList.add('d-block');
+            shirtSizes.classList.remove('d-none');
+            usbSizes.classList.add('d-none');
+            usbSizes.classList.remove('d-block');
+            sizeS.addEventListener('click', () => {
+                if (sizeS.checked) {
+                    groupS.classList.add('d-block');
+                    groupS.classList.remove('d-none');
+                }
+                else {
+
+                    groupS.classList.add('d-none');
+                    groupS.classList.remove('d-block');
+                }
+            });
+
+            const groupM = document.getElementById('groupM');
+            const sizeM = document.getElementById('sizeM');
+
+            sizeM.addEventListener('click', () => {
+                if (sizeM.checked) {
+                    groupM.classList.add('d-block');
+                    groupM.classList.remove('d-none');
+                }
+                else {
+
+                    groupM.classList.add('d-none');
+                    groupM.classList.remove('d-block');
+                }
+            });
+
+            const groupL = document.getElementById('groupL');
+            const sizeL = document.getElementById('sizeL');
+
+            sizeL.addEventListener('click', () => {
+                if (sizeL.checked) {
+                    groupL.classList.add('d-block');
+                    groupL.classList.remove('d-none');
+                }
+                else {
+
+                    groupL.classList.add('d-none');
+                    groupL.classList.remove('d-block');
+                }
+            });
+
+            const groupXL = document.getElementById('groupXL');
+            const sizeXL = document.getElementById('sizeXL');
+
+            sizeXL.addEventListener('click', () => {
+                if (sizeXL.checked) {
+                    groupXL.classList.add('d-block');
+                    groupXL.classList.remove('d-none');
+                }
+                else {
+
+                    groupXL.classList.add('d-none');
+                    groupXL.classList.remove('d-block');
+                }
+            });
+
+        } else if(valueOption.value == 6){
+
+            const group8 = document.getElementById('group8');
+            const size8 = document.getElementById('size8');
+
+            standard.classList.add('d-none');
+            standard.classList.remove('d-block');
+            shirtSizes.classList.add('d-none');
+            shirtSizes.classList.remove('d-block');
+            usbSizes.classList.add('d-block');
+            usbSizes.classList.remove('d-none');
+            size8.addEventListener('click', () => {
+                if (size8.checked) {
+                    group8.classList.add('d-block');
+                    group8.classList.remove('d-none');
+                }
+                else {
+
+                    group8.classList.add('d-none');
+                    group8.classList.remove('d-block');
+                }
+            });
+
+            const group16 = document.getElementById('group16');
+            const size16 = document.getElementById('size16');
+
+            size16.addEventListener('click', () => {
+                if (size16.checked) {
+                    group16.classList.add('d-block');
+                    group16.classList.remove('d-none');
+                }
+                else {
+
+                    group16.classList.add('d-none');
+                    group16.classList.remove('d-block');
+                }
+            });
+
+            const group32 = document.getElementById('group32');
+            const size32 = document.getElementById('size32');
+
+            size32.addEventListener('click', () => {
+                if (size32.checked) {
+                    group32.classList.add('d-block');
+                    group32.classList.remove('d-none');
+                }
+                else {
+
+                    group32.classList.add('d-none');
+                    group32.classList.remove('d-block');
+                }
+            });
+
+            const group64 = document.getElementById('group64');
+            const size64 = document.getElementById('size64');
+
+            size64.addEventListener('click', () => {
+                if (size64.checked) {
+                    group64.classList.add('d-block');
+                    group64.classList.remove('d-none');
+                }
+                else {
+
+                    group64.classList.add('d-none');
+                    group64.classList.remove('d-block');
+                }
+            });
+        }
+        else{
+            standard.classList.add('d-block');
+            standard.classList.remove('d-none');
+            shirtSizes.classList.add('d-none');
+            shirtSizes.classList.remove('d-block');
+            usbSizes.classList.add('d-none');
+            usbSizes.classList.remove('d-block');
+        }
+    });
+
 </script>
 
 </body>

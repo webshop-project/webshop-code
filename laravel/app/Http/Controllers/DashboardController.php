@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\order;
+use App\Product;
+use App\User;
 use App\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -16,45 +19,16 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $products = new Product();
+        $warehouseProducts = $products->orderByDesc('viewAmount')->paginate(3,['*'], 'popularProducts');
 
-
-        $products = DB::table('warehouse')
-            ->select(DB::raw('*'))
-            ->where('deleted_at', '=', null)
-            ->orderBy('viewAmount', 'desc')
-            ->paginate(3);
-
-        $productsLow = DB::table('warehouse')
-            ->select(DB::raw('*'))
-            ->where([
-                ['deleted_at', '=', null],
-                ['supply', '<=', 3]
-            ])
-            ->orderBy('supply', 'asc')
-            ->paginate(3,['*'],'pag');
-
-        $images = DB::table('images')
-            ->select(DB::raw('*'))
-            ->where([
-                ['deleted_at', '=', null],
-            ])
-            ->get();
-
-        $productsCount = DB::table('warehouse')->count();
-        $userCount = DB::table('users')->count();
-        $orderCount = DB::table('orders')->count();
-        $voucherCount = DB::table('vouchers_used')->count();
         $warehouse = new Warehouse();
-        $lowOnStock = $warehouse::where('supply','<',4)->count();
+        $productsLow = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(3);
+
         return view('admin/index')
-            ->with('lowOnStock',$lowOnStock)
-            ->with('products', $products)
-            ->with('image', $images)
-            ->with('productsLow', $productsLow)
-            ->with('productsCount', $productsCount)
-            ->with('usersCount' ,  $userCount)
-            ->with('ordersCount',$orderCount)
-            ->with('vouchersCount' , $voucherCount);
+            ->with('warehouseProducts', $warehouseProducts)
+            ->with('products',$products)
+            ->with('productsLow', $productsLow);
     }
 
     /**
@@ -86,7 +60,9 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        $showProduct = Warehouse::where('product_id','=',$id)->get();
+        $thisMonth = order::where([['bought_at', '>', Carbon::now()->subMonth()],['warehouse_id','=',$id]])->sum('amount');
+        return view('admin/products/show')->with('showProduct',$showProduct)->with('thisMonth',$thisMonth);
     }
 
     /**
@@ -126,7 +102,7 @@ class DashboardController extends Controller
     public function lowStockList()
     {
         $warehouse = new Warehouse();
-        $lowOnStock = $warehouse::where('supply','<',4)->get();
+        $lowOnStock = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(6);
         return view('admin/products/lowStockList')->with('lowOnStock',$lowOnStock);
     }
 }
