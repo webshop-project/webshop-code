@@ -22,8 +22,6 @@ Route::get('/order/finish/{id}', 'OrderController@finish');
 
 Route::get('/admin/lowStockList','DashboardController@lowStockList');
 
-Route::get('/admin/vouchers/add', 'VoucherController@create');
-
 route::resource('/products', 'WarehouseController');
 route::resource('/orders', 'OrderController');
 route::resource('/admin', 'DashboardController');
@@ -37,3 +35,4 @@ route::resource('/house', 'HouseController');
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
+Route::get('/admin/vouchers/voucherUsed', 'VoucherController@index');

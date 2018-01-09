@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Voucher_used extends Model
 {
-    //
+    public function  voucher()
+    {
+        return $this->belongsTo('\App\voucher');
+    }
 }
