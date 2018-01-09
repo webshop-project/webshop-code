@@ -29,4 +29,8 @@ class Warehouse extends Model
     {
         return $this->belongsTo('App\category');
     }
+    public function  discount()
+    {
+        return $this->hasMany('\App\Discount');
+    }
 }
