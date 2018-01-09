@@ -28,6 +28,9 @@ body{
 .shop-banner{
     border-bottom: 1px solid #E7E7E7;
 }
+.container-fluid{
+    position: relative;
+}
 /*FOUR HOUSES*/
 .four-houses{
     padding: 30px 0;

@@ -5,11 +5,32 @@ Home
 @endsection
 
 @section('content')
-    
-<div class="container-fluid">
-        <div class="row">
 
+        <div class="row">
             <div id="carouselExampleIndicators" class="carousel slide biggy" data-ride="carousel">
+
+            @if("")
+                    @if("")
+                        <a href="{{action('ShopController@index')}}">
+                            <img class="d-block img-responsive img-fluid biggy" src="img/dragons-slide.png" alt="Second slide">
+                        </a>
+
+                    @elseif("")
+                        <a href="{{action('ShopController@index')}}">
+                            <img class="d-block img-responsive img-fluid biggy" src="img/raven-slide.png" alt="Third slide">
+                        </a>
+
+                    @elseif("")
+                        <a href="{{action('ShopController@index')}}">
+                            <img class="d-block img-responsive img-fluid biggy" src="img/serpent-slide.png" alt="Fourth slide">
+                        </a>
+
+                    @elseif("")
+                        <a href="{{action('ShopController@index')}}">
+                            <img class="d-block img-responsive img-fluid biggy" src="img/viking-slide.png" alt="Fifth slide">
+                        </a>
+                    @endif
+                @else
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -52,6 +73,7 @@ Home
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
+            @endif
             </div>
         </div>
         <div class="row justify-content-around p-4 four-houses-container">
@@ -92,14 +114,13 @@ Home
                 </div>
             </div>
         </div>
-    </div>
     <div class="new-products p-5">
         <div class="container">
-            <div class="row p-3">
+            <div class="row p-3 justify-content-between">
                 <div class="col col-xs-12">
                     <h2 class="d-inline newProducts">Nieuwe Producten</h2>
                 </div>
-                <div class="col">
+                <div>
                     <a href="{{action('ShopController@index')}}">
                         <h5 class="d-inline pull-right seeMore col-xs-12">See More</h5>
                     </a>
@@ -114,7 +135,7 @@ Home
                             </div>
                             <div class="row justify-content-between p-2">
                                 <span class="col-9 text-dark">{{$products[$i]->category->name}} - {{$products[$i]->house->name}}</span>
-                                <span class="text-dark">{{$products[$i]->price}}</span>
+                                <span class="text-dark">{{$products[$i]->warehouse[0]->price}}</span>
                             </div>
                         </a>
                     </div>

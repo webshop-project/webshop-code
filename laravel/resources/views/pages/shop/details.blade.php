@@ -74,32 +74,34 @@
         <hr>
         <div class="p-5">
             <h2>Beschrijving</h2>
-            <p>{{$product->description}}</p>
+            <h4>{{$product->description}}</h4>
         </div>
-        <div class="row p-3">
-            <div class="col col-xs-12">
-                <h2 class="d-inline newProducts">Gerelateerde Producten</h2>
-            </div>
-            <div class="col">
-                <a href="{{action('ShopController@index')}}">
-                    <h5 class="d-inline pull-right seeMore">See More</h5>
-                </a>
-            </div>
-        </div>
-        <div class="row headRoom">
-            @for($i = 0; $i < 3; $i++)
-                <div class="product col-sm-12 col-md-4 col-4 p-4">
-                    <a href="{{action('WarehouseController@show', $relatedProducts[$i]->id)}}">
-                        <div class="row align-items-center">
-                            <img class="img-responsive img-fluid mx-auto d-block" src="{{$relatedProducts[$i]->img}} " alt="">
-                        </div>
-                        <div class="row justify-content-between p-2">
-                            <span class="col-10 text-dark">{{$relatedProducts[$i]->category->name}} - {{$relatedProducts[$i]->house->name}}</span>
-                            <span class="text-dark">{{$relatedProducts[$i]->price}}</span>
-                        </div>
+        <div class="new-products">
+            <div class="row p-3">
+                <div class="col col-xs-12">
+                    <h2 class="d-inline newProducts">Gerelateerde Producten</h2>
+                </div>
+                <div class="col">
+                    <a href="{{action('ShopController@index')}}">
+                        <h5 class="d-inline pull-right seeMore">See More</h5>
                     </a>
                 </div>
-            @endfor
+            </div>
+            <div class="row headRoom">
+                @for($i = 0; $i < 3; $i++)
+                    <div class="product col-sm-12 col-md-4 col-4 p-4">
+                        <a href="{{action('WarehouseController@show', $relatedProducts[$i]->id)}}">
+                            <div class="row align-items-center">
+                                <img class="img-responsive img-fluid mx-auto d-block" src="{{$relatedProducts[$i]->img}} " alt="">
+                            </div>
+                            <div class="row justify-content-between p-2">
+                                <span class="col-9 text-dark">{{$relatedProducts[$i]->category->name}} - {{$relatedProducts[$i]->house->name}}</span>
+                                <span class="text-dark">{{$relatedProducts[$i]->warehouse[0]->price}}</span>
+                            </div>
+                        </a>
+                    </div>
+                @endfor
+            </div>
         </div>
     </div>
 @endsection

@@ -20,6 +20,7 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('css/serpent.css')}}">
     <title>AMO Webshop | @yield('title')</title>
 </head>
 
@@ -111,6 +112,7 @@
                                 <h3>You have no items in your shopping cart</h3>
                             @endif
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,15 +120,16 @@
     <div class="bg-header-bottom">
         <div class="container-fluid bg-secondary">
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="col-sm-12 col-xs-12 col-md-5" href="/">
-                        <img class="img-fluid img-sizer-front col-8" src="{{asset('img/amologin2.png')}}" alt="">
+                <nav class="navbar navbar-expand-lg navbar-light row justify-content-between">
+                    <a class="col-sm-12 col-xs-12 col-md-4 row justify-content-center" href="/">
+                        {{--<img class="img-fluid img-sizer-front col-8" src="{{asset('img/amologin2.png')}}" alt="">--}}
+                        <img class="img-fluid img-sizer-front" src="{{asset('img/script_serpents_xs.png')}}" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse navbar-right " id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto ">
+                    <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto col-12 row justify-content-around">
                             <li class="nav-item">
                                 <a class="nav-link navLinkPadding" href="/">Home</a>
                             </li>
@@ -146,10 +149,12 @@
         </div>
     </div>
 </header>
+<div class="container-fluid">
 
     @yield('content')
 
-
+    <img class="page-under" src="../img/script_serpents_under_small_crop.png" alt="">
+</div>
 <footer>
     <div class="container-fluid bg-secondary">
         <div class="container">
