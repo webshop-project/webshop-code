@@ -29,7 +29,7 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3 id="supply">{{$productDetail->supply}}</h3>
+                            <h3 class="supply">{{$productDetail->supply}}</h3>
                             <p>Supply</p>
                             @if(!empty($productDetail->size->size))
                                 <p>Size: {{$productDetail->size->size}}</p>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3>€ {{number_format($thisMonth * $productDetail->price, 2, ',', ' ')}}</h3>
+                            <h3 class="price">€ {{number_format($thisMonth * $productDetail->price, 2, ',', ' ')}}</h3>
                             <p>This Month Profit</p>
                         </div>
                     </div>
@@ -88,10 +88,11 @@
     </div>
     <script>
 
-        const supply = document.getElementById('supply');
+        const supply = document.getElementsByClassName('supply');
+        const price = document.getElementsByClassName('price');
+
 
         setInterval( () => {
-
 
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
@@ -109,18 +110,14 @@
                     return response.json()
                 }).then( ( objects ) => {
                 console.log(objects)
-                for(let i = 0; i < objects.length; i++)
+                for(let i = 0; i < objects.showProduct.length; i++)
                 {
-                    for(let j = 0; j <10; j++)
-                    {
-                        
-                    }
-                        console.log(objects[i].supply)
-                        //supply.innerHTML = objects[i].results[j].supply;
+                    supply[i].innerText = objects.showProduct[i].supply
+                    price[i].innerHTML = "€  " + objects.showProduct[i].price.replace(".",",")
+
+
                 }
             });
-
-
 
         },3000)
 

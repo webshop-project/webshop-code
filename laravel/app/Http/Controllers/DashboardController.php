@@ -59,11 +59,37 @@ class DashboardController extends Controller
     public function show(Request $request, $id)
     {
         $showProduct = Warehouse::where('product_id','=',$id)->get();
-        $thisMonth = order::where([['bought_at', '>', Carbon::now()->subMonth()],['warehouse_id','=',$id]])->sum('amount');
-        $order = \App\order::where('warehouse_id','=',$id)->sum('amount');
+
+        $thisMonth = array();
+        foreach($showProduct as $product)
+        {
+            $thisMonth = order::where([
+                ['bought_at', '>', Carbon::now()->subMonth()],
+                ['warehouse_id','=',$product->id]
+            ])->sum('amount');
+        }
+//
+//        $thisMonth = order::where([
+//            ['bought_at', '>', Carbon::now()->subMonth()],
+//            ['warehouse_id','=',$showProduct[0]->id],
+//            ['warehouse_id','=',$showProduct[1]->id],
+//            ['warehouse_id','=',$showProduct[2]->id],
+//            ['warehouse_id','=',$showProduct[3]->id],
+//        ])->sum('amount');
+
+
+        $order = \App\order::where([
+            ['warehouse_id','=',$showProduct[0]->id],
+            ['warehouse_id','=',$showProduct[1]->id],
+            ['warehouse_id','=',$showProduct[2]->id],
+            ['warehouse_id','=',$showProduct[3]->id],
+        ])->sum('amount');
+
 
         if($request->isJson()){
-            return response()->json([$showProduct,$thisMonth,$order]);
+            return response()->json(['showProduct'  => $showProduct,
+                                     'thisMonth'    => $thisMonth,
+                                     'order'        => $order]);
 
         }
         return view('admin/products/show')->with('showProduct',$showProduct)->with('thisMonth',$thisMonth)->with('urlId',$id);
