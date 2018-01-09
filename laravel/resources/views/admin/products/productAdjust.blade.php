@@ -10,9 +10,19 @@
             <form action="{{action('WarehouseController@update', $product->product_id)}}" method="POST">
                 {{csrf_field()}}
                 {{method_field('PUT')}}
-                <div class="form-group">
-                    <label for="name"><b>Name</b></label>
-                    <input class="form-control" type="text" name="first" value="{{$product->name}}">
+                <h4>De prijs is in Euro's</h4>
+                <div class="form-group form-padding">
+                    <label for="price">Prijs</label>
+                    <input class="form-control col" type="number" step="any" name="price" value="{{$product->price}}">
+                </div>
+                <div class="form-group form-padding">
+                    <label for="stock">Voorraad</label>
+                    <input class="form-control col" type="number" name="stock" value="{{$product->supply}}">
+                </div>
+                <h4>De korting is een percentage</h4>
+                <div class="form-group form-padding">
+                    <label for="stock">Discount</label>
+                    <input class="form-control col" type="number" name="stock">
                 </div>
                 <div class="form-group">
                     <label for="category"><b>Category</b></label>
@@ -88,7 +98,7 @@
                 </div>
             </div>
             </form>
+            @endforeach
         </div>
     </div>
-    @endforeach
 @endsection
