@@ -13,11 +13,11 @@
 
 Route::get('/', 'PagesController@index')->name('home');
 Route::get('/about', 'PagesController@about')->name('about');
-Route::resource('/shop', 'ShopController@index')->name('shop');
+Route::get('/shop', 'ShopController@index')->name('shop');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 Route::resource('/shop/cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
-Route::resource('/shop/{item}', 'PagesController@item')->name('detail');
+Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
 
 Route::get('/admin/lowStockList','DashboardController@lowStockList');
