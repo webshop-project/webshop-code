@@ -15,6 +15,9 @@ a:hover{
 .fa-star, .fa-shopping-cart{
     padding: 14px 10px!important;
 }
+.bg-header-bottom img{
+    padding: 0 0 10px 0;
+}
 .bg-header-top a{
     line-height: 1.8!important;
 }

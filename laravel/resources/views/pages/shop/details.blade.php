@@ -5,9 +5,8 @@
 @endsection
 
 @section('content')
-
-    <div class="container details p-5">
     {{Breadcrumbs::render('product', $product)}}
+    <div class="container details p-5">
         <div class="row p-5">
             <div class="detail-img-choice img-fluid col-lg-1 col-md-3 col-sm-4 d-none d-sm-block d-md-block d-lg-block d-xl-block p-2">
                 <img id="img-front-choice" class="img-fluid" src="{{$product->img}}" alt="Product image">

@@ -133,7 +133,7 @@ Home
                             <div class="col-12">
                                 <img class="img-responsive img-fluid bg-secondary rounded mx-auto d-block" src="{{$products[$i]->img}}" alt="">
                             </div>
-                            <div class="row justify-content-between p-2">
+                            <div class="row justify-content-between p-2 new-product-info">
                                 <span class="col-9 text-dark">{{$products[$i]->category->name}} - {{$products[$i]->house->name}}</span>
                                 <span class="text-dark">{{$products[$i]->warehouse[0]->price}}</span>
                             </div>

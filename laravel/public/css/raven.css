@@ -1,0 +1,55 @@
+.bg-header-top{
+    background: #6682FF;
+}
+.bg-header-bottom .bg-secondary{
+    background: #364587!important;
+}
+.bg-header-top i, .bg-header-top a{
+    color: #3E4F9C!important;
+}
+.bg-header-bottom a{
+    color: #6682FF!important;
+}
+.new-products, .shop, .contact{
+    position: relative;
+}
+.new-products a, .new-products h2, .new-products h5{
+    border: none!important;
+}
+.new-products h5{
+    background: #4254a5;
+}
+.page-under, .page-upper{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: -1;
+    bottom: 0;
+    padding: 0!important;
+    background: none!important;
+}
+.shop-banner{
+    border: none;
+}
+.page-upper{
+    top: 0;
+}
+.contact address, .contact h2{
+    margin: 0;
+    color: #FFF;
+}
+.new-products .text-dark{
+    color: #FFF!important;
+}
+.new-products .new-product-info{
+    background: #4254a5;
+}
+footer .bg-secondary{
+    background: #4254a5!important;
+}
+footer i, footer p{
+    color: #6682FF;
+}
+footer .container{
+    border-top: 1px solid #6682FF;
+}
