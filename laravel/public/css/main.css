@@ -188,7 +188,7 @@ body{
     border: none;
 }
 .new-products img{
-    background: #F7F7F7!important;
+    background: none!important;
     padding: 15px;
 }
 .new-products .text-dark{
