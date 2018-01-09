@@ -385,7 +385,6 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-
         $product = \App\Warehouse::where('product_id', '=', $id)->get();
         $catergories = \App\categorie::All();
         $houses = \App\house::All();
@@ -418,7 +417,20 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'category' => 'required',
+            'house' => 'required|integer',
+            'price' => 'required|numeric|between:0.00,999999999.99',
+            'stock' => 'required|integer|nullable',
+            'discount' => 'interger|nullable'
+        ]);
+
+        $test = \App\Warehouse::find($id);
+
+        $test->price = $request->price;
+
+        $test->save();
     }
 
     /**
