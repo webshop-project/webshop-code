@@ -25,9 +25,9 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th class="table-image"></th>
+
                     <th>Product</th>
-                    <th>Quantity</th>
+                    <th></th>
                     <th>Size</th>
                     <th>Price</th>
                     <th class="column-spacer"></th>
@@ -36,31 +36,28 @@
                 </thead>
 
                 <tbody>
-
-
                 <tr class="border-bottom">
-                    <td class="table-image"></td>
-                    <td style="padding: 40px;"></td>@foreach (Cart::content() as $item)
+                @foreach (Cart::content() as $item)
                     <tr>
-                        <td class="table-image"><a href="{{ url('shop') }}"><img src="{{ asset('img/' . $item->image) }}" alt="product" class="img-responsive cart-image"></a></td>
-                        <td><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
+                        <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                         <td>
-                            <select class="quantity" data-id="{{ $item->rowId }}">
-                                <option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>
-                                <option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>
-                                <option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>
-                                <option value="{{ $item->qty == 4 ? 'selected' : '' }}">4</option>
-                                <option value="{{ $item->qty == 5 ? 'selected' : '' }}">5</option>
-                            </select>
+                            {{--<select class="quantity" data-id="{{ $item->rowId }}">--}}
+                            {{--<option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>--}}
+                            {{--<option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>--}}
+                            {{--<option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>--}}
+                            {{--<option value="{{ $item->qty == 4 ? 'selected' : '' }}">4</option>--}}
+                            {{--<option value="{{ $item->qty == 5 ? 'selected' : '' }}">5</option>--}}
+                            {{--</select>--}}
                         </td>
                         <td>{{$item->size}}</td>
                         <td>€{{ $item->subtotal }}</td>
                         <td class=""></td>
                         <td>
-                            <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                            <form action="{{ action('CartController@destroy', $item->rowId) }}" method="POST" class="side-by-side">
                                 {!! csrf_field() !!}
+                                {{method_field('DELETE')}}
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                <input type="submit" class="btn btn-danger btn-sm btn-checkout" value="Remove">
                             </form>
                         </td>
                     </tr>

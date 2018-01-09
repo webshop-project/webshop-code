@@ -98,7 +98,7 @@
                                     </tbody>
                                 </table>&nbsp;
 
-                                <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+                                <a href="{{url('/shop/cart')}}" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
                                 <div style="float:right">
                                     <form action="{{ url('/emptyCart') }}" method="POST">
