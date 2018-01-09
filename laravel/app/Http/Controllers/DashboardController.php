@@ -60,15 +60,19 @@ class DashboardController extends Controller
     {
         $showProduct = Warehouse::where('product_id','=',$id)->get();
 
-        $thisMonth = array();
-        foreach($showProduct as $product)
+        $thisMonth = [];
+        //$thisMonth = array();
+        $test = 0;
+        $test2 = 0;
+        foreach($showProduct as $key => $product )
         {
-            $thisMonth = order::where([
-                ['bought_at', '>', Carbon::now()->subMonth()],
-                ['warehouse_id','=',$product->id]
-            ])->sum('amount');
+            if($key == 0)
+            $test = $product->id;
+
+            elseif ($key == 1)
+                $test2   = $product->id;
+
         }
-//
 //        $thisMonth = order::where([
 //            ['bought_at', '>', Carbon::now()->subMonth()],
 //            ['warehouse_id','=',$showProduct[0]->id],
@@ -89,7 +93,9 @@ class DashboardController extends Controller
         if($request->isJson()){
             return response()->json(['showProduct'  => $showProduct,
                                      'thisMonth'    => $thisMonth,
-                                     'order'        => $order]);
+                                     'order'        => $order,
+                                     'test'         => $test,
+                                     'test2'        => $test2]);
 
         }
         return view('admin/products/show')->with('showProduct',$showProduct)->with('thisMonth',$thisMonth)->with('urlId',$id);

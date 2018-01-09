@@ -105,6 +105,7 @@
 
             var myRequest = new Request("<?php echo $urlId ?>", myInit);
 
+
             fetch(myRequest)
                 .then( ( response ) => {
                     return response.json()
@@ -114,7 +115,6 @@
                 {
                     supply[i].innerText = objects.showProduct[i].supply
                     price[i].innerHTML = "€  " + objects.showProduct[i].price.replace(".",",")
-
 
                 }
             });
