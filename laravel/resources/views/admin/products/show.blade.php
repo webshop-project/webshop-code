@@ -29,7 +29,7 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3>{{$productDetail->supply}}</h3>
+                            <h3 id="supply">{{$productDetail->supply}}</h3>
                             <p>Supply</p>
                             @if(!empty($productDetail->size->size))
                                 <p>Size: {{$productDetail->size->size}}</p>
@@ -88,7 +88,11 @@
     </div>
     <script>
 
+        const supply = document.getElementById('supply');
+
         setInterval( () => {
+
+
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
 
@@ -105,7 +109,18 @@
                     return response.json()
                 }).then( ( objects ) => {
                 console.log(objects)
+                for(let i = 0; i < objects.length; i++)
+                {
+                    for(let j = 0; j <10; j++)
+                    {
+                        
+                    }
+                        console.log(objects[i].supply)
+                        //supply.innerHTML = objects[i].results[j].supply;
+                }
             });
+
+
 
         },3000)
 

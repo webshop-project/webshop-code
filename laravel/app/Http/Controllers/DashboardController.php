@@ -60,8 +60,10 @@ class DashboardController extends Controller
     {
         $showProduct = Warehouse::where('product_id','=',$id)->get();
         $thisMonth = order::where([['bought_at', '>', Carbon::now()->subMonth()],['warehouse_id','=',$id]])->sum('amount');
+        $order = \App\order::where('warehouse_id','=',$id)->sum('amount');
+
         if($request->isJson()){
-            return $showProduct;
+            return response()->json([$showProduct,$thisMonth,$order]);
 
         }
         return view('admin/products/show')->with('showProduct',$showProduct)->with('thisMonth',$thisMonth)->with('urlId',$id);

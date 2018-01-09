@@ -20,10 +20,6 @@ Route::get('/order/finish/{id}', 'OrderController@finish');
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('admin/vouchers/add', 'VoucherController@store');
 
-
-
-//    Route::get('admin/sales/{id}', 'DashboardController@show')->where(['id' => '[0-9]+']);
-
 Route::resource('/shop/cart', 'CartController');
 Route::resource('/products', 'WarehouseController');
 route::resource('/orders', 'OrderController');
