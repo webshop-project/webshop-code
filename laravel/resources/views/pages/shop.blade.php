@@ -60,15 +60,14 @@
                                         {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$product->id}}">
                                         <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
-                                        <input type="hidden" name="size" value="">
-                                        <input type="hidden" name="price" value="">
+                                        <input type="hidden" name="qty" value="{{$product->size}}">
+                                        <input type="hidden" name="price" value="{{$product->warehouse[0]->price}}">
                                         <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
                                     </form>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-
                     <div class="container">
                         <div class="row justify-content-center">
                             <nav aria-label="Page navigation example">

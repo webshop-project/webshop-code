@@ -66,20 +66,21 @@
                                         <tr>
                                             <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                                             <td>
-                                                <select class="quantity" data-id="{{ $item->rowId }}">
-                                                    <option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>
-                                                    <option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>
-                                                    <option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>
-                                                    <option value="{{ $item->qty == 4 ? 'selected' : '' }}">4</option>
-                                                    <option value="{{ $item->qty == 5 ? 'selected' : '' }}">5</option>
-                                                </select>
+                                                {{--<select class="quantity" data-id="{{ $item->rowId }}">--}}
+                                                    {{--<option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>--}}
+                                                    {{--<option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>--}}
+                                                    {{--<option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>--}}
+                                                    {{--<option value="{{ $item->qty == 4 ? 'selected' : '' }}">4</option>--}}
+                                                    {{--<option value="{{ $item->qty == 5 ? 'selected' : '' }}">5</option>--}}
+                                                {{--</select>--}}
                                             </td>
                                             <td>{{$item->size}}</td>
                                             <td>€{{ $item->subtotal }}</td>
                                             <td class=""></td>
                                             <td>
-                                                <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                                <form action="{{ action('CartController@destroy', $item->rowId) }}" method="POST" class="side-by-side">
                                                     {!! csrf_field() !!}
+                                                    {{method_field('DELETE')}}
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="submit" class="btn btn-danger btn-sm" value="Remove">
                                                 </form>
@@ -98,7 +99,7 @@
                                     </tbody>
                                 </table>&nbsp;
 
-                                <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+                                <a href="{{url('/shop/cart')}}" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
                                 <div style="float:right">
                                     <form action="{{ url('/emptyCart') }}" method="POST">
