@@ -1,12 +1,14 @@
-<meta http-equiv="refresh" content="10">
+
 @extends('layouts/adminMaster')
 @section('title')
-    Home
+    Sales
 @endsection
 
 
 @section('content')
-    <div class="container">
+
+    <div id="salesInfo" class="container">
+        <h1>Sales</h1>
         @foreach($showProduct as $productDetail)
             @if($loop->first)
                 <img src="{{$productDetail->product->img}}" class="img-fluid col-3" alt="product img">
@@ -84,5 +86,29 @@
             </div>
         @endforeach
     </div>
+    <script>
 
+        setInterval( () => {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var myInit = {
+                method: 'GET',
+                headers: myHeaders,
+                mode: 'cors',
+                cache: 'default' };
+
+            var myRequest = new Request("<?php echo $urlId ?>", myInit);
+
+            fetch(myRequest)
+                .then( ( response ) => {
+                    return response.json()
+                }).then( ( objects ) => {
+                console.log(objects)
+            });
+
+        },3000)
+
+
+    </script>
 @endsection
