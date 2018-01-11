@@ -1,4 +1,3 @@
-
 @extends('layouts/adminMaster')
 @section('title')
     Sales
@@ -43,7 +42,7 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3 class="">{{\App\order::where('warehouse_id','=',$productDetail->product_id)->sum('amount')}}</h3>
+                            {{--<h3 class="">{{\App\order::where('warehouse_id','=',$productDetail->product_id)->sum('amount')}}</h3>--}}
                             <p>Total Sold</p>
                         </div>
                     </div>
@@ -55,7 +54,7 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3>{{$thisMonth}}</h3>
+                            {{--<h3>{{$thisMonth}}</h3>--}}
                             <p>This Month Sold</p>
                         </div>
                     </div>
@@ -66,7 +65,7 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3 class="price">€ {{number_format($thisMonth * $productDetail->price, 2, ',', ' ')}}</h3>
+                            {{--<h3 class="price">€ {{number_format($thisMonth * $productDetail->price, 2, ',', ' ')}}</h3>--}}
                             <p>This Month Profit</p>
                         </div>
                     </div>
@@ -77,8 +76,8 @@
                     </div>
                     <div class="d-inline-flex">
                         <div>
-                            <h3>€ {{number_format(\App\order::where('warehouse_id','=',$productDetail->product_id)->sum('amount')
-                            *$productDetail->price, 2, ',', ' ')}}</h3>
+                            {{--<h3>€ {{number_format(\App\order::where('warehouse_id','=',$productDetail->product_id)->sum('amount')--}}
+                            {{--*$productDetail->price, 2, ',', ' ')}}</h3>--}}
                             <p>Total Profit</p>
                         </div>
                     </div>
@@ -103,7 +102,7 @@
                 mode: 'cors',
                 cache: 'default' };
 
-            var myRequest = new Request("<?php echo $urlId ?>", myInit);
+            var myRequest = new Request("<?php echo 'http://localhost:8000/api/sales/'.$urlId ?>", myInit);
 
 
             fetch(myRequest)
