@@ -9,20 +9,29 @@
             <thead>
             <tr>
                 <th scope="col">Voucher type:</th>
-                <th scope="col">Voucher code</th>
-                <th scope="col">Voucher value</th>
+                <th scope="col">Voucher used by:</th>
+                <th scope="col">Voucher code:</th>
+                <th scope="col">Voucher value:</th>
                 <th scope="col">Used at</th>
             </tr>
             </thead>
             <tbody>
-            <?php dd($vouchers); ?>
             @foreach($vouchers as $voucher)
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
+                @foreach($voucher->voucher_used as $used)
+                    <tr>
+                        <th scope="row">
+                            @if($voucher->user_id == NULL)
+                                {{ 'Global' }}
+                            @else
+                                {{ 'User' }}
+                            @endif
+                        </th>
+                        <td>{{\App\User::find($used->user_id)->firstName . ' ' . \App\User::find($used->user_id)->lastName}}</td>
+                        <td>{{$voucher->code}}</td>
+                        <td>{{$voucher->codeValue}}</td>
+                        <td>{{$used->used_at}}</td>
+                    </tr>
+                @endforeach
             @endforeach
             </tbody>
         </table>

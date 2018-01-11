@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Faker;
 use App\Voucher_used;
+use Psr\Log\NullLogger;
 
 
 class VoucherController extends Controller
@@ -20,7 +21,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        $vouchers = Voucher_used::all();
+        $vouchers = voucher::all();
         return view('admin/vouchers/voucherUsed')->with('vouchers', $vouchers);
     }
 
