@@ -23,7 +23,7 @@
         <div class="col-lg-6 col-md-12 col-sm-12 quote p-2">
             <h2>{{$house->name}}</h2>
             <h3></h3>
-            <p>{{$house->description}}</p>
+            <h4>{{$house->description}}</h4>
         </div>
     </div>
 </div> 

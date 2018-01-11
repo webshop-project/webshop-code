@@ -14,11 +14,13 @@ class CreateVouchersUsedTable extends Migration
      */
     public function up()
     {
-        Schema::create('vouchers_used', function (Blueprint $table) {
+        Schema::create('voucher_useds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('voucher_id');
-            $table->integer('user_id');
-            $table->timestamp('used_at')->nullable();
+            $table->integer('voucher_id')->unsigned();
+            $table->foreign('voucher_id')->references('id')->on('vouchers');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamp('used_at');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -32,6 +34,6 @@ class CreateVouchersUsedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vouchers_used');
+        Schema::dropIfExists('voucher_useds');
     }
 }

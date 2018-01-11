@@ -15,6 +15,9 @@ a:hover{
 .fa-star, .fa-shopping-cart{
     padding: 14px 10px!important;
 }
+.bg-header-bottom img{
+    padding: 0 0 10px 0;
+}
 .bg-header-top a{
     line-height: 1.8!important;
 }
@@ -27,6 +30,9 @@ body{
 
 .shop-banner{
     border-bottom: 1px solid #E7E7E7;
+}
+.container-fluid{
+    position: relative;
 }
 /*FOUR HOUSES*/
 .four-houses{
@@ -185,7 +191,7 @@ body{
     border: none;
 }
 .new-products img{
-    background: #F7F7F7!important;
+    background: none!important;
     padding: 15px;
 }
 .new-products .text-dark{
@@ -411,7 +417,7 @@ footer i{
 }
 .cart {
     height: 100%;
-    width: 0;
+        width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -447,7 +453,9 @@ footer i{
     color: #ccc;
     padding: 40px 10px 10px 0;
 }
-
+.table td{
+    height: 50px;
+}
 .block {
     margin: 10px;
 	display: block;
@@ -459,6 +467,7 @@ footer i{
 }
 
 .product {
+    padding: 5px;
     display: block;
     position: relative;
 }
@@ -516,8 +525,8 @@ footer i{
     text-decoration: none;
     opacity: 0;
 }
-.btn{
-    margin-top: -30px;
+.info .btn{
+    margin: -30px 0 0 0;
 }
 
 a.buy {

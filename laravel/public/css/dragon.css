@@ -1,23 +1,17 @@
 .bg-header-top{
-    background: #54B974;
+    background: #B50500;
 }
 .bg-header-bottom .bg-secondary{
-    background: #36784B!important;
+    background: #780400!important;
 }
 .bg-header-top i, .bg-header-top a{
-    color: #36784B!important;
+    color: #780400!important;
 }
 .bg-header-bottom a{
-    color: #54B974!important;
+    color: #B50500!important;
 }
 .new-products, .shop, .contact{
     position: relative;
-}
-.new-products h2, .new-products h5{
-    background: rgba(255, 255, 255, 0.7);
-}
-.text-dark{
-    color: #FFF;
 }
 .new-products a, .new-products h2, .new-products h5{
     border: none!important;
@@ -45,11 +39,11 @@
     color: #FFF!important;
 }
 footer .bg-secondary{
-    background: #167B3E!important;
+    background: #ac1f23!important;
 }
 footer i, footer p{
-    color: #54B974;
+    color: #FF0700;
 }
 footer .container{
-    border-top: 1px solid #54B974;
+    border-top: 1px solid #FF0700;
 }
