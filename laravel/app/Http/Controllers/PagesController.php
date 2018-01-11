@@ -8,7 +8,27 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $products = \App\Product::all();
+        if(""){
+            //Vikings
+            if(""){
+                $products = \App\Products::where('house_id', '=', 1)->get();
+            }
+            //Dragons
+            elseif(""){
+                $products = \App\Products::where('house_id', '=', 2)->get();
+            }
+            //Ravens
+            elseif(""){
+                $products = \App\Products::where('house_id', '=', 3)->get();
+            }
+            //Serpents
+            elseif(""){
+                $products = \App\Products::where('house_id', '=', 4)->get();
+            }
+        }
+        else{
+            $products = \App\Product::all();
+        }
 
         return view('pages/index', ['products' => $products]);
         

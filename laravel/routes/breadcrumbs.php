@@ -40,3 +40,14 @@ Breadcrumbs::register('contact', function ($breadcrumbs) {
    $breadcrumbs->parent('home');
    $breadcrumbs->push('Contact', route('contact'));
 });
+
+// Admin Home
+Breadcrumbs::register('admin home', function ($breadcrumbs) {
+    $breadcrumbs->push('home', route('admin.index'));
+});
+
+// Admin Home > LowStockList
+Breadcrumbs::register('lowStockList', function ($breadcrumbs) {
+    $breadcrumbs->parent('admin home');
+    $breadcrumbs->push('lowStockList', route('lowStockList'));
+});
