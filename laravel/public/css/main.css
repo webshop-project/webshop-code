@@ -465,6 +465,12 @@ footer i{
     display: block;
     position: relative;
 }
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
+}
 
 .product img {
     width: 100%;

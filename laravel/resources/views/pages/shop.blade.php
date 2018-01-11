@@ -32,16 +32,17 @@
                 </div>
                 <div class="container col-xs-12 col-sx-12 col-10  d-inline">
                     <div class="selectContainer">
-                        <select class="custom-select">
-                            <option selected disabled> Houses:</option>
-                            <option value="dragons">Database Dragons</option>
-                            <option value="ravens">Recursive Ravens</option>
-                            <option value="serpents">Script Serpents</option>
-                            <option value="vikings">Variable Vikings</option>
+                        <select name="houses" id="houses" class="custom-select">
+                            <option value="0">All Houses</option>
+                            <option value="1">Variable Vikings</option>
+                            <option value="2">Database Dragons</option>
+                            <option value="3">Recursive Ravens</option>
+                            <option value="4">Script Serpents</option>
                         </select>
                     </div>
                     <div class="row">
                         @foreach($products as $product)
+                            <div id="{{$product->house->id}}" class="house{{$product->house->id}}">
                             <div class="block span3">
                                 <div class="product">
                                         <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
@@ -66,6 +67,7 @@
                                     </form>
                                 </div>
                             </div>
+                            </div>
                         @endforeach
                     </div>
                     <div class="container">
@@ -85,6 +87,7 @@
             </div>
         </div>
     </div>
-
+    <script src="{{asset('js/jQuery-3.2.1.js')}}"></script>
+    <script src="{{asset('js/filterShop.js')}}"></script>
 
 @endsection
