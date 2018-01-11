@@ -38,8 +38,7 @@
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <p class="h5"> Order id: {{$orderP->id}} </p>
-                            <p class="h5"> Name: {{$orderP->user->firstName}} </p>
-                            <p class="h5"> Sir name: {{$orderP->user->lastName}}</p>
+                            <p class="h5"> Name: {{$orderP->user->loginName}} </p>
                             <p class="h5"> Amount: {{$orderP->amount}} </p>
                             <p class="h5"> Purchased at: {{$orderP->bought_at}} </p>
                             <p class="h5"> Total price: {{$orderP->price}} </p>

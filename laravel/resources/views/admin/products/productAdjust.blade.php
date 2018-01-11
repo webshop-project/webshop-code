@@ -5,9 +5,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="container">
-            @foreach($products as $product)
-            <h2>Editing {{$product->name}}</h2>
-            <form action="{{action('WarehouseController@update', $product->product_id)}}" method="POST">
+            @foreach($products as $key => $product)
+            <h2>Editing   @if($product->product->category_id == 5) Shirt size{{$product->size->size}}
+                @elseif($product->product->category_id == 6) usb size {{$product->size->size}}GB @endif</h2>
+            <form action="{{action('WarehouseController@update', $product->product_id)}}" method="POST" name="form{{$key}}">
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <h4>De prijs is in Euro's</h4>
@@ -22,7 +23,7 @@
                 <h4>De korting is een percentage</h4>
                 <div class="form-group form-padding">
                     <label for="stock">Discount</label>
-                    <input class="form-control col" type="number" name="stock">
+                    <input class="form-control col" type="number" name="discount">
                 </div>
                 <div class="form-group">
                     <label for="category"><b>Category</b></label>
@@ -97,8 +98,16 @@
                     @endforeach
                 </div>
             </div>
-            </form>
             @endforeach
+                <input type="button"  class="btn btn-success" value="Submit" onclick="submitForms()"/>
         </div>
     </div>
+    <script>
+        submitForms = function() {
+            document.forms["form0"].submit();
+            document.forms["form1"].submit();
+            document.forms["form2"].submit();
+            document.forms["form3"].submit();
+        }
+    </script>
 @endsection

@@ -12,28 +12,32 @@
         </div>
         <div class="jumbotron">
             <h5 class="h3">Order id: {{$orders->id}}</h5>
-            <h5 class="h3">Name: {{$orders->user->firstName}} {{$orders->user->lastName}}</h5>
+            <h5 class="h3">Name: {{$orders->user->loginName}}</h5>
+            <h5 class="h3">E-mail: {{$orders->user->email}}</h5>
+            <h5 class="h3">Student number: {{$orders->user->studentNummer}}</h5>
             <hr class="my-4">
             <h5 class="h4">Product name: </h5>
             <h5 class="h4">Amount: {{$orders->amount}}</h5>
             <h5 class="h4">Total price: {{$orders->price}}</h5>
             <h5 class="h4">Date: {{$orders->bought_at}}</h5>
 
-            @if($orders->order_processed == false)
+            @if($orders->shipped == false)
                 <form action="{{action('OrderController@update', $orders->id)}}" method="post">
                     {{csrf_field()}}
                     {{method_field('PUT')}}
                     <input class="btn btn-primary" type="submit" value="Finish Order" id="finishButton">
                 </form>
-            @elseif($orders->order_processed == true)
-                <p class="h4 bg-success">This order has been processed...</p>
+            @elseif($orders->shipped == true)
+                <p class="p-3 mb-2 bg-success text-white">This order has been shipped...</p>
             @endif
         </div>
     </div>
+
+    @if ( $errors->any() )
+        @foreach($errors->all() as $error)
+            <li> {{ $error }} </li>
+        @endforeach
+    @endif
 @endsection
 
-@if ( $errors->any() )
-    @foreach($errors->all() as $error)
-        <li> {{ $error }} </li>
-    @endforeach
-@endif
+
