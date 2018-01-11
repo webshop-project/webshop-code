@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\order;
 use App\Product;
-use App\User;
 use App\Warehouse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -61,8 +59,7 @@ class DashboardController extends Controller
     public function show($id)
     {
         $showProduct = Warehouse::where('product_id','=',$id)->get();
-        $thisMonth = order::where([['bought_at', '>', Carbon::now()->subMonth()],['warehouse_id','=',$id]])->sum('amount');
-        return view('admin/products/show')->with('showProduct',$showProduct)->with('thisMonth',$thisMonth);
+        return view('admin/products/show')->with('showProduct',$showProduct)->with('urlId',$id);
     }
 
     /**
@@ -101,8 +98,7 @@ class DashboardController extends Controller
 
     public function lowStockList()
     {
-        $warehouse = new Warehouse();
-        $lowOnStock = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(6);
-        return view('admin/products/lowStockList')->with('lowOnStock',$lowOnStock);
+        $lowOnStock = \App\Warehouse::where('supply','<',4)->orderBy('supply')->paginate(6);
+        return view('admin/products/lowStockList', ['lowOnStock' => $lowOnStock]);
     }
 }
