@@ -66,14 +66,32 @@ class Warehouse extends Model
 
     public function showStats()
     {
-        $array = [
 
-            'totalSold' => $this->totalAmountSold(),
-            'totalSoldThisMonth' => $this->totalAmountSoldThisMonth(),
-            'totalProfit' => $this->totalProfit(),
-            'totalProfitThisMonth' => $this->thisMonthProfit(),
-        ];
+        if (empty($this->size->size))
+        {
+            $array = [
+                'supply'                => $this->supply,
+                'totalSold'             => $this->totalAmountSold(),
+                'totalSoldThisMonth'    => $this->totalAmountSoldThisMonth(),
+                'totalProfit'           => $this->totalProfit(),
+                'totalProfitThisMonth'  => $this->thisMonthProfit(),
+            ];
+            return $array;
 
-        return $array;
+        }
+        else
+        {
+            $array = [
+                'supply'                => $this->supply,
+                'size'                  => $this->size->size,
+                'totalSold'             => $this->totalAmountSold(),
+                'totalSoldThisMonth'    => $this->totalAmountSoldThisMonth(),
+                'totalProfit'           => $this->totalProfit(),
+                'totalProfitThisMonth'  => $this->thisMonthProfit(),
+            ];
+            return $array;
+
+        }
+
     }
 }

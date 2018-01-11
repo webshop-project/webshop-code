@@ -19,11 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/sales/{id}', function($id){
 
-    //$showProduct = Warehouse::where('product_id','=',$id)->get();
-
     $showProduct = \App\warehouse::where('product_id','=', $id)->get();
 
-    $array = [$showProduct];
+    $array = [];
 
     foreach($showProduct as $warehouse)
     {

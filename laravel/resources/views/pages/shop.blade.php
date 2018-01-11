@@ -10,7 +10,6 @@
 @section('content')
 
 
-<h1 id="counter">0</h1>
     <div class="container d-inline">
         @if (session()->has('success_message'))
             <div class="alert alert-success">
@@ -84,41 +83,4 @@
             </div>
         </div>
     </div>
-
-<script>
-    if (typeof(Storage) !== "undefined")
-    {
-        let test = document.getElementById('counter')
-        test.innerHTML = localStorage.clickcount;
-
-        test.addEventListener('click', () => {
-            alert('you clicked me!')
-        })
-
-    }
-    else
-    {
-        alert('this browser doesnt support out website please install Chrome');
-    }
-    function count(item)
-    {
-        if (typeof(Storage) !== "undefined")
-        {
-            if (localStorage.clickcount)
-            {
-                document.getElementById('counter').innerHTML = item;
-                localStorage.clickcount = Number(localStorage.clickcount)+1;
-                localStorage.clickcount = Number(localStorage.clickcount)-2;
-            }
-            else
-            {
-                localStorage.clickcount = 0;
-            }
-        }
-        else
-        {
-            alert('this browser doesnt support out website please install Chrome');
-        }
-    }
-</script>
 @endsection
