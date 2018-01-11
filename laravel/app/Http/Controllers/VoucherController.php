@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Faker;
+use Illuminate\Support\Facades\DB;
 
 class VoucherController extends Controller
 {
@@ -86,14 +87,50 @@ class VoucherController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Check the specified resource.
      *
      * @param  \App\voucher  $voucher
      * @return \Illuminate\Http\Response
      */
-    public function show(voucher $voucher)
+    public function check(Request $request)
     {
-        //
+        $code = $request->voucherCode;
+
+        if($code != '')
+        {
+            $vouchers = \App\voucher::where('code', '=', $code)->first();
+
+            if($vouchers != null)
+            {
+                dd($vouchers->vouchers);
+
+
+                if($vouchers == $notUsed)
+                {
+
+                    $message = 'The code is right! enjoy your €10 off!';
+                    return back()->with('message', $message);
+                }
+                else{
+                    $message = 'Code is already been used!';
+                    return back()->with('message', $message);
+                }
+
+            }
+            else{
+                $message = 'Wrong code!';
+                return back()->with('message', $message);
+
+            }
+        }
+        else
+        {
+            $message = '';
+            return back()->with('message', $message);
+        }
+
+
+
     }
 
     /**
@@ -114,7 +151,7 @@ class VoucherController extends Controller
      * @param  \App\voucher  $voucher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, voucher $voucher)
+    public function update(voucher $voucher)
     {
         //
     }

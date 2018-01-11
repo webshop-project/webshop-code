@@ -37,3 +37,4 @@ route::resource('/house', 'HouseController');
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
+Route::post('/checkVoucher','VoucherController@check');

@@ -85,6 +85,10 @@
                 <td></td>
                 <td></td>
                 <td class="small-caps table-bg" style="text-align: right">Your Total</td>
+                @if($message->message == 'The code is right! enjoy your €10 off!')
+                    <td class="table-bg">€{{Cart::total()}}</td>
+
+                    @endif
                 <td class="table-bg">€{{ Cart::total() }}</td>
                 <td class="column-spacer"></td>
                 <td></td>
@@ -92,7 +96,36 @@
 
                 </tbody>
             </table>
+            <form action="{{url ('/checkVoucher')}}" method="post">
+                {{csrf_field()}}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        @php
+                            error_reporting(0);
+                            $message = $message->message;
+                        @endphp
+                        @if($message->message != '')
+                            <div class="alert alert-success" role="alert">
+                                <span>{{$message->message}}</span>
+                            </div>
 
+                            @elseif($message == '')
+
+                            @else
+                            <div class="alert alert-danger" role="alert">
+                                <span>{{$message->message}}</span>
+                            </div>
+                            @endif
+
+                        <label class="input-group-text">Add your voucher code here:</label>
+                    </div>
+                    <input type="text" class="form-control" name="voucherCode">
+
+                </div>
+
+
+
+            </form>
             <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
             <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
