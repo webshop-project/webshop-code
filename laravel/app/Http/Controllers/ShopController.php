@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use App\Product;
 
 class ShopController extends Controller
 {
@@ -14,6 +16,7 @@ class ShopController extends Controller
     public function index()
     {
         $products = \App\Product::all();
+        $products = \App\Product::paginate(10);
         return view('pages/shop')->with('products',$products);
     }
 
@@ -22,9 +25,8 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function house(Request $request)
     {
-        //
     }
 
     /**
@@ -70,5 +72,10 @@ class ShopController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function category($cat)
+    {
+        $products = \App\Product::where('category_id','=',$cat)->paginate(10);
+        return view('pages/shop')->with('products',$products);
     }
 }

@@ -1,7 +1,11 @@
 @extends('layouts/pagesMaster')
 
 @section('content')
-
+    @php
+        error_reporting(0);
+        $message = $message->message;
+        $total = Cart::total();
+    @endphp
     <div class="container">
         <p><a href="{{ url('shop') }}">Home</a> / Cart</p>
         <h1>Your Cart</h1>
@@ -72,6 +76,7 @@
                     <td></td>
                     <td></td>
                 </tr>
+                        
                 <tr>
                     <td class="table-image"></td>
                     <td></td>
@@ -85,14 +90,45 @@
                 <td></td>
                 <td></td>
                 <td class="small-caps table-bg" style="text-align: right">Your Total</td>
-                <td class="table-bg">€{{ Cart::total() }}</td>
+                @if($used->notused == 0)
+                    <td class="table-bg">€{{$total -= $codeValue}}</td>
+                @elseif($used->notused == 1)
+                    <td class="table-bg">€{{$total}}</td>
+                    @endif
+
                 <td class="column-spacer"></td>
                 <td></td>
                 </tr>
 
                 </tbody>
             </table>
+            <form action="{{url ('/checkVoucher')}}" method="post">
+                {{csrf_field()}}
+                <div class="input-group">
+                    <div class="input-group-prepend">
 
+                        @if($message->message != '')
+                            <div class="alert alert-success" role="alert">
+                                <span>{{$message->message}}</span>
+                            </div>
+
+                            @elseif($message->message == '')
+
+                            @else
+                            <div class="alert alert-danger" role="alert">
+                                <span>{{$message->message}}</span>
+                            </div>
+                            @endif
+
+                        <label class="input-group-text">Add your voucher code here:</label>
+                    </div>
+                    <input type="text" class="form-control" name="voucherCode">
+
+                </div>
+
+
+
+            </form>
             <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
             <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
 

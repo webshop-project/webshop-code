@@ -471,6 +471,19 @@ footer i{
     display: block;
     position: relative;
 }
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
+}
+.show-hide
+{
+    display:none;
+    margin: 0;
+    padding: 0;
+    clear:both;
+}
 
 .product img {
     width: 100%;

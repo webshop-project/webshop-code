@@ -17,6 +17,7 @@ class Vouchers extends Mailable
     public $value;
     public $startDate;
     public $endDate;
+    public $siteLink;
     public $topImage;
     public $bottomImage;
 
@@ -25,7 +26,7 @@ class Vouchers extends Mailable
      *
      * @return void
      */
-    public function __construct($userFirstName, $userLastName, $voucherCode, $voucherValue, $voucherStartDate, $voucherEndDate, $voucherTop, $voucherBottom)
+    public function __construct($userFirstName, $userLastName, $voucherCode, $voucherValue, $voucherStartDate, $voucherEndDate, $shopLink, $voucherTop, $voucherBottom)
     {
         $this->firstName = $userFirstName;
         $this->lastName = $userLastName;
@@ -33,6 +34,7 @@ class Vouchers extends Mailable
         $this->value = $voucherValue;
         $this->startDate = $voucherStartDate;
         $this->endDate = $voucherEndDate;
+        $this->siteLink = $shopLink;
         $this->topImage = $voucherTop;
         $this->bottomImage = $voucherBottom;
     }

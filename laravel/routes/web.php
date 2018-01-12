@@ -20,9 +20,7 @@ Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
 
-Route::get('/admin/lowStockList','DashboardController@lowStockList');
-
-Route::get('/admin/vouchers/add', 'VoucherController@create');
+Route::get('/admin/lowStockList','DashboardController@lowStockList')->name('lowStockList');
 
 route::resource('/products', 'WarehouseController');
 route::resource('/orders', 'OrderController');
@@ -40,3 +38,5 @@ route::get('/login', function()
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
+Route::post('/checkVoucher','VoucherController@check');
+Route::get('/admin/vouchers/voucherUsed', 'VoucherController@index');
