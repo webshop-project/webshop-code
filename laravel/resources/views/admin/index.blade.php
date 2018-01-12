@@ -55,7 +55,7 @@
                             products low on stock!</p>
                     </div>
                     <div class="warningButtons">
-                        <a class="btn btn-warning d-inline" href="{{action('DashboardController@lowStockList') }}">More Info!</a>
+                        <a class="btn btn-warning d-inline" href="{{ route('lowStockList')  }}">More Info!</a>
                         <button id="hide" class="btn btn-warning fa fa-times"></button>
                     </div>
                 </div>

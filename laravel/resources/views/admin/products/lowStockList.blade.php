@@ -5,6 +5,7 @@
 
 
 @section('content')
+    {{Breadcrumbs::render('lowStockList')}}
     <div class="container">
         <div class="row d-flex">
             @foreach($lowOnStock as $lowStock)
