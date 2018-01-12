@@ -45,4 +45,5 @@ Route::prefix('admin')->group(function(){
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
+Route::post('/checkVoucher','VoucherController@check');
 Route::get('/admin/vouchers/voucherUsed', 'VoucherController@index');
