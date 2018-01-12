@@ -34,15 +34,13 @@
             <div class="row">
                 <div class="col">
                     <div class="d-inline-flex align-self-center">
-                        <i class="fa fa-search fa-2x grayIcons" aria-hidden="true"></i>
                         <a class="login" href="#"><span>Login</span></a>
                         <a class="register" href="#"><span>Register</span></a>
                     </div>
                 </div>
 
                 <div class="align-items-center d-flex">
-                    <span><i class="fa fa-star fa-2x grayIcons blr" aria-hidden="true"></i></span>
-                    <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons br" aria-hidden="true"></i></span>
+                    <span style="cursor:pointer" onclick="openNav()"><i class="fa fa-shopping-cart fa-2x grayIcons blr" aria-hidden="true"></i></span>
                     <div id="myShoppingCart" class="cart">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <div class="cart-title">

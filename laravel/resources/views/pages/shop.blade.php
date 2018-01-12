@@ -22,7 +22,7 @@
                 {{ session()->get('error_message') }}
             </div>
         @endif
-        <div class="col">
+        <div class="container">
             <div class="row">
                 <div class=" col menuList">
                     <ul class="list-group">
