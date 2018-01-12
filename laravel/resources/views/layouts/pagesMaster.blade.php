@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     {{--<link rel="stylesheet" href="{{asset('css/serpent.css')}}">--}}
     {{--<link rel="stylesheet" href="{{asset('css/dragon.css')}}">--}}
-    {{--<link rel="stylesheet" href="{{asset('css/raven.css')}}">--}}
-    <link rel="stylesheet" href="{{asset('css/viking.css')}}">
+    <link rel="stylesheet" href="{{asset('css/raven.css')}}">
+    {{--<link rel="stylesheet" href="{{asset('css/viking.css')}}">--}}
     <title>AMO Webshop | @yield('title')</title>
 </head>
 
@@ -129,8 +129,8 @@
                         {{--<img class="img-fluid img-sizer-front col-8" src="{{asset('img/amologin2.png')}}" alt="">--}}
                         {{--<img class="img-fluid img-sizer-front" src="{{asset('img/script_serpents_xs.png')}}" alt="">--}}
                         {{--<img class="img-fluid img-sizer-front col-3" src="{{asset('img/db_dragon_xs.png')}}" alt="">--}}
-                        {{--<img class="img-fluid img-sizer-front col-2" src="{{asset('img/rave_xs.png')}}" alt="">--}}
-                        <img class="img-fluid img-sizer-front col-2" src="{{asset('img/viking_xs.png')}}" alt="">
+                        <img class="img-fluid img-sizer-front col-2" src="{{asset('img/rave_xs.png')}}" alt="">
+                        {{--<img class="img-fluid img-sizer-front col-2" src="{{asset('img/viking_xs.png')}}" alt="">--}}
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -162,8 +162,8 @@
 
     {{--<img class="page-under" src="../img/script_serpents_under_small_crop.png" alt="">--}}
     {{--<img class="page-under" src="../img/db_fire_small_crop_v2.png" alt="">--}}
-    {{--<img class="page-under" src="../img/rave_1_small_crop.png" alt="">--}}
-    <img class="page-under" src="../img/viking_berg_small_crop.png" alt="">
+    <img class="page-under" src="../img/rave_1_small_crop.png" alt="">
+    {{--<img class="page-under" src="../img/viking_berg_small_crop.png" alt="">--}}
 
 </div>
 <footer>
