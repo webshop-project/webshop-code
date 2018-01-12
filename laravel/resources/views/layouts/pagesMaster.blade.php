@@ -20,10 +20,17 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    {{--<link rel="stylesheet" href="{{asset('css/serpent.css')}}">--}}
-    {{--<link rel="stylesheet" href="{{asset('css/dragon.css')}}">--}}
-    {{--<link rel="stylesheet" href="{{asset('css/raven.css')}}">--}}
-    {{--<link rel="stylesheet" href="{{asset('css/viking.css')}}">--}}
+    @if(Auth::check() == true)
+        @if(Auth::user()->house_id == 4)
+            <link rel="stylesheet" href="{{asset('css/serpent.css')}}">
+        @elseif(Auth::user()->house_id == 2)
+            <link rel="stylesheet" href="{{asset('css/dragon.css')}}">
+        @elseif(Auth::user()->house_id == 3)
+            <link rel="stylesheet" href="{{asset('css/raven.css')}}">
+        @elseif(Auth::user()->house_id == 1)
+            <link rel="stylesheet" href="{{asset('css/viking.css')}}">
+        @endif
+    @endif
     <title>AMO Webshop | @yield('title')</title>
 </head>
 
@@ -125,10 +132,17 @@
                 <nav class="navbar navbar-expand-lg navbar-light row justify-content-between">
                     <a class="col-sm-12 col-xs-12 col-md-5" href="/">
                         <img class="img-fluid img-sizer-front col-8" src="{{asset('img/amologin2.png')}}" alt="">
-                        {{--<img class="img-fluid img-sizer-front" src="{{asset('img/script_serpents_xs.png')}}" alt="">--}}
-                        {{--<img class="img-fluid img-sizer-front col-3" src="{{asset('img/db_dragon_xs.png')}}" alt="">--}}
-                        {{--<img class="img-fluid img-sizer-front col-2" src="{{asset('img/rave_xs.png')}}" alt="">--}}
-                        {{--<img class="img-fluid img-sizer-front col-2" src="{{asset('img/viking_xs.png')}}" alt="">--}}
+                        @if(Auth::check() == true)
+                            @if(Auth::user()->house_id == 4)
+                                <img class="img-fluid img-sizer-front" src="{{asset('img/script_serpents_xs.png')}}" alt="">
+                            @elseif(Auth::user()->house_id == 2)
+                                <img class="img-fluid img-sizer-front col-3" src="{{asset('img/db_dragon_xs.png')}}" alt="">
+                            @elseif(Auth::user()->house_id == 3)
+                                <img class="img-fluid img-sizer-front col-2" src="{{asset('img/rave_xs.png')}}" alt="">
+                            @elseif(Auth::user()->house_id == 1)
+                                <img class="img-fluid img-sizer-front col-2" src="{{asset('img/viking_xs.png')}}" alt="">
+                            @endif
+                        @endif
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -158,11 +172,17 @@
 
     @yield('content')
 
-    {{--<img class="page-under" src="../img/script_serpents_under_small_crop.png" alt="">--}}
-    {{--<img class="page-under" src="../img/db_fire_small_crop_v2.png" alt="">--}}
-    {{--<img class="page-under" src="../img/rave_1_small_crop.png" alt="">--}}
-    {{--<img class="page-under" src="../img/viking_berg_small_crop.png" alt="">--}}
-
+    @if(Auth::check() == true)
+        @if(Auth::user()->house_id == 4)
+            <img class="page-under" src="../img/script_serpents_under_small_crop.png" alt="">
+        @elseif(Auth::user()->house_id == 2)
+            <img class="page-under" src="../img/db_fire_small_crop_v2.png" alt="">
+        @elseif(Auth::user()->house_id == 3)
+            <img class="page-under" src="../img/rave_1_small_crop.png" alt="">
+        @elseif(Auth::user()->house_id == 1)
+            <img class="page-under" src="../img/viking_berg_small_crop.png" alt="">
+        @endif
+    @endif
 </div>
 <footer>
     <div class="container-fluid bg-secondary">
