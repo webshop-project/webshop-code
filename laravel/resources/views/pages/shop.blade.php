@@ -22,12 +22,12 @@
             <div class="row">
                 <div class=" col menuList">
                     <ul class="list-group">
-                        <li class="list-group-item"><input type="checkbox" class="cbx-cap" checked>Caps</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-keycord" checked>Keycords</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-mug" checked>Mugs</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-phonecase" checked>Phonecases</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-shirt" checked>Shirts</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-usb" checked>USB's</li>
+                        <li class="list-group-item"><input type="checkbox" id="filter-cap" class="cbx-cap" checked>Caps</li>
+                        <li class="list-group-item"><input type="checkbox" id="filter-keycord" class="cbx-keycord" checked>Keycords</li>
+                        <li class="list-group-item"><input type="checkbox" id="filter-mug" class="cbx-mug" checked>Mugs</li>
+                        <li class="list-group-item"><input type="checkbox" id="filter-phonecase" class="cbx-phonecase" checked>Phonecases</li>
+                        <li class="list-group-item"><input type="checkbox" id="filter-shirt" class="cbx-shirt" checked>Shirts</li>
+                        <li class="list-group-item"><input type="checkbox" id="filter-usb" class="cbx-usb" checked>USB's</li>
                     </ul>
                 </div>
                 <div class="container col-xs-12 col-sx-12 col-10  d-inline">
