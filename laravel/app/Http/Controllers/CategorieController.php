@@ -68,7 +68,7 @@ class CategorieController extends Controller
     public function edit($id)
     {
         $categorie = \App\categorie::find($id);
-        return view("/categorie/categorieEdit")->with("categorie", $categorie);
+        return view("/admin/categorie/categorieEdit")->with("categorie", $categorie);
     }
 
     /**

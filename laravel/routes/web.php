@@ -13,9 +13,14 @@
 
 Route::get('/', 'PagesController@index')->name('home');
 Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/shop', 'ShopController@index')->name('shop');
 Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::resource('/shop/cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
+Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
+
+Route::get('/admin/lowStockList','DashboardController@lowStockList')->name('lowStockList');
 
 route::resource('/products', 'WarehouseController');
 route::resource('/orders', 'OrderController');
@@ -27,22 +32,8 @@ route::resource('/house', 'HouseController');
 
 
 
-Route::prefix('shop')->group(function() {
-    Route::get('/', 'ShopController@index')->name('shop');
-    Route::get('/{item}', 'PagesController@item')->name('detail');
-
-    Route::get('/cat/{cat}', 'ShopController@category')->name('cat');
-});
-
-Route::prefix('admin')->group(function(){
-
-    Route::prefix('product')->group(function(){
-        Route::get('lowStockList','DashboardController@lowStockList')->name('lowStockList');
-    });
-});
-
-
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
+Route::post('/checkVoucher','VoucherController@check');
 Route::get('/admin/vouchers/voucherUsed', 'VoucherController@index');
