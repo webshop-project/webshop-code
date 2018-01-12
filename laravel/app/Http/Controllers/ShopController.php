@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use App\Product;
 
 class ShopController extends Controller
 {
@@ -23,9 +25,8 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function house(Request $request)
     {
-        //
     }
 
     /**
