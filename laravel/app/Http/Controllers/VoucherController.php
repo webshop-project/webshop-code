@@ -93,14 +93,51 @@ class VoucherController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Check the specified resource.
      *
      * @param  \App\voucher  $voucher
      * @return \Illuminate\Http\Response
      */
-    public function show(voucher $voucher)
+    public function check(Request $request)
     {
-        //
+        $code = $request->voucherCode;
+
+        if($code != '')
+        {
+            $vouchers = \App\voucher::where('code', '=', $code)->first();
+
+            if($vouchers != null)
+            {
+                $notUsed = 1;
+                $message = 'The code is right! enjoy your €' . $vouchers->codeValue . ' off!';
+                return back()->with('message', $message)->with('used', $notUsed)->with('codeValue', $vouchers->codeValue);
+
+
+//                if($vouchers)
+//                {
+//
+//
+//                }
+//                else{
+//                    $message = 'Code is already been used!';
+//                    return back()->with('message', $message);
+//                }
+
+            }
+            else{
+                $message = 'Wrong code!';
+                return back()->with('message', $message);
+
+            }
+        }
+        else
+        {
+            $message = '';
+            return back()->with('message', $message);
+        }
+
+
+
     }
 
     /**
@@ -121,7 +158,7 @@ class VoucherController extends Controller
      * @param  \App\voucher  $voucher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, voucher $voucher)
+    public function update(voucher $voucher)
     {
         //
     }
