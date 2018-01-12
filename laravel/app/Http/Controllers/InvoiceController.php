@@ -22,8 +22,9 @@ class InvoiceController extends Controller
      */
     public function ship(Request $request)
     {
+        $orderNumber = $request->orderNumber;
         $invoice = Invoice::find($orderNumber);
-        Mail::to()->send(new InvoiceSend($invoice));
+        Mail::to($user)->send(new InvoiceSend($invoice));
     }
 
     /**
