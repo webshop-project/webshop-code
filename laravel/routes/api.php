@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/sales/{id}', function($id){
+
+    $showProduct = \App\warehouse::where('product_id','=', $id)->get();
+
+    $array = [];
+
+    foreach($showProduct as $warehouse)
+    {
+        array_push($array, $warehouse->showStats());
+    }
+
+    return $array;
+});

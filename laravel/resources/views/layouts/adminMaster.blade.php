@@ -63,7 +63,7 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{action('VoucherController@create')}}">Add Vouchers</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/voucher">Used Vouchers</a>
+                        <a class="dropdown-item" href="{{action('VoucherController@index')}}">Used Vouchers</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
