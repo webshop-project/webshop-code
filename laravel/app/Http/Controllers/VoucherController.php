@@ -108,19 +108,20 @@ class VoucherController extends Controller
 
             if($vouchers != null)
             {
-                dd($vouchers->vouchers);
+                $notUsed = 1;
+                $message = 'The code is right! enjoy your €' . $vouchers->codeValue . ' off!';
+                return back()->with('message', $message)->with('used', $notUsed)->with('codeValue', $vouchers->codeValue);
 
 
-                if($vouchers == $notUsed)
-                {
-
-                    $message = 'The code is right! enjoy your €10 off!';
-                    return back()->with('message', $message);
-                }
-                else{
-                    $message = 'Code is already been used!';
-                    return back()->with('message', $message);
-                }
+//                if($vouchers)
+//                {
+//
+//
+//                }
+//                else{
+//                    $message = 'Code is already been used!';
+//                    return back()->with('message', $message);
+//                }
 
             }
             else{
