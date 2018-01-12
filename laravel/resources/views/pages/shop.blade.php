@@ -22,12 +22,12 @@
             <div class="row">
                 <div class=" col menuList">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="{{url('/shop/caps')}}">Caps</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/keycords')}}">Keycords</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/mugs')}}">Mugs</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/phonecases')}}">Phonecases</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/shirts')}}">Shirts</a></li>
-                        <li class="list-group-item"><a href="{{url('/shop/usbs')}}">USB's</a></li>
+                        <li class="list-group-item"><input type="checkbox" class="cbx-cap" checked>Caps</li>
+                        <li class="list-group-item"><input type="checkbox" class="cbx-keycord" checked>Keycords</li>
+                        <li class="list-group-item"><input type="checkbox" class="cbx-mug" checked>Mugs</li>
+                        <li class="list-group-item"><input type="checkbox" class="cbx-phonecase" checked>Phonecases</li>
+                        <li class="list-group-item"><input type="checkbox" class="cbx-shirt" checked>Shirts</li>
+                        <li class="list-group-item"><input type="checkbox" class="cbx-usb" checked>USB's</li>
                     </ul>
                 </div>
                 <div class="container col-xs-12 col-sx-12 col-10  d-inline">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="row">
                         @foreach($products as $product)
-                            <div id="{{$product->house->id}}" class="house{{$product->house->id}}">
+                            <div class="house{{$product->house->id}} category{{$product->category->id}} display-block">
                             <div class="block span3">
                                 <div class="product">
                                         <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
