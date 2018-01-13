@@ -37,6 +37,18 @@ class Warehouse extends Model
         return count($this->orders);
     }
 
+
+//    public function MostSold()
+//    {
+//        return $this->orders->groupBy('warehouse.id')->sortByDesc('orders.amount')->get();
+////        from warehouse
+////        join orders on warehouse.id = orders.warehouse_id
+////        WHERE orders.shipped = 1
+////        GROUP BY warehouse.id
+////        ORDER BY `orders`.`amount`  DESC
+//
+//    }
+
     public function totalAmountSoldThisMonth()
     {
         return count($this->orders->where('bought_at', '>', Carbon::now()->subMonth()));

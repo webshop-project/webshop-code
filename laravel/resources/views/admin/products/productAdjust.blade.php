@@ -104,10 +104,10 @@
     </div>
     <script>
         submitForms = function() {
-            document.forms["form0"].submit();
-            document.forms["form1"].submit();
-            document.forms["form2"].submit();
-            document.forms["form3"].submit();
+            document.forms.namedItem('form0').submit();
+            document.forms.namedItem('form1').submit();
+            document.forms.namedItem('form2').submit();
+            document.forms.namedItem('form3').submit();
         }
     </script>
 @endsection

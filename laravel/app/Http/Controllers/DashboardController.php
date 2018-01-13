@@ -17,8 +17,18 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        //made by Youri! B.V.B. Sorry :( ;
         $products = new Product();
-        $warehouseProducts = $products->orderByDesc('viewAmount')->paginate(3,['*'], 'popularProducts');
+        $warehouseProducts = \App\order::all()->groupBy('warehouse_id');
+        $amounts = [];
+
+        foreach($warehouseProducts as $warehouseProduct){
+            $count = 0;
+            foreach($warehouseProduct as $test){
+                $count += $test->amount;
+            }
+            array_push($amounts, [$count, $warehouseProduct[0]->warehouse_id]);
+        }
 
         $warehouse = new Warehouse();
         $productsLow = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(3);
@@ -26,7 +36,8 @@ class DashboardController extends Controller
         return view('admin/index')
             ->with('warehouseProducts', $warehouseProducts)
             ->with('products',$products)
-            ->with('productsLow', $productsLow);
+            ->with('productsLow', $productsLow)
+            ->with('amounts', $amounts);
     }
 
     /**

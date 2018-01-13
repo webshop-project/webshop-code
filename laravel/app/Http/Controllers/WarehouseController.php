@@ -417,7 +417,6 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'category' => 'required',
             'house' => 'required|integer',
@@ -426,9 +425,12 @@ class WarehouseController extends Controller
             'discount' => 'interger|nullable'
         ]);
 
-        $test = \App\Warehouse::find($id);
+        $test = \App\Warehouse::where('product_id', '=',$id)->first();
 
-        $test->price = $request->price;
+        foreach ($test as $item)
+        {
+            $test->price = $request->price;
+        }
 
         $test->save();
     }

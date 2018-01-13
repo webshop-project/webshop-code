@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class order extends Model
 {
-    public function products()
-    {
-        return $this->hasMany('App\products');
-    }
-
     public function warehouse()
     {
         return $this->belongsTo('App\warehouse');
