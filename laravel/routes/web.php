@@ -40,3 +40,8 @@ Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
 Route::post('/checkVoucher','VoucherController@check');
 Route::get('/admin/vouchers/voucherUsed', 'VoucherController@index');
+
+Route::get('paypal/ec-checkout', 'PayPalController@getExpressCheckout');
+Route::get('paypal/ec-checkout-success', 'PayPalController@getExpressCheckoutSuccess');
+Route::get('paypal/adaptive-pay', 'PayPalController@getAdaptivePay');
+Route::post('paypal/notify', 'PayPalController@notify');
