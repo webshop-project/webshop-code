@@ -45,9 +45,26 @@ header .navbar {
     border: 1px solid orange;
     border-radius: 10px;
     background: white;
-    padding: 25px;
+    padding:25px;
 }
+.user-info {
+    border: 1px solid orange;
+    border-radius: 10px;
+    background: white;
+    padding: 25px;
+    min-height: 400px;
+    margin:20px;
 
+}
+.user-info b {
+    font-size: 2em;
+}
+.user-info span {
+    font-size: 2em;
+}
+.img-preview-left{
+    border-left: 1px solid orange;
+}
 .product-info{
     margin: 10px 0;
 }
