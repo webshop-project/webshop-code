@@ -32,9 +32,8 @@ class CreateUsersTable extends Migration
             $table->string('middleName')->nullable();
             $table->string('lastName');
             $table->rememberToken();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

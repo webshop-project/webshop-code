@@ -88,4 +88,12 @@ class ImageController extends Controller
         \App\image::destroy($id);
         return redirect('products')->with('succesD', 'SKRR has been deleted!');
     }
+
+    public function destroyMainPic(Request $request, $productId)
+    {
+        $product = \App\product::where('id','=',$productId)->first();
+        $product->img = null;
+        $product->save();
+        return back();
+    }
 }

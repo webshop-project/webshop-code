@@ -30,7 +30,7 @@ route::resource('/img', 'ImageController');
 route::resource('/user', 'UserController');
 route::resource('/house', 'HouseController');
 
-
+route::put('/products/{warehouse_id}/edit', 'ImageController@destroyMainPic')->name('destroyMainPic');
 
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
