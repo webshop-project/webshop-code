@@ -43,6 +43,16 @@
                                         <input class="form-control col" type="number" name="stockSt">
                                     </div>
                                 </div>
+                                <div class="d-none" id="groupPhone">
+                                    <div class="form-group form-padding">
+                                        <label for="house" class="col-2">Telefoon type</label>
+                                        <select class="form-control col" name="brandType" id="brandType">
+                                            @foreach($brandModels as $brandModel)
+                                                <option value="{{$brandModel->id}}">{{$brandModel->brand->name}} - {{$brandModel->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col sizes d-none" id="shirtSizes">
                                     <h5>Maten</h5>
                                     <div class="form-group small-group flex flex-between">
@@ -161,9 +171,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                    </div>
+                            </div>
                     <div class="w-100"></div>
                     <div class="form-group textSizerForm">
                         <label for="description">Beschrijving</label>
