@@ -16,7 +16,7 @@ class ShopController extends Controller
     public function index()
     {
         $products = \App\Product::all();
-        $products = \App\Product::paginate(10);
+        $products = \App\Product::paginate(9);
         return view('pages/shop')->with('products',$products);
     }
 

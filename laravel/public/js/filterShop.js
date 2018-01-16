@@ -117,29 +117,30 @@ selected.addEventListener('change', () => {
     }
 });
 
+
 filterCaps.addEventListener('change', () => {
     filterCategory(cap, filterCaps, countCap);
-})
+});
 
 filterKeycord.addEventListener('change', () => {
     filterCategory(keycord, filterKeycord, countKeycord);
-})
+});
 
 filterMug.addEventListener('change', () => {
     filterCategory(mug, filterMug, countMug)
-})
+});
 
 filterPhonecase.addEventListener('change', () => {
     filterCategory(phonecase, filterPhonecase, countPhonecase)
-})
+});
 
 filterShirt.addEventListener('change', () => {
     filterCategory(shirt, filterShirt, countShirt)
-})
+});
 
 filterUsb.addEventListener('change', () => {
     filterCategory(usb, filterUsb, countUsb)
-})
+});
 
 function filterCategory(category, filter, count){
     if(filter.checked){
