@@ -37,10 +37,10 @@ class PayPalController extends Controller
      */
     public function getExpressCheckout(Request $request)
     {
-        $recurring = ($request->get('mode') === 'recurring') ? true : false;
-        $cart = $this->getCheckoutData($recurring);
+//        $recurring = ($request->get('mode') === 'recurring') ? true : false;
+        $cart = $this->getCheckoutData($request);
         try {
-            $response = $this->provider->setExpressCheckout($cart, $recurring);
+            $response = $this->provider->setExpressCheckout($cart);
             return redirect($response['paypal_link']);
         } catch (\Exception $e) {
             $invoice = $this->createInvoice($cart, 'Invalid');
@@ -130,41 +130,50 @@ class PayPalController extends Controller
      *
      * @return array
      */
-    protected function getCheckoutData($recurring = false)
+    protected function getCheckoutData($request)
     {
         $data = [];
+        $value = str_replace(",", ".", $request->price);
+        $data['items'] = [
+            [
+                'name'  => $request->name,
+                'price' => floatval($value),
+                'qty'   => $request->qty,
+            ],
+        ];
         $order_id = Invoice::all()->count() + 1;
-        if ($recurring === true) {
-            $data['items'] = [
-                [
-                    'name'  => 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id,
-                    'price' => 0,
-                    'qty'   => 1,
-                ],
-            ];
-            $data['return_url'] = url('/paypal/ec-checkout-success?mode=recurring');
-            $data['subscription_desc'] = 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id;
-        } else {
-            $data['items'] = [
-                [
-                    'name'  => 'Product 1',
-                    'price' => 9.99,
-                    'qty'   => 1,
-                ],
-                [
-                    'name'  => 'Product 2',
-                    'price' => 4.99,
-                    'qty'   => 2,
-                ],
-            ];
-            $data['return_url'] = url('/paypal/ec-checkout-success');
-        }
+//        if ($recurring === true) {
+//            $data['items'] = [
+//                [
+//                    'name'  => 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id,
+//                    'price' => 0,
+//                    'qty'   => 1,
+//                ],
+//            ];
+//            $data['return_url'] = url('/paypal/ec-checkout-success?mode=recurring');
+//            $data['subscription_desc'] = 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id;
+//        } else {
+//            $data['items'] = [
+//                [
+//                    'name'  => 'Product 1',
+//                    'price' => 9.99,
+//                    'qty'   => 1,
+//                ],
+//                [
+//                    'name'  => 'Product 2',
+//                    'price' => 4.99,
+//                    'qty'   => 2,
+//                ],
+//            ];
+//            $data['return_url'] = url('/paypal/ec-checkout-success');
+//        }
+        $data['return_url'] = url('/paypal/ec-checkout-success');
         $data['invoice_id'] = config('paypal.invoice_prefix').'_'.$order_id;
         $data['invoice_description'] = "Order #$order_id Invoice";
         $data['cancel_url'] = url('/');
         $total = 0;
         foreach ($data['items'] as $item) {
-            $total += $item['price'] * $item['qty'];
+            $total += $item['price'];
         }
         $data['total'] = $total;
         return $data;
