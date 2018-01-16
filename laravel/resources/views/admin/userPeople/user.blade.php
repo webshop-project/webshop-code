@@ -21,10 +21,7 @@
                                 </div>
                                 <div class="col-5">
                                     <p><b>Name:</b></p>
-                                    <span>{{$user->firstName}}</span> <span>{{$user->middleName}}</span>
-                                    <span>{{$user->lastName}}</span>
-                                    <p><b>Total Logins:</b></p>
-                                    <p>{{$user->amountOflogin}}</p>
+                                    <span>{{$user->name}}</span>
                                 </div>
                                 <div class="desc">
                                 </div>
@@ -34,12 +31,6 @@
                                 <a href="{{action('UserController@show', $user->id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Show Detail</button>
                                 </a>
-                                <form action="{{action('UserController@update', $user->id)}}" method="post">
-                                    {{csrf_field()}}
-                                    {{method_field('PUT')}}
-                                    <input type="hidden" name="delete" value="{{$user->id}}">
-                                    <input class="btn btn-danger" type="submit" value="Make Admin">
-                                </form>
                             </div>
                         </div>
                     </div>

@@ -29,8 +29,12 @@ route::resource('/categorie' , 'CategorieController');
 route::resource('/img', 'ImageController');
 route::resource('/user', 'UserController');
 route::resource('/house', 'HouseController');
+route::get('/login', function()
+{
+   return redirect('http://yoursite/amoclient/redirect');
+});
 
-
+route::put('/products/{warehouse_id}/edit', 'ImageController@destroyMainPic')->name('destroyMainPic');
 
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');

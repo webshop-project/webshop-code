@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class CreateDiscountsTable extends Migration
 {
+    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -15,12 +16,13 @@ class CreateDiscountsTable extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('warehouse');
-            $table->integer('discount');
-            $table->dateTime('start_date');
+            $table->integer('warehouse_id')->unsigned();
+            $table->foreign('warehouse_id')->references('id')->on('warehouse');
+            $table->integer('discount')->unsigned();
+            $table->dateTime('start_date')->current();
             $table->dateTime('end_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

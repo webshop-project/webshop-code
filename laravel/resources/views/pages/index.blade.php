@@ -9,71 +9,71 @@ Home
         <div class="row">
             <div id="carouselExampleIndicators" class="carousel slide biggy" data-ride="carousel">
 
-            @if("")
-                    @if("")
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/dragons-slide.png" alt="Second slide">
-                        </a>
+            @if(Auth::check() == true)
+                @if(Auth::user()->house_id == 2)
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/dragons-slide.png" alt="Second slide">
+                    </a>
 
-                    @elseif("")
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/raven-slide.png" alt="Third slide">
-                        </a>
+                @elseif(Auth::user()->house_id == 3)
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/raven-slide.png" alt="Third slide">
+                    </a>
 
-                    @elseif("")
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/serpent-slide.png" alt="Fourth slide">
-                        </a>
+                @elseif(Auth::user()->house_id == 4)
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/serpent-slide.png" alt="Fourth slide">
+                    </a>
 
-                    @elseif("")
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/viking-slide.png" alt="Fifth slide">
-                        </a>
-                    @endif
-                @else
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                    </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <a href="/about">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/bannerfullhouse-slide.png" alt="First slide">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/dragons-slide.png" alt="Second slide">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/raven-slide.png" alt="Third slide">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/serpent-slide.png" alt="Fourth slide">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="{{action('ShopController@index')}}">
-                            <img class="d-block img-responsive img-fluid biggy" src="img/viking-slide.png" alt="Fifth slide">
-                        </a>
-                    </div>
+                @elseif(Auth::user()->house_id == 1)
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/viking-slide.png" alt="Fifth slide">
+                    </a>
+                @endif
+            @else
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <a href="/about">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/bannerfullhouse-slide.png" alt="First slide">
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            @endif
+                <div class="carousel-item">
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/dragons-slide.png" alt="Second slide">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/raven-slide.png" alt="Third slide">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/serpent-slide.png" alt="Fourth slide">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{{action('ShopController@index')}}">
+                        <img class="d-block img-responsive img-fluid biggy" src="img/viking-slide.png" alt="Fifth slide">
+                    </a>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        @endif
             </div>
         </div>
         <div class="row justify-content-around p-4 four-houses-container">
