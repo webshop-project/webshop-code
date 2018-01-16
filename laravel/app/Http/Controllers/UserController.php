@@ -16,11 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')
-            ->select(DB::raw('*'))
-            ->where('deleted_at', '=', null)
-            ->paginate(9);
-
+        $users = \App\User::paginate(9);
         return view('admin/userPeople/user')
             ->with('users' , $users);
     }
@@ -65,7 +61,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'hi';
     }
 
     /**
