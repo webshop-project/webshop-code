@@ -2,9 +2,16 @@
 
 @section('content')
     @php
-        error_reporting(0);
-        $message = $message->message;
         $total = Cart::total();
+
+        if(!empty(Session::get('message')))
+        {
+        $message = Session::pull('message');
+        $discount = Session::pull('discount');
+        $newPrice = Session::pull('value');
+        $positive = Session::pull('positive');
+        }
+
     @endphp
     <div class="container">
         <p><a href="{{ url('shop') }}">Home</a> / Cart</p>
@@ -86,47 +93,55 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @if(isset($discount))
+                <tr>
+                    <td class="table-image"></td>
+                    <td></td>
+                    <td></td>
+                    <td class="small-caps table-bg" style="text-align: right">Discount:</td>
+                    <td>%{{$discount}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @endif
                 <td></td>
                 <td></td>
                 <td></td>
                 <td class="small-caps table-bg" style="text-align: right">Your Total</td>
-                @if($used->notused == 0)
-                    <td class="table-bg">€{{$total -= $codeValue}}</td>
-                @elseif($used->notused == 1)
+                @if(isset($discount))
+                    <td class="table-bg">€{{$newPrice}}</td>
+                    @else
                     <td class="table-bg">€{{$total}}</td>
-                    @endif
-
+                @endif
                 <td class="column-spacer"></td>
                 <td></td>
                 </tr>
 
                 </tbody>
             </table>
-            <form action="{{url ('/checkVoucher')}}" method="post">
-                {{csrf_field()}}
+            <form action="{{action('VoucherController@check')}}" method="post" class="form-inline">
+                {{ csrf_field() }}
                 <div class="input-group">
                     <div class="input-group-prepend">
-
-                        @if($message->message != '')
-                            <div class="alert alert-success" role="alert">
-                                <span>{{$message->message}}</span>
-                            </div>
-
-                            @elseif($message->message == '')
-
+                        @if(isset($message))
+                            @if($positive == 1)
+                                <div class="alert alert-success" role="alert">
+                                    <span>{{$message}}</span>
+                                </div>
                             @else
-                            <div class="alert alert-danger" role="alert">
-                                <span>{{$message->message}}</span>
-                            </div>
+                                <div class="alert alert-danger" role="alert">
+                                    <span>{{$message}}</span>
+                                </div>
                             @endif
+                        @endif
 
-                        <label class="input-group-text">Add your voucher code here:</label>
+                            <label class="mb-3">Add your voucher code below</label>
+                            <input type="text" class="form-control" name="voucherCode">
+                            <input type="hidden" name="total" value="{{$total}}">
                     </div>
-                    <input type="text" class="form-control" name="voucherCode">
+                    <input type="submit" value="Check Code" class="btn btn-success mb-5 mt-3">
 
                 </div>
-
-
 
             </form>
             <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
