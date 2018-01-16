@@ -34,15 +34,17 @@ class WarehouseController extends Controller
     {
         $houses = \App\house::All();
         $catergories = \App\categorie::All();
-        $sizes = \App\size::All();
-        $storages = \App\size::where('category_id', '=', 6);
+        $brands = \App\brand::all();
+        $brandModels = \App\ProductModel::all();
 
         return view('admin/products/productAdd')
             ->with('houses', $houses)
             ->with('categories', $catergories)
-            ->with('sizes', $sizes)
-            ->with('storages', $storages);
+            ->with('brands', $brands)
+            ->with('brandModels', $brandModels);
     }
+
+    /**
 
     /**
      * Store a newly created resource in storage.
@@ -76,7 +78,6 @@ class WarehouseController extends Controller
             'description' => 'required',
             'image' => 'required'
         ]);
-
         if ($request->category == 5) {
 
             $product = new \App\product();
@@ -87,9 +88,10 @@ class WarehouseController extends Controller
             $first = true;
             foreach ($request->image as $image)
                 if ($first) {
-                    $path = $image->storePublicly('public');
+                    $path = $image;
+
                     // File and new size
-                    $filename = storage_path("app/$path");
+                    $filename = $path;
 
                     // Content type
                     header('Content-Type: image/jpeg');
@@ -101,47 +103,50 @@ class WarehouseController extends Controller
 
                     // Load
                     $thumb = imagecreatetruecolor($newwidth, $newheight);
-                    $source = imagecreatefromjpeg($filename);
+                    $source = imagecreatefromjpeg($path);
 
                     // Resize
                     imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
+                    $test = public_path("img");
                     // Output
-                    imagejpeg($thumb, storage_path("app/$path"));
+                    imagejpeg($thumb , "img/merch/{$image->hashName()}");
 
-                    $product->img = '/storage/' . $image->hashName();
+                    $product->img = "/img/merch/".$image->hashName();
 
                     $product->save();
                     $first = false;
 
                 } else {
                     $productV = $product->id;
-                    $path = $image->storePublicly('public');
+                    $path = $image;
+
                     // File and new size
-                    $filename = storage_path("app/$path");
+                    $filename = $path;
 
                     // Content type
                     header('Content-Type: image/jpeg');
 
                     // Get new sizes
                     list($width, $height) = getimagesize($filename);
-                    $newwidth = 377;
-                    $newheight = 337;
+                    $newwidth = 1000;
+                    $newheight = 1000;
 
                     // Load
                     $thumb = imagecreatetruecolor($newwidth, $newheight);
-                    $source = imagecreatefromjpeg($filename);
+                    $source = imagecreatefromjpeg($path);
 
                     // Resize
                     imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
+                    $test = public_path("img");
                     // Output
-                    imagejpeg($thumb, storage_path("app/$path"));
+                    imagejpeg($thumb , "img/merch{$image->hashName()}");
 
                     $imageAdd = new \App\image();
 
                     $imageAdd->product_id = $productV;
-                    $imageAdd->img = '/storage/' . $image->hashName();
+                    $imageAdd->img = '/img/merch' . $image->hashName();
 
                     $imageAdd->save();
                 }
@@ -190,65 +195,69 @@ class WarehouseController extends Controller
 
             $first = true;
             foreach ($request->image as $image)
-                if ($first) {
-                    $path = $image->storePublicly('public');
-                    // File and new size
-                    $filename = storage_path("app/$path");
+                    if ($first) {
+                        $path = $image;
 
-                    // Content type
-                    header('Content-Type: image/jpeg');
+                        // File and new size
+                        $filename = $path;
 
-                    // Get new sizes
-                    list($width, $height) = getimagesize($filename);
-                    $newwidth = 377;
-                    $newheight = 337;
+                        // Content type
+                        header('Content-Type: image/jpeg');
 
-                    // Load
-                    $thumb = imagecreatetruecolor($newwidth, $newheight);
-                    $source = imagecreatefromjpeg($filename);
+                        // Get new sizes
+                        list($width, $height) = getimagesize($filename);
+                        $newwidth = 377;
+                        $newheight = 337;
 
-                    // Resize
-                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+                        // Load
+                        $thumb = imagecreatetruecolor($newwidth, $newheight);
+                        $source = imagecreatefromjpeg($path);
 
-                    // Output
-                    imagejpeg($thumb, storage_path("app/$path"));
+                        // Resize
+                        imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
-                    $product->img = '/storage/' . $image->hashName();
+                        $test = public_path("img");
+                        // Output
+                        imagejpeg($thumb , "img/merch/{$image->hashName()}");
 
-                    $product->save();
-                    $first = false;
+                        $product->img = "/img/merch/".$image->hashName();
 
-                } else {
-                    $productV = $product->id;
-                    $path = $image->storePublicly('public');
-                    // File and new size
-                    $filename = storage_path("app/$path");
+                        $product->save();
+                        $first = false;
 
-                    // Content type
-                    header('Content-Type: image/jpeg');
+                    } else {
+                        $productV = $product->id;
+                        $path = $image;
 
-                    // Get new sizes
-                    list($width, $height) = getimagesize($filename);
-                    $newwidth = 377;
-                    $newheight = 337;
+                        // File and new size
+                        $filename = $path;
 
-                    // Load
-                    $thumb = imagecreatetruecolor($newwidth, $newheight);
-                    $source = imagecreatefromjpeg($filename);
+                        // Content type
+                        header('Content-Type: image/jpeg');
 
-                    // Resize
-                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+                        // Get new sizes
+                        list($width, $height) = getimagesize($filename);
+                        $newwidth = 1000;
+                        $newheight = 1000;
 
-                    // Output
-                    imagejpeg($thumb, storage_path("app/$path"));
+                        // Load
+                        $thumb = imagecreatetruecolor($newwidth, $newheight);
+                        $source = imagecreatefromjpeg($path);
 
-                    $imageAdd = new \App\image();
+                        // Resize
+                        imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
-                    $imageAdd->product_id = $productV;
-                    $imageAdd->img = '/storage/' . $image->hashName();
+                        $test = public_path("img");
+                        // Output
+                        imagejpeg($thumb , "img/merch/{$image->hashName()}");
 
-                    $imageAdd->save();
-                }
+                        $imageAdd = new \App\image();
+
+                        $imageAdd->product_id = $productV;
+                        $imageAdd->img = '/img/merch/' . $image->hashName();
+
+                        $imageAdd->save();
+                    }
 
             if ($request->size8 == 'on') {
                 $warehouse = new \App\Warehouse();
@@ -285,6 +294,87 @@ class WarehouseController extends Controller
             }
 
         }
+        elseif($request->category == 4) {
+
+            $product = new \App\product();
+            $product->category_id = $request->category;
+            $product->house_id = $request->house;
+            $product->brand_model_id = $request->brandType;
+            $product->description = $request->description;
+
+            $first = true;
+            foreach ($request->image as $image)
+                if ($first) {
+                    $path = $image;
+
+                    // File and new size
+                    $filename = $path;
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 377;
+                    $newheight = 337;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($path);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    $test = public_path("img");
+                    // Output
+                    imagejpeg($thumb , "img/merch/{$image->hashName()}");
+
+                    $product->img = "/img/merch/".$image->hashName();
+
+                    $product->save();
+                    $first = false;
+
+                } else {
+                    $productV = $product->id;
+                    $path = $image;
+
+                    // File and new size
+                    $filename = $path;
+
+                    // Content type
+                    header('Content-Type: image/jpeg');
+
+                    // Get new sizes
+                    list($width, $height) = getimagesize($filename);
+                    $newwidth = 1000;
+                    $newheight = 1000;
+
+                    // Load
+                    $thumb = imagecreatetruecolor($newwidth, $newheight);
+                    $source = imagecreatefromjpeg($path);
+
+                    // Resize
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+                    $test = public_path("img");
+                    // Output
+                    imagejpeg($thumb , "img/merch/{$image->hashName()}");
+
+                    $imageAdd = new \App\image();
+
+                    $imageAdd->product_id = $productV;
+                    $imageAdd->img = '/img/merch/' . $image->hashName();
+
+                    $imageAdd->save();
+                }
+
+            $warehouse = new \App\Warehouse();
+            $warehouse->product_id = $product->id;
+            $warehouse->supply = $request->stockSt;
+            $warehouse->price = $request->priceSt;
+            $warehouse->save();
+
+        }
         else{
             $product = new \App\product();
             $product->category_id = $request->category;
@@ -294,9 +384,10 @@ class WarehouseController extends Controller
             $first = true;
             foreach ($request->image as $image)
                 if ($first) {
-                    $path = $image->storePublicly('public');
+                    $path = $image;
+
                     // File and new size
-                    $filename = storage_path("app/$path");
+                    $filename = $path;
 
                     // Content type
                     header('Content-Type: image/jpeg');
@@ -308,24 +399,26 @@ class WarehouseController extends Controller
 
                     // Load
                     $thumb = imagecreatetruecolor($newwidth, $newheight);
-                    $source = imagecreatefromjpeg($filename);
+                    $source = imagecreatefromjpeg($path);
 
                     // Resize
                     imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
+                    $test = public_path("img");
                     // Output
-                    imagejpeg($thumb, storage_path("app/$path"));
+                    imagejpeg($thumb , "img/merch/{$image->hashName()}");
 
-                    $product->img = '/storage/' . $image->hashName();
+                    $product->img = "/img/merch/".$image->hashName();
 
                     $product->save();
                     $first = false;
 
                 } else {
                     $productV = $product->id;
-                    $path = $image->storePublicly('public');
+                    $path = $image;
+
                     // File and new size
-                    $filename = storage_path("app/$path");
+                    $filename = $path;
 
                     // Content type
                     header('Content-Type: image/jpeg');
@@ -337,18 +430,19 @@ class WarehouseController extends Controller
 
                     // Load
                     $thumb = imagecreatetruecolor($newwidth, $newheight);
-                    $source = imagecreatefromjpeg($filename);
+                    $source = imagecreatefromjpeg($path);
 
                     // Resize
                     imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
+                    $test = public_path("img");
                     // Output
-                    imagejpeg($thumb, storage_path("app/$path"));
+                    imagejpeg($thumb , "img/merch/{$image->hashName()}");
 
                     $imageAdd = new \App\image();
 
                     $imageAdd->product_id = $productV;
-                    $imageAdd->img = '/storage/' . $image->hashName();
+                    $imageAdd->img = '/img/merch/' . $image->hashName();
 
                     $imageAdd->save();
                 }

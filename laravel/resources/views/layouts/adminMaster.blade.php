@@ -115,6 +115,7 @@
     const shirtSizes = document.getElementById('shirtSizes');
     const usbSizes = document.getElementById('usbSizes');
     const standard = document.getElementById('groupStandard');
+    const groupPhone = document.getElementById('groupPhone');
 
 
     valueOption.addEventListener('change', () => {
@@ -123,6 +124,8 @@
             const groupS = document.getElementById('groupS');
             const sizeS = document.getElementById('sizeS');
 
+            groupPhone.classList.add('d-none');
+            groupPhone.classList.remove('d-block');
             standard.classList.add('d-none');
             standard.classList.remove('d-block');
             shirtSizes.classList.add('d-block');
@@ -186,11 +189,14 @@
                 }
             });
 
-        } else if(valueOption.value == 6){
+        }
+        else if(valueOption.value == 6){
 
             const group8 = document.getElementById('group8');
             const size8 = document.getElementById('size8');
 
+            groupPhone.classList.add('d-none');
+            groupPhone.classList.remove('d-block');
             standard.classList.add('d-none');
             standard.classList.remove('d-block');
             shirtSizes.classList.add('d-none');
@@ -254,6 +260,11 @@
                 }
             });
         }
+        else if(valueOption.value == 4){
+
+            groupPhone.classList.add('d-block');
+            groupPhone.classList.remove('d-none');
+        }
         else{
             standard.classList.add('d-block');
             standard.classList.remove('d-none');
@@ -261,6 +272,8 @@
             shirtSizes.classList.remove('d-block');
             usbSizes.classList.add('d-none');
             usbSizes.classList.remove('d-block');
+            groupPhone.classList.add('d-none');
+            groupPhone.classList.remove('d-block');
         }
     });
 
