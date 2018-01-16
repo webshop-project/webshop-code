@@ -31,6 +31,7 @@
             <link rel="stylesheet" href="{{asset('css/viking.css')}}">
         @endif
     @endif
+    <link rel="stylesheet" href="{{asset('css/animateFilter.css')}}">
     <title>AMO Webshop | @yield('title')</title>
 </head>
 

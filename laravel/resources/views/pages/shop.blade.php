@@ -25,13 +25,44 @@
         <div class="container">
             <div class="row">
                 <div class=" col menuList">
+                    <h4>Categories</h4>
                     <ul class="list-group">
-                        <li class="list-group-item"><input type="checkbox" class="cbx-cap" checked>Caps</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-keycord" checked>Keycords</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-mug" checked>Mugs</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-phonecase" checked>Phonecases</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-shirt" checked>Shirts</li>
-                        <li class="list-group-item"><input type="checkbox" class="cbx-usb" checked>USB's</li>
+                        <li class="list-group-item">
+                            <div class="filter-cap">
+                                <input type="checkbox" value="None" id="filter-cap" name="check" checked />
+                                <label for="filter-cap"></label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="filter-keycord">
+                                <input type="checkbox" value="None" id="filter-keycord" name="check" checked />
+                                <label for="filter-keycord"></label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="filter-mug">
+                                <input type="checkbox" value="None" id="filter-mug" name="check" checked />
+                                <label for="filter-mug"></label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="filter-phonecase">
+                                <input type="checkbox" value="None" id="filter-phonecase" name="check" checked />
+                                <label for="filter-phonecase"></label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="filter-shirt">
+                                <input type="checkbox" value="None" id="filter-shirt" name="check" checked />
+                                <label for="filter-shirt"></label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="filter-usb">
+                                <input type="checkbox" value="None" id="filter-usb" name="check" checked />
+                                <label for="filter-usb"></label>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="container col-xs-12 col-sx-12 col-10  d-inline">
@@ -65,7 +96,7 @@
                                             <span class="price">€{{number_format($price->price,2,',',' ')}}</span>
                                         @endif
                                     @endforeach
-                                    <form action="{{ url('/shop/cart') }}" method="POST">
+                                    <form action="{{ url('/shop') }}" method="POST">
                                         {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$product->id}}">
                                         <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">

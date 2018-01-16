@@ -1,0 +1,329 @@
+.filter-cap input[type=checkbox] {
+    visibility: hidden;
+}
+.filter-cap input[type=checkbox]:checked + label {
+    left: 52px;
+}
+
+.filter-cap {
+    width: 110px;
+    height: 26px;
+    background: #eee;
+    margin: 5px auto;
+    position: relative;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.filter-cap:after {
+    content: 'CAPS';
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.filter-cap:before {
+    content: 'CAPS';
+    color: #27ae60;
+    position: absolute;
+    left: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.filter-cap label {
+    display: block;
+    width: 55px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#999999), color-stop(40%, #dfe5d7), to(#444));
+    background: linear-gradient(to bottom, #999999 0%, #dfe5d7 40%, #444 100%);
+    border-radius: 50px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.filter-keycord input[type=checkbox] {
+    visibility: hidden;
+}
+.filter-keycord input[type=checkbox]:checked + label {
+    left: 52px;
+}
+
+.filter-keycord {
+    width: 110px;
+    height: 26px;
+    background: #eee;
+    margin: 5px auto;
+    position: relative;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.filter-keycord:after {
+    content: 'CORDS';
+    color: #000;
+    position: absolute;
+    right: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.filter-keycord:before {
+    content: 'CORDS';
+    color: #27ae60;
+    position: absolute;
+    left: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.filter-keycord label {
+    display: block;
+    width: 55px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#999999), color-stop(40%, #dfe5d7), to(#444));
+    background: linear-gradient(to bottom, #999999 0%, #dfe5d7 40%, #444 100%);
+    border-radius: 50px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.filter-mug input[type=checkbox] {
+    visibility: hidden;
+}
+.filter-mug input[type=checkbox]:checked + label {
+    left: 52px;
+}
+
+.filter-mug {
+    width: 110px;
+    height: 26px;
+    background: #eee;
+    margin: 5px auto;
+    position: relative;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.filter-mug:after {
+    content: 'MUGS';
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.filter-mug:before {
+    content: 'MUGS';
+    color: #27ae60;
+    position: absolute;
+    left: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.filter-mug label {
+    display: block;
+    width: 55px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#999999), color-stop(40%, #dfe5d7), to(#444));
+    background: linear-gradient(to bottom, #999999 0%, #dfe5d7 40%, #444 100%);
+    border-radius: 50px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.filter-phonecase input[type=checkbox] {
+    visibility: hidden;
+}
+.filter-phonecase input[type=checkbox]:checked + label {
+    left: 52px;
+}
+
+.filter-phonecase {
+    width: 110px;
+    height: 26px;
+    background: #eee;
+    margin: 5px auto;
+    position: relative;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.filter-phonecase:after {
+    content: 'CASES';
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.filter-phonecase:before {
+    content: 'CASES';
+    color: #27ae60;
+    position: absolute;
+    left: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.filter-phonecase label {
+    display: block;
+    width: 55px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#999999), color-stop(40%, #dfe5d7), to(#444));
+    background: linear-gradient(to bottom, #999999 0%, #dfe5d7 40%, #444 100%);
+    border-radius: 50px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.filter-shirt input[type=checkbox] {
+    visibility: hidden;
+}
+.filter-shirt input[type=checkbox]:checked + label {
+    left: 52px;
+}
+
+.filter-shirt {
+    width: 110px;
+    height: 26px;
+    background: #eee;
+    margin: 5px auto;
+    position: relative;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.filter-shirt:after {
+    content: 'SHIRTS';
+    color: #000;
+    position: absolute;
+    right: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.filter-shirt:before {
+    content: 'SHIRTS';
+    color: #27ae60;
+    position: absolute;
+    left: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.filter-shirt label {
+    display: block;
+    width: 55px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#999999), color-stop(40%, #dfe5d7), to(#444));
+    background: linear-gradient(to bottom, #999999 0%, #dfe5d7 40%, #444 100%);
+    border-radius: 50px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.filter-usb input[type=checkbox] {
+    visibility: hidden;
+}
+.filter-usb input[type=checkbox]:checked + label {
+    left: 52px;
+}
+
+.filter-usb {
+    width: 110px;
+    height: 26px;
+    background: #eee;
+    margin: 5px auto;
+    position: relative;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.filter-usb:after {
+    content: 'USB\'S';
+    color: #000;
+    position: absolute;
+    right: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.filter-usb:before {
+    content: 'USB\'S';
+    color: #27ae60;
+    position: absolute;
+    left: 6px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.filter-usb label {
+    display: block;
+    width: 55px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#999999), color-stop(40%, #dfe5d7), to(#444));
+    background: linear-gradient(to bottom, #999999 0%, #dfe5d7 40%, #444 100%);
+    border-radius: 50px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}

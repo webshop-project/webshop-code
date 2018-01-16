@@ -1,20 +1,29 @@
 const selected = document.getElementById('houses');
-
-// let houses = $('.houses');
-// let vikings = $('.house1');
-// let dragons = $('.house2');
-// let ravens = $('.house3');
-// let serpents = $('.house4');
+const filterCaps = document.getElementById('filter-cap');
+const filterKeycord = document.getElementById('filter-keycord');
+const filterMug = document.getElementById('filter-mug');
+const filterPhonecase = document.getElementById('filter-phonecase');
+const filterShirt = document.getElementById('filter-shirt');
+const filterUsb = document.getElementById('filter-usb');
 
 const vikings = document.querySelectorAll('.house1');
 const dragons = document.querySelectorAll('.house2');
 const ravens = document.querySelectorAll('.house3');
 const serpents = document.querySelectorAll('.house4');
-//
-// const vikings = document.getElementsByClassName('house1');
-// const dragons = document.getElementsByClassName('house1');
-// const ravens = document.getElementsByClassName('house1');
-// const serpents = document.getElementsByClassName('house1');
+
+const cap = document.querySelectorAll('.category1')
+const keycord = document.querySelectorAll('.category2')
+const mug = document.querySelectorAll('.category3')
+const phonecase = document.querySelectorAll('.category4')
+const shirt = document.querySelectorAll('.category5')
+const usb = document.querySelectorAll('.category6')
+
+let countCap = document.getElementsByClassName('category1').length;
+let countKeycord = document.getElementsByClassName('category2').length;
+let countMug = document.getElementsByClassName('category3').length;
+let countPhonecase = document.getElementsByClassName('category4').length;
+let countShirt = document.getElementsByClassName('category5').length;
+let countUsb = document.getElementsByClassName('category6').length;
 
 let countVikings = document.getElementsByClassName('house1').length;
 let countDragons = document.getElementsByClassName('house1').length;
@@ -107,45 +116,43 @@ selected.addEventListener('change', () => {
         }
     }
 });
-$(function(){
-    $(".cbx-cap").change(function() {
-    }).change();
-        caps.toggleClass("show-hide", !this.checked)
 
-});
-//Keycords
-$(function(){
-    $(".cbx-keycord").change( function() {
-        keycords.toggleClass("show-hide", !this.checked)
-    }).change();
+
+filterCaps.addEventListener('change', () => {
+    filterCategory(cap, filterCaps, countCap);
 });
 
-//Mugs
-$(function(){
-    $(".cbx-mug").change( function() {
-        mugs.toggleClass("show-hide", !this.checked)
-    }).change();
+filterKeycord.addEventListener('change', () => {
+    filterCategory(keycord, filterKeycord, countKeycord);
 });
 
-//Phonecases
-$(function(){
-    $(".cbx-phonecase").change( function() {
-        phonecases.toggleClass("show-hide", !this.checked)
-    }).change();
+filterMug.addEventListener('change', () => {
+    filterCategory(mug, filterMug, countMug)
 });
 
-//Shirts
-$(function(){
-    $(".cbx-shirt").change( function() {
-    }).change();
-        shirts.toggleClass("show-hide", !this.checked)
+filterPhonecase.addEventListener('change', () => {
+    filterCategory(phonecase, filterPhonecase, countPhonecase)
 });
 
-//USB's
-$(function(){
-    $(".cbx-usb").change( function() {
-        usbs.toggleClass("show-hide", !this.checked)
-    }).change();
+filterShirt.addEventListener('change', () => {
+    filterCategory(shirt, filterShirt, countShirt)
 });
-//Caps
-//Change Category
+
+filterUsb.addEventListener('change', () => {
+    filterCategory(usb, filterUsb, countUsb)
+});
+
+function filterCategory(category, filter, count){
+    if(filter.checked){
+        for(let i = 0; i < count; i++){
+            category[i].classList.add('display-block');
+            category[i].classList.remove('display-none');
+        }
+    }
+    else{
+        for(let i = 0; i < count; i++){
+            category[i].classList.add('display-none');
+            category[i].classList.remove('display-block');
+        }
+    }
+}
