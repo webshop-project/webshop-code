@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class CreateWarehouseTable extends Migration
 {
+    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -19,9 +20,8 @@ class CreateWarehouseTable extends Migration
             $table->integer('size_id')->nullable();
             $table->integer('supply');
             $table->decimal('price');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

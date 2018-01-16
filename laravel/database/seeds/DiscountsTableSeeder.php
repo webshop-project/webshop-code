@@ -16,9 +16,9 @@ class DiscountsTableSeeder extends Seeder
             DB::table('discounts')->insert
             (
                 [
-                    'product_id'    => random_int(1, 80),
+                    'warehouse_id'    => random_int(1, 80),
                     'discount'      => random_int(10, 50),
-                    'start_date'    => $carbon->setDateTime(2018, 1, 1, 00, 00, 01),
+                    'start_date'    => $carbon,
                     'end_date'      => $carbon->setDateTime(2018, 1, 31, 23, 59, 59),
                 ]
             );

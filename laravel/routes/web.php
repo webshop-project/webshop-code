@@ -34,6 +34,7 @@ route::get('/login', function()
    return redirect('http://yoursite/amoclient/redirect');
 });
 
+route::put('/products/{warehouse_id}/edit', 'ImageController@destroyMainPic')->name('destroyMainPic');
 
 
 Route::get('/admin/vouchers/add', 'VoucherController@create');
