@@ -3,10 +3,13 @@ namespace App\Http\Controllers;
 use App\Invoice;
 use App\Item;
 use Carbon\Carbon;
+use \Cart as Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Srmklive\PayPal\Services\AdaptivePayments;
 use Srmklive\PayPal\Services\ExpressCheckout;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\CartController;
 class PayPalController extends Controller
 {
     /**
@@ -77,11 +80,24 @@ class PayPalController extends Controller
             }
             $invoice = $this->createInvoice($cart, $status);
             if ($invoice->paid) {
-                session()->put(['code' => 'success', 'message' => "Order $invoice->id has been paid successfully!"]);
+                session()->flash('payment_success',"Order $invoice->id has been paid successfully!");
             } else {
-                session()->put(['code' => 'danger', 'message' => "Error processing PayPal payment for Order $invoice->id!"]);
+                session()->flash('payment_error', "Error processing PayPal payment for Order $invoice->id!");
             }
-            return redirect('/');
+            Session::forget('name');
+            Session::forget('price');
+            Session::forget('qty');
+
+//            $isEmpty = $this->deleteCart();
+            $isEmpty = true;
+            if ($isEmpty == false)
+            {
+                echo 'Error';
+            }
+            else{
+                return redirect('/');
+            }
+
         }
     }
     public function getAdaptivePay()
@@ -132,42 +148,39 @@ class PayPalController extends Controller
      */
     protected function getCheckoutData($request)
     {
+        $recurring = false;
         $data = [];
-        $value = str_replace(",", ".", $request->price);
-        $data['items'] = [
-            [
-                'name'  => $request->name,
-                'price' => floatval($value),
-                'qty'   => $request->qty,
-            ],
-        ];
+
         $order_id = Invoice::all()->count() + 1;
-//        if ($recurring === true) {
-//            $data['items'] = [
-//                [
-//                    'name'  => 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id,
-//                    'price' => 0,
-//                    'qty'   => 1,
-//                ],
-//            ];
-//            $data['return_url'] = url('/paypal/ec-checkout-success?mode=recurring');
-//            $data['subscription_desc'] = 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id;
-//        } else {
-//            $data['items'] = [
-//                [
-//                    'name'  => 'Product 1',
-//                    'price' => 9.99,
-//                    'qty'   => 1,
-//                ],
-//                [
-//                    'name'  => 'Product 2',
-//                    'price' => 4.99,
-//                    'qty'   => 2,
-//                ],
-//            ];
-//            $data['return_url'] = url('/paypal/ec-checkout-success');
-//        }
-        $data['return_url'] = url('/paypal/ec-checkout-success');
+        if ($recurring === true) {
+            $data['items'] = [
+                [
+                    'name'  => 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id,
+                    'price' => 0,
+                    'qty'   => 1,
+                ],
+            ];
+            $data['return_url'] = url('/paypal/ec-checkout-success?mode=recurring');
+            $data['subscription_desc'] = 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id;
+        } else {
+            if ($request != false){
+                $value = str_replace(",", ".", $request->price);
+                Session::put('name', $request->name);
+                Session::put('price', floatval($value));
+                Session::put('qty', $request->qty);
+            }
+            else{
+
+            }
+            $data['items'] = [
+                [
+                    'name'  => Session::get('name'),
+                    'price' => Session::get('price'),
+                    'qty'   => Session::get('qty'),
+                ],
+            ];
+            $data['return_url'] = url('/paypal/ec-checkout-success');
+        }
         $data['invoice_id'] = config('paypal.invoice_prefix').'_'.$order_id;
         $data['invoice_description'] = "Order #$order_id Invoice";
         $data['cancel_url'] = url('/');
@@ -207,4 +220,14 @@ class PayPalController extends Controller
         });
         return $invoice;
     }
+
+//    protected function deleteCart(){
+//        Cart::destroy();
+//        if (Cart::content() > 0){
+//            return false;
+//        }
+//        else {
+//            return true;
+//        }
+//    }
 }

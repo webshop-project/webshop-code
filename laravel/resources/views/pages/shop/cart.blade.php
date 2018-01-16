@@ -23,7 +23,6 @@
                 {{ session()->get('error_message') }}
             </div>
         @endif
-
         @if (sizeof(Cart::content()) > 0)
 
             <table class="table">
@@ -41,6 +40,7 @@
 
                 <tbody>
                 <tr class="border-bottom">
+
                 @foreach (Cart::content() as $item)
                     <tr>
                         <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
@@ -123,12 +123,9 @@
                         <label class="input-group-text">Add your voucher code here:</label>
                     </div>
                     <input type="text" class="form-control" name="voucherCode">
-
                 </div>
-
-
-
             </form>
+
             <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
             <form action="{{action('PayPalController@getExpressCheckout')}}" method="post">
                 {{csrf_field()}}
@@ -140,9 +137,8 @@
                 <input type="hidden" name="qty" value="@foreach(Cart::content() as $item)
                 {{$item->qty}}
                 @endforeach">
-                <input type="submit" value="send">
+                <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
             </form>
-            <a href="{{url('paypal/ec-checkout')}}" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
             <div style="float:right">
                 <form action="{{ url('/emptyCart') }}" method="POST">

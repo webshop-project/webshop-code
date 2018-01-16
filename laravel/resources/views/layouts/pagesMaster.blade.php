@@ -167,6 +167,12 @@
             </div>
         </div>
     </div>
+    @if(session()->get('payment_success'))
+        <div class="alert-success">{{session()->get('payment_success')}}</div>
+        @elseif(session()->get('payment_error'))
+        <div class="alert-danger">{{session()->get('payment_error')}}</div>
+        @else
+    @endif
 </header>
 <div class="container-fluid">
 
