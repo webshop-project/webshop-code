@@ -51,6 +51,9 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = \App\User::find($id);
+        return view('admin/userpeople/userAdjust')
+            ->with('user', $user);
     }
 
     /**

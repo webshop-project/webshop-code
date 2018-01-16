@@ -3,9 +3,12 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Warehouse extends Model
 {
+    use SoftDeletes;
     protected $table = 'Warehouse';
+    protected $dates = ['deleted_at'];
 
     public function orders()
     {
@@ -96,6 +99,6 @@ class Warehouse extends Model
     }
     public function  discount()
     {
-        return $this->hasMany('\App\Discount');
+        return $this->hasOne('\App\Discount');
     }
 }

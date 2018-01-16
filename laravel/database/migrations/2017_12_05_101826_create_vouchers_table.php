@@ -22,9 +22,8 @@ class CreateVouchersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->dateTime('startDate');
             $table->dateTime('endDate');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
