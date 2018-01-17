@@ -224,6 +224,7 @@ class PayPalController extends Controller
         $deleted = Cart::destroy();
         if ($deleted != NULL){
             return false;
+        }
         else {
             return true;
         }
