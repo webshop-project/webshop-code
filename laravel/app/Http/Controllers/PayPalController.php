@@ -165,19 +165,29 @@ class PayPalController extends Controller
             if ($request != false){
                 $value = str_replace(",", ".", $request->price);
                 Session::put('name', $request->name);
-                Session::put('price', floatval($value));
+                Session::put('price', $request->price);
                 Session::put('qty', $request->qty);
+//                $stack = array();
+//                array_push($stack, ["name" => Session::get('name')], ["price" => Session::get('price')],["qty" => Session::get('qty')]);
+//                Session::put('array', $stack);
             }
             else{
 
             }
-            $data['items'] = [
-                [
-                    'name'  => Session::get('name'),
-                    'price' => Session::get('price'),
-                    'qty'   => Session::get('qty'),
-                ],
-            ];
+            $data['items'] = [];
+            foreach (Session::get('name') as $name) {
+                foreach (Session::get('price') as $price) {
+                    foreach (Session::get('qty') as $qty) {
+                        array_push($data['items'],
+                            [
+                                'name' => $name,
+                                'price' => $price,
+                                'qty' => $qty
+                            ]
+                        );
+                    }
+                }
+            }
             $data['return_url'] = url('/paypal/ec-checkout-success');
         }
         $data['invoice_id'] = $order_id;
@@ -185,7 +195,8 @@ class PayPalController extends Controller
         $data['cancel_url'] = url('/');
         $total = 0;
         foreach ($data['items'] as $item) {
-            $total += $item['price'];
+            $value = str_replace(",", ".", $item['price']);
+            $total += floatval($value);
         }
         $data['total'] = $total;
         return $data;

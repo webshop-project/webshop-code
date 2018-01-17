@@ -117,14 +117,15 @@
             <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
             <form action="{{action('PayPalController@getExpressCheckout')}}" method="post">
                 {{csrf_field()}}
-                <input type="hidden" name="name" value="
                 @foreach(Cart::content() as $item)
-                        {{$item->name}}
-                @endforeach">
-                <input type="hidden" name="price" value="{{Cart::instance('default')->subtotal()}}">
-                <input type="hidden" name="qty" value="@foreach(Cart::content() as $item)
-                {{$item->qty}}
-                @endforeach">
+                        <input type="hidden" name="name[]" value="{{$item->name}}">
+                @endforeach
+                @foreach(Cart::content() as $item)
+                    <input type="hidden" name="price[]" value="{{$item->price}}">
+                @endforeach
+                @foreach(Cart::content() as $item)
+                    <input type="hidden" name="qty[]" value="{{$item->qty}}">
+                @endforeach
                 <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
             </form>
 
