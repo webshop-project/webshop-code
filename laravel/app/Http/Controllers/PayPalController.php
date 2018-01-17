@@ -80,16 +80,15 @@ class PayPalController extends Controller
             }
             $invoice = $this->createInvoice($cart, $status);
             if ($invoice->paid) {
-                session()->flash('payment_success',"Order $invoice->id has been paid successfully!");
+                session()->flash('success_message',"Your order has been paid successfully!");
             } else {
-                session()->flash('payment_error', "Error processing PayPal payment for Order $invoice->id!");
+                session()->flash('error_message', "Error processing PayPal payment for your order!");
             }
             Session::forget('name');
             Session::forget('price');
             Session::forget('qty');
 
-//            $isEmpty = $this->deleteCart();
-            $isEmpty = true;
+            $isEmpty = $this->deleteCart();
             if ($isEmpty == false)
             {
                 echo 'Error';
@@ -181,7 +180,7 @@ class PayPalController extends Controller
             ];
             $data['return_url'] = url('/paypal/ec-checkout-success');
         }
-        $data['invoice_id'] = config('paypal.invoice_prefix').'_'.$order_id;
+        $data['invoice_id'] = $order_id;
         $data['invoice_description'] = "Order #$order_id Invoice";
         $data['cancel_url'] = url('/');
         $total = 0;
@@ -221,13 +220,12 @@ class PayPalController extends Controller
         return $invoice;
     }
 
-//    protected function deleteCart(){
-//        Cart::destroy();
-//        if (Cart::content() > 0){
-//            return false;
-//        }
-//        else {
-//            return true;
-//        }
-//    }
+    protected function deleteCart(){
+        $deleted = Cart::destroy();
+        if ($deleted != NULL){
+            return false;
+        else {
+            return true;
+        }
+    }
 }
