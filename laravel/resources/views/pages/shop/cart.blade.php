@@ -64,7 +64,7 @@
                     <td></td>
                     <td></td>
                 </tr>
-                        
+
                 <tr>
                     <td class="table-image"></td>
                     <td></td>
@@ -118,13 +118,9 @@
             <form action="{{action('PayPalController@getExpressCheckout')}}" method="post">
                 {{csrf_field()}}
                 @foreach(Cart::content() as $item)
-                        <input type="hidden" name="name[]" value="{{$item->name}}">
-                @endforeach
-                @foreach(Cart::content() as $item)
-                    <input type="hidden" name="price[]" value="{{$item->price}}">
-                @endforeach
-                @foreach(Cart::content() as $item)
-                    <input type="hidden" name="qty[]" value="{{$item->qty}}">
+                    <input type="hidden" name="item[{{$item->id}}][name]" value="{{$item->name}}">
+                    <input type="hidden" name="item[{{$item->id}}][price]" value="{{$item->price}}">
+                    <input type="hidden" name="item[{{$item->id}}][qty]" value="{{$item->qty}}">
                 @endforeach
                 <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
             </form>
