@@ -96,7 +96,7 @@
                                             <span class="price">€{{number_format($price->price,2,',',' ')}}</span>
                                         @endif
                                     @endforeach
-                                    <form action="{{ url('/shop') }}" method="POST">
+                                    <form action="{{ url('/shop/cart') }}" method="POST">
                                         {{csrf_field()}}
                                         <input type="hidden" name="id" value="{{$product->id}}">
                                         <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
