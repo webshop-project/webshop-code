@@ -84,9 +84,9 @@ class PayPalController extends Controller
             } else {
                 session()->flash('error_message', "Error processing PayPal payment for your order!");
             }
-            Session::forget('name');
-            Session::forget('price');
-            Session::forget('qty');
+
+            Session::forget('request');
+            Session::forget('discount');
 
             $isEmpty = $this->deleteCart();
             if ($isEmpty == false)
@@ -164,9 +164,7 @@ class PayPalController extends Controller
             if ($request != false){
                 $value = str_replace(",", ".", $request->price);
                 Session::put('request', $request->item);
-//                $stack = array();
-//                array_push($stack, ["name" => Session::get('name')], ["price" => Session::get('price')],["qty" => Session::get('qty')]);
-//                Session::put('array', $stack);
+                Session::put('discount', $request->discount);
             }
             else{
 
@@ -174,14 +172,28 @@ class PayPalController extends Controller
             $data['items'] = Session::get('request');
             $data['return_url'] = url('/paypal/ec-checkout-success');
         }
+
         $data['invoice_id'] = $order_id;
         $data['invoice_description'] = "Order #$order_id Invoice";
         $data['cancel_url'] = url('/');
         $total = 0;
-        foreach ($data['items'] as $item) {
-            $value = str_replace(",", ".", $item['price']);
-            $total += floatval($value) * $item['qty'];
+        if (Session::get('discount')){
+            
+            foreach ($data['items'] as $item) {
+                $value = str_replace(",", ".", $item['price']);
+                $total += floatval($value) * $item['qty'];
+            }
+            $discount = str_replace(",", ".", Session::get('discount'));
+            $total -= floatval($discount);
+
         }
+        else{
+            foreach ($data['items'] as $item) {
+                $value = str_replace(",", ".", $item['price']);
+                $total += floatval($value) * $item['qty'];
+            }
+        }
+
         $data['total'] = $total;
         return $data;
     }

@@ -71,23 +71,13 @@
                     <td></td>
                     <td></td>
                 </tr>
-
-                <tr>
-                    <td class="table-image"></td>
-                    <td></td>
-                    <td></td>
-                    <td class="small-caps table-bg" style="text-align: right">Tax</td>
-                    <td>€{{ Cart::instance('default')->tax() }}</td>
-                    <td></td>
-                    <td></td>
-                </tr>
                 @if(isset($discount))
                 <tr>
                     <td class="table-image"></td>
                     <td></td>
                     <td></td>
                     <td class="small-caps table-bg" style="text-align: right">Discount:</td>
-                    <td>%{{$discount}}</td>
+                    <td>{{$discount}} Euro</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -95,11 +85,13 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td class="small-caps table-bg" style="text-align: right">Your Total</td>
+
                 @if(isset($discount))
-                    <td class="table-bg">€{{$newPrice}}</td>
+                    {{$discountValue = str_replace(",", ".", $discount)}}
+                    {{$totalValue = str_replace(",", ".", Cart::instance('default')->subtotal())}}
+                    <td class="small-caps table-bg" style="text-align: right">Subtotal with discount:</td>
+                    <td class="table-bg">€{{$newprice = number_format($totalValue - $discountValue,2)}}</td>
                     @else
-                    <td class="table-bg">€{{$total}}</td>
                 @endif
                 <td class="column-spacer"></td>
                 <td></td>
@@ -133,6 +125,10 @@
                         <input type="hidden" name="item[{{$item->id}}][price]" value="{{$item->price}}">
                         <input type="hidden" name="item[{{$item->id}}][qty]" value="{{$item->qty}}">
                     @endforeach
+                    @if(isset($discount))
+                        <input type="hidden" name="discountprice" value="{{$discount}}">
+                    @else
+                    @endif
                     {{--{{dd($codeValue)}}--}}
                     {{--@if($codeValue)--}}
                     {{--@endif--}}
