@@ -112,18 +112,6 @@
             <div class="col-md-12 form-inline">
                 <form action="{{url ('/checkVoucher')}}" method="post" class="col-md-6">
                     {{csrf_field()}}
-                        @if($message->message != '')
-                            <div class="alert alert-success" role="alert">
-                                <span>{{$message->message}}</span>
-                            </div>
-
-                        @elseif($message->message == '')
-
-                        @else
-                            <div class="alert alert-danger" role="alert">
-                                <span>{{$message->message}}</span>
-                            </div>
-                        @endif
                     <div class="form-group">
                         <label class="">Add your voucher code here:</label>
                         <input type="text" class="form-control" name="voucherCode">
