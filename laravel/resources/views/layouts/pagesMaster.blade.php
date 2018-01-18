@@ -168,6 +168,17 @@
             </div>
         </div>
     </div>
+    @if (session()->has('success_message'))
+        <div class="alert alert-success text-center ">
+            {{ session()->get('success_message') }}
+        </div>
+    @endif
+
+    @if (session()->has('error_message'))
+        <div class="alert alert-danger text-center ">
+            {{ session()->get('error_message') }}
+        </div>
+    @endif
 </header>
 <div class="container-fluid">
 
