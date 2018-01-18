@@ -8,7 +8,7 @@
 
 
 @section('content')
-
+    {{Breadcrumbs::render('shop')}}
 
     <div class="container d-inline">
         <div class="col">
@@ -37,7 +37,7 @@
                         @foreach($products as $product)
                             <div class="house{{$product->house->id}} category{{$product->category->id}} display-block">
                                 <div class="block span3">
-                                    <div class="product row justify-content-center">
+                                    <div class="product d-flex justify-content-center">
                                             <img src="{{$product->img}}" alt="{{$product->house->name}} {{$product->category->name}}">
                                         <div class="buttons">
                                             <a class="preview btn btn-large btn-info" href="{{action('WarehouseController@show',$product->id)}}"><i class="glyphicon glyphicon-eye-open"></i> View item</a>
