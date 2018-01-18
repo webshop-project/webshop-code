@@ -9,7 +9,7 @@
 
 @section('content')
 
-
+    {{Breadcrumbs::render('shop')}}
     <div class="container d-inline">
         @if (session()->has('success_message'))
             <div class="alert alert-success">
@@ -80,7 +80,7 @@
                             <div class="category{{$product->category->id}} display-block">
                                 <div class="house{{$product->house->id}} display-block">
                                     <div class="block span3">
-                                        <div class="product">
+                                        <div class="product d-flex justify-content-center">
                                             <img src="{{$product->img}}"
                                                  alt="{{$product->house->name}} {{$product->category->name}}">
                                             <div class="buttons">
@@ -108,6 +108,7 @@
                                                 <input type="hidden" name="qty" value="{{$product->size}}">
                                                 <input type="hidden" name="price" value="{{$product->warehouse[0]->price}}">
                                                 <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
+
                                             </form>
                                         </div>
                                     </div>
