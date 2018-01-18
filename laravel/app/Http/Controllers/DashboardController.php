@@ -19,40 +19,11 @@ class DashboardController extends Controller
     public function index()
     {
         $products = new Product();
-        $warehouse = new Warehouse();
-//        $warehouseProducts = \App\order::all()->groupBy('warehouse_id');
-        $orderProducts = \App\order::all()->groupBy('warehouse_id');
-        $amounts = [];
-        $query = [];
-
-        $i = 0;
-        foreach($orderProducts as $orderProduct){
-            $count = 0;
-            foreach($orderProduct as $productOrder){
-                $count += $productOrder->amount;
-            }
-            array_push($amounts, ['amount' => $count, 'id' => $orderProduct[0]->warehouse_id]);
-        }
-
-        usort($amounts, function ($a, $b) {
-            return $a['amount'] - $b['amount'];
-        });
-
-        $amounts = array_reverse($amounts);
-
-        foreach ($amounts as $amount){
-            array_push($query, [$amount['id']]);
-        }
-
-        $warehouseProducts = \App\Warehouse::whereIn('id', $query)->paginate(6);
-
-//        foreach($warehouseProducts as $orderProduct){
-//            $count = 0;
-//            foreach($orderProduct as $test){
-//                $count += $test->amount;
-//            }
-//            array_push($amounts, [$count, $orderProduct[0]->warehouse_id]);
-//        }
+        $warehouseProducts = \App\order::
+            select(DB::raw(" warehouse_id, SUM(amount) as totalAmount"))
+            ->orderByDesc('totalAmount')
+            ->groupBy('warehouse_id')
+            ->paginate(6);
 
         $warehouse = new Warehouse();
         $productsLow = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(3);
@@ -60,8 +31,7 @@ class DashboardController extends Controller
         return view('admin/index')
             ->with('warehouseProducts', $warehouseProducts)
             ->with('products',$products)
-            ->with('productsLow', $productsLow)
-            ->with('amounts', $amounts);
+            ->with('productsLow', $productsLow);
     }
 
     /**
