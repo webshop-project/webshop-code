@@ -82,6 +82,7 @@
                     <td></td>
                 </tr>
                 @if(isset($discount))
+
                 <tr>
                     <td class="table-image"></td>
                     <td></td>
@@ -110,25 +111,30 @@
 
 
             <div class="col-md-12 form-inline">
-                <form action="{{url ('/checkVoucher')}}" method="post" class="col-md-6">
-                    {{csrf_field()}}
-                        @if($message->message != '')
-                            <div class="alert alert-success" role="alert">
-                                <span>{{$message->message}}</span>
-                            </div>
+                <form action="{{action('VoucherController@check')}}" method="post" class="form-inline">
+                    {{ csrf_field() }}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            @if(isset($message))
+                                @if($positive == 1)
+                                    <div class="alert alert-success" role="alert">
+                                        <span>{{$message}}</span>
+                                    </div>
+                                @else
+                                    <div class="alert alert-danger" role="alert">
+                                        <span>{{$message}}</span>
+                                    </div>
+                                @endif
+                            @endif
 
-                        @elseif($message->message == '')
+                            <label class="mb-3">Add your voucher code below</label>
+                            <input type="text" class="form-control" name="voucherCode">
+                            <input type="hidden" name="total" value="{{$total}}">
+                        </div>
+                        <input type="submit" value="Check Code" class="btn btn-success mb-5 mt-3">
 
-                        @else
-                            <div class="alert alert-danger" role="alert">
-                                <span>{{$message->message}}</span>
-                            </div>
-                        @endif
-                    <div class="form-group">
-                        <label class="">Add your voucher code here:</label>
-                        <input type="text" class="form-control" name="voucherCode">
                     </div>
-                    <input type="submit" class=" btn btn-default btn-lg" value="Add voucher">
+
                 </form>
                 <form action="{{ url('/emptyCart') }}" method="POST" class="col-md-2 col-md-offset-4">
                     {!! csrf_field() !!}
