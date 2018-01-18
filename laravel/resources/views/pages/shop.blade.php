@@ -112,26 +112,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="info">
-                                    <h4 onclick="count({{$product->id}})">{{$product->house->name}}<br> {{$product->category->name}}
-                                    @if(!empty($product->brandModel->name))
-                                        {{$product->brandModel->name}}
-                                    @endif
-                                    </h4>
-                                    @foreach($product->warehouse as $price)
-                                        @if($loop->first)
-                                            <span class="price">€{{number_format($price->price,2,',',' ')}}</span>
-                                        @endif
-                                    @endforeach
-                                    <form action="{{ url('/shop/cart') }}" method="POST">
-                                        {{csrf_field()}}
-                                        <input type="hidden" name="id" value="{{$product->id}}">
-                                        <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
-                                        <input type="hidden" name="qty" value="{{$product->size}}">
-                                        <input type="hidden" name="price" value="{{$product->warehouse[0]->price}}">
-                                        <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
-                                    </form>
-                                </div>
                             </div>
                         @endforeach
                     </div>
