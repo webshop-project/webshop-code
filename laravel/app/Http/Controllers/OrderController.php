@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use App\order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -15,15 +17,27 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = \App\Order::where('shipped', 0)->paginate(6);
-        $ordersP = \App\Order::where('shipped', 1)->paginate(6);
-        $users = \App\User::all();
+        $orders = \App\Order::where('shipped','=', 0)->paginate(6);
+        $users = DB::table('users')->join('orders', 'users.id', '=', 'orders.user_id');
 
         return view('admin/orders/orderIndex')
             ->with('orders', $orders)
-            ->with('users', $users)
-            ->with('ordersP', $ordersP);
+            ->with('users', $users);
     }
+
+    public function orderS()
+    {
+        $orders = \App\Order::where('shipped', '=', 1)->paginate(6);
+        $users = \App\User::all();
+
+        return view('admin/orders/orderShipped')
+            ->with('orders', $orders)
+            ->with('users', $users);
+    }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
