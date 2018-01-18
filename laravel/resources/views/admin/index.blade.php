@@ -65,47 +65,43 @@
                 <h2>MOST POPULAR PRODUCTS</h2>
             </div>
             <div class="row row-sizer-userinfo">
-                @foreach($warehouseProducts as $product )
+                @foreach($warehouseProducts as $product)
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
-                                <div class="col-9 img-preview">
-                                    <img width="90%" src="{{$product[0]->warehouse->product->img}}" alt="">
-                                </div>
-                                <div class="col-1">
-                                    <p><b>Sold:</b></p>
-                                    <p>{{$product[0]->warehouse->price}}</p>
-                                    @foreach($amounts as $amount)
-                                        @if($amount[1] == $product[0]->warehouse_id)
-                                            <p>{{$amount[0]}}</p>
-                                        @endif
-
-                                    @endforeach
-                                    <p>{{$product[0]->warehouse_id}}</p>
-                                </div>
-                                <div class="desc">{{$product[0]->description}}
-                                </div>
+                            <div class="col-9 img-preview">
+                            <img width="90%" src="{{$product->warehouse->product->img}}" alt="">
+                            </div>
+                            <div class="col-1">
+                            <p><b>Sold:</b></p>
+                            <p>{{$product->totalAmount}}</p>
+                            <p>Prijs: {{$product->warehouse->price}}</p>
+                            </div>
+                            <div class="desc">{{$product->warehouse->product->description}}
+                            </div>
                             </div>
                             <div class="row justify-content-center">
-                                <a href="{{action('WarehouseController@edit', $product[0]->warehouse->id)}}">
-                                    <button class="btn btn-info mr-1">Edit Product</button>
-                                </a>
+                            <a href="{{action('WarehouseController@edit', $product->warehouse_id)}}">
+                            <button class="btn btn-info mr-1">Edit Product</button>
+                            </a>
 
-                                <a href="{{action('DashboardController@show', $product[0]->warehouse->product->id)}}">
-                                    <button class="btn btn-info mr-1">Show Product</button>
-                                </a>
-                                <form action="{{action('WarehouseController@destroy', $product[0]->id)}}"  class="form-inline" method="post">
-                                    {{csrf_field()}}
-                                    {{method_field('DELETE')}}
-                                    <input type="hidden" name="delete" value="{{$product[0]->warehouse->id}}">
-                                    <input class="btn btn-danger" type="submit" value="Delete Product">
-                                </form>
+                            <a href="{{action('DashboardController@show', $product->warehouse_id)}}">
+                            <button class="btn btn-info mr-1">Show Product</button>
+                            </a>
+                            <form action="{{action('WarehouseController@destroy', $product->warehouse_id)}}"  class="form-inline" method="post">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <input type="hidden" name="delete" value="{{$product->warehouse_id}}">
+                            <input class="btn btn-danger" type="submit" value="Delete Product">
+                            </form>
                             </div>
                         </div>
                     </div>
                 @endforeach
+
             </div>
-            {{--{{$warehouseProducts->links()}}--}}
+
+            {{$warehouseProducts->links()}}
             <div class="container indexTitle col-12">
                 <h2>LOW ON STOCK</h2>
             </div>
@@ -144,7 +140,7 @@
                     </div>
                 @endforeach
             </div>
-            {{--{{$productsLow->appends(['sort' => 'supply'])->links()}}--}}
+            {{$productsLow->appends(['sort' => 'supply'])->links()}}
 
             <div class="container indexTitle col-12">
                 <h2>MOST LOGINS FROM HOUSES</h2>
@@ -201,4 +197,6 @@
         alertBar.classList.remove('row')
     });
 </script>
+<script src="js/adminPagenation.js"></script>
+<script src="js/jquery-3.2.1.js"></script>
 @endsection
