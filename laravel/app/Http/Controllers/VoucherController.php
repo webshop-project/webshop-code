@@ -7,6 +7,7 @@ use App\User;
 use App\voucher;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Faker;
 use App\Voucher_used;
 use Psr\Log\NullLogger;
@@ -101,39 +102,75 @@ class VoucherController extends Controller
     public function check(Request $request)
     {
         $code = $request->voucherCode;
-
+        $session = $request->session();
+        $total = $request->total;
         if($code != '')
         {
-            $vouchers = \App\voucher::where('code', '=', $code)->first();
+
+            $vouchers = voucher::where('code', '=', $code)->first();
+
+
 
             if($vouchers != null)
             {
-                $notUsed = 1;
-                $message = 'The code is right! enjoy your €' . $vouchers->codeValue . ' off!';
-                return back()->with('message', $message)->with('used', $notUsed)->with('codeValue', $vouchers->codeValue);
+                if($vouchers->code == $code)
+                {
+
+                    $user = User::find($vouchers->user_id);
+
+                    if($user != null)
+                    {
+
+                        $used = Voucher_used::find($vouchers->id);
+
+                        if($used == null)
+                        {
 
 
-//                if($vouchers)
-//                {
-//
-//
-//                }
-//                else{
-//                    $message = 'Code is already been used!';
-//                    return back()->with('message', $message);
-//                }
+                            $codeValue = $vouchers->codeValue;
+                            $onePercentPrice = $total / 100;
+                            $offPercent = 100 - $codeValue;
+                            $newPrice = $onePercentPrice * $offPercent;
+                            $message = 'The code is right! enjoy your %' . $codeValue . ' off!';
+                            $positive = 1;
+                            $request->session()->put('message', $message);
+                            $request->session()->put('value', $newPrice);
+                            $request->session()->put('discount', $codeValue);
+                            $request->session()->put('positive', $positive);
+                            return redirect('/shop/cart');
+                        }
+                        else{
+                            $message = 'This code has already been used';
+                            $request->session()->put('message', $message);
+                            return redirect('/shop/cart');
+                        }
 
+                    }
+                    else{
+                        $message = 'Wrong code, check your mail!';
+                        $request->session()->put('message', $message);
+                        return redirect('/shop/cart');
+                    }
+
+                }
+                else{
+                    $message = 'Wrong code, check your mail!';
+                    $request->session()->put('message', $message);
+                    return redirect('/shop/cart');
+                }
             }
             else{
-                $message = 'Wrong code!';
-                return back()->with('message', $message);
+                $message = 'Wrong code, check your mail!';
+                $request->session()->put('message', $message);
+                return redirect('/shop/cart');
 
             }
         }
         else
         {
-            $message = '';
-            return back()->with('message', $message);
+            $message = 'Please fill in a code! check your mail';
+            $request->session()->put('message', $message);
+            return redirect('/shop/cart');
         }
 
 
