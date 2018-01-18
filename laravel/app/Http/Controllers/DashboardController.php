@@ -17,7 +17,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //made by Youri! B.V.B. Sorry :( ;
+       
         $products = new Product();
         $warehouseProducts = \App\order::all()->groupBy('warehouse_id');
         $amounts = [];
