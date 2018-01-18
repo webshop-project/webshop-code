@@ -11,12 +11,12 @@ const dragons = document.querySelectorAll('.house2');
 const ravens = document.querySelectorAll('.house3');
 const serpents = document.querySelectorAll('.house4');
 
-const cap = document.querySelectorAll('.category1')
-const keycord = document.querySelectorAll('.category2')
-const mug = document.querySelectorAll('.category3')
-const phonecase = document.querySelectorAll('.category4')
-const shirt = document.querySelectorAll('.category5')
-const usb = document.querySelectorAll('.category6')
+const cap = document.querySelectorAll('.category1');
+const keycord = document.querySelectorAll('.category2');
+const mug = document.querySelectorAll('.category3');
+const phonecase = document.querySelectorAll('.category4');
+const shirt = document.querySelectorAll('.category5');
+const usb = document.querySelectorAll('.category6');
 
 let countCap = document.getElementsByClassName('category1').length;
 let countKeycord = document.getElementsByClassName('category2').length;
@@ -73,46 +73,58 @@ selected.addEventListener('change', () => {
     else if(selected.value == 2){
         for(let i = 0; i < countVikings; i++){
             console.log(vikings);
-            vikings[i].classList.add("display-none");
+            vikings[i].classList.add('display-none');
+            vikings[i].classList.remove("display-block");
         }
         for(let i = 0; i < countDragons; i++){
             dragons[i].classList.add('display-block');
+            dragons[i].classList.remove("display-none");
         }
         for(let i = 0; i < countRavens; i++){
             ravens[i].classList.add('display-none');
+            ravens[i].classList.remove("display-block");
         }
         for(let i = 0; i < countSerpents; i++){
             serpents[i].classList.add('display-none');
+            serpents[i].classList.remove("display-block");
         }
     }
     else if(selected.value == 3){
         for(let i = 0; i < countVikings; i++){
             console.log(vikings);
-            vikings[i].classList.add("display-none");
+            vikings[i].classList.add('display-none');
+            vikings[i].classList.remove("display-block");
         }
         for(let i = 0; i < countDragons; i++){
             dragons[i].classList.add('display-none');
+            dragons[i].classList.remove("display-block");
         }
         for(let i = 0; i < countRavens; i++){
             ravens[i].classList.add('display-block');
+            ravens[i].classList.remove("display-none");
         }
         for(let i = 0; i < countSerpents; i++){
             serpents[i].classList.add('display-none');
+            serpents[i].classList.remove("display-block");
         }
     }
     else if(selected.value == 4){
         for(let i = 0; i < countVikings; i++){
             console.log(vikings);
-            vikings[i].classList.add("display-none");
+            vikings[i].classList.add('display-none');
+            vikings[i].classList.remove("display-block");
         }
         for(let i = 0; i < countDragons; i++){
             dragons[i].classList.add('display-none');
+            dragons[i].classList.remove("display-block");
         }
         for(let i = 0; i < countRavens; i++){
             ravens[i].classList.add('display-none');
+            ravens[i].classList.remove("display-block");
         }
         for(let i = 0; i < countSerpents; i++){
             serpents[i].classList.add('display-block');
+            serpents[i].classList.remove("display-none");
         }
     }
 });

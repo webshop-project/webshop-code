@@ -84,7 +84,7 @@
                                                 {{--</select>--}}
                                             </td>
                                             <td>{{$item->size}}</td>
-                                            <td>€{{ $item->subtotal }}</td>
+                                            <td>€{{number_format($item->subtotal,2,',',' ')}}</td>
                                             <td class=""></td>
                                             <td>
                                                 <form action="{{ action('CartController@destroy', $item->rowId) }}" method="POST" class="side-by-side">
@@ -190,18 +190,23 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="p-4">
-                    <a href="#">
+                    <a href="https://login.amo.rocks/login" target="_blank">
+                        <img src="{{asset('img/amo-hub.png')}}" alt="AMO HUB">
+                    </a>
+                </div>
+                <div class="p-4">
+                    <a href="https://www.facebook.com/radiuscollegebreda/?ref=br_rs" target="_blank">
                         <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="p-4">
-                    <a href="#">
-                        <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+                    <a href="https://twitter.com/radius_college" target="_blank">
+                        <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="p-4">
-                    <a href="#">
-                        <i class="fa fa-linkedin fa-3x" aria-hidden="true"></i>
+                    <a href="https://www.linkedin.com/company/radius-college/?originalSubdomain=nl" target="_blank">
+                        <i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
