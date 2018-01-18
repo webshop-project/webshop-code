@@ -90,49 +90,50 @@
 
                 </tbody>
             </table>
-            <form action="{{url ('/checkVoucher')}}" method="post">
-                {{csrf_field()}}
-                <div class="input-group">
-                    <div class="input-group-prepend">
 
+
+            <div class="col-md-12 form-inline">
+                <form action="{{url ('/checkVoucher')}}" method="post" class="col-md-6">
+                    {{csrf_field()}}
                         @if($message->message != '')
                             <div class="alert alert-success" role="alert">
                                 <span>{{$message->message}}</span>
                             </div>
 
-                            @elseif($message->message == '')
+                        @elseif($message->message == '')
 
-                            @else
+                        @else
                             <div class="alert alert-danger" role="alert">
                                 <span>{{$message->message}}</span>
                             </div>
-                            @endif
-
-                        <label class="input-group-text">Add your voucher code here:</label>
+                        @endif
+                    <div class="form-group">
+                        <label class="">Add your voucher code here:</label>
+                        <input type="text" class="form-control" name="voucherCode">
                     </div>
-                    <input type="text" class="form-control" name="voucherCode">
-                </div>
-            </form>
-
-            <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
-            <form action="{{action('PayPalController@getExpressCheckout')}}" method="post">
-                {{csrf_field()}}
-                @foreach(Cart::content() as $item)
-                    <input type="hidden" name="item[{{$item->id}}][name]" value="{{$item->name}}">
-                    <input type="hidden" name="item[{{$item->id}}][price]" value="{{$item->price}}">
-                    <input type="hidden" name="item[{{$item->id}}][qty]" value="{{$item->qty}}">
-                @endforeach
-                <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
-            </form>
-
-            <div style="float:right">
-                <form action="{{ url('/emptyCart') }}" method="POST">
+                    <input type="submit" class=" btn btn-default btn-lg" value="Add voucher">
+                </form>
+                <form action="{{ url('/emptyCart') }}" method="POST" class="col-md-2 col-md-offset-4">
                     {!! csrf_field() !!}
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="submit" class="btn btn-danger btn-lg" value="Empty Cart">
                 </form>
             </div>
-
+            <div class="checkout" style="margin-top: 100px; margin-bottom: 50px;">
+                <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg col-md-2">Continue Shopping</a> &nbsp;
+                <form action="{{action('PayPalController@getExpressCheckout')}}" method="post" class="col-md-2">
+                    {{csrf_field()}}
+                    @foreach(Cart::content() as $item)
+                        <input type="hidden" name="item[{{$item->id}}][name]" value="{{$item->name}}">
+                        <input type="hidden" name="item[{{$item->id}}][price]" value="{{$item->price}}">
+                        <input type="hidden" name="item[{{$item->id}}][qty]" value="{{$item->qty}}">
+                    @endforeach
+                    {{--{{dd($codeValue)}}--}}
+                    {{--@if($codeValue)--}}
+                    {{--@endif--}}
+                    <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
+                </form>
+            </div>
         @else
 
             <h3>You have no items in your shopping cart</h3>
