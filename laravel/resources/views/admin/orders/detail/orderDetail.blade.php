@@ -12,9 +12,8 @@
         </div>
         <div class="jumbotron">
             <h5 class="h3">Order id: {{$orders->id}}</h5>
-            <h5 class="h3">Name: {{$orders->user->loginName}}</h5>
+            <h5 class="h3">Name: {{$orders->user->name}}</h5>
             <h5 class="h3">E-mail: {{$orders->user->email}}</h5>
-            <h5 class="h3">Student number: {{$orders->user->studentNummer}}</h5>
             <hr class="my-4">
             <h5 class="h4">Product name: </h5>
             <h5 class="h4">Amount: {{$orders->amount}}</h5>
