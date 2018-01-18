@@ -3,9 +3,12 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Warehouse extends Model
 {
+    use SoftDeletes;
     protected $table = 'Warehouse';
+    protected $dates = ['deleted_at'];
 
     public function orders()
     {
@@ -36,18 +39,6 @@ class Warehouse extends Model
     {
         return count($this->orders);
     }
-
-
-//    public function MostSold()
-//    {
-//        return $this->orders->groupBy('warehouse.id')->sortByDesc('orders.amount')->get();
-////        from warehouse
-////        join orders on warehouse.id = orders.warehouse_id
-////        WHERE orders.shipped = 1
-////        GROUP BY warehouse.id
-////        ORDER BY `orders`.`amount`  DESC
-//
-//    }
 
     public function totalAmountSoldThisMonth()
     {
@@ -108,6 +99,6 @@ class Warehouse extends Model
     }
     public function  discount()
     {
-        return $this->hasMany('\App\Discount');
+        return $this->hasOne('\App\Discount');
     }
 }

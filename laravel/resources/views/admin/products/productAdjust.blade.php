@@ -5,10 +5,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="container">
-            @foreach($products as $key => $product)
-            <h2>Editing   @if($product->product->category_id == 5) Shirt size{{$product->size->size}}
-                @elseif($product->product->category_id == 6) usb size {{$product->size->size}}GB @endif</h2>
-            <form action="{{action('WarehouseController@update', $product->product_id)}}" method="POST" name="form{{$key}}">
+            @foreach($products as $product)
+            <h2>Editing
+                @if(!empty($product->product->category_id) && $product->product->category_id == 5) Shirt size {{$product->size->size}}
+                @elseif(!empty($product->product->category_id) && $product->product->category_id == 6) usb size {{$product->size->size}}GB
+                @endif
+            </h2>
+                <form action="{{action('WarehouseController@update', $product->id)}}" method="POST" >
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <h4>De prijs is in Euro's</h4>
@@ -23,65 +26,49 @@
                 <h4>De korting is een percentage</h4>
                 <div class="form-group form-padding">
                     <label for="stock">Discount</label>
-                    <input class="form-control col" type="number" name="discount">
+                    <input class="form-control col" value="@if(!empty($product->discount->discount)){{$product->discount->discount}}@endif" type="number" name="discount">
                 </div>
-                <div class="form-group">
-                    <label for="category"><b>Category</b></label>
-                    <select class="form-control" name="category">
-                        @foreach($categories as $category)
-                            <option class="form-control" value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                    </select>
+                <div class="form-group form-padding">
+                    <label for="startDate" class="col-form-label col-form-label-lg">Start date:</label>
+                    <input type="date" @if(!empty($product->discount->start_date)) value="{{$product->discount->start_date->format('Y-m-d')}}" placeholder="{{$product->discount->start_date->format('Y-m-d')}}" @endif name="startDate" class="form-control-lg form-control">
                 </div>
-                <div class="form-group">
-                    <label for="category"><b>House</b></label>
-                    <select class="form-control" name="house">
-                        @foreach($houses as $house)
-                            <option class="form-control" value="{{$house->id}}">{{$house->name}}</option>
-                        @endforeach
-                    </select>
+                <div class="form-group form-padding">
+                    <label for="endDate" class="col-form-label col-form-label-lg">End date:</label>
+                    <input type="date" @if(!empty($product->discount->end_date)) value="{{$product->discount->end_date->format('Y-m-d')}}" placeholder="{{$product->discount->end_date->format('Y-m-d')}}" @endif name="endDate" class="form-control-lg form-control">
                 </div>
-
-                @if(!empty($products->brand_id))
-                    <div class="form-group">
-                        <label for="brand_id"><b>Brand</b></label>
-                        <select class="form-control" name="brand">
-                            @foreach($brands as $brand)
-                                <option class="form-control" value="{{$brand->id}}">{{$brand->brandName}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="model"><b>Brand Model</b></label>
-                        <select class="form-control" name="model">
-                            @foreach($models as $model)
-                                <option class="form-control" value="{{$model->id}}">{{$model->modelName}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                @endif
-
-                @if(!empty($products->storage_id))
-                    <div class="form-group">
-                        <label for="storage"><b>Storage (in GigaBytes)</b></label>
-                        <select class="form-control" name="storage">
-                            @foreach($storages as $storage)
-                                <option class="form-control" value="{{$storage->id}}">{{$storage->gb}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                @endif
+                <div class="form-group form-padding">
+                    <input type="submit" class="btn btn-success" value="submit" />
+                </div>
             </form>
-
             <div class="form-group">
                 <h2>Current Images</h2>
                 <div class="row">
-                    @foreach($images as $image)
+                    @if(!empty($product->product->img))
+                    <div class="col-4 product-info">
+                        <div class="item-info">
+                            <div class="form-inline">
+                                <div class="img-preview col-6">
+                                    <img width="100%" src="{{$product->product->img}}" alt="product_img">
+                                </div>
+                                <div class="delete col-1">
+                                    <form action="{{action('ImageController@destroyMainPic', $product->product->id)}}"
+                                          method="post">
+                                        {{csrf_field()}}
+                                        {{method_field('PUT')}}
+                                        <input type="hidden" name="test" value="{{$product->product->id}}">
+                                        <input class="btn btn-danger" type="submit" value="Delete Image">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @foreach($product->product->image as $image)
                         <div class="col-4 product-info">
                             <div class="item-info">
                                 <div class="form-inline">
                                     <div class="img-preview col-6">
-                                        <img width="100%" src="{{$image->img}}" alt="">
+                                        <img width="100%" src="{{$image->img}}" alt="product_img">
                                     </div>
                                     <div class="delete col-1">
                                         <form action="{{action('ImageController@destroy', $image->id)}}"
@@ -99,15 +86,6 @@
                 </div>
             </div>
             @endforeach
-                <input type="button"  class="btn btn-success" value="Submit" onclick="submitForms()"/>
         </div>
     </div>
-    <script>
-        submitForms = function() {
-            document.forms.namedItem('form0').submit();
-            document.forms.namedItem('form1').submit();
-            document.forms.namedItem('form2').submit();
-            document.forms.namedItem('form3').submit();
-        }
-    </script>
 @endsection

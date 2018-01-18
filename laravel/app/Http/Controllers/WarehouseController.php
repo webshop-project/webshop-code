@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Warehouse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Controllers\Controller;
 
 class WarehouseController extends Controller
 {
@@ -385,27 +388,28 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\Warehouse::where('product_id', '=', $id)->get();
-        $catergories = \App\categorie::All();
-        $houses = \App\house::All();
-        $brands = \App\brand::All();
-        $models = \App\ProductModel::All();
+        $products = \App\Warehouse::where('id','=',$id)->get();
 
-        $images = DB::table('images')
-            ->select(DB::raw('*'))
-            ->where([
-                ['product_id', '=', $id],
-                ['deleted_at', '=', null]
-            ])
-            ->get();
+//        $catergories = \App\categorie::All();
+//        $houses = \App\house::All();
+//        $brands = \App\brand::All();
+//        $models = \App\ProductModel::All();
+//
+//        $images = DB::table('images')
+//            ->select(DB::raw('*'))
+//            ->where([
+//                ['product_id', '=', $id],
+//                ['deleted_at', '=', null]
+//            ])
+//            ->get();
 
         return view('admin/products/productAdjust')
-            ->with('products', $product)
-            ->with('categories', $catergories)
-            ->with('images', $images)
-            ->with('houses', $houses)
-            ->with('brands', $brands)
-            ->with('models', $models);
+            ->with('products', $products);
+//            ->with('categories', $catergories)
+//            ->with('images', $images)
+//            ->with('houses', $houses)
+//            ->with('brands', $brands)
+//            ->with('models', $models);
     }
 
     /**
@@ -418,21 +422,36 @@ class WarehouseController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'category' => 'required',
-            'house' => 'required|integer',
             'price' => 'required|numeric|between:0.00,999999999.99',
-            'stock' => 'required|integer|nullable',
-            'discount' => 'interger|nullable'
+            'stock' => 'required|integer|min:0',
+            'discount' => 'integer|nullable|max:100',
+            'startDate' => 'required|date|before:endDate',
+            'endDate' => 'required|date|after:startDate',
         ]);
 
-        $test = \App\Warehouse::where('product_id', '=',$id)->first();
+        $warehouse = \App\Warehouse::find($id);
+        $warehouse->price = $request->price;
+        $warehouse->supply = $request->stock;
 
-        foreach ($test as $item)
+        $discount = \App\Discount::where('warehouse_id','=',$id)->first();
+        if($discount === null)
         {
-            $test->price = $request->price;
+            $discount = new \App\Discount();
+            $discount->warehouse_id = $id;
+            $discount->discount = $request->discount;
+            $discount->start_date = $request->startDate . ' 00:00:01';
+            $discount->end_date = $request->endDate . ' 23:59:59';
+        }
+        else
+        {
+            $discount->discount = $request->discount;
+            $discount->start_date = $request->startDate;
+            $discount->end_date = $request->endDate;
         }
 
-        $test->save();
+        $discount->save();
+        $warehouse->save();
+        return back()->with('succes', 'Product has been updated');
     }
 
     /**

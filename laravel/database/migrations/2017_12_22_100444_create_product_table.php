@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class CreateProductTable extends Migration
 {
+    use SoftDeletes;
     /**
      * Run the migrations.
      *
@@ -19,11 +20,10 @@ class CreateProductTable extends Migration
             $table->integer('category_id');
             $table->integer('brand_model_id')->nullable();
             $table->text('description')->nullable();
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->integer('viewAmount')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
