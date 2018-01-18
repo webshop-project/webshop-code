@@ -7,6 +7,7 @@ use App\Product;
 use App\Warehouse;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -17,18 +18,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-       
         $products = new Product();
-        $warehouseProducts = \App\order::all()->groupBy('warehouse_id');
-        $amounts = [];
-
-        foreach($warehouseProducts as $warehouseProduct){
-            $count = 0;
-            foreach($warehouseProduct as $test){
-                $count += $test->amount;
-            }
-            array_push($amounts, [$count, $warehouseProduct[0]->warehouse_id]);
-        }
+        $warehouseProducts = \App\order::
+            select(DB::raw(" warehouse_id, SUM(amount) as totalAmount"))
+            ->orderByDesc('totalAmount')
+            ->groupBy('warehouse_id')
+            ->paginate(6);
 
         $warehouse = new Warehouse();
         $productsLow = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(3);
@@ -36,8 +31,7 @@ class DashboardController extends Controller
         return view('admin/index')
             ->with('warehouseProducts', $warehouseProducts)
             ->with('products',$products)
-            ->with('productsLow', $productsLow)
-            ->with('amounts', $amounts);
+            ->with('productsLow', $productsLow);
     }
 
     /**

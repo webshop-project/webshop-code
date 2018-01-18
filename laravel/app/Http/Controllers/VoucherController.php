@@ -126,12 +126,10 @@ class VoucherController extends Controller
 
 
                             $codeValue = $vouchers->codeValue;
-                            $onePercentPrice = $total / 100;
-                            $offPercent = 100 - $codeValue;
-                            $newPrice = $onePercentPrice * $offPercent;
+                            $newPrice = $total - $codeValue ;
 
 
-                            $message = 'The code is right! enjoy your %' . $codeValue . ' off!';
+                            $message = 'The code is right! enjoy your €' . $codeValue . ' off!';
                             $positive = 1;
                             $request->session()->put('message', $message);
                             $request->session()->put('value', $newPrice);
