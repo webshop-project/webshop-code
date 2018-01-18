@@ -23,4 +23,5 @@ laravel/npm-debug.log
 laravel/yarn-error.log
 laravel/.env
 .idea
+
 laravel/\.env\.example
