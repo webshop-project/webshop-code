@@ -7,6 +7,7 @@ use App\Product;
 use App\Warehouse;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -17,18 +18,41 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //made by Youri! B.V.B. Sorry :( ;
         $products = new Product();
-        $warehouseProducts = \App\order::all()->groupBy('warehouse_id');
+        $warehouse = new Warehouse();
+//        $warehouseProducts = \App\order::all()->groupBy('warehouse_id');
+        $orderProducts = \App\order::all()->groupBy('warehouse_id');
         $amounts = [];
+        $query = [];
 
-        foreach($warehouseProducts as $warehouseProduct){
+        $i = 0;
+        foreach($orderProducts as $orderProduct){
             $count = 0;
-            foreach($warehouseProduct as $test){
-                $count += $test->amount;
+            foreach($orderProduct as $productOrder){
+                $count += $productOrder->amount;
             }
-            array_push($amounts, [$count, $warehouseProduct[0]->warehouse_id]);
+            array_push($amounts, ['amount' => $count, 'id' => $orderProduct[0]->warehouse_id]);
         }
+
+        usort($amounts, function ($a, $b) {
+            return $a['amount'] - $b['amount'];
+        });
+
+        $amounts = array_reverse($amounts);
+
+        foreach ($amounts as $amount){
+            array_push($query, [$amount['id']]);
+        }
+
+        $warehouseProducts = \App\Warehouse::whereIn('id', $query)->paginate(6);
+
+//        foreach($warehouseProducts as $orderProduct){
+//            $count = 0;
+//            foreach($orderProduct as $test){
+//                $count += $test->amount;
+//            }
+//            array_push($amounts, [$count, $orderProduct[0]->warehouse_id]);
+//        }
 
         $warehouse = new Warehouse();
         $productsLow = $warehouse->where('supply','<',4)->orderBy('supply')->paginate(3);
