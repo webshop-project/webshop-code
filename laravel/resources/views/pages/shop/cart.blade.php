@@ -136,6 +136,11 @@
                         <input type="hidden" name="item[{{$item->id}}][price]" value="{{$item->price}}">
                         <input type="hidden" name="item[{{$item->id}}][qty]" value="{{$item->qty}}">
                     @endforeach
+                    @if(isset($discount))
+                        <input type="hidden" name="item[0][name]" value="Discount">
+                        <input type="hidden" name="item[0][price]" value="-{{$discount}}">
+                        <input type="hidden" name="item[0][qty]" value="1">
+                    @endif
                     <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
                 </form>
             </div>
