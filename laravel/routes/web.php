@@ -19,7 +19,7 @@ Route::resource('/shop/cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
-
+Route::get('/email/invoice', 'PdfController@fun_pdf');
 Route::get('/admin/lowStockList','DashboardController@lowStockList')->name('lowStockList');
 
 route::resource('/products', 'WarehouseController');
