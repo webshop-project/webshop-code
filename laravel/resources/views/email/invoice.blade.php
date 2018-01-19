@@ -1,25 +1,13 @@
-<?php
-    $user = App\User::where('id','=', $order->user_id)->get();
-
-
-?>
-
-
-<table>
-    <tr>
-        <td>Bought at</td>
-        <td>Price</td>
-        <td>Order number</td>
-        <td>Amount</td>
-        <td></td>
-
-    </tr>
-    <tr>
-        <td>{{$order->bought_at}}</td>
-        <td>{{$order->price}}</td>
-        <td>{{$order->orderNumber}}</td>
-        <td>{{$order->amount}}</td>
-        <td></td>
-    </tr>
-
-</table>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+</body>
+</html>

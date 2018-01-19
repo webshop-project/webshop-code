@@ -10,6 +10,7 @@ use Srmklive\PayPal\Services\AdaptivePayments;
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PdfController;
 class PayPalController extends Controller
 {
     /**
@@ -95,7 +96,8 @@ class PayPalController extends Controller
                 echo 'Error';
             }
             else{
-                return redirect('/email/invoice')->with('invoice_id', $invoice->id);
+                PdfController::fun_pdf($invoice->id);
+                return redirect('/');
             }
 
         }

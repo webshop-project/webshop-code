@@ -2,36 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
+use App\Mail\Invoice;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 use App\order;
 use App\User;
-use PHPMailer\PHPMailer\PHPMailer;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
 
 class PdfController extends Controller
 {
-
-
-    public function fun_pdf(Request $request)
+    public static function fun_pdf($id)
     {
-        $orderInfo = order::where('id','=', $request->orderNumber)->get();
-        $user = User::where('id', '=', $orderInfo->user_id)->first();
+        $orderInfo = Item::where('invoice_id','=', $id)->get();
+        $user = User::where('id', '=', 1)->first();
 
-        $pdf = PDF::loadView('email.invoice')->with('order', $orderInfo);
-        $email = new PHPMailer();
-        $email->From      = 'Damian.meijer@gmail.com';
-        $email->FromName  = 'Damian';
-        $email->Subject   = "Thank you for your purchase!";
-        $email->Body      = "Thank you $user->name, down below is your order. We hope you will be satisfied with your product(s)";
-        $email->AddAddress( "$user->email" );
+        $pdf = PDF::loadView('email.pdf');
+        $pdf->save(storage_path('app/invoices/invoiceAmoWebshop'.$id.'.pdf'));
+        $path = storage_path('app/invoices/invoiceAmoWebshop'.$id.'.pdf');
 
-        $file_to_attach = 'view/email/invoice';
+        Mail::send('email/invoice', [], function($message) use ($user, $pdf, $id, $path)
+        {
+            $message->attach($path);
+            $message->to($user->email);
+            $message->subject('PDF');
+        });
 
-        $email->AddAttachment( $file_to_attach , 'Invoice.pdf' );
-
-        return $email->Send();
+        Storage::delete($path);
+        return back();
     }
 }
