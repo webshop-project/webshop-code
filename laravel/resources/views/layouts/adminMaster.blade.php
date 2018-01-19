@@ -52,9 +52,9 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="false">Orders</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{action('OrderController@index')}}">Pending Orders</a>
+                        <a class="dropdown-item"  href="{{action('OrderController@index')}}">Orders not processed</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/orders">Processed Orders</a>
+                        <a class="dropdown-item" href="{{action('OrderController@orderS')}}">Processed Orders</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

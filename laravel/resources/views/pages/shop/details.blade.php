@@ -75,13 +75,13 @@
         </div>
         <hr>
         <div class="p-5">
-            <h2>Beschrijving</h2>
+            <h2>Description</h2>
             <h4>{{$product->description}}</h4>
         </div>
         <div class="new-products">
             <div class="row p-3">
                 <div class="col col-xs-12">
-                    <h2 class="d-inline newProducts">Gerelateerde Producten</h2>
+                    <h2 class="d-inline newProducts">Related products</h2>
                 </div>
                 <div class="col">
                     <a href="{{action('ShopController@index')}}">
