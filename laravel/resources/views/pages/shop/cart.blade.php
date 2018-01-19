@@ -23,10 +23,10 @@
             <table class="table">
                 <thead>
                 <tr>
-
                     <th>Product</th>
-                    <th></th>
+                    <th>Quantity</th>
                     <th>Size</th>
+                    <th>Price Per Item</th>
                     <th>Price</th>
                     <th class="column-spacer"></th>
                     <th></th>
@@ -40,13 +40,7 @@
                     <tr>
                         <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                         <td>
-                            {{--<select class="quantity" data-id="{{ $item->rowId }}">--}}
-                            {{--<option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>--}}
-                            {{--<option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>--}}
-                            {{--<option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>--}}
-                            {{--<option value="{{ $item->qty == 4 ? 'selected' : '' }}">4</option>--}}
-                            {{--<option value="{{ $item->qty == 5 ? 'selected' : '' }}">5</option>--}}
-                            {{--</select>--}}
+                            {{$item->qty}}
                         </td>
                         <td>{{$item->size}}</td>
                         <td>€{{ $item->subtotal }}</td>
