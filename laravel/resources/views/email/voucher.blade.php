@@ -8,7 +8,7 @@
 
     <img src="{{ $message->embed($topImage)}}" alt="Voucher top image">
     <div class="head">
-        <h2 class="">Geachte {{$firstName}} {{$lastName}}</h2>
+        <h2 class="">Geachte {{$firstName}}</h2>
         <p class="">Hierbij ontvangt u uw voucher code.</p>
     </div>
     <div class="content">

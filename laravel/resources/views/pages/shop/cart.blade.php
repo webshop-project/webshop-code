@@ -40,6 +40,7 @@
                     <tr>
                         <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                         <td>
+                            {{$item->qty}}
                             {{--<select class="quantity" data-id="{{ $item->rowId }}">--}}
                             {{--<option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>--}}
                             {{--<option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>--}}
@@ -143,13 +144,6 @@
                         <input type="hidden" name="item[{{$item->id}}][price]" value="{{$item->price}}">
                         <input type="hidden" name="item[{{$item->id}}][qty]" value="{{$item->qty}}">
                     @endforeach
-                    @if(isset($discount))
-                        <input type="hidden" name="discountprice" value="{{$discount}}">
-                    @else
-                    @endif
-                    {{--{{dd($codeValue)}}--}}
-                    {{--@if($codeValue)--}}
-                    {{--@endif--}}
                     <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
                 </form>
             </div>

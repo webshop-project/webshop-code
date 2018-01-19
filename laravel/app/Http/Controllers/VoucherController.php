@@ -78,14 +78,14 @@ class VoucherController extends Controller
             $users = \App\User::all();
             foreach ($users as $user)
             {
-                Mail::to($user->email)->queue(new Vouchers($user->firstName, $user->lastName, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink,public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
+                Mail::to($user->email)->queue(new Vouchers($user->name, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink,public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
 
                 }  );
             }
         }
         else{
             $oneUser = \App\User::find($request->userId);
-            Mail::to($oneUser->email)->queue(new Vouchers($oneUser->firstName, $oneUser->lastName, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink, public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
+            Mail::to($oneUser->email)->queue(new Vouchers($oneUser->name,$code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink, public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
 
             }  );
         }
@@ -103,7 +103,8 @@ class VoucherController extends Controller
     {
         $code = $request->voucherCode;
         $session = $request->session();
-        $total = $request->total;
+        $value = str_replace(",", ".", $request->total);
+        $total = $value;
         if($code != '')
         {
 

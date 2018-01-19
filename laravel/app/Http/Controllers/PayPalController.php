@@ -150,6 +150,7 @@ class PayPalController extends Controller
         $recurring = false;
         $data = [];
         $order_id = Invoice::all()->count() + 1;
+
         if ($recurring === true) {
             $data['items'] = [
                 [
@@ -162,7 +163,6 @@ class PayPalController extends Controller
             $data['subscription_desc'] = 'Monthly Subscription '.config('paypal.invoice_prefix').' #'.$order_id;
         } else {
             if ($request != false){
-                $value = str_replace(",", ".", $request->price);
                 Session::put('request', $request->item);
                 Session::put('discount', $request->discount);
             }
@@ -175,26 +175,15 @@ class PayPalController extends Controller
 
         $data['invoice_id'] = $order_id;
         $data['invoice_description'] = "Order #$order_id Invoice";
-        $data['cancel_url'] = url('/');
+        $data['cancel_url'] = url('/cart');
         $total = 0;
-        if (Session::get('discount')){
-            
-            foreach ($data['items'] as $item) {
-                $value = str_replace(",", ".", $item['price']);
-                $total += floatval($value) * $item['qty'];
-            }
-            $discount = str_replace(",", ".", Session::get('discount'));
-            $total -= floatval($discount);
 
+        foreach ($data['items'] as $item) {
+            $value = str_replace(",", ".", $item['price']);
+            $total += floatval($value) * $item['qty'];
         }
-        else{
-            foreach ($data['items'] as $item) {
-                $value = str_replace(",", ".", $item['price']);
-                $total += floatval($value) * $item['qty'];
-            }
-        }
-
         $data['total'] = $total;
+
         return $data;
     }
     /**
