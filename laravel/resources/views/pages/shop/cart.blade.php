@@ -42,7 +42,7 @@
                             {{$item->qty}}
                         </td>
                         <td>{{$item->size}}</td>
-                        <td>€{{ $item->subtotal }}</td>
+                        <td>€ {{$item->subtotal()}}</td>
                         <td class=""></td>
                         <td>
                             <form action="{{ action('CartController@destroy', $item->rowId) }}" method="POST" class="side-by-side">
@@ -60,7 +60,7 @@
                     <td></td>
                     <td></td>
                     <td class="small-caps table-bg" style="text-align: right">Subtotal</td>
-                    <td>€{{ Cart::instance('default')->subtotal() }}</td>
+                    <td>€ {{Cart::instance('default')->subtotal() }}</td>
                     <td></td>
                     <td></td>
                 </tr>
