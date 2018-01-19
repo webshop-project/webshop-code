@@ -25,7 +25,12 @@ class PdfController extends Controller
         $pdf->save(storage_path('app/invoices/invoiceAmoWebshop'.$id.'.pdf'));
         $path = storage_path('app/invoices/invoiceAmoWebshop'.$id.'.pdf');
 
-        Mail::send('email/invoice', [], function($message) use ($user, $pdf, $id, $path)
+        $data = [
+            'name' => $user->name,
+            'link' => env('APP_URL')
+        ];
+
+        Mail::send('email/invoice', $data, function($message) use ($user, $pdf, $id, $path)
         {
             $message->attach($path);
             $message->to($user->email);

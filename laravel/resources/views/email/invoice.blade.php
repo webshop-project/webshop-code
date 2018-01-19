@@ -8,6 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello</h1>
+<div class="center" style="text-align: center">
+    <img src="{{$message->embed(public_path() . '/img/voucher_top.png')}}" alt="">
+    <div class="head">
+        <h2 class="">Geachte {{$name}}</h2>
+    </div>
+    <div class="content">
+        <p>Bedankt voor uw aankoop bij Amo-Webshop</p>
+        <p>In de bijlagen vindt u de factuur waarmee u uw bestelling kunt ophalen.</p>
+    </div>
+    <div class="foot">
+        <p>Meer informatie nodig? Kijk op: <a href="{{$link}}">FourHouses-shop</a></p>
+        <p>Met vriendelijke groet, FourHouses-shop</p>
+    </div>
+
+    <img src="{{$message->embed(public_path() . '/img/voucher_botom.png')}}" alt="">
+</div>
 </body>
 </html>
