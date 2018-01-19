@@ -10,6 +10,7 @@ use Srmklive\PayPal\Services\AdaptivePayments;
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PdfController;
 class PayPalController extends Controller
 {
     /**
@@ -88,12 +89,14 @@ class PayPalController extends Controller
             Session::forget('request');
             Session::forget('discount');
 
+
             $isEmpty = $this->deleteCart();
             if ($isEmpty == false)
             {
                 echo 'Error';
             }
             else{
+                PdfController::fun_pdf($invoice->id);
                 return redirect('/');
             }
 

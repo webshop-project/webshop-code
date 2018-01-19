@@ -37,11 +37,11 @@ route::get('/login', function()
 
 route::put('/products/{warehouse_id}/edit', 'ImageController@destroyMainPic')->name('destroyMainPic');
 
-
 Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
 Route::post('/checkVoucher','VoucherController@check');
 Route::get('/admin/vouchers/voucherUsed', 'VoucherController@index');
+Route::get('/email/invoice', 'PdfController@fun_pdf');
 
 Route::post('paypal/ec-checkout', 'PayPalController@getExpressCheckout');
 Route::get('paypal/ec-checkout-success', 'PayPalController@getExpressCheckoutSuccess');
