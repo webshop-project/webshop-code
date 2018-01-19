@@ -19,7 +19,6 @@ Route::resource('/shop/cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
-Route::get('/email/invoice', 'PdfController@fun_pdf');
 Route::get('/admin/lowStockList','DashboardController@lowStockList')->name('lowStockList');
 
 route::resource('/products', 'WarehouseController');
@@ -41,6 +40,11 @@ Route::get('/admin/vouchers/add', 'VoucherController@create');
 Route::post('/admin/vouchers/add', 'VoucherController@store');
 Route::post('/checkVoucher','VoucherController@check');
 Route::get('/admin/vouchers/voucherUsed', 'VoucherController@index');
+Route::get('/email/invoice', 'PdfController@fun_pdf');
+
+
+
+
 
 Route::post('paypal/ec-checkout', 'PayPalController@getExpressCheckout');
 Route::get('paypal/ec-checkout-success', 'PayPalController@getExpressCheckoutSuccess');

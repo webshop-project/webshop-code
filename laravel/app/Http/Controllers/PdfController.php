@@ -1,23 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use PDF;
-use Illuminate\Mail\Mailable;
+use App\order;
+use App\User;
+use PHPMailer\PHPMailer\PHPMailer;
 use Illuminate\Support\Facades\DB;
 
 
 class PdfController extends Controller
 {
-    public function fun_pdf()
+
+
+    public function fun_pdf(Request $request)
     {
+        $orderInfo = order::where('id','=', $request->order_id)->first();
+        $user = User::where('id', '=', $orderInfo->user_id)->first();
 
-        $pdf = PDF::loadView('email.invoice');
+        $pdf = PDF::loadView('email.invoice')->with('order', $orderInfo);
+        $email = new PHPMailer();
+        $email->From      = 'Damian.meijer@gmail.com';
+        $email->FromName  = 'Damian';
+        $email->Subject   = 'Thank you!';
+        $email->Body      = 'Thanks for your purchase!';
+        $email->AddAddress( "$user->email" );
 
-        $pdf = '%PDF-1.2 6 0 obj << /S /GoTo /D (chapter.1) >>';
+        $file_to_attach = 'view/email/invoice';
 
-        Mail::to('Damian.meijer@gmail.com')->send(new HasPdfAttachment($pdf));
-        return $pdf->download('invoice.pdf');
+        $email->AddAttachment( $file_to_attach , 'Invoice.pdf' );
+
+        return $email->Send();
     }
 }

@@ -1,6 +1,13 @@
+<?php
+
+
+
+?>
+
+
 <table>
     <tr>
-        <td></td>
+        <td>{{$order->name}}</td>
         <td></td>
         <td></td>
         <td></td>
