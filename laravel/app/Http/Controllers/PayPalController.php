@@ -178,7 +178,7 @@ class PayPalController extends Controller
         $data['cancel_url'] = url('/');
         $total = 0;
         if (Session::get('discount')){
-            
+
             foreach ($data['items'] as $item) {
                 $value = str_replace(",", ".", $item['price']);
                 $total += floatval($value) * $item['qty'];
