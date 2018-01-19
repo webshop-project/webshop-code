@@ -88,13 +88,14 @@ class PayPalController extends Controller
             Session::forget('request');
             Session::forget('discount');
 
+
             $isEmpty = $this->deleteCart();
             if ($isEmpty == false)
             {
                 echo 'Error';
             }
             else{
-                return redirect('/');
+                return redirect('/email/invoice')->with('invoice_id', $invoice->id);
             }
 
         }
