@@ -169,7 +169,7 @@
         </div>
     </div>
     @if (session()->has('success_message'))
-        <div class="alert alert-success text-center  ">
+        <div class="alert alert-success text-center ">
             {{ session()->get('success_message') }}
         </div>
     @endif

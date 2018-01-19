@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Faker;
 use App\Voucher_used;
-use Illuminate\Support\Facades\Session;
 use Psr\Log\NullLogger;
 
 
@@ -79,14 +78,14 @@ class VoucherController extends Controller
             $users = \App\User::all();
             foreach ($users as $user)
             {
-                Mail::to($user->email)->queue(new Vouchers($user->firstName, $user->lastName, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink,public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
+                Mail::to($user->email)->queue(new Vouchers($user->name, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink,public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
 
                 }  );
             }
         }
         else{
             $oneUser = \App\User::find($request->userId);
-            Mail::to($oneUser->email)->queue(new Vouchers($oneUser->firstName, $oneUser->lastName, $code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink, public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
+            Mail::to($oneUser->email)->queue(new Vouchers($oneUser->name,$code, $request->codeValue, $request->startDate . ' 00:00:01', $request->endDate . ' 23:59:59', $shopLink, public_path() . '/img/voucher_top.png', public_path() . '/img/voucher_botom.png'), function ($message){
 
             }  );
         }
@@ -104,7 +103,8 @@ class VoucherController extends Controller
     {
         $code = $request->voucherCode;
         $session = $request->session();
-        $total = $request->total;
+        $value = str_replace(",", ".", $request->total);
+        $total = $value;
         if($code != '')
         {
 
@@ -127,39 +127,48 @@ class VoucherController extends Controller
 
 
                             $codeValue = $vouchers->codeValue;
+                            $newPrice = $total - $codeValue ;
 
-                            Session::flash('success_message','The code is right! enjoy your €' . $codeValue . ' off!');
+
+                            $message = 'The code is right! enjoy your €' . $codeValue . ' off!';
                             $positive = 1;
+                            $request->session()->put('message', $message);
+                            $request->session()->put('value', $newPrice);
                             $request->session()->put('discount', $codeValue);
                             $request->session()->put('positive', $positive);
                             return redirect('/shop/cart');
                         }
                         else{
-                            Session::flash('error_message','This code has already been used');
+                            $message = 'This code has already been used';
+                            $request->session()->put('message', $message);
                             return redirect('/shop/cart');
                         }
 
                     }
                     else{
-                        Session::flash('error_message','Wrong code, check your mail!');
+                        $message = ' c Wrong code, check your mail!';
+                        $request->session()->put('message', $message);
                         return redirect('/shop/cart');
                     }
 
                 }
                 else{
-                    Session::flash('error_message','Wrong code, check your mail!');
+                    $message = ' b Wrong code, check your mail!';
+                    $request->session()->put('message', $message);
                     return redirect('/shop/cart');
                 }
             }
             else{
-                Session::flash('error_message','Wrong code, check your mail!');
+                $message = ' a Wrong code, check your mail!';
+                $request->session()->put('message', $message);
                 return redirect('/shop/cart');
 
             }
         }
         else
         {
-            Session::flash('error_message','Please fill in a code! check your mail');
+            $message = 'Please fill in a code! check your mail';
+            $request->session()->put('message', $message);
             return redirect('/shop/cart');
         }
 
