@@ -20,6 +20,11 @@
                         </ul>
                     </div>
                 @endif
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <form action="{{action('WarehouseController@update', $product->id)}}" method="POST" >
                 {{csrf_field()}}
                 {{method_field('PUT')}}

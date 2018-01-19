@@ -85,7 +85,7 @@
                                                     {{$product->brandModel->name}}
                                                 @endif
                                             </h4>
-                                            @foreach($product->warehouse as $price)
+                                            @foreach($product->warehouse->sortBy('price') as $price)
                                                 @if($loop->first)
                                                     <span class="price">€{{number_format($price->price,2,',',' ')}}</span>
                                                 @endif

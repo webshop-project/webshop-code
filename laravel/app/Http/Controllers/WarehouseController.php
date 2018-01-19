@@ -499,9 +499,9 @@ class WarehouseController extends Controller
         $request->validate([
             'price' => 'required|numeric|between:0.00,999999999.99',
             'stock' => 'required|integer|min:0',
-            'discount' => 'integer|nullable|max:100',
-            'startDate' => 'required|date|before:endDate',
-            'endDate' => 'required|date|after:startDate',
+            'discount' => 'integer|nullable|max:100|required_with:startDate|required_with:endDate',
+            'startDate' => 'date|before:endDate|nullable|required_with:discount',
+            'endDate' => 'date|after:startDate|nullable|required_with:discount',
         ]);
 
         $warehouse = \App\Warehouse::find($id);
@@ -511,22 +511,25 @@ class WarehouseController extends Controller
         $discount = \App\Discount::where('warehouse_id','=',$id)->first();
         if($discount === null)
         {
-            $discount = new \App\Discount();
-            $discount->warehouse_id = $id;
-            $discount->discount = $request->discount;
-            $discount->start_date = $request->startDate . ' 00:00:01';
-            $discount->end_date = $request->endDate . ' 23:59:59';
+            if($request->discount !== null )
+            {
+	            $discount = new \App\Discount();
+                $discount->warehouse_id = $id;
+                $discount->discount = $request->discount;
+	            $discount->start_date = $request->startDate . ' 00:00:01';
+	            $discount->end_date = $request->endDate . ' 23:59:59';
+                $discount->save();
+            }
         }
         else
         {
             $discount->discount = $request->discount;
             $discount->start_date = $request->startDate;
             $discount->end_date = $request->endDate;
+	        $discount->save();
         }
-
-        $discount->save();
         $warehouse->save();
-        return back()->with('succes', 'Product has been updated');
+        return back()->with('status', 'Product has been updated');
     }
 
     /**

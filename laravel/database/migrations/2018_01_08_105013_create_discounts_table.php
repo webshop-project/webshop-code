@@ -18,9 +18,9 @@ class CreateDiscountsTable extends Migration
             $table->increments('id');
             $table->integer('warehouse_id')->unsigned();
             $table->foreign('warehouse_id')->references('id')->on('warehouse');
-            $table->integer('discount')->unsigned();
-            $table->dateTime('start_date')->current();
-            $table->dateTime('end_date');
+            $table->integer('discount')->unsigned()->nullable();
+            $table->dateTime('start_date')->current()->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
