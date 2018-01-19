@@ -118,7 +118,7 @@ Home
         <div class="container">
             <div class="row p-3 justify-content-between">
                 <div class="col col-xs-12">
-                    <h2 class="d-inline newProducts">Nieuwe Producten</h2>
+                    <h2 class="d-inline newProducts">New products</h2>
                 </div>
                 <div>
                     <a href="{{action('ShopController@index')}}">
