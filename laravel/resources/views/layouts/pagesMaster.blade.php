@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     @if(Auth::check() == true)
-        @if(Auth::user()->house_id == 4)
+        @if(Auth::user()->firstLogin == 0)
+            {{redirect('/userEdit')}}
+        @elseif(Auth::user()->house_id == 4)
             <link rel="stylesheet" href="{{asset('css/serpent.css')}}">
         @elseif(Auth::user()->house_id == 2)
             <link rel="stylesheet" href="{{asset('css/dragon.css')}}">
@@ -44,6 +46,7 @@
                     <div class="d-inline-flex align-self-center">
                         <a class="login" href="#"><span>Login</span></a>
                         <a class="register" href="#"><span>Register</span></a>
+                        <a class="register" href="/userEdit"><span>Edit</span></a>
                     </div>
                 </div>
 

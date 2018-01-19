@@ -16,9 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = \App\User::paginate(9);
         return view('admin/userPeople/user')
             ->with('users' , $users);
+
     }
 
     /**
@@ -50,10 +52,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
-        $user = \App\User::find($id);
-        return view('admin/userpeople/userAdjust')
-            ->with('user', $user);
+        $users = \App\User::where('id','=', $id)->get();
+        return view('admin/userpeople/userShow')
+            ->with('users', $users);
     }
 
     /**
@@ -64,7 +65,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return 'hi';
+        $user = \App\User::find($id);
+        return view('admin/userpeople/userEdit')
+            ->with('user', $user);
+
+
+
+
+
     }
 
     /**
@@ -76,7 +84,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = \App\User::find($id);
+
+
+        $user->house_id = $request->house_id;
+        $user->streetName = $request->streetName;
+        $user->houseNumber = $request->houseNumber;
+        $user->houseNumberAdd = $request->houseNumberAdd;
+        $user->zipcode = $request->zipcode;
+
+        $user->firstLogin = 1;
+
+        $user->save();
     }
 
     /**
