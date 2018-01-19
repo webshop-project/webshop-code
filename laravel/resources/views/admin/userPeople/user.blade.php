@@ -12,7 +12,6 @@
             </div>
             <div class="row row-sizer-userinfo">
                 @foreach($users as $user)
-
                     <div class="col-4 product-info">
                         <div class="item-info">
                             <div class="form-inline">
@@ -30,6 +29,9 @@
                                 <div class="col-3"></div>
                                 <a href="{{action('UserController@show', $user->id)}}">
                                     <button class="btn btn-info" style="margin-right: 5px">Show Detail</button>
+                                </a>
+                                <a href="{{action('UserController@edit', $user->id)}}">
+                                    <button class="btn btn-info" style="margin-right: 5px">Edit User</button>
                                 </a>
                             </div>
                         </div>

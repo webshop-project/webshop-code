@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     @if(Auth::check() == true)
-        @if(Auth::user()->house_id == 4)
+        @if(Auth::user()->firstLogin == 0)
+            {{redirect('/userEdit')}}
+        @elseif(Auth::user()->house_id == 4)
             <link rel="stylesheet" href="{{asset('css/serpent.css')}}">
         @elseif(Auth::user()->house_id == 2)
             <link rel="stylesheet" href="{{asset('css/dragon.css')}}">
@@ -44,6 +46,7 @@
                     <div class="d-inline-flex align-self-center">
                         <a class="login" href="#"><span>Login</span></a>
                         <a class="register" href="#"><span>Register</span></a>
+                        <a class="register" href="/userEdit"><span>Edit</span></a>
                     </div>
                 </div>
 
@@ -56,7 +59,6 @@
                         </div>
                         <div class="cart-items">
                             @if (sizeof(Cart::content()) > 0)
-
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -75,7 +77,8 @@
                                         <tr>
                                             <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                                             <td>
-                                                {{--<select class="quantity" data-id="{{ $item->rowId }}">--}}
+                                                {{$item->qty}}
+                                                {{--<select class="quantity" onchange="" data-id="{{ $item->rowId }}">--}}
                                                     {{--<option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>--}}
                                                     {{--<option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>--}}
                                                     {{--<option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>--}}
@@ -88,7 +91,7 @@
                                             <td class=""></td>
                                             <td>
                                                 <form action="{{ action('CartController@destroy', $item->rowId) }}" method="POST" class="side-by-side">
-                                                    {!! csrf_field() !!}
+                                                    {{csrf_field()}}
                                                     {{method_field('DELETE')}}
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="submit" class="btn btn-danger btn-sm" value="Remove">
@@ -112,7 +115,7 @@
 
                                 <div style="float:right">
                                     <form action="{{ url('/emptyCart') }}" method="POST">
-                                        {!! csrf_field() !!}
+                                        {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" class="btn btn-danger btn-lg" value="Empty Cart">
                                     </form>
@@ -169,7 +172,7 @@
         </div>
     </div>
     @if (session()->has('success_message'))
-        <div class="alert alert-success text-center  ">
+        <div class="alert alert-success text-center ">
             {{ session()->get('success_message') }}
         </div>
     @endif

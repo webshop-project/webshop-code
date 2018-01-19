@@ -23,9 +23,8 @@
             <table class="table">
                 <thead>
                 <tr>
-
                     <th>Product</th>
-                    <th></th>
+                    <th>Quantity</th>
                     <th>Size</th>
                     <th>Price</th>
                     <th class="column-spacer"></th>
@@ -38,15 +37,9 @@
 
                 @foreach (Cart::content() as $item)
                     <tr>
-                        <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
+                        <td class="item-name">{{ $item->name }}</td>
                         <td>
-                            {{--<select class="quantity" data-id="{{ $item->rowId }}">--}}
-                            {{--<option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>--}}
-                            {{--<option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>--}}
-                            {{--<option value="{{ $item->qty == 3 ? 'selected' : '' }}">3</option>--}}
-                            {{--<option value="{{ $item->qty == 4 ? 'selected' : '' }}">4</option>--}}
-                            {{--<option value="{{ $item->qty == 5 ? 'selected' : '' }}">5</option>--}}
-                            {{--</select>--}}
+                            {{$item->qty}}
                         </td>
                         <td>{{$item->size}}</td>
                         <td>€{{ $item->subtotal }}</td>
@@ -143,13 +136,6 @@
                         <input type="hidden" name="item[{{$item->id}}][price]" value="{{$item->price}}">
                         <input type="hidden" name="item[{{$item->id}}][qty]" value="{{$item->qty}}">
                     @endforeach
-                    @if(isset($discount))
-                        <input type="hidden" name="discountprice" value="{{$discount}}">
-                    @else
-                    @endif
-                    {{--{{dd($codeValue)}}--}}
-                    {{--@if($codeValue)--}}
-                    {{--@endif--}}
                     <input type="submit" value="Proceed to Checkout" class="btn btn-success btn-lg">
                 </form>
             </div>

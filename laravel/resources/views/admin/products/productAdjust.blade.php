@@ -11,6 +11,15 @@
                 @elseif(!empty($product->product->category_id) && $product->product->category_id == 6) usb size {{$product->size->size}}GB
                 @endif
             </h2>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{action('WarehouseController@update', $product->id)}}" method="POST" >
                 {{csrf_field()}}
                 {{method_field('PUT')}}
