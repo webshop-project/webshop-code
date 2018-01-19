@@ -17,15 +17,15 @@ class PdfController extends Controller
 
     public function fun_pdf(Request $request)
     {
-        $orderInfo = order::where('id','=', $request->order_id)->first();
+        $orderInfo = order::where('id','=', $request->orderNumber)->get();
         $user = User::where('id', '=', $orderInfo->user_id)->first();
 
         $pdf = PDF::loadView('email.invoice')->with('order', $orderInfo);
         $email = new PHPMailer();
         $email->From      = 'Damian.meijer@gmail.com';
         $email->FromName  = 'Damian';
-        $email->Subject   = 'Thank you!';
-        $email->Body      = 'Thanks for your purchase!';
+        $email->Subject   = "Thank you for your purchase!";
+        $email->Body      = "Thank you $user->name, down below is your order. We hope you will be satisfied with your product(s)";
         $email->AddAddress( "$user->email" );
 
         $file_to_attach = 'view/email/invoice';
