@@ -483,27 +483,8 @@ class WarehouseController extends Controller
     public function edit($id)
     {
         $products = \App\Warehouse::where('id','=',$id)->get();
-
-//        $catergories = \App\categorie::All();
-//        $houses = \App\house::All();
-//        $brands = \App\brand::All();
-//        $models = \App\ProductModel::All();
-//
-//        $images = DB::table('images')
-//            ->select(DB::raw('*'))
-//            ->where([
-//                ['product_id', '=', $id],
-//                ['deleted_at', '=', null]
-//            ])
-//            ->get();
-
         return view('admin/products/productAdjust')
             ->with('products', $products);
-//            ->with('categories', $catergories)
-//            ->with('images', $images)
-//            ->with('houses', $houses)
-//            ->with('brands', $brands)
-//            ->with('models', $models);
     }
 
     /**
