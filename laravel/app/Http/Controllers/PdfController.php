@@ -12,6 +12,7 @@ use App\order;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class PdfController extends Controller
@@ -19,6 +20,8 @@ class PdfController extends Controller
     public static function fun_pdf($id)
     {
         $orderInfo = Item::where('invoice_id','=', $id)->get();
+        $invoiceInfo = Invoice::where('id', '=', $orderInfo->invoice_id)->get();
+        $current_time = Carbon::now()->toDateTimeString();
         $user = User::where('id', '=', 1)->first();
 
         $pdf = PDF::loadView('email.pdf');
