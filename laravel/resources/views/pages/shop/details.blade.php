@@ -55,7 +55,11 @@
                         <td class="col-5">Price:</td>
                         @foreach($product->warehouse as $price)
                             @if($loop->first)
-                                <td class="col-7">€{{number_format($price->price, 2, ',', ' ')}}</td>
+                                @if(!empty($price->discount->discount))
+                                    <td class="col-7">€{{number_format($price->price -  $price->price * $price->discount->discount / 100  , 2, ',', ' ')}}</td>
+                                @else
+                                    <td class="col-7">€{{number_format($price->price  , 2, ',', ' ')}}</td>
+                                @endif
                             @endif
                         @endforeach
                     </tr>

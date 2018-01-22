@@ -87,7 +87,11 @@
                                             </h4>
                                             @foreach($product->warehouse->sortBy('price') as $price)
                                                 @if($loop->first)
-                                                    <span class="price">€{{number_format($price->price,2,',',' ')}}</span>
+                                                    @if(!empty($price->discount->discount))
+                                                        <span class="price">€{{number_format($price->price -  $price->price * $price->discount->discount / 100  , 2, ',', ' ')}}</span>
+                                                    @else
+                                                        <span class="price">€{{number_format($price->price  , 2, ',', ' ')}}</span>
+                                                    @endif
                                                 @endif
                                             @endforeach
                                             <form action="{{ url('/shop/cart') }}" method="POST">
