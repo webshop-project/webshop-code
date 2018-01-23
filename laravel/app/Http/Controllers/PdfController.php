@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
 use App\Item;
-use App\Mail\Invoice;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,11 +22,18 @@ class PdfController extends Controller
     public static function fun_pdf($id)
     {
         $orderInfo = Item::where('invoice_id','=', $id)->get();
-        $invoiceInfo = Invoice::where('id', '=', $orderInfo->invoice_id)->get();
+        $invoiceInfo = Invoice::where('id', '=', $id)->get();
         $current_time = Carbon::now()->toDateTimeString();
         $user = User::where('id', '=', 1)->first();
 
-        $pdf = PDF::loadView('email.pdf');
+
+        $invoiceData = [
+            'orderInfo' => $orderInfo,
+            'invoiceInfo' => $invoiceInfo,
+            'current_time' => $current_time
+        ];
+
+        $pdf = PDF::loadView('email.pdf', $invoiceData);
         $pdf->save(storage_path('app/invoices/invoiceAmoWebshop'.$id.'.pdf'));
         $path = storage_path('app/invoices/invoiceAmoWebshop'.$id.'.pdf');
 
@@ -40,7 +49,6 @@ class PdfController extends Controller
             $message->subject('PDF');
         });
 
-        Storage::delete($path);
         return back();
     }
 }
