@@ -1,4 +1,4 @@
-let selected = document.getElementById('sizes');
+let selected = $("#sizeAndPrice").text();
 
 let small = document.getElementsByClassName('size-small');
 let medium = document.getElementsByClassName('size-medium');
@@ -8,8 +8,8 @@ let extralarge = document.getElementsByClassName('size-extra-large');
 let price_small = '<?php echo json_encode($sizesmall); ?>';
 
 $(selected).change(function() {
-    if(selected.value === "S"){
-        console.log(price_small);
+    if(selected.text() === "s"){
+        alert('hi');
         $('.size-small').addClass("d-block").removeClass("d-none");
         $('.size-medium').addClass("d-none").removeClass("d-block");
         $('.size-large').addClass("d-none").removeClass("d-block");

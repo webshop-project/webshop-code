@@ -33,13 +33,17 @@
                         <tr class="row justify-content-between">
                             <td class="col-5">Size:</td>
                             <td class="col-7 ">
-                                <select name="size" id="sizes" class="btn btn-info">
+                                <form action="{{ url('/shop/cart') }}" method="POST">
+                                {{csrf_field()}}
+                                <select name="sizeAndPrice" id="sizeAndPrice" class="btn btn-info">
                                     @foreach($product->warehouse as $warehouse)
                                         @if($warehouse->supply != 0)
-                                            <option value="{{$warehouse->size->size}}">{{$warehouse->size->size}}</option>
+                                            <option name="price" value="{{$warehouse->size->size}} {{$warehouse->price}}">{{$warehouse->size->size}}</option>
                                         @endif
                                     @endforeach
                                 </select>
+                                <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
+                                </form>
                             </td>
                         </tr>
                     @elseif($product->category->id == 4)
