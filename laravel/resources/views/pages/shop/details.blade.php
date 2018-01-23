@@ -8,7 +8,6 @@
     {{Breadcrumbs::render('product', $product)}}
     <div class="container details p-5">
         <div class="row p-5">
-
             <div class="detail-img-choice img-fluid col-lg-1 col-md-3 col-sm-4 d-none d-sm-block d-md-block d-lg-block d-xl-block p-2">
                 <img id="img-front-choice" class="img-fluid" src="{{$product->img}}" alt="Product image">
                 <img id="img-back-choice" class="img-fluid" src="{{$product->image[0]->img}}" alt="Product img">
@@ -31,11 +30,20 @@
                         <tr class="row justify-content-between">
                             <td class="col-5">Size:</td>
                             <td class="col-7 ">
-                                @foreach($product->warehouse as $warehouse)
-                                    @if($warehouse->supply != 0)
-                                        <input type="submit" class="btn btn-info" value="{{$warehouse->size->size}}">
-                                    @endif
-                                @endforeach
+                                <form action="{{ url('/shop/cart') }}" method="POST">
+                                    {{csrf_field()}}
+                                    <select name="size" id="sizeAndPrice" class="btn btn-info">
+                                        <option disabled selected>-- Select A Size --</option>
+                                        @foreach($product->warehouse as $warehouse)
+                                            @if($warehouse->supply != 0)
+                                                <option name="price" value="{{$warehouse->size->size}}">{{$warehouse->size->size}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <input type="hidden" name="id" value="{{$product->id}}">
+                                    <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
+                                    <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
+                                </form>
                             </td>
                         </tr>
                     @elseif($product->category->id == 4)
@@ -53,27 +61,35 @@
                     @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>
-                        @foreach($product->warehouse as $price)
-                            @if($loop->first)
-                                @if(!empty($price->discount->discount))
-                                    <td class="col-7">€{{number_format($price->price -  $price->price * $price->discount->discount / 100  , 2, ',', ' ')}}</td>
-                                @else
-                                    <td class="col-7">€{{number_format($price->price  , 2, ',', ' ')}}</td>
-                                @endif
-                            @endif
-                        @endforeach
+                        <td class="col-7 select-size">Select a size.</td>
+                        @if($product->warehouse[0] && $product->warehouse[0]->supply !=0)
+                            <td class="col-7 size-small d-none">
+                                €{{number_format($product->warehouse[0]->price, 2, ',', ' ')}}</td>
+                        @endif
+                        @if($product->warehouse[1] && $product->warehouse[1]->supply !=0)
+                            <td class="col-7 size-medium d-none">
+                                €{{number_format($product->warehouse[1]->price, 2, ',', ' ')}}</td>
+                        @endif
+                        @if($product->warehouse[2] && $product->warehouse[2]->supply !=0)
+                            <td class="col-7 size-large d-none">
+                                €{{number_format($product->warehouse[2]->price, 2, ',', ' ')}}</td>
+                        @endif
+                        @if($product->warehouse[3] && $product->warehouse[3]->supply !=0)
+                            <td class="col-7 size-extra-large d-none">
+                                €{{number_format($product->warehouse[3]->price, 2, ',', ' ')}}</td>
+                        @endif
                     </tr>
                     </tbody>
                 </table>
                 <div class="btn-group" role="group">
-                    <form action="{{ url('/shop/cart') }}" method="POST">
-                        {{csrf_field()}}
-                        <input type="hidden" name="id" value="{{$product->id}}">
-                        <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
-                        <input type="hidden" name="qty" value="{{$product->size}}">
-                        <input type="hidden" name="price" value="{{$product->warehouse[0]->price}}">
-                        <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
-                    </form>
+                    {{--<form action="{{ url('/shop/cart') }}" method="POST">--}}
+                        {{--{{csrf_field()}}--}}
+                        {{--<input type="hidden" name="id" value="{{$product->id}}">--}}
+                        {{--<input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">--}}
+                        {{--<input type="hidden" name="price" value="">--}}
+                        {{--<input type="hidden" name="size" value="">--}}
+                        {{--<input type="submit" class="btn btn-info pull-right" value="Add to Cart">--}}
+                    {{--</form>--}}
                 </div>
             </div>
         </div>
@@ -85,7 +101,7 @@
         <div class="new-products">
             <div class="row p-3">
                 <div class="col col-xs-12">
-                    <h2 class="d-inline newProducts">Related products</h2>
+                    <h2 class="d-inline newProducts">Related Products</h2>
                 </div>
                 <div class="col">
                     <a href="{{action('ShopController@index')}}">
@@ -112,4 +128,5 @@
             </div>
         </div>
     </div>
+    <script src="{{asset('js/sizesFilter.js')}}"></script>
 @endsection
