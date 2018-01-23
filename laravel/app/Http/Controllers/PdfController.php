@@ -24,7 +24,7 @@ class PdfController extends Controller
         $orderInfo = Item::where('invoice_id','=', $id)->get();
         $invoiceInfo = Invoice::where('id', '=', $id)->get();
         $current_time = Carbon::now()->toDateTimeString();
-        $user = User::where('id', '=', 1)->first();
+        $user = User::where('id', '=', Auth::id())->first();
 
 
         $invoiceData = [
