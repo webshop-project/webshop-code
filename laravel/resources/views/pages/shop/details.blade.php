@@ -7,9 +7,6 @@
 @section('content')
     {{Breadcrumbs::render('product', $product)}}
     <div class="container details p-5">
-        @php
-            $sizesmall = $product->warehouse[0]->price;
-        @endphp
         <div class="row p-5">
             <div class="detail-img-choice img-fluid col-lg-1 col-md-3 col-sm-4 d-none d-sm-block d-md-block d-lg-block d-xl-block p-2">
                 <img id="img-front-choice" class="img-fluid" src="{{$product->img}}" alt="Product image">
@@ -34,15 +31,18 @@
                             <td class="col-5">Size:</td>
                             <td class="col-7 ">
                                 <form action="{{ url('/shop/cart') }}" method="POST">
-                                {{csrf_field()}}
-                                <select name="sizeAndPrice" id="sizeAndPrice" class="btn btn-info">
-                                    @foreach($product->warehouse as $warehouse)
-                                        @if($warehouse->supply != 0)
-                                            <option name="price" value="{{$warehouse->size->size}} {{$warehouse->price}}">{{$warehouse->size->size}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
+                                    {{csrf_field()}}
+                                    <select name="size" id="sizeAndPrice" class="btn btn-info">
+                                        <option disabled selected>-- Select A Size --</option>
+                                        @foreach($product->warehouse as $warehouse)
+                                            @if($warehouse->supply != 0)
+                                                <option name="price" value="{{$warehouse->size->size}}">{{$warehouse->size->size}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <input type="hidden" name="id" value="{{$product->id}}">
+                                    <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
+                                    <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
                                 </form>
                             </td>
                         </tr>
@@ -61,7 +61,11 @@
                     @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>
-                        <td class="col-7 size-small">€{{number_format($product->warehouse[0]->price, 2, ',', ' ')}}</td>
+                        <td class="col-7 select-size">Select a size.</td>
+                        @if($product->warehouse[0] && $product->warehouse[0]->supply !=0)
+                            <td class="col-7 size-small d-none">
+                                €{{number_format($product->warehouse[0]->price, 2, ',', ' ')}}</td>
+                        @endif
                         @if($product->warehouse[1] && $product->warehouse[1]->supply !=0)
                             <td class="col-7 size-medium d-none">
                                 €{{number_format($product->warehouse[1]->price, 2, ',', ' ')}}</td>
@@ -78,14 +82,14 @@
                     </tbody>
                 </table>
                 <div class="btn-group" role="group">
-                    <form action="{{ url('/shop/cart') }}" method="POST">
-                        {{csrf_field()}}
-                        <input type="hidden" name="id" value="{{$product->id}}">
-                        <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
-                        <input type="hidden" name="price" value="">
-                        <input type="hidden" name="size" value="">
-                        <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
-                    </form>
+                    {{--<form action="{{ url('/shop/cart') }}" method="POST">--}}
+                        {{--{{csrf_field()}}--}}
+                        {{--<input type="hidden" name="id" value="{{$product->id}}">--}}
+                        {{--<input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">--}}
+                        {{--<input type="hidden" name="price" value="">--}}
+                        {{--<input type="hidden" name="size" value="">--}}
+                        {{--<input type="submit" class="btn btn-info pull-right" value="Add to Cart">--}}
+                    {{--</form>--}}
                 </div>
             </div>
         </div>
