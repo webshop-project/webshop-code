@@ -29,7 +29,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
+        Cart::add($request->id, $request->name, 1, $request->price, [ 'size' => $request->size])->associate('App\Product');
         return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
     }
 

@@ -75,6 +75,7 @@
                                         <tr>
                                             <td class="item-name"><a href="{{ url('shop', [$item->name]) }}">{{ $item->name }}</a></td>
                                             <td>
+                                                {{$item->qty}}
                                                 {{--<select class="quantity" data-id="{{ $item->rowId }}">--}}
                                                     {{--<option value="{{ $item->qty == 1 ? 'selected' : '' }}">1</option>--}}
                                                     {{--<option value="{{ $item->qty == 2 ? 'selected' : '' }}">2</option>--}}
