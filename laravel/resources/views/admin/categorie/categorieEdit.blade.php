@@ -1,12 +1,9 @@
-@extends('')
+@extends('layouts/adminMaster')
 @section('title')
-
+    Edit categorie
 @endsection
 @section('content')
-    <form action="/categorie/{{$categorie->id}}">
-        {{csrf_field()}}
-        {{method_field('PUT')}}
 
-    </form>
+    <form action=""></form>
 
 @endsection
