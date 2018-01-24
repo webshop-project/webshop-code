@@ -96,14 +96,12 @@
 
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
-
             var myInit = {
                 method:     'GET',
                 headers:    myHeaders,
-                mode:       'cors',
-                cache:      'default' };
+                };
 
-            var myRequest = new Request("<?php echo 'http://localhost:8000/api/sales/'.$urlId ?>", myInit);
+            var myRequest = new Request("<?php echo '/api/sales/'.$urlId ?>", myInit);
 
             fetch(myRequest)
                 .then( ( response ) => {
@@ -114,7 +112,7 @@
                     supply[i].innerHTML         = objects[i].supply;
                     if(objects[i].size)
                     {
-                        size[i].innerHTML           = 'Size '+ objects[i].size;
+                        size[i].innerHTML       = 'Size '+ objects[i].size;
                     }
                     totalSold[i].innerHTML      = objects[i].totalSold;
                     thisMonthSold[i].innerHTML  = objects[i].totalSoldThisMonth;
