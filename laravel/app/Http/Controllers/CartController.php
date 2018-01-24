@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use \Cart as Cart;
 use Validator;
+use App\Warehouse;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -29,8 +31,32 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
-        return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
+        $getPrice = "";
+        if($request->size === "S"){
+            $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 1)->get();
+            $price = $getPrice[0]->price;
+        }
+        if ($request->size === "M"){
+            $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 2)->get();
+            $price = $getPrice[0]->price;
+        }
+        if ($request->size === "L"){
+            $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 3)->get();
+            $price = $getPrice[0]->price;
+        }
+        if ($request->size === "XL"){
+            $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 4)->get();
+            $price = $getPrice[0]->price;
+        }
+
+        if($getPrice === ""){
+            Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
+            return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
+        }
+        else{
+            Cart::add($request->id, $request->name, 1, $price, [ 'size' => $request->size])->associate('App\Product');
+            return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
+        }
     }
 
     /**

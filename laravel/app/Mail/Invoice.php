@@ -10,15 +10,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class Invoice extends Mailable
 {
     use Queueable, SerializesModels;
-    public $userId;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user_id)
+    public function __construct()
     {
-        $this->userId = $user_id;
     }
 
     /**
