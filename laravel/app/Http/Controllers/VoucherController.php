@@ -136,6 +136,10 @@ class VoucherController extends Controller
                             $request->session()->put('value', $newPrice);
                             $request->session()->put('discount', $codeValue);
                             $request->session()->put('positive', $positive);
+                            $voucherUsed = new \App\Voucher_used();
+                            $voucherUsed->voucher_id = $vouchers->id;
+                            $voucherUsed->user_id = $vouchers->user_id;
+                            $voucherUsed->save();
                             return redirect('/shop/cart');
                         }
                         else{
