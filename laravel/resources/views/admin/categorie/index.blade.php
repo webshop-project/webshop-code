@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <a href="categorie/{{$categorie->id}}/edit"><button class="btn btn-succes">Edit categorie</button></a>
+                            <a href="/categorie/{{$categorie->id}}/edit"><button class="btn btn-succes">Edit categorie</button></a>
                             <button class="btn btn-danger">Delete categorie</button>
                         </div>
                     </div>

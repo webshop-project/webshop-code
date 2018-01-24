@@ -20,7 +20,7 @@ Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('/shop/{item}', 'PagesController@item')->name('detail');
 Route::get('/order/finish/{id}', 'OrderController@finish');
 Route::get('/orders/orderShipped', 'OrderController@orderS')->name('orderShipped');
-
+Route::get('/categorie/{id}/edit','CategorieController@edit');
 Route::get('/admin/lowStockList','DashboardController@lowStockList')->name('lowStockList');
 
 route::resource('/products', 'WarehouseController');
