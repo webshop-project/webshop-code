@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -65,14 +66,21 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = \App\User::find($id);
-        return view('admin/userpeople/userEdit')
-            ->with('user', $user);
-
-
-
-
-
+    	if(Auth::check()==true)
+	    {
+	        if(Auth::user()->role === 'teacher')
+		    {
+		        $user = \App\User::find($id);
+		        return view('admin/userpeople/userEdit')
+		            ->with('user', $user);
+		    }
+		    else
+		    {
+		        $user = \App\User::find(Auth::user()->id);
+		        return view('userEdit')->with('user', $user);
+		    }
+	    }
+	    return redirect()->action('PagesController@index');
     }
 
     /**
