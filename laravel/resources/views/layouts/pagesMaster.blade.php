@@ -44,9 +44,12 @@
             <div class="row">
                 <div class="col">
                     <div class="d-inline-flex align-self-center">
+                        @if(auth::check() == false)
                         <a class="login" href="#"><span>Login</span></a>
                         <a class="register" href="#"><span>Register</span></a>
-                        <a class="register" href="/userEdit"><span>Edit</span></a>
+                        @else
+                        <a class="register" href="{{action('UserController@edit', auth::user()->id)}}"><span>Edit</span></a>
+                        @endif
                     </div>
                 </div>
 
