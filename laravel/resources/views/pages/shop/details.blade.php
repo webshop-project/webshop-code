@@ -36,12 +36,14 @@
                                         <option disabled selected>-- Select A Size --</option>
                                         @foreach($product->warehouse as $warehouse)
                                             @if($warehouse->supply != 0)
-                                                <option name="price" value="{{$warehouse->size->size}}">{{$warehouse->size->size}}</option>
+                                                <option name="price"
+                                                        value="{{$warehouse->size->size}}">{{$warehouse->size->size}}</option>
                                             @endif
                                         @endforeach
                                     </select>
                                     <input type="hidden" name="id" value="{{$product->id}}">
-                                    <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
+                                    <input type="hidden" name="name"
+                                           value="{{$product->house->name}} {{$product->category->name}}">
                                     <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
                                 </form>
                             </td>
@@ -61,36 +63,37 @@
                     @endif
                     <tr class="row justify-content-around">
                         <td class="col-5">Price:</td>
-                        <td class="col-7 select-size">Select a size.</td>
-                        @if($product->warehouse[0] && $product->warehouse[0]->supply !=0)
-                            <td class="col-7 size-small d-none">
-                                €{{number_format($product->warehouse[0]->price, 2, ',', ' ')}}</td>
-                        @endif
-                        @if($product->warehouse[1] && $product->warehouse[1]->supply !=0)
-                            <td class="col-7 size-medium d-none">
-                                €{{number_format($product->warehouse[1]->price, 2, ',', ' ')}}</td>
-                        @endif
-                        @if($product->warehouse[2] && $product->warehouse[2]->supply !=0)
-                            <td class="col-7 size-large d-none">
-                                €{{number_format($product->warehouse[2]->price, 2, ',', ' ')}}</td>
-                        @endif
-                        @if($product->warehouse[3] && $product->warehouse[3]->supply !=0)
-                            <td class="col-7 size-extra-large d-none">
-                                €{{number_format($product->warehouse[3]->price, 2, ',', ' ')}}</td>
+                        @if($product->category->id == 5 || $product->category->id == 6)
+                            <td class="col-7 select-size">Select a size.</td>
+                            @if($product->warehouse[0] && $product->warehouse[0]->supply !=0)
+                                <td class="col-7 size-small d-none">€{{number_format($product->warehouse[0]->price, 2, ',', ' ')}}</td>
+                            @endif
+                            @if($product->warehouse[1] && $product->warehouse[1]->supply !=0)
+                                <td class="col-7 size-medium d-none">€{{number_format($product->warehouse[1]->price, 2, ',', ' ')}}</td>
+                            @endif
+                            @if($product->warehouse[2] && $product->warehouse[2]->supply !=0)
+                                <td class="col-7 size-large d-none">€{{number_format($product->warehouse[2]->price, 2, ',', ' ')}}</td>
+                            @endif
+                            @if($product->warehouse[3] && $product->warehouse[3]->supply !=0)
+                                <td class="col-7 size-extra-large d-none">€{{number_format($product->warehouse[3]->price, 2, ',', ' ')}}</td>
+                            @endif
+                        @else
+                            <td class="col-7">€{{number_format($product->warehouse[0]->price, 2, ',', ' ')}}</td>
                         @endif
                     </tr>
                     </tbody>
                 </table>
-                <div class="btn-group" role="group">
-                    {{--<form action="{{ url('/shop/cart') }}" method="POST">--}}
-                        {{--{{csrf_field()}}--}}
-                        {{--<input type="hidden" name="id" value="{{$product->id}}">--}}
-                        {{--<input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">--}}
-                        {{--<input type="hidden" name="price" value="">--}}
-                        {{--<input type="hidden" name="size" value="">--}}
-                        {{--<input type="submit" class="btn btn-info pull-right" value="Add to Cart">--}}
-                    {{--</form>--}}
-                </div>
+                @if($product->category->id != 5 && $product->category->id != 6)
+                    <div class="btn-group" role="group">
+                        <form action="{{ url('/shop/cart') }}" method="POST">
+                        {{csrf_field()}}
+                        <input type="hidden" name="id" value="{{$product->id}}">
+                        <input type="hidden" name="name" value="{{$product->house->name}} {{$product->category->name}}">
+                        <input type="hidden" name="price" value="{{$product->warehouse[0]->price}}">
+                        <input type="submit" class="btn btn-info pull-right" value="Add to Cart">
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
         <hr>

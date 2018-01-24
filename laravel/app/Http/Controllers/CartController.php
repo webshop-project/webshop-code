@@ -31,23 +31,32 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $getPrice = "";
         if($request->size === "S"){
             $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 1)->get();
+            $price = $getPrice[0]->price;
         }
         if ($request->size === "M"){
             $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 2)->get();
+            $price = $getPrice[0]->price;
         }
         if ($request->size === "L"){
             $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 3)->get();
+            $price = $getPrice[0]->price;
         }
         if ($request->size === "XL"){
             $getPrice = DB::table('warehouse')->where('product_id', $request->id)->where('size_id', 4)->get();
+            $price = $getPrice[0]->price;
         }
 
-        $price = $getPrice[0]->price;
-
-        Cart::add($request->id, $request->name, 1, $price, [ 'size' => $request->size])->associate('App\Product');
-        return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
+        if($getPrice === ""){
+            Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
+            return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
+        }
+        else{
+            Cart::add($request->id, $request->name, 1, $price, [ 'size' => $request->size])->associate('App\Product');
+            return redirect('/shop')->withSuccessMessage('Item was added to your cart!');
+        }
     }
 
     /**
